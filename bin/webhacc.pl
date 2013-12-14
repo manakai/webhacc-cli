@@ -13,9 +13,13 @@ use WebHACC::Fetcher;
 my $HelpLevel = 0;
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
-  '--help' => sub { $HelpLevel = {-verbose => 99, -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS']} },
+  '--help' => sub { $HelpLevel = {-verbose => 99,
+                                  -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS'],
+                                  -exitval => 0} },
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
-  '--version' => sub { $HelpLevel = {-verbose => 99, -sections => [qw(NAME AUTHOR LICENSE)]} },
+  '--version' => sub { $HelpLevel = {-verbose => 99,
+                                     -sections => [qw(NAME AUTHOR LICENSE)],
+                                     -exitval => 0} },
 ) or do {
   $HelpLevel = 2;
 };
@@ -143,4 +147,4 @@ Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=back
+=cut

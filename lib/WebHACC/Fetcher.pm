@@ -97,7 +97,8 @@ sub _fh (%) {
       (fh => $args{fh},
        on_read => sub {
          my $hdl = $_[0];
-         $args{onheaders}->({Status => 200, Reason => 'OK', URL => $args{url}})
+         $args{onheaders}->({Status => 200, Reason => 'OK', URL => $args{url},
+                             'content-type' => 'text/html'}) # XXX
              unless $headers_called++;
          $args{onbodychunk}->($hdl->{rbuf}) unless $done_called;
          substr ($hdl->{rbuf}, 0) = '';
