@@ -1,0 +1,13 @@
+Scalar::Util~1.35
+AnyEvent~7.05
+Exporter::Lite~0.02
+Test::Tester~0.109
+Test::NoWarnings~1.04
+Exporter~5.68
+Encode~2.55
+Unicode::Normalize~1.17
+Carp~1.32
+Path::Class~0.33
+Time::Local~1.2300
+JSON~2.90
+Unicode::Stringprep~1.104

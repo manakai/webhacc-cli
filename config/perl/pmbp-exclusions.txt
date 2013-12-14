@@ -1,0 +1,9 @@
+- "../../modules/charclass" build tests
+- "../../modules/web-dom" tests
+- "../../modules/web-url" tests
+- "../../modules/web-markup" tests tests-json
+- "../../modules/web-resource" tests updater
+- "../../modules/web-encodings" tests
+- "../../modules/web-css" tests
+- "../../modules/web-langtag" tests updater
+- "../../modules/web-datetime" tests
