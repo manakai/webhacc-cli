@@ -10,9 +10,11 @@ use WebHACC::Locale;
 use WebHACC::Result;
 use WebHACC::Fetcher;
 
+my $CheckErrorResponse;
 my $HelpLevel = 0;
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
+  '--check-error-response' => \$CheckErrorResponse,
   '--help' => sub { $HelpLevel = {-verbose => 99,
                                   -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS'],
                                   -exitval => 0} },
@@ -51,6 +53,7 @@ sub main_as_cv () {
     $fetcher = WebHACC::Fetcher->new_from_f ($f);
   }
   my $val = WebHACC::Validator->new_from_fetcher ($fetcher);
+  $val->check_error_response ($CheckErrorResponse);
 
   $val->onerror (sub {
     my ($error, $lines) = @_;
@@ -58,7 +61,7 @@ sub main_as_cv () {
     $out->print_error ($error, $lines);
   });
   $val->validate_as_cv->cb (sub {
-    $out->print_result ($result, $val->document);
+    $out->print_result ($result, $val->headers, $val->document);
     $out->end_as_cv->cb (sub { $cv->send ($result) });
   });
 
@@ -103,6 +106,13 @@ available via the standard error output.
 Following options are available:
 
 =over 4
+
+=item --check-error-response
+
+If this option is specified, run the validator even when the response
+is in error (in network error or has status code other than 200-299)
+or is redirect (has status code 300-399).  Otherwise, validation is
+not performed when the response is in error.
 
 =item --help
 

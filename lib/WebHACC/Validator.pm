@@ -13,6 +13,13 @@ sub new_from_fetcher ($$) {
   return bless {fetcher => $_[1]}, $_[0];
 } # new_from_fetcher
 
+sub check_error_response ($;$) {
+  if (@_ > 1) {
+    $_[0]->{check_error_response} = $_[1];
+  }
+  return $_[0]->{check_error_response};
+} # check_error_response
+
 sub _process_errors ($$$) {
   my ($errors, $lines => $onerror) = @_;
   for (@$errors) {
@@ -50,10 +57,24 @@ sub validate_as_cv ($) {
   my $start_time = time;
   my $start = 0;
   my $body = '';
+  my $stopped;
 
   $fetcher->onheaders (sub {
     #use Data::Dumper;
     #warn Dumper $_[0];
+    $self->{headers} = $_[0];
+
+    my $status = $_[0]->{Status} || 0;
+    if (not (200 <= $status and $status <= 299) and
+        not $self->check_error_response) {
+      $self->onerror->({type => 'status XXX',
+                        value => $status,
+                        level => 'm'},
+                       ['', '']);
+      undef $fetcher;
+      $stopped = 1;
+      return;
+    }
 
     # XXX multiple headers with same name should not be folded into a
     # value
@@ -77,6 +98,7 @@ sub validate_as_cv ($) {
   });
 
   $fetcher->onbodychunk (sub {
+    return if $stopped;
     $start ||= 1 if time - $start_time > 0.500;
     $parser->parse_bytes_feed ($_[0], start_parsing => $start)
         if $parser;
@@ -84,24 +106,28 @@ sub validate_as_cv ($) {
   });
 
   $fetcher->ondone (sub {
-    $parser->parse_bytes_end
-        if $parser;
-    warn "done (@{[time - $start_time]} s)";
+    unless ($stopped) {
+      $parser->parse_bytes_end
+          if $parser;
+      warn "done (@{[time - $start_time]} s)"; # XXX
 
-    $body = decode $doc->input_encoding, $body; # XXXencoding
-    $body = ['', (split /\x0D\x0A?|\x0A/, $body, -1), '', ''];
+      $body = decode $doc->input_encoding, $body; # XXXencoding
+      $body = ['', (split /\x0D\x0A?|\x0A/, $body, -1), '', ''];
 
-    if ($parser) {
-      my $val = Web::HTML::Validator->new;
-      $val->onerror (sub { push @error, {@_} });
-      $val->check_node ($doc);
+      if ($parser) {
+        my $val = Web::HTML::Validator->new;
+        $val->onerror (sub { push @error, {@_} });
+        $val->check_node ($doc);
+      }
+
+      _process_errors \@error, $body => $onerror;
     }
-
-    _process_errors \@error, $body => $onerror;
     $cv->send;
 
     @error = ();
     undef $doc;
+    undef $self;
+    undef $fetcher;
   });
 
   $fetcher->start;
@@ -114,6 +140,11 @@ sub onerror ($;$) {
   }
   return $_[0]->{onerror} || sub { };
 } # onerror
+
+sub headers ($) {
+  # XXX API is not stable! don't rely on this!!
+  return $_[0]->{headers};
+} # headers
 
 sub document ($) {
   return $_[0]->{document};
@@ -128,4 +159,4 @@ Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=back
+=cut

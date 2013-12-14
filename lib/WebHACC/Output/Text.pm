@@ -118,9 +118,10 @@ sub print_error ($$$) {
   }
 } # print_error
 
-sub print_result ($$$) {
-  my ($self, $result, $doc) = @_;
+sub print_result ($$$$) {
+  my ($self, $result, $headers, $doc) = @_;
   $self->print (sprintf "URL:\t<%s>\n", $doc->url);
+  $self->print (sprintf "Status:\t%d %s\n", $headers->{Status} || 0, $headers->{Reason} // '');
   $self->print (sprintf "Encoding:\t%s\n", $doc->input_encoding);
   if ($result->is_conforming) {
     $self->print ($self->_c ('pass', "The document is conforming\n"));
@@ -150,4 +151,4 @@ Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=back
+=cut
