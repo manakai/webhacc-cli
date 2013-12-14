@@ -10,10 +10,20 @@ use WebHACC::Locale;
 use WebHACC::Result;
 use WebHACC::Fetcher;
 
+my $HelpLevel = 0;
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
+  '--help' => sub { $HelpLevel = {-verbose => 99, -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS']} },
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
-) or die "XXX";
+  '--version' => sub { $HelpLevel = {-verbose => 99, -sections => [qw(NAME AUTHOR LICENSE)]} },
+) or do {
+  $HelpLevel = 2;
+};
+
+if ($HelpLevel) {
+  require Pod::Usage;
+  Pod::Usage::pod2usage ($HelpLevel);
+}
 
 eval qq{ require $OutputClass } or die $@;
 
@@ -58,6 +68,73 @@ exit ($result->is_conforming ? 0 : 1);
 # XXX list of data-* attributes
 # XXX list of classes
 # XXX list of IDs
+
+=head1 NAME
+
+webhacc - Web page conformance checker (validator)
+
+=head1 SYNOPSIS
+
+  webhacc [OPTIONS] http://www.example.com/
+  webhacc --help
+  webhacc --version
+
+=head1 DESCRIPTION
+
+The C<webhacc> command is a command-line interface to the WebHACC, a
+Web page conformance checker (i.e. a validator).
+
+=head1 ARGUMENTS
+
+If a non-option argument is specified, it is interpreted as a URL or
+file name to validate.  As a special case, the argument C<-> is
+interpreted as the file "standard input".  If no non-option argument
+is specified, data from the standard input is validated.
+
+Unless C<--help> or C<--version> option is specified, the command
+validates the specified input and return the result.  Result is
+written to the standard output, while additional information might be
+available via the standard error output.
+
+Following options are available:
+
+=over 4
+
+=item --help
+
+Show help message and exits without validation.
+
+=item --json
+
+Encode the result in JSON.
+
+XXX JSON structure is ...
+
+=item --version
+
+Show short information on the command and exits without validation.
+
+=back
+
+=head1 ENVIRONMENT VARIABLE
+
+The C<LANG> environment variable is used to determine the natural
+language of the output.  Note that any character encoding specified by
+C<LANG> is ignored; the output character encoding is always UTF-8.
+
+=head1 EXIT STATUS
+
+When the validation result is positive, as well as when C<--help> or
+C<--version> is specified, the command exits with C<0>.  Otherwise the
+command exits with non C<0> status.
+
+=head1 SPECIFICATIONS
+
+XXX
+
+=head1 AUTHOR
+
+Wakaba <wakaba@suikawiki.org>.
 
 =head1 LICENSE
 
