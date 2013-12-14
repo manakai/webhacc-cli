@@ -136,6 +136,10 @@ command exits with non C<0> status.
 
 XXX
 
+=head1 DEPENDENCY
+
+This command requires Perl 5.10 or later.
+
 =head1 AUTHOR
 
 Wakaba <wakaba@suikawiki.org>.
