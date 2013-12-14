@@ -2,5 +2,8 @@ AnyEvent
 AnyEvent::Handle
 AnyEvent::HTTP
 Encode
+Getopt::Long
 JSON
+Path::Class
+Term::ANSIColor
 Time::HiRes

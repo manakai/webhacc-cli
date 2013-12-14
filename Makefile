@@ -1,6 +1,6 @@
 # -*- Makefile -*-
 
-all:
+all: lib/WebHACC/_Errors.pm
 
 ## ------ Setup ------
 
@@ -18,11 +18,29 @@ local/bin/pmbp.pl:
 pmbp-upgrade: local/bin/pmbp.pl
 	perl local/bin/pmbp.pl --update-pmbp-pl
 pmbp-update: git-submodules pmbp-upgrade
-	perl local/bin/pmbp.pl --update
+	perl local/bin/pmbp.pl --update --write-makefile-pl cpanfile
 pmbp-install: pmbp-upgrade
-	perl local/bin/pmbp.pl --install \
-            --create-perl-command-shortcut perl \
-            --create-perl-command-shortcut prove
+	perl local/bin/pmbp.pl --install
+
+## ------ Build ------
+
+PERL = ./perl
+
+local/errors.json:
+	mkdir -p local
+	$(WGET) -O $@ https://raw.github.com/manakai/data-errors/master/data/errors.json
+
+lib/WebHACC/_Errors.pm: local/errors.json Makefile deps
+	$(PERL) -MJSON -MData::Dumper -e ' #\
+          local $$/ = undef; #\
+          $$data = JSON->new->utf8->decode (scalar <>); #\
+          $$Data::Dumper::Sortkeys = 1; #\
+          $$Data::Dumper::Useqq = 1; #\
+          $$pm = Dumper $$data; #\
+          $$pm =~ s/VAR1/WebHACC::_Errors/; #\
+          print "$$pm\n"; #\
+        ' < $< > $@
+	perl -c $@
 
 ## ------ Tests ------
 
