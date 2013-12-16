@@ -5,6 +5,7 @@ use Term::ANSIColor ();
 use WebHACC::Output::FH;
 push our @ISA, qw(WebHACC::Output::FH);
 use Web::DOM::Node;
+use WebHACC::_Errors;
 
 my $Classes = {
   line_number => 'white',
@@ -63,8 +64,8 @@ sub _node ($$) {
 } # _node
 
 sub _string ($$) {
-  if (10 < length $_[1]) {
-    return sprintf '"%s..."', substr $_[1], 0, 10;
+  if (20 < length $_[1]) {
+    return sprintf '"%s..."', substr $_[1], 0, 20;
   } else {
     return sprintf '"%s"', $_[1];
   }
@@ -101,19 +102,25 @@ sub _print_by_lc ($$$$) {
 sub print_error ($$$) {
   my ($self, $error, $lines) = @_;
   my $message = $self->locale->plain_text_by_error ($error);
+  my $value = $error->{value};
+  if (not defined $value and $error->{node}) {
+    my $def = $WebHACC::_Errors->{$error->{type}};
+    $value = $error->{node}->node_value
+        unless $def->{targets}->{attr};
+  }
   if ($error->{line}) {
     $self->print (sprintf "[%s] Line %d column %d%s%s %s\n",
         $self->_level ($error->{level}),
         $error->{line}, $error->{column},
         $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
-        defined $error->{value} ? ' ' . $self->_string ($error->{value}) : '',
+        defined $value ? ' ' . $self->_string ($value) : '',
         $self->_c ('error_type', $message));
     $self->_print_by_lc ($lines, $error->{line}, $error->{column});
   } else {
     $self->print (sprintf "[%s]%s%s %s\n",
         $self->_level ($error->{level}),
         $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
-        defined $error->{value} ? ' ' . $self->_string ($error->{value}) : '',
+        defined $value ? ' ' . $self->_string ($value) : '',
         $self->_c ('error_type', $message));
   }
 } # print_error

@@ -2,6 +2,9 @@
 
 all: lib/WebHACC/_Errors.pm
 
+clean:
+	rm -fr local/errors.json
+
 ## ------ Setup ------
 
 WGET = wget

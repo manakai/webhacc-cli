@@ -182,13 +182,23 @@ $WebHACC::_Errors = {
                                                              }
                                               },
           "Reserved Prefixes and Namespace Names:Name" => {
+                                                            "desc" => {
+                                                                        "en" => "\n    <p>Namespace URLs\n    <code>http://www.w3.org/XML/1998/namespace</code> and\n    <code>http://www.w3.org/2000/xmlns/</code> are reserved.  They\n    must be bound to the <code>xml</code> and <code>xmlns</code>\n    prefixes, respectively.</p>\n  ",
+                                                                        "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593} URL \n    <code>http://www.w3.org/XML/1998/namespace</code>,\n    <code>http://www.w3.org/2000/xmlns/</code> \x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{305d}\x{308c}\x{305e}\x{308c} <code>xml</code> \x{3068} <code>xmlns</code>\n    \x{3068}\x{306e}\x{307f}\x{675f}\x{7e1b}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                                      },
                                                             "message" => {
-                                                                           "en" => "Namespace name <code><var>{text}</var></code>\n  is reserved and cannot be used for an arbitrary prefix."
+                                                                           "en" => "Namespace name <code><var>{text}</var></code>\n  is reserved",
+                                                                           "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{540d} <code><var>{text}</var></code>\n  \x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                                          }
                                                           },
           "Reserved Prefixes and Namespace Names:Prefix" => {
+                                                              "desc" => {
+                                                                          "en" => "\n    <p>Namespace prefixes <code>xml</code> and <code>xmlns</code> are\n    reserved.  They must be bound to the XML and XMLNS namespaces,\n    respectively.</p>\n  ",
+                                                                          "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e} <code>xml</code>, <code>xmlns</code> \x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{305d}\x{308c}\x{305e}\x{308c} XML \x{540d}\x{524d}\x{7a7a}\x{9593}\x{3068} XMLNS \x{540d}\x{524d}\x{7a7a}\x{9593}\x{3068}\x{3060}\x{3051}\x{675f}\x{7e1b}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                                        },
                                                               "message" => {
-                                                                             "en" => "Namespace prefix <code><var>{text}</var></code>\n  is reserved and cannot be used for an arbitrary namespace name."
+                                                                             "en" => "Namespace prefix <code><var>{text}</var></code>\n  is reserved",
+                                                                             "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e} <code><var>{text}</var></code>\n  \x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                                            }
                                                             },
           "Sequence (? incomplete" => {
@@ -231,6 +241,26 @@ $WebHACC::_Errors = {
                                             "en" => "A <code>\\</code> character is not followed by\n  another character,"
                                           }
                            },
+          "U+000C not serializable" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>As the <code>U+000C</code> <code class=\"charname\">FORM\n    FEED</code> character is not representable in XML 1.0, the DOM is\n    not serializable as XML.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{6587}\x{5b57} <code>U+000C</code> <code class=\"charname\">FORM FEED</code>\n    \x{306f} XML 1.0 \x{3067}\x{306f}\x{8868}\x{73fe}\x{3067}\x{304d}\x{305a}\x{3001}\x{3053}\x{306e} DOM \x{306f} XML \x{3068}\x{3057}\x{3066}\x{6587}\x{5b57}\x{5217}\x{5316}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                         "message" => {
+                                                        "en" => "The character <code>U+000C</code>\n  is not serializable as XML",
+                                                        "ja" => "\x{6587}\x{5b57} <code>U+000C</code> \n  \x{306f} XML \x{3068}\x{3057}\x{3066}\x{8868}\x{73fe}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                      }
+                                       },
+          "U+000D not serializable" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>As the <code>U+000D</code> <code class=\"charname\">CARRIAGE\n    RETURN</code> character is converted to <code>U+000A</code> by the\n    parser, it cannot be serialized in the form that, when reparsed,\n    generates the same DOM.</p>\n\n    <p>If you don't think distinction between <code>U+000D</code> and\n    <code>U+000A</code> is important, you can ignore this warning.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{6587}\x{5b57} <code>U+000D</code> <code class=\"charname\">CARRIAGE RETURN</code>\n    \x{306f}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{5668}\x{306b}\x{3088}\x{308a} <code>U+000A</code> \x{306b}\x{5909}\x{63db}\x{3055}\x{308c}\x{308b}\x{306e}\x{3067}\x{3001}\n    \x{518d}\x{5ea6}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{3057}\x{305f}\x{3068}\x{304d}\x{306b}\x{540c}\x{3058} DOM \x{3092}\x{751f}\x{6210}\x{3059}\x{308b}\x{3088}\x{3046}\x{306a}\x{5f62}\x{3067}\x{6587}\x{5b57}\x{5217}\x{5316}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p><code>U+000D</code> \x{3068} <code>U+000A</code> \x{306e}\x{9055}\x{3044}\x{304c}\x{91cd}\x{8981}\x{3067}\x{306a}\x{3044}\x{306a}\x{3089}\x{3001}\n    \x{3053}\x{306e}\x{8b66}\x{544a}\x{306f}\x{7121}\x{8996}\x{3057}\x{3066}\x{69cb}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                         "message" => {
+                                                        "en" => "The character <code>U+000D</code>\n  is not roundtrippable",
+                                                        "ja" => "\x{6587}\x{5b57} <code>U+000D</code> \n  \x{306f}\x{5f80}\x{5fa9}\x{5909}\x{63db}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                      }
+                                       },
           "URL fragment not allowed" => {
                                           "message" => {
                                                          "en" => "The fragment component of the URL is not \n  allowed."
@@ -493,6 +523,26 @@ $WebHACC::_Errors = {
                                                   "en" => "Argument <code><var>a</var>n+<var>b</var></code> is \n  syntactically incorrect."
                                                 }
                                  },
+          "anchor name" => {
+                             "desc" => {
+                                         "en" => "\n    <p>The <code>name</code> attribute of the <code>a</code> element\n    is obsolete.  Use the <code>id</code> attribute instead.</p>\n  ",
+                                         "ja" => "\n    <p><code>a</code> \x{8981}\x{7d20}\x{306e} <code>name</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>id</code> \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n  "
+                                       },
+                             "message" => {
+                                            "en" => "The attribute obsolete",
+                                            "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                          }
+                           },
+          "anchor name:empty" => {
+                                   "desc" => {
+                                               "en" => "\n    <p>The anchor name cannot be the empty string.</p>\n  ",
+                                               "ja" => "\n    <p>\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
+                                   "message" => {
+                                                  "en" => "Anchor name cannot be empty",
+                                                  "ja" => "\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                }
+                                 },
           "argument after variadic" => {
                                          "message" => {
                                                         "en" => "An argument is specified after an argument\n  with <code>Variadic</code> extended attribute is seen."
@@ -536,12 +586,12 @@ $WebHACC::_Errors = {
                                        },
           "attribute missing" => {
                                    "desc" => {
-                                               "en" => "\n    <p>A required attribute is not specified.</p>\n\n    <p>Some attribute is defined as <i>required</i>.\n    Without required attributes specified, user agents \n    cannot provide full functionality of the element to the user.</p>\n\n    <dl class=\"switch\">\n    <dt>HTML <code>img</code> element</dt>\n        <dd>The <code>src</code> attribute must be specified.\n        Additionally, the <code>alt</code> attribute must be specified\n        in many cases.</dd>\n    <dt>HTML <code>link</code> element</dt>\n        <dd>The <code>rel</code> attribute must be specified.\n        Note that the <code>rev</code> attribute is obsolete.</dd>\n    </dl>\n  ",
-                                               "ja" => "\n    <p>\x{5fc5}\x{9808}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{5c5e}\x{6027}\x{306b}\x{3088}\x{3063}\x{3066}\x{306f}\x{300c}\x{5fc5}\x{9808}\x{300d}\x{3068}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\n    \x{5fc5}\x{9808}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{306a}\x{3044}\x{3068}\x{5229}\x{7528}\x{8005}\x{30a8}\x{30fc}\x{30b8}\x{30a7}\x{30f3}\x{30c8}\x{306f}\x{5f53}\x{8a72}\x{8981}\x{7d20}\x{306e}\x{6a5f}\x{80fd}\x{3092}\x{5b8c}\x{5168}\x{306b}\x{306f}\x{5229}\x{7528}\x{8005}\x{306b}\x{63d0}\x{4f9b}\x{3067}\x{304d}\x{306a}\x{3044}\x{3053}\x{3068}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n\n    <dl class=\"switch\">\n    <dt>HTML <code>img</code> \x{8981}\x{7d20}</dt>\n        <dd><code>src</code> \x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{66f4}\x{306b}\x{3001}\x{591a}\x{304f}\x{306e}\x{5834}\x{5408}\n        <code>alt</code> \x{5c5e}\x{6027}\x{3082}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n    <dt>HTML <code>link</code> \x{8981}\x{7d20}</dt>\n        <dd><code>rel</code> \x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n        \x{306a}\x{304a} <code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</dd>\n    </dl>\n  "
+                                               "en" => "\n\n    <p>An attribute is not specified for the element.  You may want to\n    specify the element such that user agents can provide its full\n    functionality with regard to the element for the user.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>html</code> element</dt>\n\n    <dd>Although it is not required, it is encouraged to specify the\n    language of the document to the root <code>html</code> element\n    using the <code>lang</code> attribute.</dd>\n\n    <dt>HTML <code>area</code> element</dt>\n\n    <dd>The <code>coords</code> attribute must be specified unless the\n    <code>shape</code> attribute value is <code>default</code>.</dd>\n\n    <dt>HTML <code>lang</code> attribute</dt>\n\n    <dd>If the <code>xml:lang</code> attribute is specified for an\n    HTML element, the <code>lang</code> attribute must also be\n    specified.  (You don't have to specify the <code>xml:lang</code>\n    attribute.)</dd>\n\n    </dl>\n  ",
+                                               "ja" => "\n    <p>\x{8981}\x{7d20}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5229}\x{7528}\x{8005}\x{30a8}\x{30fc}\x{30b8}\x{30a7}\x{30f3}\x{30c8}\x{304c}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306e}\x{6a5f}\x{80fd}\x{3092}\x{5b8c}\x{5168}\x{306a}\x{5f62}\x{3067}\x{63d0}\x{4f9b}\x{3059}\x{308b}\x{305f}\x{3081}\x{306b}\x{306f}\x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>html</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{6839}\x{8981}\x{7d20} <code>html</code> \x{306b}\x{306f}\x{6587}\x{66f8}\x{306e}\x{8a00}\x{8a9e}\x{3092}\n    <code>lang</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>area</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>coords</code> \x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    (\x{305f}\x{3060}\x{3057} <code>shape</code> \x{5c5e}\x{6027}\x{5024}\x{304c} <code>default</code>\n    \x{306e}\x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{307e}\x{3059}\x{3002})</dd>\n\n    <dt>HTML <code>lang</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>HTML \x{8981}\x{7d20}\x{306b} <code>xml:lang</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{6642}\x{306f}\x{3001}\n    <code>lang</code> \x{5c5e}\x{6027}\x{3082}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002} (<code>xml:lang</code>\n    \x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{5b50}\x{306a}\x{304f}\x{3066}\x{69cb}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002})</dd>\n\n    </dl>\n  "
                                              },
                                    "message" => {
-                                                  "en" => "Required attribute <code><var>{text}</var></code>\n  is not specified.",
-                                                  "ja" => "\x{5fc5}\x{9808}\x{306e}\x{5c5e}\x{6027} <code><var>{text}</var></code>\n  \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                  "en" => "Attribute <code><var>{text}</var></code>\n  is not specified",
+                                                  "ja" => "\x{5c5e}\x{6027} <code><var>{text}</var></code>\n  \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                 }
                                  },
           "attribute missing:data|type" => {
@@ -550,8 +600,13 @@ $WebHACC::_Errors = {
                                                           }
                                            },
           "attribute missing:href|target" => {
+                                               "desc" => {
+                                                           "en" => "\n    <p>The HTML <code>base</code> element must have either or both of\n    <code>href</code> and <code>target</code> attributes.  Otherwise\n    the element is useless.</p>\n  ",
+                                                           "ja" => "\n    <p>HTML <code>base</code> \x{8981}\x{7d20}\x{306f} <code>href</code> \x{5c5e}\x{6027}\x{3068}\n    <code>target</code> \x{5c5e}\x{6027}\x{306e}\x{4e00}\x{65b9}\x{307e}\x{305f}\x{306f}\x{4e21}\x{65b9}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{3069}\x{3061}\x{3089}\x{3082}\x{306a}\x{3044}\n    <code>base</code> \x{8981}\x{7d20}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                         },
                                                "message" => {
-                                                              "en" => "For a <code>base</code> element, at least one of\n  <code>href</code> and <code>target</code> attributes must be\n  specified."
+                                                              "en" => "Attribute <code>href</code> or\n  <code>target</code> must be specified",
+                                                              "ja" => "<code>href</code> \x{5c5e}\x{6027}\x{304b} <code>target</code>\n  \x{5c5e}\x{6027}\x{306e}\x{3069}\x{3061}\x{3089}\x{304b}\x{306f}\x{5fc5}\x{8981}\x{3067}\x{3059}"
                                                             }
                                              },
           "attribute missing:name|http-equiv" => {
@@ -566,24 +621,35 @@ $WebHACC::_Errors = {
                                                          },
           "attribute not allowed" => {
                                        "desc" => {
-                                                   "en" => "\n    <p>An attribute is specified where it is not allowed.\n    The document is non-conforming.</p>\n\n    <dl>\n    <dt>HTML <code>meta</code> element</dt>\n        <dd>For HTML <code>meta</code> element, <em>only one</em> of\n        <code>name</code>, <code>http-equiv</code>, or <code>charset</code>\n        attribute is allowed.</dd>\n    </dl>\n  "
+                                                   "en" => "\n    <p>The attribute is not allowed to be specified in this context.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>area</code> element</dt>\n\n    <dd>The <code>coords</code> attribute cannot be used if the\n    <code>shape</code> attribute is <code>default</code>.</dd>\n\n    </dl>\n  ",
+                                                   "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{3053}\x{306e}\x{6587}\x{8108}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{304c}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>area</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>coords</code> \x{5c5e}\x{6027}\x{306f} <code>shape</code> \x{5c5e}\x{6027}\x{304c}\n    <code>default</code> \x{306e}\x{6642}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "Attribute\n  <code><var>{local-name}</var></code> is not allowed for\n  <code><var>{element-local-name}</var></code> element."
+                                                      "en" => "The attribute is not allowed here",
+                                                      "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{3053}\x{3053}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                       "targets" => {
+                                                      "attr" => 1
                                                     }
                                      },
           "attribute not allowed:ismap" => {
                                              "message" => {
                                                             "en" => "The <code>ismap</code> attribute may only be\n  used for the image contained in an <code>a</code> element."
+                                                          },
+                                             "targets" => {
+                                                            "attr" => 1
                                                           }
                                            },
           "attribute not defined" => {
                                        "desc" => {
-                                                   "en" => "\n    <p>The attribute is not one of attributes allowed for the element\n    in the latest version of relevant specifications.</p>\n\n    <p>The attribute cannot be used.</p>\n\n    <dl class=\"switch\">\n    <dt><code>align</code> attribute (various HTML elements)</dt>\n    <dt><code>border</code> attribute (various HTML elements)</dt>\n      <dd>These attributes are no longer part of HTML.  You can use CSS\n      properties to control the presentation of the element.</dd>\n    <dt><code>autosubmit</code> attribute (<code>menu</code> element)</dt>\n      <dd>The attribute was part of HTML5 draft but then dropped.\n      Similar functionality can be implemented by scripts.</dd>\n    <dt><code>language</code> attribute (<code>script</code> element)</dt>\n      <dd>The attribute is no longer the standard way to specify the\n      scripting language.  If you are using JavaScript, then no explicit\n      specification of the scripting language is necessary, so you can\n      write the element like:\n        <p><code class=\"html example code\">&lt;script&gt;<br><!--\n        --> /* JavaScript code */<br><!--\n        -->&lt;/script&gt;</code></p>\n      If you are using different scripting language from JavaScript, or \n      you want to declare the scripting language explicitly, you should\n      use the <code>type</code> attribute, as follows:\n        <dl class=\"switch\">\n        <dt>JavaScript</dt>\n          <dd>Use\n          <code class=\"html example\">&lt;script type=\"text/javascript\"&gt;</code>.</dd>\n        <dt>VBScript</dt>\n          <dd>Use\n          <code class=\"html example\">&lt;script type=\"text/vbscript\"&gt;</code>.</dd>\n        </dl>\n      </dd>\n    </dl>\n  "
+                                                   "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{8981}\x{7d20}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5c5e}\x{6027}\x{306e}\x{4e00}\x{3064}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{5c5e}\x{6027}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\x{305f}\x{3060}\x{5358}\x{306b}\x{66f8}\x{304d}\x{9593}\x{9055}\x{3048}\x{305f}\x{306e}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>align</code>, <code>alink</code>,\n    <code>allowtransparency</code>, <code>background</code>,\n    <code>bgcolor</code>, <code>border</code>,\n    <code>cellpadding</code>, <code>cellspacing</code>,\n    <code>compact</code>, <code>frameborder</code>,\n    <code>hspace</code>, <code>link</code>, <code>nowrap</code>,\n    <code>text</code>, <code>valign</code>, <code>vlink</code>,\n    <code>vspace</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>property</code>, <code>prefix</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>OGP \x{3092}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{308b}\x{306a}\x{3089}\x{3001}\x{3053}\x{306e}\x{30a8}\x{30e9}\x{30fc}\x{306f}\x{7121}\x{8996}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>head</code> \x{8981}\x{7d20} <code>profile</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>profile</code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{308c}\x{306f}\x{6700}\x{65e9}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>a</code> \x{8981}\x{7d20}\x{3001} <code>link</code> \x{8981}\x{7d20}\n    <code>rev</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>rel</code> \x{5c5e}\x{6027}\x{3068}\x{9069}\x{5f53}\x{306a}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n    <code>rev=made</code> \x{3067}\x{306f}\x{306a}\x{304f} <code>rel=author</code>\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "This attribute is not defined.",
-                                                      "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                      "en" => "The attribute is not allowed",
+                                                      "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                       "targets" => {
+                                                      "attr" => 1
                                                     }
                                      },
           "bad attribute name" => {
@@ -737,8 +803,13 @@ $WebHACC::_Errors = {
                                             }
                              },
           "boolean:invalid" => {
+                                 "desc" => {
+                                             "en" => "\n    <p>It is a boolean attribute.  If the value is true, the attribute\n    value must be either the empty value or same as the attribute\n    name.  If the value is false, the attribute must be omitted.</p>\n    <p>Values such as <code>true</code>, <code>false</code>,\n    <code>yes</code>, and <code>on</code> are not allowed.</p>\n  ",
+                                             "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f} boolean \x{5c5e}\x{6027}\x{3067}\x{3059}\x{3002}\x{5024}\x{304c}\x{771f}\x{306e}\x{6642}\x{306f}\x{3001}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{304b}\x{3001}\n    \x{5c5e}\x{6027}\x{540d}\x{3068}\x{540c}\x{3058}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{5024}\x{304c}\x{507d}\x{306e}\x{6642}\x{306f}\x{3001}\n    \x{5c5e}\x{6027}\x{3092}\x{7701}\x{7565}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p><code>true</code>, <code>false</code>,\n    <code>yes</code>, <code>on</code> \x{306e}\x{3088}\x{3046}\x{306a}\x{5024}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
                                  "message" => {
-                                                "en" => "Attribute value <code><var>{\@}</var></code>\n  is not allowed.  It must be an empty string or a string\n  <code><var>{local-name}</var></code>."
+                                                "en" => "The attribute value is not boolean",
+                                                "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c} boolean \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               }
                                },
           "both in entries and whitelist" => {
@@ -757,8 +828,13 @@ $WebHACC::_Errors = {
                                                }
                                 },
           "char:syntax error" => {
+                                   "desc" => {
+                                               "en" => "\n    <p>The attribute value must be a character, i.e. a string whose\n    length is one.</p>\n  ",
+                                               "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}1\x{6587}\x{5b57} (\x{9577}\x{3055}1\x{306e}\x{6587}\x{5b57}\x{5217}) \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
                                    "message" => {
-                                                  "en" => "The attribute value must be exactly one\n  character."
+                                                  "en" => "The value must be exactly one character",
+                                                  "ja" => "\x{5024}\x{306f}\x{3061}\x{3087}\x{3046}\x{3069}1\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
                                                 }
                                  },
           "character encoding unchecked" => {
@@ -788,8 +864,13 @@ $WebHACC::_Errors = {
                                                                        }
                                                         },
           "character not allowed:empty" => {
+                                             "desc" => {
+                                                         "en" => "\n    <p>The content model of the parent element is empty such that text\n    other than inter-element white space is not allowed.</p>\n  ",
+                                                         "ja" => "\n    <p>\x{89aa}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306f}\x{7a7a}\x{306a}\x{306e}\x{3067}\x{3001}\x{8981}\x{7d20}\x{9593}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                       },
                                              "message" => {
-                                                            "en" => "Non\x{2010}white\x{2010}space characters are not allowed in\n  an empty element."
+                                                            "en" => "The parent is an empty element such that\n  text other than spaces is not allowed",
+                                                            "ja" => "\x{89aa}\x{304c}\x{7a7a}\x{8981}\x{7d20}\x{306a}\x{306e}\x{3067}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                                           }
                                            },
           "chardecode:fallback" => {
@@ -824,9 +905,12 @@ $WebHACC::_Errors = {
                                                      }
                                       },
           "charset:not ascii compat" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>The character encoding is not ASCII-compatible.  Encodings that\n    are incompatible with ASCII cannot be used here.</p>\n\n    <p>Character encodings such as UTF-16, UTF-32, and EBCDIC are not\n    ASCII-compatible.</p>\n  "
+                                                    },
                                           "message" => {
-                                                         "en" => "Characeter encoding <code><var>{value}</var></code>\n  is not ASCII compatible.",
-                                                         "ja" => "\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316} <code><var>{value}</var></code>\n  \x{306f} ASCII \x{4e92}\x{63db}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                         "en" => "The encoding\n  <code><var>{value}</var></code> is not ASCII-compatible",
+                                                         "ja" => "\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316} <code><var>{value}</var></code>\n  \x{306f} ASCII \x{4e92}\x{63db}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "charset:not preferred" => {
@@ -895,8 +979,13 @@ $WebHACC::_Errors = {
                                                           }
                                            },
           "color:syntax error" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The value must be one of CSS color names or a hexadecimal\n    color notation with six digits.</p>\n  ",
+                                                "ja" => "\n    <p>\x{5024}\x{306f} CSS \x{306e}\x{8272}\x{540d}\x{304b}\x{3001}6\x{6841}\x{306e}16\x{9032}\x{6570}\x{8a18}\x{6cd5}\x{306e}\x{8272}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
                                     "message" => {
-                                                   "en" => "The specified value is not a color\n  name or hexadecimal color number."
+                                                   "en" => "The value is not a color name or number",
+                                                   "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{8272}\x{540d}\x{3084}\x{8272}\x{756a}\x{53f7}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                  }
                                   },
           "colspan creates column with no anchored cell" => {
@@ -935,33 +1024,63 @@ $WebHACC::_Errors = {
                                            }
                             },
           "coords:number lt 6" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>If the <code>shape</code> attribute is <code>polygon</code>,\n    there must be more than 5 integers in the <code>coords</code> attribute,\n    separated by the <code>,</code> character.</p>\n  ",
+                                                "ja" => "\n    <p><code>shape</code> \x{5c5e}\x{6027}\x{304c} <code>polygon</code> \x{306e}\x{6642}\x{306f}\x{3001}\n    <code>coords</code> \x{5c5e}\x{6027}\x{306f}\x{6574}\x{6570}\x{3092}6\x{500b}\x{4ee5}\x{4e0a}\x{3001} <code>,</code> \n    \x{3067}\x{533a}\x{5207}\x{3063}\x{3066}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
                                     "message" => {
-                                                   "en" => "The <code>coords</code> attribute have to\n  contain more than or equal to six (6) numbers (specified:\n  <code><var>{text}</var></code>)."
+                                                   "en" => "There must be more than 5 integers\n  (There are <code><var>{text}</var></code> values)",
+                                                   "ja" => "\x{6574}\x{6570}\x{304c}6\x{500b}\x{4ee5}\x{4e0a}\x{5fc5}\x{8981}\x{3067}\x{3059} \n  (<code><var>{text}</var></code> \x{500b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059})"
                                                  }
                                   },
           "coords:number not 3" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>If the <code>shape</code> attribute is <code>circle</code>,\n    there must be three integers in the <code>coords</code> attribute,\n    separated by the <code>,</code> character.</p>\n  ",
+                                                 "ja" => "\n    <p><code>shape</code> \x{5c5e}\x{6027}\x{304c} <code>circle</code> \x{306e}\x{6642}\x{306f}\x{3001}\n    <code>coords</code> \x{5c5e}\x{6027}\x{306f}\x{6574}\x{6570}\x{3092}3\x{3064}\x{3001} <code>,</code> \n    \x{3067}\x{533a}\x{5207}\x{3063}\x{3066}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "The <code>coords</code> attribute have to\n  contain three (3) numbers (specified:\n  <code><var>{text}</var></code>)."
+                                                    "en" => "There must be three integers\n  (There are <code><var>{text}</var></code> values)",
+                                                    "ja" => "\x{6574}\x{6570}\x{304c}3\x{3064}\x{5fc5}\x{8981}\x{3067}\x{3059} (<code><var>{text}</var></code>\n  \x{500b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059})"
                                                   }
                                    },
           "coords:number not 4" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>If the <code>shape</code> attribute is <code>rectangle</code>,\n    there must be exactly 4 integers in the <code>coords</code> attribute,\n    separated by the <code>,</code> character.</p>\n  ",
+                                                 "ja" => "\n    <p><code>shape</code> \x{5c5e}\x{6027}\x{304c} <code>rectangle</code> \x{306e}\x{6642}\x{306f}\x{3001}\n    <code>coords</code> \x{5c5e}\x{6027}\x{306f}\x{6574}\x{6570}\x{3092}\x{3061}\x{3087}\x{3046}\x{3069}4\x{500b}\x{3001} <code>,</code> \n    \x{3067}\x{533a}\x{5207}\x{3063}\x{3066}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "The <code>coords</code> attribute have to\n  contain four (4) numbers (specified:\n  <code><var>{text}</var></code>)."
+                                                    "en" => "There must be 4 integers\n  (There are <code><var>{text}</var></code> values)",
+                                                    "ja" => "\x{6574}\x{6570}\x{304c}4\x{500b}\x{3060}\x{3051}\x{5fc5}\x{8981}\x{3067}\x{3059} \n  (<code><var>{text}</var></code> \x{500b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059})"
                                                   }
                                    },
           "coords:number not even" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>If the <code>shape</code> attribute is <code>polygon</code>,\n    there must be even number of integers in the <code>coords</code> attribute,\n    separated by the <code>,</code> character.</p>\n  ",
+                                                    "ja" => "\n    <p><code>shape</code> \x{5c5e}\x{6027}\x{304c} <code>polygon</code> \x{306e}\x{6642}\x{306f}\x{3001}\n    <code>coords</code> \x{5c5e}\x{6027}\x{306f}\x{6574}\x{6570}\x{3092}\x{5076}\x{6570}\x{500b}\x{3001} <code>,</code> \n    \x{3067}\x{533a}\x{5207}\x{3063}\x{3066}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "The <code>coords</code> attribute have to\n  contain even number of numbers (specified:\n  <code><var>{text}</var></code>)."
+                                                       "en" => "There must be even number of integers\n  (There are <code><var>{text}</var></code> values)",
+                                                       "ja" => "\x{6574}\x{6570}\x{304c}\x{5076}\x{6570}\x{500b}\x{5fc5}\x{8981}\x{3067}\x{3059} (<code><var>{text}</var></code>\n  \x{500b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059})"
                                                      }
                                       },
           "coords:out of range" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>A value in the list of coordinates is out of range.</p>\n\n    <dl class=\"switch\">\n\n    <dt>If the <code>shape</code> attribute is <code>circle</code></dt>\n\n    <dd>The third value in the <code>coords</code> attribute must be a\n    non-negative integer.</dd>\n\n    <dt>If the <code>shape</code> attribute is\n    <code>rectangle</code></dt>\n\n    <dd>The first integer must be less than the third integer, and the\n    second integer must be less than the fourth integer in the\n    <code>coords</code> attribute.</dd>\n\n    </dl>\n  ",
+                                                 "ja" => "\n    <p>\x{5ea7}\x{6a19}\x{306e}\x{5024}\x{304c}\x{7bc4}\x{56f2}\x{5916}\x{3067}\x{3059}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>shape</code> \x{5c5e}\x{6027}\x{304c} <code>circle</code> \x{306e}\x{3068}\x{304d}</dt>\n\n    <dd><code>coords</code> \x{5c5e}\x{6027}\x{306e}3\x{3064}\x{76ee}\x{306e}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "The specified value <code><var>{value}</var></code>\n  is out of range."
+                                                    "en" => "The value of coordinates is out of range",
+                                                    "ja" => "\x{5ea7}\x{6a19}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                                   }
                                    },
           "coords:syntax error" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>Value of the <code>coords</code> attribute of HTML\n    <code>area</code> element must be a <code>,</code>-separated list\n    of one or more integers.</p>\n  ",
+                                                 "ja" => "\n    <p>HTML <code>area</code> \x{8981}\x{7d20}\x{306e} <code>coords</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{3001}\n    \x{6574}\x{6570}1\x{3064}\x{4ee5}\x{4e0a}\x{3092} <code>,</code> \x{533a}\x{5207}\x{308a}\x{306b}\x{3057}\x{305f}\x{30ea}\x{30b9}\x{30c8}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "The specified value is not valid."
+                                                    "en" => "The values of coordinates are invalid",
+                                                    "ja" => "\x{5ea7}\x{6a19}\x{306e}\x{5024}\x{304c}\x{6b63}\x{3057}\x{3044}\x{69cb}\x{6587}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                   }
                                    },
           "css:escape:not unicode" => {
@@ -1080,6 +1199,16 @@ $WebHACC::_Errors = {
                                                               "en" => "Character encoding <code><var>{text}</var></code>\n  is not allowed for <abbr>HTML</abbr> document."
                                                             }
                                              },
+          "dropzone:duplicate feedback" => {
+                                             "desc" => {
+                                                         "en" => "\n    <p>The <code>dropzone</code> attribute can contain only a feedback\n    value (<code>move</code>, <code>copy</code>, or <code>link</code>).</p>\n  ",
+                                                         "ja" => "\n    <p><code>dropzone</code> \x{5c5e}\x{6027}\x{306f}\x{30d5}\x{30a3}\x{30fc}\x{30c9}\x{30d0}\x{30c3}\x{30af}\x{5024} (<code>move</code>,\n    <code>copy</code>, <code>link</code>) \x{3092}1\x{3064}\x{3060}\x{3051}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                       },
+                                             "message" => {
+                                                            "en" => "There are multiple feedback values",
+                                                            "ja" => "\x{30d5}\x{30a3}\x{30fc}\x{30c9}\x{30d0}\x{30c3}\x{30af}\x{5024}\x{306f}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                          }
+                                           },
           "duplicate \@namespace" => {
                                        "desc" => {
                                                    "en" => "\n    <p>A duplicate <code>\@namespace</code> declaration is found.\n    There must be at most one <code>\@namespace</code> declaration\n    with same namespace prefix (or missing prefix) in a CSS\n    style sheet.  Previous declaration for the prefix (or of missing\n    prefix) is ignored.</p>\n  ",
@@ -1091,8 +1220,13 @@ $WebHACC::_Errors = {
                                                     }
                                      },
           "duplicate ID" => {
+                              "desc" => {
+                                          "en" => "\n    <p>The unique identifier (ID) of the element must be unique.\n    An ID cannot be assigned with multiple elements.</p>\n  ",
+                                          "ja" => "\n    <p>\x{8981}\x{7d20}\x{306e}\x{56fa}\x{6709}\x{8b58}\x{5225}\x{5b50} (ID) \x{306f}\x{56fa}\x{6709}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{540c}\x{3058} ID \x{3092}\x{8907}\x{6570}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                        },
                               "message" => {
-                                             "en" => "This identifier has already been\n  assigned to another element."
+                                             "en" => "The unique identifier is assigned with\n  another element",
+                                             "ja" => "\x{3053}\x{306e}\x{56fa}\x{6709}\x{8b58}\x{5225}\x{5b50}\x{306f}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                            }
                             },
           "duplicate accessor" => {
@@ -1100,6 +1234,16 @@ $WebHACC::_Errors = {
                                                    "en" => "Extended attribute <code><var>{text}</var></code>\n  is already specified for another operation in the same interface."
                                                  }
                                   },
+          "duplicate anchor name" => {
+                                       "desc" => {
+                                                   "en" => "\n    <p>Anchor names must be unique.  The anchor name is already assigned\n    to another element.</p>\n  ",
+                                                   "ja" => "\n    <p>\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{56fa}\x{6709}\x{306e}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{3053}\x{306e}\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{65e2}\x{306b}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                 },
+                                       "message" => {
+                                                      "en" => "The anchor name is assigned to another element",
+                                                      "ja" => "\x{3053}\x{306e}\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                    }
+                                     },
           "duplicate attribute" => {
                                      "desc" => {
                                                  "en" => "\n    <p>There are more than one attributes with the same name in a tag.</p>\n\n    <p>The <code>motion</code> attribute of the <code>img</code>\n    element is obsolete.  Use <code>img</code> element with animation\n    GIF instead.</p>\n  ",
@@ -1108,6 +1252,16 @@ $WebHACC::_Errors = {
                                      "message" => {
                                                     "en" => "No two attributes can share the same name\n  <code><var>{text}</var></code>.",
                                                     "ja" => "2\x{3064}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{540c}\x{3058}\x{540d}\x{524d} \n  <code><var>{text}</var></code> \x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                  }
+                                   },
+          "duplicate autofocus" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>There must not be multiple elements with the <code>autofocus</code>\n    attribute in the document or the <code>dialog</code> element.</p>\n  ",
+                                                 "ja" => "\n    <p><code>autofocus</code> \x{5c5e}\x{6027}\x{3064}\x{304d}\x{306e}\x{8981}\x{7d20}\x{304c}\x{6587}\x{66f8}\x{3084} <code>dialog</code>\n    \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\x{8907}\x{6570}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
+                                     "message" => {
+                                                    "en" => "There is another element with the\n  <code>autofocus</code> attribute",
+                                                    "ja" => "<code>autofocus</code> \x{5c5e}\x{6027}\x{306e}\x{3042}\x{308b}\x{8981}\x{7d20}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                   }
                                    },
           "duplicate constructor name" => {
@@ -1146,8 +1300,13 @@ $WebHACC::_Errors = {
                                                }
                                 },
           "duplicate token" => {
+                                 "desc" => {
+                                             "en" => "\n    <p>The value can contain multiple space-separated tokens, but a\n    token cannot be used more than once.</p>\n  ",
+                                             "ja" => "\n    <p>\x{3053}\x{306e}\x{5024}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{533a}\x{5207}\x{308a}\x{3067}\x{8907}\x{6570}\x{306e}\x{5b57}\x{53e5}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{3059}\x{304c}\x{3001}\n    \x{540c}\x{3058}\x{5b57}\x{53e5}\x{3092}\x{4f55}\x{500b}\x{3082}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
                                  "message" => {
-                                                "en" => "The token <code><var>{value}</var></code>\n  appears in the attribute value twice."
+                                                "en" => "The token <code><var>{value}</var></code>\n  appears twice",
+                                                "ja" => "\x{5b57}\x{53e5} <code><var>{value}</var></code>\n  \x{304c}\x{8907}\x{6570}\x{56de}\x{73fe}\x{308c}\x{307e}\x{3057}\x{305f}"
                                               }
                                },
           "duplicate unqualified attr" => {
@@ -1225,8 +1384,13 @@ $WebHACC::_Errors = {
                                                                  }
                                                   },
           "element not allowed:empty" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>The content model of the parent element is empty such that\n    the element is not allowed.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{89aa}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{304c}\x{7a7a}\x{306a}\x{306e}\x{3067}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Elements are not allowed in an empty\n  element."
+                                                          "en" => "The parent is an empty element such that element is not allowed",
+                                                          "ja" => "\x{89aa}\x{304c}\x{7a7a}\x{8981}\x{7d20}\x{306a}\x{306e}\x{3067}\x{8981}\x{7d20}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                                         }
                                          },
           "element not allowed:figure legend" => {
@@ -1235,13 +1399,22 @@ $WebHACC::_Errors = {
                                                                 }
                                                  },
           "element not allowed:flow" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>\x{89aa}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{3059}\x{304c}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
                                           "message" => {
-                                                         "en" => "This element is not allowed where flow\n  content is expected."
+                                                         "en" => "The element is not flow content",
+                                                         "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "element not allowed:flow style" => {
+                                                "desc" => {
+                                                            "en" => "\n    <p>The HTML <code>style</code> element is flow content, but can\n    only be used before any other flow content.</p>\n\n    <p>If the <code>style</code> element is intended for the entire\n    document, rather than for a particular element, it must be\n    contained in the <code>head</code> element.</p>\n  ",
+                                                            "ja" => "\n    <p>HTML <code>style</code> \x{8981}\x{7d20}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{3059}\x{304c}\x{3001}\n    \x{4ed6}\x{306e}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3088}\x{308a}\x{524d}\x{3067}\x{3060}\x{3051}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{3053}\x{306e} <code>style</code> \x{304c}\x{7279}\x{5b9a}\x{306e}\x{8981}\x{7d20}\x{3060}\x{3051}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001}\n    \x{6587}\x{66f8}\x{5168}\x{4f53}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{9069}\x{7528}\x{3055}\x{308c}\x{308b}\x{3079}\x{304d}\x{3082}\x{306e}\x{306a}\x{3089}\x{3001}\n    <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{5165}\x{308c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                          },
                                                 "message" => {
-                                                               "en" => "A <code>style</code> element without\n  <code>scoped</code> attribute is not allowed in this context."
+                                                               "en" => "The <code>style</code> element cannot be used\n  after other flow content",
+                                                               "ja" => "<code>style</code> \x{8981}\x{7d20}\x{306f}\x{4ed6}\x{306e}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{306e}\x{5f8c}\x{306b}\x{6765}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
                                                              }
                                               },
           "element not allowed:head noscript" => {
@@ -1274,13 +1447,22 @@ $WebHACC::_Errors = {
                                                            }
                                             },
           "element not allowed:minus" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>Use of the element is disallowed by an ancestor.</p>\n    <p>In general, an interactive element such as form controls and\n    links cannot be nested.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{5148}\x{7956}\x{8981}\x{7d20}\x{306e}\x{5236}\x{9650}\x{306b}\x{3088}\x{308a}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{4e00}\x{822c}\x{306b}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{3084}\x{30ea}\x{30f3}\x{30af}\x{306a}\x{3069}\x{5bfe}\x{8a71}\x{7684}\x{8981}\x{7d20}\x{306f}\x{5165}\x{308c}\x{5b50}\x{306b}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "This element is not allowed in this\n  context."
+                                                          "en" => "The element is disallowed by an ancestor\n  element",
+                                                          "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5148}\x{7956}\x{8981}\x{7d20}\x{306b}\x{3088}\x{308a}\x{7981}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                         }
                                          },
           "element not allowed:phrasing" => {
+                                              "desc" => {
+                                                          "en" => "\n    <p>\x{89aa}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306f}\x{8a9e}\x{53e5}\x{5185}\x{5bb9}\x{3067}\x{3059}\x{304c}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a9e}\x{53e5}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                        },
                                               "message" => {
-                                                             "en" => "This element is not allowed where phrasing\n  content is expected."
+                                                             "en" => "The element is not phrasing content",
+                                                             "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a9e}\x{53e5}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                            }
                                             },
           "element not allowed:rawtext" => {
@@ -1322,8 +1504,13 @@ $WebHACC::_Errors = {
                                                        }
                                         },
           "element not allowed:text" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>The content model of the parent element is text.  No child\n    element is allowed.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{89aa}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3067}\x{3059}\x{3002}\x{5b50}\x{8981}\x{7d20}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
                                           "message" => {
-                                                         "en" => "This element is not allowed in this\n  context."
+                                                         "en" => "The parent element does not allow any child element",
+                                                         "ja" => "\x{89aa}\x{8981}\x{7d20}\x{306f}\x{5b50}\x{8981}\x{7d20}\x{3092}\x{8a8d}\x{3081}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "element not defined" => {
@@ -1335,6 +1522,16 @@ $WebHACC::_Errors = {
                                                     "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                   }
                                    },
+          "email:syntax error" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The value is not a valid e-mail address.</p>\n    <p><code>quoted-string</code> in the <code>local-part</code>,\n    <code>domain-literal</code>, <code>comments</code>, and\n    <code>LWS</code> are not allowed in the address.</p>\n  ",
+                                                "ja" => "\n    <p>\x{3053}\x{306e}\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{96fb}\x{5b50}\x{30e1}\x{30fc}\x{30eb}\x{30a2}\x{30c9}\x{30ec}\x{30b9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p><code>local-part</code> \x{306e} <code>quoted-string</code>\x{3001}\n    <code>domain-literal</code>\x{3001}<code>comments</code>\x{3001}\n    <code>LWS</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                    "message" => {
+                                                   "en" => "The value is not an e-mail address",
+                                                   "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{96fb}\x{5b50}\x{30e1}\x{30fc}\x{30eb}\x{30a2}\x{30c9}\x{30ec}\x{30b9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                  },
           "empty anchor image alt" => {
                                         "message" => {
                                                        "en" => "The <code>alt</code> attribute value is \n  empty."
@@ -1350,9 +1547,13 @@ $WebHACC::_Errors = {
                                              }
                               },
           "empty attribute value" => {
+                                       "desc" => {
+                                                   "en" => "\n    <p>The attribute value cannot be empty.  Otherwise the user\n    cannot figure what to do as the item is not described or\n    not rendered at all.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The <code>id</code> attribute</dt>\n\n    <dd>The unique identifier (ID) of the element cannot be empty.  If\n    the element has no identifier, the <code>id</code> attribute\n    should be omitted.</dd>\n\n    </dl>\n  ",
+                                                   "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{7a7a}\x{306b}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\x{7a7a}\x{3060}\x{3068}\x{5229}\x{7528}\x{8005}\x{304c}\x{4f55}\x{304b}\x{308f}\x{304b}\x{3089}\x{306a}\x{304b}\x{3063}\x{305f}\x{308a}\x{3001}\n    \x{8868}\x{793a}\x{3082}\x{3055}\x{308c}\x{306a}\x{304b}\x{3063}\x{305f}\x{308a}\x{3059}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>id</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{8981}\x{7d20}\x{306e}\x{56fa}\x{6709}\x{8b58}\x{5225}\x{5b50} (ID) \x{306f}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{8981}\x{7d20}\x{306b}\x{8b58}\x{5225}\x{5b50}\x{304c}\x{306a}\x{3044}\x{3068}\x{304d}\x{306f}\x{5c5e}\x{6027}\x{81ea}\x{4f53}\x{3092}\x{7701}\x{7565}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
+                                                 },
                                        "message" => {
-                                                      "en" => "The attribute value is empty.",
-                                                      "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{7a7a}\x{3067}\x{3059}\x{3002}"
+                                                      "en" => "The attribute value is empty",
+                                                      "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{7a7a}\x{3067}\x{3059}"
                                                     }
                                      },
           "empty class" => {
@@ -1365,6 +1566,16 @@ $WebHACC::_Errors = {
                                             "ja" => "\x{30af}\x{30e9}\x{30b9}\x{540d}\x{3092}\x{7a7a}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
                                           }
                            },
+          "empty control name" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The form control name, i.e. the value of the <code>name</code>\n    attribute of form control elements, must not be the empty string.</p>\n    <p>If the control has no name, the <code>name</code> attribute\n    must be omitted.</p>\n  ",
+                                                "ja" => "\n    <p>\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{540d} (\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{8981}\x{7d20}\x{306e} <code>name</code> \x{5c5e}\x{6027}\x{5024}) \n    \x{306f}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{304c}\x{540d}\x{524d}\x{3092}\x{6301}\x{305f}\x{306a}\x{3044}\x{6642}\x{306f}\x{3001} <code>name</code> \n    \x{5c5e}\x{6027}\x{5168}\x{4f53}\x{3092}\x{7701}\x{7565}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                    "message" => {
+                                                   "en" => "The form control name cannot be empty",
+                                                   "ja" => "\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{540d}\x{306f}\x{7a7a}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                  },
           "empty end tag" => {
                                "message" => {
                                               "en" => "\n    <p>In HTML, XML, and WebVTT, empty end tag, i.e. end\n    tag with no tag name, is not allowed.</p>\n    <p>To represent an end tag, you have to specify the\n    tag name explicitly.</p>\n    <p>To represent a string with the <code>&lt;</code> character,\n    you have to use the character reference: <code>&amp;lt;</code>.</p>\n  ",
@@ -1419,10 +1630,12 @@ $WebHACC::_Errors = {
                                    },
           "enumerated:invalid" => {
                                     "desc" => {
-                                                "en" => "\n    <p>For this attribute only several values are allowed and the\n    value of the attribute is not one of them.  The document\n    is non-conforming.</p>\n\n    <dl>\n    <dt>HTML <code>meta</code> element, <code>http-equiv</code> attribute</dt>\n        <dd><p>Only values <code>Default-Style</code> and <code>Refresh</code>\n        are allowed.</p>\n        <p>Value <code>Content-Type</code> is obsolete; for charset\n        declaration, the <code>charset</code> attribute can be used as:\n        <pre class=\"html example\">\n<code>&lt;meta charset=\"<var>charset-name</var>\"&gt;</code></pre>\n        ... where <var>charset-name</var> is a name of the character encoding\n        of the document, such as <code>utf-8</code>.</p>\n        <p>Values <code>Content-Style-Type</code> and\n        <code>Content-Script-Type</code> are currently not allowed.</p>\n        <p>Value <code>Keywords</code> is not allowed.  Use\n        <code>name</code> attribute instead of <code>http-equiv</code>\n        attribute.</p>\n        <p>Values <code>Expires</code>, <code>Pragma</code>,\n        and <code>Cache-Control</code> are not allowed;\n        use <em>real</em> HTTP header fields for cache control.</p></dd>\n    </dl>\n  "
+                                                "en" => "\n    <p>The attribute only accepts limited set of values.  The\n    specified value is not one of them.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> element, the <code>http-equiv</code>\n    attribute</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> and\n      <code>Content-Script-Type</code> are not useful.  You can remove\n      the element entirely without breaking anything at all.</p>\n\n      <p><code>Keywords</code> is not allowed.  Maybe you intended the\n      <code>name</code> attribute rather than the\n      <code>http-equiv</code> attribute.</p>\n\n      <p>Instead of <code>meta</code> element with\n      <code>Expires</code>, <code>Pragma</code>, or\n      <code>Cache-Control</code>, use real HTTP headers.</p>\n\n    </dd>\n\n    </dl>\n  ",
+                                                "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306b}\x{4f7f}\x{3048}\x{308b}\x{5024}\x{306f}\x{9650}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> \x{8981}\x{7d20} <code>http-equiv</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> \x{3068}\n      <code>Content-Script-Type</code> \x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n      \x{8981}\x{7d20}\x{3092}\x{524a}\x{9664}\x{3057}\x{3066}\x{3057}\x{307e}\x{3063}\x{3066}\x{3082}\x{5f71}\x{97ff}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n      <p><code>Keywords</code> \x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n      <code>http-equiv</code> \x{5c5e}\x{6027}\x{3067}\x{306f}\x{306a}\x{304f}\n      <code>name</code> \x{5c5e}\x{6027}\x{306e}\x{3064}\x{3082}\x{308a}\x{3067}\x{306f}\x{306a}\x{3044}\x{3067}\x{3057}\x{3087}\x{3046}\x{304b}\x{3002}</p>\n\n      <p><code>Expires</code>, <code>Pragma</code>,\n      <code>Cache-Control</code> \x{306f} HTTP \x{30d8}\x{30c3}\x{30c0}\x{30fc}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n\n    </dd>\n\n    </dl>\n  "
                                               },
                                     "message" => {
-                                                   "en" => "This attribute only allow a limited set of \n  values and the specified value <code><var>{\@}</var></code> is not one \n  of them."
+                                                   "en" => "The attribute value is not allowed",
+                                                   "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                  }
                                   },
           "enumerated:invalid:http-equiv:content-type" => {
@@ -1434,8 +1647,13 @@ $WebHACC::_Errors = {
                                                                          }
                                                           },
           "enumerated:non-conforming" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>The attribute only accepts limited set of values.  The\n    specified value is not one of them.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>area</code> element, the <code>shape</code>\n    attribute</dt>\n\n    <dd>Use <code>circule</code> instead of <code>circ</code>,\n    <code>poly</code> instead of <code>polygon</code>, and\n    <code>rect</code> instead of <code>rectangle</code>.</dd>\n\n    </dl>\n  ",
+                                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306b}\x{4f7f}\x{3048}\x{308b}\x{5024}\x{306f}\x{9650}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>area</code> \x{8981}\x{7d20} <code>shape</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>circ</code> \x{3067}\x{306a}\x{304f} <code>circule</code> \x{3092}\x{3001}\n    <code>polygon</code> \x{3067}\x{306a}\x{304f} <code>poly</code> \x{3092}\x{3001}\n    <code>rectangle</code> \x{3067}\x{306a}\x{304f} <code>rect</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Attribute value <code><var>{\@}</var></code>\n  is not allowed."
+                                                          "en" => "The attribute value is not allowed",
+                                                          "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                         }
                                          },
           "event handler" => {
@@ -1459,13 +1677,22 @@ $WebHACC::_Errors = {
                                                         }
                                          },
           "float:out of range" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The specified floating-point number is out of range.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The <code>input</code> element, the <code>step</code> attribute</dt>\n\n    <dd>The value must be positive.</dd>\n\n    <dt>The <code>progress</code> element, the <code>value</code>\n    attribute</dt>\n\n    <dd>The value must be non-negative.</dd>\n\n    <dt>The <code>progress</code> element, the <code>max</code>\n    attribute</dt>\n\n    <dd>The value must be positive.</dd>\n\n    </dl>\n  "
+                                              },
                                     "message" => {
-                                                   "en" => "The specified value is out of range."
+                                                   "en" => "The value is out of range",
+                                                   "ja" => "\x{5024}\x{57df}\x{5916}\x{306e}\x{5024}\x{3067}\x{3059}"
                                                  }
                                   },
           "float:syntax error" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The attribute value is not a floating-point number.</p>\n\n    <p>The value must be a real number represented in decimal or\n    scientific notation.  The sign of the significand must be omitted\n    if the number is not negative.  No unit is allowed.</p>\n\n    <p>For the <code>step</code> attribute of the <code>input</code>\n    element, special value <code>any</code> is also allowed.</p>\n  ",
+                                                "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{304c}\x{6d6e}\x{52d5}\x{5c0f}\x{6570}\x{70b9}\x{6570}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{5024}\x{306f}\x{901a}\x{5e38}\x{306e}\x{8868}\x{8a18}\x{304b}\x{6307}\x{6570}\x{8868}\x{8a18}\x{306e}\x{5b9f}\x{6570}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{4eee}\x{6570}\x{304c}\x{975e}\x{8ca0}\x{306e}\x{6642}\x{306f}\x{7b26}\x{53f7}\x{306f}\x{7701}\x{7565}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{5358}\x{4f4d}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p><code>input</code> \x{8981}\x{7d20}\x{306e} <code>step</code> \x{5c5e}\x{6027}\x{3067}\x{306f}\x{7279}\x{5225}\x{306a}\x{5024}\n    <code>any</code> \x{3082}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                              },
                                     "message" => {
-                                                   "en" => "The attribute value is not a real\n  number."
+                                                   "en" => "The attribute value is not a real\n  number",
+                                                   "ja" => "\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5b9f}\x{6570}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                  }
                                   },
           "form feed" => {
@@ -1478,6 +1705,16 @@ $WebHACC::_Errors = {
                                           "ja" => "<code class=\"charname\">FORM FEED</code>\n  \x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
                                         }
                          },
+          "format:syntax error" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>The format string is syntactically invalid.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{3053}\x{306e}\x{66f8}\x{5f0f}\x{6587}\x{5b57}\x{5217}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
+                                     "message" => {
+                                                    "en" => "The format string is invalid",
+                                                    "ja" => "\x{66f8}\x{5f0f}\x{6587}\x{5b57}\x{5217}\x{304c}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  }
+                                   },
           "fragment points itself" => {
                                         "message" => {
                                                        "en" => "A fragment identifier references the element\n  itself."
@@ -1494,8 +1731,13 @@ $WebHACC::_Errors = {
                                                   }
                                    },
           "hashref:syntax error" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The value of the <code>usemap</code> attribute must be a valid\n    hash-name reference, i.e. the <code>#</code> character followed\n    by the name of the <code>name</code> attribute value of the\n    <code>map</code> element.</p>\n  ",
+                                                  "ja" => "\n    <p><code>usemap</code> \x{5c5e}\x{6027}\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{30cf}\x{30c3}\x{30b7}\x{30e5}\x{540d}\x{53c2}\x{7167}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{3059}\x{306a}\x{308f}\x{3061}\x{3001} <code>#</code> \x{306e}\x{5f8c}\x{306b} <code>map</code> \x{8981}\x{7d20}\x{306e}\n    <code>name</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{3092}\x{3064}\x{306a}\x{3052}\x{305f}\x{3082}\x{306e}\x{3067}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "A hash\x{2212}name reference must start with a\n  <code>#</code> character."
+                                                     "en" => "The value must be an image map name preceded\n  by a <code>#</code> character",
+                                                     "ja" => "\x{5024}\x{306f} <code>#</code> \x{3067}\x{59cb}\x{307e}\x{308b}\x{753b}\x{50cf}\x{30de}\x{30c3}\x{30d7}\x{540d}\x{3067}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
                                                    }
                                     },
           "help not available" => {
@@ -1508,6 +1750,26 @@ $WebHACC::_Errors = {
                                                    "ja" => "\x{3053}\x{308c}\x{4ee5}\x{4e0a}\x{306e}\x{8a73}\x{3057}\x{3044}\x{60c5}\x{5831}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                  }
                                   },
+          "id name confliction" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>An identifier cannot be assigned with multiple elements by the\n    <code>id</code> attribute and the <code>name</code> attribute of\n    the <code>a</code> element.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{540c}\x{3058}\x{8b58}\x{5225}\x{5b50}\x{3092} <code>id</code> \x{5c5e}\x{6027}\x{3068}\n    <code>a</code> \x{8981}\x{7d20}\x{306e} <code>name</code>\n    \x{5c5e}\x{6027}\x{3067}\x{5225}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
+                                     "message" => {
+                                                    "en" => "The identifier is assigned with another element",
+                                                    "ja" => "\x{3053}\x{306e}\x{8b58}\x{5225}\x{5b50}\x{306f}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                  }
+                                   },
+          "id name mismatch" => {
+                                  "desc" => {
+                                              "en" => "\n    <p>The unique identifier (ID) and the anchor name of an HTML\n    <code>a</code> element must be identical.  In other words,\n    values of the <code>name</code> and <code>id</code>\n    attributes of the <code>a</code> element must have the same value.</p>\n  ",
+                                              "ja" => "\n    <p>HTML <code>a</code> \x{8981}\x{7d20}\x{306e}\x{56fa}\x{6709}\x{8b58}\x{5225}\x{5b50} (ID) \x{3068}\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{540c}\x{3058}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{8a00}\x{3044}\x{63db}\x{3048}\x{308b}\x{3068} <code>a</code> \x{8981}\x{7d20}\x{306e} <code>name</code> \x{5c5e}\x{6027}\x{3068}\n    <code>id</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{540c}\x{3058}\x{3067}\x{306a}\x{3051}r\x{3079}\x{3042}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
+                                  "message" => {
+                                                 "en" => "The <code>id</code> and <code>name</code>\n  attribute values are different",
+                                                 "ja" => "<code>id</code> \x{3068} <code>name</code>\n  \x{306e}\x{5c5e}\x{6027}\x{5024}\x{304c}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}"
+                                               }
+                                },
           "id ne name" => {
                             "message" => {
                                            "en" => "The <code>id</code> attribute value is \n  different from the <code>name</code> attribute value."
@@ -1530,12 +1792,24 @@ $WebHACC::_Errors = {
                              },
           "in HTML:xml:lang" => {
                                   "desc" => {
-                                              "en" => "\n    <p>The <code>xml:lang</code> attribute does not have an effect in\n    HTML document.</p>\n\n    <p>The <code>xml:lang</code> attribute is only applicable to XML\n    documents.  In HTML document, it is only allowed to ease migration\n    from XML.</p>\n\n    <p>To specify natural language information in HTML document,\n    use <code>lang</code> attribute instead.</p>\n\n    <p>XHTML 1.0 Appendix C was encouraged to specify both\n    <code>lang</code> and <code>xml:lang</code> attributes with\n    the same value.  Such a duplication has <em>no effect</em> in practice.\n    Use only one of <code>lang</code> (in HTML) or <code>xml:lang</code> (in\n    XML).</p>\n\n    <!-- \@\@ ISSUE: xml:lang in non-HTML element in DOM5 HTML created\n         from an HTML document? -->\n  "
+                                              "en" => "\n    <p>The <code>xml:lang</code> attribute cannot be used for HTML\n    elements in HTML documents.  The language of the element can be\n    specified by the <code>lang</code> attribute.</p>\n  ",
+                                              "ja" => "\n    <p><code>xml:lang</code> \x{5c5e}\x{6027}\x{306f} HTML \x{6587}\x{66f8}\x{306e} HTML \x{8981}\x{7d20}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{8981}\x{7d20}\x{306e}\x{8a00}\x{8a9e}\x{306f} <code>lang</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n  "
                                             },
                                   "message" => {
-                                                 "en" => "The <code>xml:lang</code> attribute in HTML\n  document is ignored."
+                                                 "en" => "The <code>xml:lang</code> attribute cannot be\n  used in HTML document",
+                                                 "ja" => "<code>xml:lang</code> \x{5c5e}\x{6027}\x{306f} HTML \n  \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                                }
                                 },
+          "in HTML:xml:space" => {
+                                   "desc" => {
+                                               "en" => "\n    <p>The <code>xml:space</code> attribute is not allowed for HTML\n    elements in HTML documents.</p>\n  ",
+                                               "ja" => "\n    <p><code>xml:space</code> \x{5c5e}\x{6027}\x{306f} HTML \x{6587}\x{66f8}\x{306e} HTML \x{8981}\x{7d20}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
+                                   "message" => {
+                                                  "en" => "The <code>xml:space</code> attribute is not\n  allowed in HTML document",
+                                                  "ja" => "<code>xml:space</code> \x{5c5e}\x{6027}\x{306f} HTML\n  \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
+                                                }
+                                 },
           "in PCDATA:#eof" => {
                                 "message" => {
                                                "en" => "Element is not closed before the end of\n  file."
@@ -1555,17 +1829,23 @@ $WebHACC::_Errors = {
                                               }
                                },
           "in XML:xml:lang" => {
+                                 "desc" => {
+                                             "en" => "\n    <p>The <code>xml:lang</code> attribute in no namespace cannot \n    be used in XML document.  It is only allowed for HTML elements\n    in HTML document.</p>\n  ",
+                                             "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xml:lang</code> \x{5c5e}\x{6027}\x{306f} XML\n    \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f} HTML \x{6587}\x{66f8}\x{306e} HTML \x{8981}\x{7d20}\x{3067}\x{3060}\x{3051}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                           },
                                  "message" => {
-                                                "en" => "The <code>xml:lang</code> attribute in no namespace\n  is only allowed in HTML document.",
-                                                "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xml:lang</code> \n  \x{5c5e}\x{6027}\x{304c}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{306e}\x{306f} HTML \x{6587}\x{66f8}\x{4e2d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}"
+                                                "en" => "The <code>xml:lang</code> attribute in no namespace\n  is not allowed in XML document",
+                                                "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xml:lang</code> \n  \x{5c5e}\x{6027}\x{306f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                               }
                                },
           "in XML:xmlns" => {
                               "desc" => {
-                                          "en" => "\n    <p>The <code>xmlns</code> attribute in the <code>null</code>\n    namespace is not allowed in XHTML document.</p>\n\n    <p>This error should not occur in conformance-checking of\n    static documents.</p>\n  "
+                                          "en" => "\n    <p>The <code>xmlns</code> attribute in no namespace is not allowed\n    in XML document.</p>\n    <p>The <code>xmlns</code> attribute with no prefix is mapped to\n    the XMLNS namespace.  An element from a namespace well-formed\n    XML document cannot have the <code>xmlns</code> attribute\n    in no namespace by definition.</p>\n  ",
+                                          "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xmlns</code> \x{5c5e}\x{6027}\x{306f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{63a5}\x{982d}\x{8f9e}\x{306e}\x{306a}\x{3044} <code>xmlns</code> \x{5c5e}\x{6027}\x{306f} XMLNS \n    \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3059}\x{308b}\x{3082}\x{306e}\x{3068}\x{3057}\x{3066}\x{6271}\x{308f}\x{308c}\x{307e}\x{3059}\x{3002}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{6574}\x{5f62}\x{5f0f} XML\n    \x{6587}\x{66f8}\x{306b}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{305f}\x{8981}\x{7d20}\x{306f}\x{5b9a}\x{7fa9}\x{4e0a}\x{3001}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xmlns</code>\n    \x{5c5e}\x{6027}\x{3092}\x{6301}\x{3066}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                         },
                               "message" => {
-                                             "en" => "The <code>xmlns</code> attribute \n  in the <code>null</code> namespace is not allowed in\n  XHTML document.  The document is non-conforming."
+                                             "en" => "The <code>xmlns</code> attribute \n  in no namespace is not allowed in XML document",
+                                             "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xmlns</code>\n  \x{5c5e}\x{6027}\x{306f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                            }
                             },
           "in a:a" => {
@@ -1687,13 +1967,32 @@ $WebHACC::_Errors = {
                                          }
                           },
           "input attr not applicable" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>Attributes of the <code>input</code> element does or does not\n    apply to the <code>input</code> element depending on the\n    <code>type</code> attribute value.  If the attribute does not\n    apply, it cannot be specified to the element.</p>\n  ",
+                                                       "ja" => "\n    <p><code>input</code> \x{8981}\x{7d20}\x{306e}\x{5c5e}\x{6027}\x{306f} <code>type</code> \n    \x{5c5e}\x{6027}\x{5024}\x{306b}\x{3088}\x{3063}\x{3066}\x{9069}\x{7528}\x{3055}\x{308c}\x{305f}\x{308a}\x{3055}\x{308c}\x{306a}\x{304b}\x{3063}\x{305f}\x{308a}\x{3057}\x{307e}\x{3059}\x{3002}\n    \x{9069}\x{7528}\x{3055}\x{308c}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "This attribute is not applied to an \n  <code>input</code> element whose <code>type</code> is \n  <code><var>{text}</var></code>."
+                                                          "en" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f} <code>type</code> \x{304c}\n  <code><var>{text}</var></code> \x{306e} <code>input</code>\n  \x{8981}\x{7d20}\x{306b}\x{306f}\x{9069}\x{7528}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093}"
                                                         }
                                          },
-          "integer:syntax error" => {
+          "integer:out of range" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The attribute value must be an integer within\n    the specific range.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The <code>loop</code> attribute</dt>\n\n    <dd>The value must be -1 or positive.</dd>\n\n    </dl>\n  ",
+                                                  "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{6574}\x{6570}\x{3067}\x{304b}\x{3064}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{7bc4}\x{56f2}\x{5185}\x{306e}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>loop</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5024}\x{306f} -1 \x{304b}\x{6b63}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "The attribute value is not an integer."
+                                                     "en" => "The specified value is out of range",
+                                                     "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
+                                                   }
+                                    },
+          "integer:syntax error" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The attribute value must be an integer.</p>\n\n    <p>Decimal marks, the <code>+</code> signs, and thousands\n    separators are not allowed.  Leading and trailing white spaces, as\n    well as units, are not allowed.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{6574}\x{6570}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{5c0f}\x{6570}\x{70b9}\x{3001}\x{7b26}\x{53f7} <code>+</code>\x{3001}\x{6841}\x{533a}\x{5207}\x{308a}\x{306e}\x{30b3}\x{30f3}\x{30de}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{524d}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{3084}\x{5358}\x{4f4d}\x{3092}\x{3064}\x{3051}\x{3066}\x{3082}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
+                                      "message" => {
+                                                     "en" => "The attribute value is not an integer",
+                                                     "ja" => "\x{5c5e}\x{6027}\x{5024}\x{306f}\x{6574}\x{6570}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                    }
                                     },
           "interface not defined" => {
@@ -1702,8 +2001,13 @@ $WebHACC::_Errors = {
                                                     }
                                      },
           "invalid attribute value" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>The attribute value is invalid.</p>\n \n    <dl class=\"switch\">\n\n    <dt>The <code>xml:space</code> attribute</dt>\n\n    <dd>The value must be either <code>default</code> or\n    <code>preserve</code>.</dd>\n\n    <dt>HTML elements, the <code>xmlns</code> attribute in no\n    namespace</dt>\n\n    <dd>The value must be\n    <code>http://www.w3.org/1999/xhtml</code>.</dd>\n\n    </dl>\n  ",
+                                                     "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{975e}\x{59a5}\x{5f53}\x{3067}\x{3059}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>xml:space</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5c5e}\x{6027}\x{5024}\x{306f} <code>default</code> \x{304b} <code>preserve</code>\n    \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>HTML \x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>xmlns</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5c5e}\x{6027}\x{5024}\x{306f} <code>http://www.w3.org/1999/xhtml</code>\n    \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "Attribute value <code><var>{\@}</var></code>\n  is not an allowed value."
+                                                        "en" => "The attribute value is invalid",
+                                                        "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                       }
                                        },
           "invalid character reference" => {
@@ -2102,25 +2406,53 @@ $WebHACC::_Errors = {
                                                        "en" => "Variant subtag <code><var>{value}</var></code>\n  cannot be used in this context.  It must be preceded by \n  <code><var>{text}</var></code>"
                                                      }
                                       },
+          "last resort" => {
+                             "desc" => {
+                                         "en" => "\n    <p>This feature is the <i>last resort</i>.  It should not be used\n    unless it is really not representable by some other means and\n    is really necessary.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>b</code> element</dt>\n\n    <dd>\n\n      <p>Headings should be marked up with\n      <code>h1</code>-<code>h6</code> elements.</p>\n\n      <p>Important parts should be marked up with the\n      <code>strong</code> element.  Defined terms should be marked up\n      with the <code>dfn</code> element.</p>\n\n    </dd>\n\n    <dt>HTML <code>i</code> element</dt>\n\n    <dd>\n\n      <p>Emphases should be marked up with the <code>em</code>\n      element.</p>\n\n      <p>Names of works should be marked up with the <code>cite</code>\n      element.  Quotations should be marked up with the <code>q</code>\n      or <code>blockquote</code> element.  Variables should be marked\n      up with the <code>var</code> element.</p>\n\n    </dd>\n\n    <dt>HTML <code>dir</code> attribute with value <code>auto</code></dt>\n\n    <dd>The result of <code>dir=auto</code> is somewhat unreliable.\n    Use <code>dir=ltr</code> or <code>dir=rtl</code> wherever\n    possible.</dd>\n\n    </dl>\n  "
+                                       },
+                             "message" => {
+                                            "en" => "Use of this might be inappropriate unless\n  it cannot be representable by some other means",
+                                            "ja" => "\x{4f55}\x{304b}\x{4ed6}\x{306e}\x{65b9}\x{6cd5}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{5834}\x{5408}\x{4ee5}\x{5916}\x{3053}\x{308c}\x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          }
+                           },
           "length:syntax error" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>The attribute value must specify the dimension, as a non-negative\n    integer or a non-negative percentage integer.</p>\n    <p>Signs, separators, and units are not allowed.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5927}\x{304d}\x{3055}\x{3092}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{304b}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{306e}\x{30d1}\x{30fc}\x{30bb}\x{30f3}\x{30c8}\x{5024}\x{3067}\x{8868}\x{3057}\x{305f}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{7b26}\x{53f7}\x{3084}\x{5c0f}\x{6570}\x{70b9}\x{3084}\x{5358}\x{4f4d}\x{8a18}\x{53f7}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "The attribute value is not a length\n  value."
+                                                    "en" => "The attribute value is not a dimension\n  value",
+                                                    "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{5927}\x{304d}\x{3055}\x{306e}\x{5024}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                   }
                                    },
           "link type:bad context" => {
                                        "desc" => {
-                                                   "en" => "\n    <p>The specified link type cannot be used for the element.\n    The document is non-conforming.</p>\n\n    <p>Link types are associated with limited set of elements.\n    They cannot be used with other elements.</p>\n\n    <p>For example, link type <code>bookmark</code>\n    can be used with <code>a</code> or <code>area</code> element,\n    while it cannot be used with <code>link</code> element.</p>\n  "
+                                                   "en" => "\n    <p>The specified link type cannot be used for the element.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The link type <code>stylesheet</code></dt>\n\n    <dd>This link type can only be used with the <code>link</code>\n    element.</dd>\n\n    <dt>The link type <code>bookmark</code></dt>\n\n    <dd>This link type can only be used with <code>a</code> or\n    <code>area</code> element.</dd>\n\n    </dl>\n  ",
+                                                   "ja" => "\n    <p>\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f}\x{3053}\x{306e}\x{8981}\x{7d20}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>stylesheet</code></dt>\n\n    <dd>\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f} <code>link</code> \x{8981}\x{7d20}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>bookmark</code></dt>\n\n    <dd>\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f} <code>a</code> \x{8981}\x{7d20}\x{304b}\n    <code>area</code> \x{8981}\x{7d20}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "The link type <code><var>{value}</var></code>\n  cannot be specified for this element."
+                                                      "en" => "The link type cannot be used in this context",
+                                                      "ja" => "\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f}\x{3053}\x{3053}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                                     }
                                      },
+          "link type:duplicate" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>A link type cannot be specified within the attribute value\n    more than once.</p>\n  ",
+                                                 "ja" => "\n    <p>1\x{3064}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{5185}\x{306b}\x{540c}\x{3058}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f55}\x{5ea6}\x{3082}\x{6307}\x{5b9a}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               },
+                                     "message" => {
+                                                    "en" => "The link type is specified twice",
+                                                    "ja" => "\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                  }
+                                   },
           "link type:non-conforming" => {
                                           "desc" => {
-                                                      "en" => "\n    <p>The specified link type is non-conforming, and therefore\n    the document is non-conforming.</p>\n\n    <dl class=\"switch\">\n    <dt>Link type <code>contents</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    <dt>Link type <code>copyright</code></dt>\n      <dd>Use link type <code>license</code>.</dd>\n    <dt>Link type <code>home</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    <dt>Link type <code>previous</code></dt>\n      <dd>Use link type <code>prev</code>.</dd>\n    <dt>Link type <code>start</code></dt>\n      <dd>Use link type <code>first</code>.</dd>\n    <dt>Link type <code>toc</code> or <code>top</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    </dl>\n  "
+                                                      "en" => "\n    <p>The specified link type is non-conforming and cannot be used.</p>\n\n    <dl class=\"switch\">\n    <dt>Link type <code>contents</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    <dt>Link type <code>copyright</code></dt>\n      <dd>Use link type <code>license</code>.</dd>\n    <dt>Link type <code>home</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    <dt>Link type <code>previous</code></dt>\n      <dd>Use link type <code>prev</code>.</dd>\n    <dt>Link type <code>start</code></dt>\n      <dd>Use link type <code>first</code>.</dd>\n    <dt>Link type <code>toc</code> or <code>top</code></dt>\n      <dd>Use link type <code>index</code>.</dd>\n    </dl>\n  ",
+                                                      "ja" => "\n    <p>\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f}\x{4e0d}\x{9069}\x{5408}\x{3067}\x{3042}\x{308a}\x{3001}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>contents</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>index</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>copyright</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>license</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>home</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>index</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>previous</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>prev</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>start</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>first</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    <dt>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>toc</code>\x{3001}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>top</code></dt>\n      <dd>\x{30ea}\x{30f3}\x{30af}\x{578b} <code>index</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    </dl>\n  "
                                                     },
                                           "message" => {
-                                                         "en" => "The link type <code><var>{value}</var></code>\n  is non-conforming."
+                                                         "en" => "The link type is not allowed",
+                                                         "ja" => "\x{3053}\x{306e}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "link type:proposed" => {
@@ -2128,7 +2460,7 @@ $WebHACC::_Errors = {
                                                 "en" => "\n    <p>The link type is in the <i>proposed</i> status; it\n    <em>should not</em> be used until it has been\n    accepted.</p>\n\n    <p><strong>Warning</strong>: The data served to the\n    conforming checker might be out of date; it might have already\n    been accepted or rejected.  The document might or might not be\n    conforming depending on the status.  See WHATWG Wiki\n    for the latest information.</p>\n  "
                                               },
                                     "message" => {
-                                                   "en" => "Link type <code><var>{value}</var></code>\n  is proposed but not accepted yet; it <em>should not</em> be\n  used until it has been accepted."
+                                                   "en" => "The link type is not accepted yet"
                                                  }
                                   },
           "media query" => {
@@ -2172,9 +2504,24 @@ $WebHACC::_Errors = {
                                                 "en" => "The specified value has a syntax error as a\n  media query."
                                               }
                                },
+          "multilength:syntax error" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>The value must be a dimension value using one of these forms: a\n    non-negative integer, a non-negative percentage integer, a\n    non-negative integer followed by the <code>*</code> character, or\n    a <code>*</code> character.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{6b21}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{306e}\x{65b9}\x{6cd5}\x{3067}\x{8868}\x{3057}\x{305f}\x{5927}\x{304d}\x{3055}\x{306e}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    (1) \x{975e}\x{8ca0}\x{6574}\x{6570} (2) \x{975e}\x{8ca0}\x{6574}\x{6570}\x{306e}\x{30d1}\x{30fc}\x{30bb}\x{30f3}\x{30c8}\x{5024} (3) \x{975e}\x{8ca0}\x{6574}\x{6570}\x{306e}\x{5f8c}\x{306b}\x{6587}\x{5b57}\n    <code>*</code> (4) \x{6587}\x{5b57} <code>*</code></p>\n  "
+                                                    },
+                                          "message" => {
+                                                         "en" => "The value is not a valid multilength value",
+                                                         "ja" => "\x{59a5}\x{5f53}\x{306a} multilength \x{5024}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                       }
+                                        },
           "multiple labelable fae" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The <code>label</code> element can only be associated with a\n    form-associatable element.  If the <code>label</code> element has\n    the <code>for</code> attribute, the element cannot contain any\n    other descendant form-associatable element.  Otherwise, the\n    <code>label</code> element can contain only one form-associatable\n    element.</p>\n  ",
+                                                    "ja" => "\n    <p><code>label</code> \x{8981}\x{7d20}\x{306f}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{53ef}\x{80fd}\x{8981}\x{7d20}1\x{3064}\x{3060}\x{3051}\x{3068}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}\n    <code>label</code> \x{8981}\x{7d20}\x{306b} <code>for</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{306f}\x{3001}\n    \x{4ed6}\x{306e}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{53ef}\x{80fd}\x{8981}\x{7d20}\x{3092}\x{5b50}\x{5b6b}\x{306b}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{305d}\x{3046}\x{3067}\x{306a}\x{3044}\x{5834}\x{5408}\x{306f}\x{3001} <code>label</code>\n    \x{8981}\x{7d20}\x{306e}\x{5b50}\x{5b6b}\x{306b}\x{542b}\x{3081}\x{3089}\x{308c}\x{308b}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{53ef}\x{80fd}\x{8981}\x{7d20}\x{306f}1\x{3064}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "More than one labelable form-associated element\n  is associated to a <code>label</code> element."
+                                                       "en" => "Another element is associated with the\n  <code>label</code> element",
+                                                       "ja" => "\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{304c}\x{65e2}\x{306b} <code>label</code>\n  \x{8981}\x{7d20}\x{3068}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                      }
                                       },
           "namespace prefix:not declared" => {
@@ -2201,15 +2548,35 @@ $WebHACC::_Errors = {
                                                   }
                                    },
           "nninteger:out of range" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The attribute value must be a non-negative integer within\n    the specific range.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{304b}\x{3064}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{7bc4}\x{56f2}\x{5185}\x{306e}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "The specified value is out of range."
+                                                       "en" => "The specified value is out of range",
+                                                       "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                                      }
                                       },
           "nninteger:syntax error" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The attribute value must be a non-negative integer.</p>\n\n    <p>Decimal marks, signs, and thousands separators are not allowed.\n    Leading and trailing white spaces, as well as units, are not\n    allowed.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{5c0f}\x{6570}\x{70b9}\x{3001}\x{7b26}\x{53f7}\x{3001}\x{6841}\x{533a}\x{5207}\x{308a}\x{306e}\x{30b3}\x{30f3}\x{30de}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{524d}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{3084}\x{5358}\x{4f4d}\x{3092}\x{3064}\x{3051}\x{3066}\x{3082}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "The attribute value is not a non\x{2010}negative\n  integer."
+                                                       "en" => "The attribute value is not a non-negative\n  integer",
+                                                       "ja" => "\x{5c5e}\x{6027}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
+          "nninteger:zero" => {
+                                "desc" => {
+                                            "en" => "\n    <p>The attribute value must be a positive integer.  Value <code>0</code>\n    is not allowed.</p>\n  ",
+                                            "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{306f}\x{6b63}\x{6574}\x{6570}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{96f6}\x{306e}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
+                                "message" => {
+                                               "en" => "The specified value is zero",
+                                               "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f} 0 \x{3067}\x{3059}"
+                                             }
+                              },
           "no DOCTYPE" => {
                             "desc" => {
                                         "en" => "\n    <p>The document does not start with a <code>DOCTYPE</code>.\n    The document is non-conforming.</p>\n\n    <p>An HTML document must start by a <code>DOCTYPE</code>:\n      <pre class=\"html example\">\n<code>&lt;!DOCTYPE HTML&gt;</code></pre>\n    </p>\n\n    <p>Only white space characters and comments are allowed\n    before the <code>DOCTYPE</code>.  XML declaration is <em>not</em>\n    allowed in HTML document.</p>\n  "
@@ -2466,10 +2833,12 @@ $WebHACC::_Errors = {
                                },
           "non-utf-8 character encoding" => {
                                               "desc" => {
-                                                          "en" => "\n    <p>Use of UTF-8 as the character encoding of the document is encouraged,\n    though the use of another character encoding is still conforming.</p>\n  "
+                                                          "en" => "\n    <p>The UTF-8 character encoding should be used unless there is a\n    strong reason to use other legacy encoding.</p>\n  ",
+                                                          "ja" => "\n    <p>UTF-8 \x{4ee5}\x{5916}\x{306e}\x{6614}\x{306a}\x{304c}\x{3089}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{65b9}\x{5f0f}\x{306f}\x{3001}\n    \x{7279}\x{306b}\x{5f37}\x{3044}\x{7406}\x{7531}\x{304c}\x{306a}\x{3044}\x{9650}\x{308a}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                         },
                                               "message" => {
-                                                             "en" => "Use of UTF-8 is encouraged (this document\n  is encoded in <code><var>{text}</var></code>)."
+                                                             "en" => "Historical character encoding is used",
+                                                             "ja" => "\x{6614}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                            }
                                             },
           "nonchar" => {
@@ -2508,6 +2877,16 @@ $WebHACC::_Errors = {
                                            "ja" => "\x{8981}\x{7d20} <code><var>{text}</var></code>\n  \x{306f}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
                                          }
                           },
+          "not encoding label" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>The value is not a label of the character encoding.</p>\n    <p>It might be a name of the encoding that is not used on the Web,\n    or might be simply an authoring error.</p>\n  ",
+                                                "ja" => "\n    <p>\x{3053}\x{306e}\x{5024}\x{306f}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{306e}\x{540d}\x{672d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>Web \x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{306e}\x{540d}\x{524d}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\n    \x{305f}\x{3060}\x{306e}\x{66f8}\x{304d}\x{9593}\x{9055}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                    "message" => {
+                                                   "en" => "The value is not a label of the character encoding",
+                                                   "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{306e}\x{540d}\x{672d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                  },
           "not first start tag" => {
                                      "desc" => {
                                                  "en" => "\n    <p>There is a start tag of the <code>html</code> element\n    that it not the first start tag in the input stream.\n    The document is non-conforming.</p>\n\n    <p>In an HTML document, there cannot be more than one\n    <code>html</code> element and therefore there cannot be\n    more than one <code>&lt;html&gt;</code> tag.  In addition,\n    nothing can be placed before the <code>&lt;html&gt;</code> tag\n    except a <code>DOCTYPE</code>, white space characters, \n    and comments.</p>\n  "
@@ -2529,6 +2908,16 @@ $WebHACC::_Errors = {
                                                "en" => "Argument list of the <code>:not</code> selector\n  is not closed by a <code>)</code> character."
                                              }
                               },
+          "nsattr has no prefix" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The namespace declaration attribute (i.e. an attribute in the\n    XMLNS namespace) declaring a namespace prefix must have the attribute\n    namespace prefix <code>xmlns</code>.  Otherwise the attribute\n    is not serializable.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5ba3}\x{8a00}\x{5c5e}\x{6027} (XMLNS \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e}\x{5c5e}\x{6027}) \x{3067}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e}\x{3092}\x{5ba3}\x{8a00}\x{3059}\x{308b}\x{3082}\x{306e}\x{306f}\x{3001}\n    \x{5c5e}\x{6027}\x{306e}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e}\x{304c} <code>xmlns</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
+                                      "message" => {
+                                                     "en" => "Prefix of the namespace attribute is\n  not <code>xmlns</code>",
+                                                     "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306e}\x{63a5}\x{982d}\x{8f9e}\x{304c} <code>xmlns</code>\n  \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                   }
+                                    },
           "parse type other" => {
                                   "message" => {
                                                  "en" => "An invalid value is specified to \n  the <code>parseType</code> attribute."
@@ -2542,6 +2931,16 @@ $WebHACC::_Errors = {
                                     "en" => "Processing instruction \n  (<code>&lt;?<var>...</var>&gt;</code>) is not allowed in HTML\n  document."
                                   }
                    },
+          "precision:syntax error" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The precision string is syntactically invalid.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{3053}\x{306e}\x{7cbe}\x{5ea6}\x{6587}\x{5b57}\x{5217}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
+                                        "message" => {
+                                                       "en" => "The precision string is invalid",
+                                                       "ja" => "\x{7cbe}\x{5ea6}\x{6587}\x{5b57}\x{5217}\x{304c}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                     }
+                                      },
           "premature end of webidl" => {
                                          "message" => {
                                                         "en" => "The WebIDL fragment ends before all the blocks\n  are closed by <code>};</code> sequences."
@@ -2613,6 +3012,16 @@ $WebHACC::_Errors = {
                                                    "en" => "A <code>::</code> token is not followed by\n  an identifier or a <code>DOMString</code> keyword."
                                                  }
                                   },
+          "script language" => {
+                                 "desc" => {
+                                             "en" => "\n    <p>The <code>language</code> attribute value must be \n    <code>javascript</code>.</p>\n  ",
+                                             "ja" => "\n    <p><code>language</code> \x{5c5e}\x{6027}\x{5024}\x{306f} <code>javascript</code>\n    \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
+                                 "message" => {
+                                                "en" => "The value must be <code>javascript</code>",
+                                                "ja" => "\x{5024}\x{306f} <code>javascript</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
+                                              }
+                               },
           "second node element" => {
                                      "message" => {
                                                     "en" => "There is another element, such that\n  this element is not allowed."
@@ -2752,8 +3161,13 @@ $WebHACC::_Errors = {
                                                }
                                 },
           "space in ID" => {
+                             "desc" => {
+                                         "en" => "\n    <p>The unique identifier (ID) of the element cannot contain space\n    characters.</p>\n  ",
+                                         "ja" => "\n    <p>\x{8981}\x{7d20}\x{306e}\x{56fa}\x{6709}\x{8b58}\x{5225}\x{5b50} (ID) \x{306b}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{3092}\x{542b}\x{3081}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
                              "message" => {
-                                            "en" => "White space characters are not allowed\n  in the <code>id</code> attribute."
+                                            "en" => "Spaces are not allowed in the identifier",
+                                            "ja" => "\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{306f}\x{8b58}\x{5225}\x{5b50}\x{306b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                           }
                            },
           "ss after pseudo-element" => {
@@ -2821,10 +3235,12 @@ $WebHACC::_Errors = {
                                            },
           "status:wd:attr" => {
                                 "desc" => {
-                                            "en" => "\n    <p>The attribute is documented in a working or editor's draft\n    and not yet completed.</p>\n    \n    <p>The attribute should not be used for any practical purpose.\n    The feature might be drastically changed later or might be\n    entirely removed.</p>\n  "
+                                            "en" => "\n    <p>The attribute is specified as part of an earlier draft\n    specification.  The specification is not stable yet and might be\n    changed later by implementation experiences or other input.</p>\n\n    <p>You should not use this feature unless you know what you are\n    doing.</p>\n  ",
+                                            "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{521d}\x{671f}\x{6bb5}\x{968e}\x{306e}\x{4ed5}\x{69d8}\x{6848}\x{3067}\x{898f}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{3082}\x{306e}\x{3067}\x{3059}\x{3002}\n    \x{4ed5}\x{69d8}\x{306f}\x{307e}\x{3060}\x{4e0d}\x{5b89}\x{5b9a}\x{3067}\x{3001}\x{5b9f}\x{88c5}\x{7d4c}\x{9a13}\x{305d}\x{306e}\x{4ed6}\x{306b}\x{3088}\x{3063}\x{3066}\x{4eca}\x{5f8c}\x{5909}\x{66f4}\x{3055}\x{308c}\x{308b}\x{53ef}\x{80fd}\x{6027}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p>\x{305d}\x{308c}\x{3067}\x{3082}\x{4f7f}\x{3046}\x{306e}\x{304c}\x{3069}\x{3046}\x{3044}\x{3046}\x{3053}\x{3068}\x{304b}\x{7406}\x{89e3}\x{3057}\x{3066}\x{3044}\x{308b}\x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{3053}\x{306e}\x{6a5f}\x{80fd}\x{306f}\x{307e}\x{3060}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                           },
                                 "message" => {
-                                               "en" => "This attribute is documented in a <strong>working\n  draft</strong>."
+                                               "en" => "The attribute is in earlier draft stage and\n  it not stable yet",
+                                               "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{4ed5}\x{69d8}\x{6848}\x{306e}\x{521d}\x{671f}\x{6bb5}\x{968e}\x{306b}\x{3042}\x{308a}\x{3001}\n  \x{307e}\x{3060}\x{5b89}\x{5b9a}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                              }
                               },
           "status:wd:element" => {
@@ -3175,6 +3591,16 @@ $WebHACC::_Errors = {
                                                       "en" => "The node referenced by the <code>template</code>\n  attribute is not a template."
                                                     }
                                      },
+          "text:bad char" => {
+                               "desc" => {
+                                           "en" => "\n    <p>Since the character used is a control character, noncharacter\n    code point, surrogate code point, or non-Unicode character, it is\n    not allowed in the document.</p>\n  ",
+                                           "ja" => "\n    <p>\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{308b}\x{6587}\x{5b57}\x{306f}\x{5236}\x{5fa1}\x{6587}\x{5b57}\x{304b}\x{975e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3001}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3001}\n    \x{975e} Unicode \x{6587}\x{5b57}\x{3067}\x{3059}\x{304c}\x{3001}\x{3053}\x{308c}\x{306f}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                               "message" => {
+                                              "en" => "The character <code><var>{value}</var></code>\n  is not allowed",
+                                              "ja" => "\x{6587}\x{5b57} <code><var>{value}</var></code>\n  \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
+                                            }
+                             },
           "type not defined" => {
                                   "message" => {
                                                  "en" => "Type <code><var>{text}</var></code> is not \n  defined."
@@ -3252,10 +3678,15 @@ $WebHACC::_Errors = {
                                },
           "unknown attribute" => {
                                    "desc" => {
-                                               "en" => "\n    <p>The conformant checker does not support the attribute.\n    It cannot determine whether the document is conforming or not.</p>\n  "
+                                               "en" => "\n    <p>The conformance checker does not support the validation of the\n    attribute (yet).</p>\n\n    <p>The conformance checker skips the validation of the attribute.\n    Whether it is conforming or not is unknown.</p>\n  ",
+                                               "ja" => "\n    <p>\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{5668}\x{306f}\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{59a5}\x{5f53}\x{6027}\x{691c}\x{8a3c}\x{306b} (\x{307e}\x{3060}) \x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{5668}\x{306f}\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{59a5}\x{5f53}\x{6027}\x{691c}\x{8a3c}\x{3092}\x{884c}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{3053}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{9069}\x{5408}\x{3057}\x{3066}\x{3044}\x{308b}\x{304b}\x{3069}\x{3046}\x{304b}\x{306f}\x{308f}\x{304b}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                              },
                                    "message" => {
-                                                  "en" => "Conformance checking for attribute\n  <code><var>{local-name}</var></code> of element \n  <code><var>{element-local-name}</var></code> is not supported;\n  <em>it might or might not be conforming</em>."
+                                                  "en" => "Validation of this attribute is not\n  supported",
+                                                  "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{691c}\x{8a3c}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                   "targets" => {
+                                                  "attr" => 1
                                                 }
                                  },
           "unknown element" => {
@@ -3309,6 +3740,16 @@ $WebHACC::_Errors = {
                                                      "en" => "RDF attribute should be\n  namespace\x{2010}qualified."
                                                    }
                                     },
+          "url:empty" => {
+                           "desc" => {
+                                       "en" => "\n    <p>The value must be a URL but the empty string is not allowed.</p>\n    <p>Although the empty string is itself a valid relative URL,\n    it is not allowed here.</p>\n  ",
+                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{5024}\x{306f} URL \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{3048}\x{305b}\x{3093}\x{304c}\x{3001}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{81ea}\x{4f53}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{76f8}\x{5bfe} URL \x{3067}\x{3059}\x{304c}\x{3001}\x{3053}\x{3053}\x{3067}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                     },
+                           "message" => {
+                                          "en" => "The URL cannot be empty",
+                                          "ja" => "URL \x{3092}\x{7a7a}\x{306b}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
+                                        }
+                         },
           "value too long" => {
                                 "message" => {
                                                "en" => "The <code>value</code> attribute value is longer\n  than the value of the <code>maxlength</code> attribute."
@@ -3595,18 +4036,32 @@ $WebHACC::_Errors = {
                                                       }
                                        },
           "window name:empty" => {
+                                   "desc" => {
+                                               "en" => "\n    <p>Browsing context names cannnot be the empty string.</p>\n  ",
+                                               "ja" => "\n    <p>\x{95b2}\x{89a7}\x{6587}\x{8108}\x{540d}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
                                    "message" => {
-                                                  "en" => "Browsing context name must not be empty."
+                                                  "en" => "The browsing context name cannot be empty",
+                                                  "ja" => "\x{95b2}\x{89a7}\x{6587}\x{8108}\x{540d}\x{306f}\x{7a7a}\x{306b}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
                                                 }
                                  },
           "window name:reserved" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>Browsing context names whose first character is <code>_</code>,\n    such as <code>_blank</code> and <code>_self</code>, are reserved.</p>\n\n    <p>When a frame name is assigned, it must begin with\n    non-<code>_</code> character.</p>\n\n    <p>If the target frame is specified, it must be a frame name whose\n    name does not begin with the <code>_</code> character, or must be\n    one of <code>_blank</code>, <code>_self</code>,\n    <code>_parent</code>, or <code>_top</code>.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{95b2}\x{89a7}\x{6587}\x{8108}\x{540d}\x{306e}\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{304c} <code>_</code> \x{306e}\x{3082}\x{306e}\n    (<code>_blank</code>, <code>_self</code> \x{306a}\x{3069}) \x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{30d5}\x{30ec}\x{30fc}\x{30e0}\x{306b}\x{540d}\x{524d}\x{3092}\x{3064}\x{3051}\x{308b}\x{3068}\x{304d}\x{306f} <code>_</code>\n    \x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{304b}\x{3089}\x{59cb}\x{307e}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{5bfe}\x{8c61}\x{30d5}\x{30ec}\x{30fc}\x{30e0}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3068}\x{304d}\x{306f} <code>_</code>\n    \x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{304b}\x{3089}\x{59cb}\x{307e}\x{308b}\x{30d5}\x{30ec}\x{30fc}\x{30e0}\x{540d}\x{304b}\x{3001} <code>_blank</code>,\n    <code>_self</code>, <code>_parent</code>, <code>_top</code>\n    \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "Browsing context name\n  <code><var>{value}</var></code> is reserved."
+                                                     "en" => "The browsing context name is reserved",
+                                                     "ja" => "\x{3053}\x{306e}\x{95b2}\x{89a7}\x{6587}\x{8108}\x{540d}\x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                    }
                                     },
           "word not allowed" => {
+                                  "desc" => {
+                                              "en" => "\n    <p>The attribute contains a word which is not allowed for the\n    attribute.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>dropzone</code> attribute</dt>\n\n    <dd>The word can be one of feedback values (<code>move</code>,\n    <code>copy</code>, or <code>link</code>), a keyword beginning with\n    <code>string:</code>, or a keyword beginning with\n    <code>file:</code>.</dd>\n\n    </dl>\n  "
+                                            },
                                   "message" => {
-                                                 "en" => "The word <code><var>{value}</var></code> is not\n  allowed in this attribute."
+                                                 "en" => "The word is not allowed for the attribute",
+                                                 "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{306f}\x{3053}\x{306e}\x{8a9e}\x{3092}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
                                                }
                                 },
           "wrong signature accessor" => {
@@ -3646,12 +4101,12 @@ $WebHACC::_Errors = {
                                     },
           "xml:lang ne lang" => {
                                   "desc" => {
-                                              "en" => "\n    <p>The value of the <code>xml:lang</code> attribute (either the\n    <code>lang</code> attribute in the <code>xml</code> (i.e.\n    <code>http://www.w3.org/XML/1998/namespace</code>) namespace, or\n    the <code>xml:lang</code> attribute in no namespace) for the element has\n    different value than that of the <code>lang</code> attribute in no\n    namespace.</p>\n\n    <p>For historical reason, there are two attributes applicable to HTML\n    elements to specify language information of an element: <code>lang</code>\n    and <code>xml:lang</code>.  In HTML documents, only <code>lang</code>\n    attribute in no namespace is allowed and take effect; the\n    <code>xml:lang</code> attribute in no namespace is ignored in HTML\n    documents.  In XHTML documents, both <code>lang</code> and\n    <code>xml:lang</code> attributes are allowed.</p>\n\n    <p>In general, <em>only the <code>lang</code> attribute</em> need to be\n    specified for an element.</p>\n\n    <p>If both <code>lang</code> and <code>xml:lang</code> attributes are\n    specified on the same element, their values must be the same value.</p>\n  ",
-                                              "ja" => "\n    <p><code>xml:lang</code> \x{5c5e}\x{6027} (<code>xml</code> (=\n    <code>http://www.w3.org/XML/1998/namespace</code>) \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e}\n    <code>lang</code> \x{5c5e}\x{6027}\x{3084}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} \n    <code>xml:lang</code> \x{5c5e}\x{6027}) \x{306e}\x{5024}\x{304c}\x{540c}\x{3058}\x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044}\n    <code>lang</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{3068}\x{7570}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{6b74}\x{53f2}\x{7684}\x{306a}\x{7406}\x{7531}\x{306b}\x{3088}\x{308a}\x{3001} HTML \x{8981}\x{7d20}\x{306e}\x{8a00}\x{8a9e}\x{6307}\x{5b9a}\x{306e}\x{305f}\x{3081}\x{306e}\x{5c5e}\x{6027}\x{306f} \n    <code>lang</code> \x{3068} <code>xml:lang</code> \x{306e}2\x{3064}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002} HTML\n    \x{6587}\x{66f8}\x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044} <code>lang</code> \x{5c5e}\x{6027}\x{3060}\x{3051}\x{304c}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\n    \x{304b}\x{3064}\x{52b9}\x{529b}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044}\n    <code>xml:lang</code> \x{5c5e}\x{6027}\x{306f} HTML \x{6587}\x{66f8}\x{3067}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002} XHTML \x{6587}\x{66f8}\x{3067}\x{306f}\n    <code>lang</code> \x{5c5e}\x{6027}\x{3082} <code>xml:lang</code> \x{5c5e}\x{6027}\x{3082}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{901a}\x{5e38}\x{3001}\x{8981}\x{7d20}\x{306e}\x{8a00}\x{8a9e}\x{60c5}\x{5831}\x{306f} <em><code>lang</code> \n    \x{5c5e}\x{6027}\x{3060}\x{3051}</em>\x{3092}\x{4f7f}\x{3063}\x{3066}\x{6307}\x{5b9a}\x{3059}\x{308c}\x{3070}\x{5341}\x{5206}\x{3067}\x{3059}\x{3002}</p>\n\n    <p><code>lang</code> \x{5c5e}\x{6027}\x{3068} <code>xml:lang</code> \n    \x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{3092}\x{540c}\x{3058}\x{8981}\x{7d20}\x{306b}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{5834}\x{5408}\x{3001}\n    \x{4e21}\x{8005}\x{306e}\x{5024}\x{306f}\x{540c}\x{3058}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              "en" => "\n    <p>The value of the <code>lang</code> attribute in no namespace\n    and the value of the <code>lang</code> attribute in the XML\n    namespace or the value of the <code>xml:lang</code> attribute in\n    no namespace must be equivalent.</p>\n\n    <p>Note that you can omit the <code>xml:lang</code> attribute.</p>\n  ",
+                                              "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306a}\x{3057}\x{306e} <code>lang</code> \x{5c5e}\x{6027}\x{3068}\x{3001}\n    XML \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e} <code>lang</code> \x{5c5e}\x{6027}\x{307e}\x{305f}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306a}\x{3057}\x{306e}\n    <code>xml:lang</code> \x{5c5e}\x{6027}\x{306f}\x{3001}\x{540c}\x{3058}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{306a}\x{304a} <code>xml:lang</code> \x{5c5e}\x{6027}\x{306f}\x{7701}\x{7565}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
                                             },
                                   "message" => {
-                                                 "en" => "The value of the <code>xml:lang</code> attribute\n  is different from the value of the <code>lang</code> attribute.",
-                                                 "ja" => "<code>xml:lang</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{304c} <code>lang</code>\n  \x{5c5e}\x{6027}\x{306e}\x{5024}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}"
+                                                 "en" => "Values of <code>lang</code> and\n  <code>xml:lang</code> attributes are different",
+                                                 "ja" => "<code>lang</code> \x{5c5e}\x{6027}\x{3068} <code>xml:lang</code>\n  \x{5c5e}\x{6027}\x{306e}\x{5024}\x{304c}\x{9055}\x{3044}\x{307e}\x{3059}"
                                                }
                                 },
           "xml:lang not allowed" => {
@@ -3659,6 +4114,16 @@ $WebHACC::_Errors = {
                                                      "en" => "The <code>xml:lang</code> attribute is only allowed\n  when the <code>lang</code> attribute is specified.",
                                                      "ja" => "<code>xml:lang</code> \x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{308b}\x{306e}\x{306f}\n  <code>lang</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{6642}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}"
                                                    }
-                                    }
+                                    },
+          "xmlns:* empty" => {
+                               "desc" => {
+                                           "en" => "\n    <p>The namespace prefix cannot be undeclared.  In other word, the\n    attribute value in the XMLNS namespace cannot be the empty string\n    unless the local name is <code>xmlns</code>.</p>\n  ",
+                                           "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e}\x{306e}\x{5ba3}\x{8a00}\x{3092}\x{53d6}\x{308a}\x{6d88}\x{3059}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\x{8a00}\x{3044}\x{63db}\x{3048}\x{308b}\x{3068}\x{3001}\n    XMLNS \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5c40}\x{6240}\x{540d}\x{304c} <code>xmlns</code> \x{306e}\x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                               "message" => {
+                                              "en" => "The prefixed namespace cannot be undeclared",
+                                              "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e}\x{306e}\x{5ba3}\x{8a00}\x{306f}\x{53d6}\x{308a}\x{6d88}\x{305b}\x{307e}\x{305b}\x{3093}"
+                                            }
+                             }
         };
 
