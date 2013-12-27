@@ -7,3 +7,5 @@
 - "../../modules/web-css" tests
 - "../../modules/web-langtag" tests updater
 - "../../modules/web-datetime" tests
+- "../../modules/regexp" tests visualizer visualizercgi
+- "../../t_deps/modules/test-x1" tests

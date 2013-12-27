@@ -4,6 +4,7 @@ AnyEvent::HTTP
 Encode
 Getopt::Long
 JSON
+Net::SSLeay
 Path::Class
 Pod::Usage
 Term::ANSIColor
