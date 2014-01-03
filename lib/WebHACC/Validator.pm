@@ -7,6 +7,7 @@ use AnyEvent;
 use Web::MIME::Type;
 use Web::DOM::Document;
 use Web::HTML::Parser;
+use Web::XML::Parser;
 use Web::HTML::Validator;
 
 sub new_from_fetcher ($$) {
@@ -79,6 +80,8 @@ sub validate_as_cv ($) {
     # XXX multiple headers with same name should not be folded into a
     # value
 
+    # XXX header validation
+
     $doc->manakai_set_url ($_[0]->{URL}) if defined $_[0]->{URL};
 
     my $ct;
@@ -92,6 +95,10 @@ sub validate_as_cv ($) {
       $parser = Web::HTML::Parser->new;
       $parser->onerror (sub { push @error, {@_} });
       $parser->parse_bytes_start (undef, $doc);
+    } elsif ($ct and $ct->is_xml_mime_type) {
+      # XXX
+      $parser = Web::XML::Parser->new;
+      $parser->onerror (sub { push @error, {@_} });
     } else {
       push @error, {type => 'unknown mime type XXX', level => 'u', value => $_[0]->{'content-type'}};
     }
@@ -101,14 +108,18 @@ sub validate_as_cv ($) {
     return if $stopped;
     $start ||= 1 if time - $start_time > 0.500;
     $parser->parse_bytes_feed ($_[0], start_parsing => $start)
-        if $parser;
+        if $parser and $parser->isa ('Web::HTML::Parser');
     $body .= $_[0];
   });
 
   $fetcher->ondone (sub {
     unless ($stopped) {
-      $parser->parse_bytes_end
-          if $parser;
+      if ($parser->isa ('Web::HTML::Parser')) {
+        $parser->parse_bytes_end if $parser;
+      } else {
+        # XXX
+        $parser->parse_char_string ((decode 'utf-8', $body) => $doc);
+      }
       warn "done (@{[time - $start_time]} s)"; # XXX
 
       $body = decode $doc->input_encoding, $body; # XXXencoding
