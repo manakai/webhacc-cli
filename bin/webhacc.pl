@@ -162,11 +162,42 @@ command exits with non C<0> status.
 
 =head1 SPECIFICATIONS
 
-XXX
+The command supports various Web standard specifications.  Run the
+command with the C<--specs> option to view the list of supported
+specifications.
 
 =head1 DEPENDENCY
 
 This command requires Perl 5.10 or later.
+
+In addition, it requires various modules for validation.  They are Git
+submodules in the C<modules> directory, or can be installed to the
+C<local> directory in the repository by the C<make deps> command as
+described in the following section.
+
+=head1 INSTALL
+
+Install C<perl>, C<make>, C<gcc>, and C<wget>.
+
+Clone the Git repository in your favorite directory and run the setup
+command:
+
+  $ git clone git://github.com/manakai/webhacc-cli path/to/webhacc-cli
+  $ cd path/to/webhacc-cli
+  $ make deps
+
+Then, invoke the C<webhacc> command in the repository directory (by
+explicitly specifying the path to the file, by adding the directory to
+your C<PATH> environment variable, by copying the file to your "bin"
+directory, or by your favorite way):
+
+  $ cp webhacc ~/bin
+  $ cd somewhere
+  $ webhacc http://example.com/
+
+Note that the C<make deps> command does not modify any directory or
+file outside of the repositroy directory.  You can uninstall the
+application entirely by simply deleting the repository directory.
 
 =head1 AUTHOR
 
