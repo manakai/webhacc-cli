@@ -15,6 +15,7 @@ my $Classes = {
   pass => 'green',
   fail => 'red',
   check_result => 'blue',
+  heading => 'blue',
 };
 
 sub colored ($) {
@@ -149,11 +150,15 @@ sub print_result ($$$$) {
   $self->print ("\tConformance unknown: $u\n") if $u;
 } # print_result
 
+sub print_heading ($$) {
+  $_[0]->print ($_[0]->_c ('heading', $_[1]));
+} # print_heading
+
 1;
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

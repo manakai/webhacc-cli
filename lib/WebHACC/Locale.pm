@@ -2,6 +2,7 @@ package WebHACC::Locale;
 use strict;
 use warnings;
 use Web::DOM::Document;
+use WebHACC::_Errors;
 
 sub new_from_lang_env ($$) {
   my $lang = $_[1] // '';
@@ -15,7 +16,6 @@ sub lang ($) {
   return $_[0]->{lang};
 } # lang
 
-use WebHACC::_Errors;
 sub plain_text_by_error ($$) {
   my ($self, $error) = @_;
   my $def = $WebHACC::_Errors->{$error->{type}};

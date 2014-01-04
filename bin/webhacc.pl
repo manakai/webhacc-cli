@@ -12,6 +12,7 @@ use WebHACC::Fetcher;
 
 my $CheckErrorResponse;
 my $HelpLevel = 0;
+my $Mode = '';
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
   '--check-error-response' => \$CheckErrorResponse,
@@ -19,6 +20,7 @@ GetOptions (
                                   -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS'],
                                   -exitval => 0} },
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
+  '--specs' => sub { $Mode = 'specs' },
   '--version' => sub { $HelpLevel = {-verbose => 99,
                                      -sections => [qw(NAME AUTHOR LICENSE)],
                                      -exitval => 0} },
@@ -40,6 +42,17 @@ sub main_as_cv () {
 
   my $locale = WebHACC::Locale->new_from_lang_env ($ENV{LANG});
   my $out = $OutputClass->new_from_fh_and_locale (\*STDOUT, $locale);
+
+  if ($Mode eq 'specs') {
+    require WebHACC::Help;
+    my $help = WebHACC::Help->new;
+    my $specs = $help->get_specs;
+    for my $name (sort { $a cmp $b } keys %$specs) {
+      $out->print_heading ("[$name] ");
+      $out->print (join "", map { $_ . "\n\n" } @{$specs->{$name}});
+    }
+    exit 0;
+  }
 
   my $result = WebHACC::Result->new;
 
@@ -124,6 +137,11 @@ Encode the result in JSON.
 
 XXX JSON structure is ...
 
+=item --specs
+
+Show list of supported standard specifications and exits without
+validation.
+
 =item --version
 
 Show short information on the command and exits without validation.
@@ -156,7 +174,7 @@ Wakaba <wakaba@suikawiki.org>.
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
