@@ -41,11 +41,29 @@ test {
       };
 } n => 5, name => '--version';
 
+test {
+  my $c = shift;
+  cmd
+      '--specs',
+      sub {
+        my $result = shift;
+        test {
+          is $result->{status}, 0;
+          like $result->{stdout}, qr{HTML Standard};
+          like $result->{stdout}, qr{CSS};
+          like $result->{stdout}, qr{XML};
+          unlike $result->{stdout}, qr{Usage};
+          done $c;
+          undef $c;
+        } $c;
+      };
+} n => 5, name => '--specs';
+
 run_tests;
 
 =head1 LICENSE
 
-Copyright 2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2013-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

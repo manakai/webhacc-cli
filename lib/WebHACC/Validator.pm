@@ -114,11 +114,13 @@ sub validate_as_cv ($) {
 
   $fetcher->ondone (sub {
     unless ($stopped) {
-      if ($parser->isa ('Web::HTML::Parser')) {
-        $parser->parse_bytes_end if $parser;
-      } else {
-        # XXX
-        $parser->parse_char_string ((decode 'utf-8', $body) => $doc);
+      if ($parser) {
+        if ($parser->isa ('Web::HTML::Parser')) {
+          $parser->parse_bytes_end if $parser;
+        } else {
+          # XXX
+          $parser->parse_char_string ((decode 'utf-8', $body) => $doc);
+        }
       }
       warn "done (@{[time - $start_time]} s)"; # XXX
 
