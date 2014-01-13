@@ -31,7 +31,7 @@ sub _c ($$) {
 } # _c
 
 sub _level ($$) {
-  if ($_[1] eq 'm') {
+  if ($_[1] eq 'm' or $_[1] eq 'mh') {
     return $_[0]->_c ('level_must', 'MUST');
   } elsif ($_[1] eq 's') {
     return $_[0]->_c ('level_must', 'SHOULD');
@@ -102,6 +102,7 @@ sub _print_by_lc ($$$$) {
 
 sub print_error ($$$) {
   my ($self, $error, $lines) = @_;
+  return if $error->{level} eq 'mh';
   my $message = $self->locale->plain_text_by_error ($error);
   my $value = $error->{value};
   if (not defined $value and $error->{node}) {
@@ -139,7 +140,12 @@ sub print_result ($$$$) {
     $self->print ($self->_c ('check_result', "Whether the document is conforming or not is unclear\n"));
   }
   my $m = $result->error_count ('m');
-  $self->print ($self->_c ('fail', "\tMUST-level errors: $m\n")) if $m;
+  my $mh = $result->error_count ('mh');
+  if ($mh) {
+    $self->print ($self->_c ('fail', "\tMUST-level errors: @{[$m+$mh]} ($mh hidden)\n"));
+  } elsif ($m) {
+    $self->print ($self->_c ('fail', "\tMUST-level errors: $m\n"));
+  }
   my $s = $result->error_count ('s');
   $self->print ($self->_c ('fail', "\tSHOULD-level errors: $s\n")) if $s;
   # XXX XML well-formedness

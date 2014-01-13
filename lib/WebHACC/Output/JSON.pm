@@ -30,7 +30,7 @@ sub print_result ($$$$) {
   $self->{data}->{document}->{status_text} = $headers->{Reason};
   $self->{data}->{document}->{input_encoding} = $doc->input_encoding;
   $self->{data}->{error_count}->{$_} = $result->error_count ($_)
-      for qw(m s w i u);
+      for qw(m mh s w i u);
   $self->{data}->{is_conforming} = $result->is_conforming;
   $self->{data}->{is_non_conforming} = $result->is_non_conforming;
 } # print_result
@@ -39,7 +39,7 @@ sub print_result ($$$$) {
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
