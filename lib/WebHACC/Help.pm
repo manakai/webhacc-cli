@@ -89,6 +89,7 @@ sub get_specs ($) {
     'Web::RDF::XML::Parser',
     'Web::DateTime',
     'Web::HTML::Table',
+    'Web::HTML::Microdata',
     'Regexp::Parser::JavaScript',
   ) {
     my $f = $self->find_module_f ($_) or next;

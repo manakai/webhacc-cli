@@ -13,13 +13,17 @@ use WebHACC::Fetcher;
 my $CheckErrorResponse;
 my $HelpLevel = 0;
 my $Mode = '';
+my $Noscript;
+my $ImageOK;
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
   '--check-error-response' => \$CheckErrorResponse,
   '--help' => sub { $HelpLevel = {-verbose => 99,
                                   -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS'],
                                   -exitval => 0} },
+  '--image-viewable' => sub { $ImageOK = 1 },
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
+  '--noscript' => sub { $Noscript = 1 },
   '--specs' => sub { $Mode = 'specs' },
   '--version' => sub { $HelpLevel = {-verbose => 99,
                                      -sections => [qw(NAME AUTHOR LICENSE)],
@@ -67,6 +71,8 @@ sub main_as_cv () {
   }
   my $val = WebHACC::Validator->new_from_fetcher ($fetcher);
   $val->check_error_response ($CheckErrorResponse);
+  $val->noscript ($Noscript);
+  $val->image_viewable ($ImageOK);
 
   $val->onerror (sub {
     my ($error, $lines) = @_;
@@ -131,11 +137,24 @@ not performed when the response is in error.
 
 Show help message and exits without validation.
 
+=item --image-viewable
+
+Assumes that the validated document is not intended for public and the
+user is expected to be able to view images.  This option affects
+conformance of the HTML C<img> element.
+
 =item --json
 
 Encode the result in JSON.
 
 XXX JSON structure is ...
+
+=item --noscript
+
+Disable scripting for the purpose of parsing and validation.  By
+default scripting is enabled.  Note that the validator supports no
+scripting language at the moment.  This option affects conformance of
+C<noscript> elements.
 
 =item --specs
 

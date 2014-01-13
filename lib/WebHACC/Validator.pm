@@ -21,6 +21,27 @@ sub check_error_response ($;$) {
   return $_[0]->{check_error_response};
 } # check_error_response
 
+sub noscript ($;$) {
+  if (@_ > 1) {
+    $_[0]->{noscript} = $_[1];
+  }
+  return $_[0]->{noscript};
+} # noscript
+
+sub image_viewable ($;$) {
+  if (@_ > 1) {
+    $_[0]->{image_viewable} = $_[1];
+  }
+  return $_[0]->{image_viewable};
+} # image_viewable
+
+sub onerror ($;$) {
+  if (@_ > 1) {
+    $_[0]->{onerror} = $_[1];
+  }
+  return $_[0]->{onerror} || sub { };
+} # onerror
+
 sub _process_errors ($$$) {
   my ($errors, $lines => $onerror) = @_;
   for (@$errors) {
@@ -93,6 +114,7 @@ sub validate_as_cv ($) {
 
     if ($ct and $ct->type eq 'text' and $ct->subtype eq 'html') {
       $parser = Web::HTML::Parser->new;
+      $parser->scripting (not $self->noscript);
       $parser->onerror (sub { push @error, {@_} });
       $parser->parse_bytes_start (undef, $doc);
     } elsif ($ct and $ct->is_xml_mime_type) {
@@ -129,6 +151,8 @@ sub validate_as_cv ($) {
 
       if ($parser) {
         my $val = Web::HTML::Validator->new;
+        $val->scripting (not $self->noscript);
+        $val->image_viewable ($self->image_viewable);
         $val->onerror (sub { push @error, {@_} });
         $val->check_node ($doc);
       }
@@ -147,13 +171,6 @@ sub validate_as_cv ($) {
   return $cv;
 } # validate_as_cv
 
-sub onerror ($;$) {
-  if (@_ > 1) {
-    $_[0]->{onerror} = $_[1];
-  }
-  return $_[0]->{onerror} || sub { };
-} # onerror
-
 sub headers ($) {
   # XXX API is not stable! don't rely on this!!
   return $_[0]->{headers};
@@ -167,7 +184,7 @@ sub document ($) {
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
