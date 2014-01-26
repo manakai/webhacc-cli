@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use 5.10.0;
 use Path::Class;
 use lib glob file (__FILE__)->dir->parent->subdir ('modules', '*', 'lib');
 use Getopt::Long;
@@ -211,6 +212,8 @@ Wait a few minutes.  WebHACC program files are installed into
 C<./local/webhacc> and the C<webhacc> runner command is copied as
 C<./webhacc>.
 
+Then, setup automatic upgrading (see subsection below).
+
 The C<WEBHACC_DIR> environment variable can be used to specify where
 WebHACC program files are installed:
 
@@ -240,6 +243,21 @@ directory, or by your favorite way):
 Note that the C<make deps> command does not modify any directory or
 file outside of the repositroy directory.  You can uninstall the
 application entirely by simply deleting the repository directory.
+
+Then, setup automatic upgrading (see subsection below).
+
+=head2 Automatic upgrading
+
+As Web standards are evolved on a daily basis, the WebHACC program is
+updated frequently, otherwise output of the program could be stale.
+Once installed, the program can be updated by invoking with the
+C<--upgrade> option:
+
+  $ path/to/webhacc --upgrade
+
+This command should be invoked periodically so that the program is
+kept up-to-date.  For example, schedule cron to run the command once a
+week.
 
 =head1 DEPENDENCY
 
