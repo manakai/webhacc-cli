@@ -144,7 +144,7 @@ sub validate_as_cv ($) {
           $parser->parse_char_string ((decode 'utf-8', $body) => $doc);
         }
       }
-      warn "done (@{[time - $start_time]} s)"; # XXX
+      #warn "done (@{[time - $start_time]} s)"; # XXX
 
       $body = decode $doc->input_encoding, $body; # XXXencoding
       $body = ['', (split /\x0D\x0A?|\x0A/, $body, -1), '', ''];

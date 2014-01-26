@@ -5,6 +5,7 @@ use Path::Class;
 use lib glob file (__FILE__)->dir->parent->subdir ('modules', '*', 'lib');
 use Getopt::Long;
 use AnyEvent;
+use WebHACC;
 use WebHACC::Validator;
 use WebHACC::Locale;
 use WebHACC::Result;
@@ -29,9 +30,7 @@ GetOptions (
     exec $^X, file (__FILE__)->dir->file ('webhacc-upgrade.pl');
     die "Can't run webhacc-upgrade.pl\n";
   },
-  '--version' => sub { $HelpLevel = {-verbose => 99,
-                                     -sections => [qw(NAME AUTHOR LICENSE)],
-                                     -exitval => 0} },
+  '--version' => sub { $Mode = 'version' },
 ) or do {
   $HelpLevel = 2;
 };
@@ -62,7 +61,16 @@ sub main_as_cv () {
     exit 0;
   }
 
+  my $webhacc = WebHACC->new;
   my $result = WebHACC::Result->new;
+
+  if ($Mode eq 'version') {
+    $webhacc->get_git_data_as_cv->cb (sub {
+      $out->print_webhacc_data ($_[0]->recv);
+      $out->end_as_cv->cb (sub { $cv->send ($result) });
+    });
+    return $cv;
+  }
 
   my $fetcher;
   if (not defined $url or $url eq '-') {
@@ -84,8 +92,11 @@ sub main_as_cv () {
     $out->print_error ($error, $lines);
   });
   $val->validate_as_cv->cb (sub {
-    $out->print_result ($result, $val->headers, $val->document);
-    $out->end_as_cv->cb (sub { $cv->send ($result) });
+    $webhacc->get_git_data_as_cv->cb (sub {
+      $out->print_webhacc_data ($_[0]->recv);
+      $out->print_result ($result, $val->headers, $val->document);
+      $out->end_as_cv->cb (sub { $cv->send ($result) });
+    });
   });
 
   return $cv;
@@ -172,6 +183,7 @@ Upgrade the webhacc software.
 =item --version
 
 Show short information on the command and exits without validation.
+This option can be combined with C<--json>.
 
 =back
 
@@ -187,24 +199,27 @@ When the validation result is positive, as well as when C<--help> or
 C<--version> is specified, the command exits with C<0>.  Otherwise the
 command exits with non C<0> status.
 
-=head1 SPECIFICATIONS
-
-The command supports various Web standard specifications.  Run the
-command with the C<--specs> option to view the list of supported
-specifications.
-
-=head1 DEPENDENCY
-
-This command requires Perl 5.10 or later.
-
-In addition, it requires various modules for validation.  They are Git
-submodules in the C<modules> directory, or can be installed to the
-C<local> directory in the repository by the C<make deps> command as
-described in the following section.
-
 =head1 INSTALL
 
-Install C<perl>, C<make>, C<gcc>, and C<wget>.
+=head2 Install by one-line installer
+
+Run the following command:
+
+  $ curl http://wakaba.github.io/packages/webhacc | sh
+
+Wait a few minutes.  WebHACC program files are installed into
+C<./local/webhacc> and the C<webhacc> runner command is copied as
+C<./webhacc>.
+
+The C<WEBHACC_DIR> environment variable can be used to specify where
+WebHACC program files are installed:
+
+  $ curl http://wakaba.github.io/packages/webhacc | \
+    WEBHACC_DIR=path/to/webhacc sh
+
+=head2 Install step by step
+
+Install C<make>, C<gcc>, C<perl>, C<git>, and C<wget>.
 
 Clone the Git repository in your favorite directory and run the setup
 command:
@@ -225,6 +240,21 @@ directory, or by your favorite way):
 Note that the C<make deps> command does not modify any directory or
 file outside of the repositroy directory.  You can uninstall the
 application entirely by simply deleting the repository directory.
+
+=head1 DEPENDENCY
+
+This command requires Perl 5.10 or later.
+
+In addition, it requires various modules for validation.  They are Git
+submodules in the C<modules> directory, or can be installed to the
+C<local> directory in the repository by the C<make deps> command as
+described in the following section.
+
+=head1 SPECIFICATIONS
+
+The command supports various Web standard specifications.  Run the
+command with the C<--specs> option to view the list of supported
+specifications.
 
 =head1 AUTHOR
 
