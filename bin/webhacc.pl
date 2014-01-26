@@ -25,6 +25,10 @@ GetOptions (
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
   '--noscript' => sub { $Noscript = 1 },
   '--specs' => sub { $Mode = 'specs' },
+  '--upgrade' => sub {
+    exec $^X, file (__FILE__)->dir->file ('webhacc-upgrade.pl');
+    die "Can't run webhacc-upgrade.pl\n";
+  },
   '--version' => sub { $HelpLevel = {-verbose => 99,
                                      -sections => [qw(NAME AUTHOR LICENSE)],
                                      -exitval => 0} },
@@ -160,6 +164,10 @@ C<noscript> elements.
 
 Show list of supported standard specifications and exits without
 validation.
+
+=item --upgrade
+
+Upgrade the webhacc software.
 
 =item --version
 
