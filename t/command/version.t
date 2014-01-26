@@ -9,37 +9,35 @@ use Test::More;
 test {
   my $c = shift;
   cmd
-      '--help',
+      '--version',
       sub {
         my $result = shift;
         test {
           is $result->{status}, 0;
-          like $result->{stdout}, qr{Usage};
+          like $result->{stdout}, qr{WebHACC};
           unlike $result->{stdout}, qr{is conforming};
-          unlike $result->{stdout}, qr{is no[nt][ -]conforming};
           done $c;
           undef $c;
         } $c;
       };
-} n => 4, name => '--help';
+} n => 3, name => '--version';
 
 test {
   my $c = shift;
   cmd
-      '--specs',
+      '--version',
+      '--json',
       sub {
         my $result = shift;
         test {
           is $result->{status}, 0;
-          like $result->{stdout}, qr{HTML Standard};
-          like $result->{stdout}, qr{CSS};
-          like $result->{stdout}, qr{XML};
-          unlike $result->{stdout}, qr{Usage};
+          like $result->{stdout}, qr{WebHACC};
+          like $result->{stdout}, qr<^\{>;
           done $c;
           undef $c;
         } $c;
       };
-} n => 5, name => '--specs';
+} n => 3, name => '--version --json';
 
 run_tests;
 

@@ -16,6 +16,7 @@ my $Classes = {
   fail => 'red',
   check_result => 'blue',
   heading => 'blue',
+  caution => 'on_bright_red bright_white',
 };
 
 sub colored ($) {
@@ -160,6 +161,7 @@ sub print_error ($$$) {
 
 sub print_result ($$$$) {
   my ($self, $result, $headers, $doc) = @_;
+
   $self->print (sprintf "URL:\t<%s>\n", $doc->url);
   $self->print (sprintf "Status:\t%d %s\n", $headers->{Status} || 0, $headers->{Reason} // '');
   $self->print (sprintf "Encoding:\t%s\n", $doc->input_encoding);
@@ -190,6 +192,23 @@ sub print_result ($$$$) {
 sub print_heading ($$) {
   $_[0]->print ($_[0]->_c ('heading', $_[1]));
 } # print_heading
+
+sub print_webhacc_data ($$) {
+  my ($self, $git_data) = @_;
+  my $time = $git_data->{at} || 0;
+  my @t = gmtime ($time);
+
+  $self->print (sprintf "WebHACC revision %s (%04d-%02d-%02d)\n",
+                    substr ($git_data->{H} || '(unknown)', 0, 10),
+                    $t[5] + 1900, $t[4] + 1, $t[3]);
+
+  if ($time and $time + 30*24*60*60 < time) {
+    $self->print ("\n");
+    $self->print ($self->_c ('caution', "THIS VALIDATOR IS OUTDATED!!!\n"));
+    $self->print ("Run |webhacc --upgrade| to update the validator.\n");
+    $self->print ("\n");
+  }
+} # print_webhacc_data
 
 1;
 
