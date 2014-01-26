@@ -64,6 +64,33 @@ sub _node ($$) {
   }
 } # _node
 
+sub _node_path ($$) {
+  my ($self, $node) = @_;
+  my @path;
+  if ($node->node_type == ATTRIBUTE_NODE) {
+    push @path, $node->name . '=' . $self->_string ($node->value);
+    $node = $node->owner_element;
+  }
+  while (defined $node) {
+    if ($node->node_type == ELEMENT_NODE) {
+      my $c = $node->local_name;
+      my $id = $node->id;
+      $c .= '#' . $id if defined $id and length $id;
+      my $classes = [split /[\x09\x0A\x0C\x0D\x20]+/, $node->class_name];
+      $c .= join '', map { '.' . $_ } @$classes;
+      unshift @path, $c;
+      if (defined $id and length $id) {
+        unshift @path, '...';
+        last;
+      }
+    } else {
+      unshift @path, $node->node_name;
+    }
+    $node = $node->parent_node;
+  }
+  return join ' > ', @path;
+} # _node_path
+
 sub _string ($$) {
   if (20 < length $_[1]) {
     return sprintf '"%s..."', substr $_[1], 0, 20;
@@ -76,25 +103,25 @@ sub _print_by_lc ($$$$) {
   my ($self, $body, $line, $column) = @_;
 
     if ($column < 5 and $line > 1) {
-      $self->print (sprintf "%s %s\n",
+      $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', ($line - 1) . ':'),
                         $body->[$line - 1]);
     }
     if ($column == 0) {
-      $self->print (sprintf "%s %s\n",
+      $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', $line . ':'),
                         $body->[$line]);
     } else {
       my $start = 0;
       $start = $column - 30 if $start < $column - 30;
-      $self->print (sprintf "%s %s%s%s\n",
+      $self->print (sprintf "  %s %s%s%s\n",
           $self->_c ('line_number', $line . ':'),
           (substr $body->[$line], $start, $column - 1 - $start),
           $self->_c ('mark', (substr $body->[$line], $column - 1, 1)),
           (substr $body->[$line], $column - 1 + 1, 30) // '');
     }
     if ($column + 5 > length $body->[$line]) {
-      $self->print (sprintf "%s %s\n",
+      $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', ($line + 1) . ':'),
                         $body->[$line + 1]);
     }
@@ -117,6 +144,9 @@ sub print_error ($$$) {
         $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
         defined $value ? ' ' . $self->_string ($value) : '',
         $self->_c ('error_type', $message));
+    if (defined $error->{node}) {
+      $self->print (sprintf "  %s\n", $self->_node_path ($error->{node}));
+    }
     $self->_print_by_lc ($lines, $error->{line}, $error->{column});
   } else {
     $self->print (sprintf "[%s]%s%s %s\n",
@@ -125,6 +155,7 @@ sub print_error ($$$) {
         defined $value ? ' ' . $self->_string ($value) : '',
         $self->_c ('error_type', $message));
   }
+  $self->print ("\n");
 } # print_error
 
 sub print_result ($$$$) {
