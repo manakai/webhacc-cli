@@ -210,6 +210,14 @@ sub print_webhacc_data ($$) {
   }
 } # print_webhacc_data
 
+sub print_specs ($$) {
+  my ($self, $specs) = @_;
+  for my $name (sort { $a cmp $b } keys %$specs) {
+    $self->print_heading ("[$name] ");
+    $self->print (join "", map { $_ . "\n\n" } @{$specs->{$name}});
+  }
+} # print_specs
+
 1;
 
 =head1 LICENSE

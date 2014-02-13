@@ -31,6 +31,7 @@ test {
         my $result = shift;
         test {
           is $result->{status}, 0;
+          unlike $result->{stdout}, qr<^\{>;
           like $result->{stdout}, qr{HTML Standard};
           like $result->{stdout}, qr{CSS};
           like $result->{stdout}, qr{XML};
@@ -39,7 +40,26 @@ test {
           undef $c;
         } $c;
       };
-} n => 5, name => '--specs';
+} n => 6, name => '--specs';
+
+test {
+  my $c = shift;
+  cmd
+      '--specs', '--json',
+      sub {
+        my $result = shift;
+        test {
+          is $result->{status}, 0;
+          like $result->{stdout}, qr<^\{>;
+          like $result->{stdout}, qr{HTML Standard};
+          like $result->{stdout}, qr{CSS};
+          like $result->{stdout}, qr{XML};
+          unlike $result->{stdout}, qr{Usage};
+          done $c;
+          undef $c;
+        } $c;
+      };
+} n => 6, name => '--specs --json';
 
 run_tests;
 

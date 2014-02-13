@@ -42,6 +42,12 @@ sub print_webhacc_data ($$) {
   $self->{data}->{validator}->{timestamp} = $git_data->{at}; # or undef
 } # print_webhacc_data
 
+sub print_specs ($$) {
+  my ($self, $specs) = @_;
+  $self->{data}->{specs}->{$_}->{refs} = $specs->{$_}
+      for keys %$specs;
+} # print_specs
+
 1;
 
 =head1 LICENSE
