@@ -51,19 +51,22 @@ sub main_as_cv () {
   my $locale = WebHACC::Locale->new_from_lang_env ($ENV{LANG});
   my $out = $OutputClass->new_from_fh_and_locale (\*STDOUT, $locale);
 
+  my $result = WebHACC::Result->new;
+
   if ($Mode eq 'specs') {
     require WebHACC::Help;
     my $help = WebHACC::Help->new;
     my $specs = $help->get_specs;
+    # XXX json
     for my $name (sort { $a cmp $b } keys %$specs) {
       $out->print_heading ("[$name] ");
       $out->print (join "", map { $_ . "\n\n" } @{$specs->{$name}});
     }
-    exit 0;
+    $out->end_as_cv->cb (sub { $cv->send ($result) });
+    return $cv;
   }
 
   my $webhacc = WebHACC->new;
-  my $result = WebHACC::Result->new;
 
   if ($Mode eq 'version') {
     $webhacc->get_git_data_as_cv->cb (sub {
