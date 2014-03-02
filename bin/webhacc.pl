@@ -215,6 +215,15 @@ WebHACC program files are installed:
   $ curl http://wakaba.github.io/packages/webhacc | \
     WEBHACC_DIR=path/to/webhacc sh
 
+If your system's Perl is older than Perl 5.10, set the
+C<PMBP_PERL_VERSION> environment variable:
+
+  $ curl http://wakaba.github.io/packages/webhacc | PMBP_PERL_VERSION=latest sh
+
+... such that newer version of Perl is installed for the WebHACC
+script (in C<./local/webhacc/local/>).  As this compiles perl, it
+takes several minutes.
+
 =head2 Install step by step
 
 Install C<make>, C<gcc>, C<perl>, C<git>, and C<wget>.
