@@ -18,7 +18,7 @@ sub print_error ($$$) {
 
 sub end_as_cv ($) {
   my $self = $_[0];
-  $self->print (JSON->new->encode ($self->{data}));
+  $self->print (JSON->new->encode ($self->{data} || {}));
   return $self->SUPER::end_as_cv;
 } # end_as_cv
 

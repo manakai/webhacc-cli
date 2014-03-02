@@ -8,7 +8,7 @@ use AnyEvent::Handle;
 sub new_from_fh_and_locale ($$$) {
   my $cv = AE::cv;
   $cv->begin;
-  return bless {fh => $_[1], locale => $_[2], cv => $cv}, $_[0];
+  return bless {fh => $_[1], locale => $_[2], cv => $cv, wbuf => ''}, $_[0];
 } # new_from_handle
 
 sub locale ($) {
@@ -16,12 +16,26 @@ sub locale ($) {
 } # locale
 
 sub handle ($) {
-  return $_[0]->{handle} ||= AnyEvent::Handle->new
-      (fh => $_[0]->{fh},
+  my $self = $_[0];
+  return $self->{handle} ||= AnyEvent::Handle->new
+      (fh => $self->{fh},
        #on_eof => sub {
        #  my ($hdl) = @_;
        #  warn "eof";
        #},
+       on_drain => sub {
+         if (length $self->{wbuf}) {
+           AE::postpone {
+             $self->handle->push_write (substr $self->{wbuf}, 0, 10000);
+             substr ($self->{wbuf}, 0, 10000) = '';
+           };
+         } elsif ($self->{shutdown}) {
+           AE::postpone {
+             $self->{cv}->end;
+             undef $self;
+           };
+         }
+       },
        on_error => sub {
          my ($hdl, $fatal, $msg) = @_;
          AE::log error => $msg;
@@ -31,20 +45,25 @@ sub handle ($) {
 
 sub print ($$) {
   my $self = $_[0];
-  $self->handle->push_write (encode 'utf-8', $_[1]);
+  $self->{wbuf} .= encode 'utf-8', $_[1];
+  if (length $self->{wbuf}) {
+    AE::postpone {
+      $self->handle->push_write (substr $self->{wbuf}, 0, 10000);
+      substr ($self->{wbuf}, 0, 10000) = '';
+    };
+  }
 } # print
 
 sub end_as_cv ($) {
-  my $cv = $_[0]->{cv};
-  $_[0]->handle->on_drain (sub { AE::postpone { $cv->end } });
-  return $cv;
+  $_[0]->{shutdown} = 1;
+  return $_[0]->{cv};
 }
 
 1;
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
