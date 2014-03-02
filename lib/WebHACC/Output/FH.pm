@@ -26,8 +26,9 @@ sub handle ($) {
        on_drain => sub {
          if (length $self->{wbuf}) {
            AE::postpone {
-             $self->handle->push_write (substr $self->{wbuf}, 0, 10000);
+             my $s = substr ($self->{wbuf}, 0, 10000);
              substr ($self->{wbuf}, 0, 10000) = '';
+             $self->handle->push_write ($s);
            };
          } elsif ($self->{shutdown}) {
            AE::postpone {
@@ -48,8 +49,9 @@ sub print ($$) {
   $self->{wbuf} .= encode 'utf-8', $_[1];
   if (length $self->{wbuf}) {
     AE::postpone {
-      $self->handle->push_write (substr $self->{wbuf}, 0, 10000);
+      my $s = substr ($self->{wbuf}, 0, 10000);
       substr ($self->{wbuf}, 0, 10000) = '';
+      $self->handle->push_write ($s);
     };
   }
 } # print
