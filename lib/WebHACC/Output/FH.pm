@@ -32,7 +32,7 @@ sub handle ($) {
            };
          } elsif ($self->{shutdown}) {
            AE::postpone {
-             $self->{cv}->end;
+             $self->{cv}->end if $self;
              undef $self;
            };
          }
