@@ -1046,6 +1046,18 @@ $WebHACC::_Errors = {
                                                         "en" => "Extended attribute <code><var>{text}</var></code>\n  is specified for an attribute whose type is not an interface."
                                                       }
                                        },
+          "attr:obsolete" => {
+                               "desc" => {
+                                           "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{306e}\x{3067}\x{3082}\x{3046}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>align</code>, <code>alink</code>,\n    <code>allowtransparency</code>, <code>background</code>,\n    <code>bgcolor</code>, <code>border</code>,\n    <code>cellpadding</code>, <code>cellspacing</code>,\n    <code>compact</code>, <code>frameborder</code>,\n    <code>hspace</code>, <code>link</code>, <code>nowrap</code>,\n    <code>text</code>, <code>valign</code>, <code>vlink</code>,\n    <code>vspace</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>property</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>OGP \x{3092}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{308b}\x{306a}\x{3089}\x{3001}\x{3053}\x{306e}\x{30a8}\x{30e9}\x{30fc}\x{306f}\x{7121}\x{8996}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>prefix</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>HTML <code>head</code> \x{8981}\x{7d20} <code>profile</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>profile</code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{308c}\x{306f}\x{6700}\x{65e9}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>a</code> \x{8981}\x{7d20}\x{3001} <code>link</code> \x{8981}\x{7d20}\n    <code>rev</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>rel</code> \x{5c5e}\x{6027}\x{3068}\x{9069}\x{5f53}\x{306a}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n    <code>rev=made</code> \x{3067}\x{306f}\x{306a}\x{304f} <code>rel=author</code>\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt><code>xmlns:<var>*</var></code> \x{5c5e}\x{6027}<!-- in no namespace --></dt>\n\n    <dd>HTML \x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{52b9}\x{679c}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt><code>embed</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>align</code>, <code>border</code>, <code>hspace</code>,\n    <code>vspace</code> \x{5404}\x{5c5e}\x{6027}\x{306f}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    <code>name</code> \x{5c5e}\x{6027}\x{306f}\n    <code>id</code> \x{5c5e}\x{6027}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</dd>\n\n    </dl>\n  "
+                                         },
+                               "message" => {
+                                              "en" => "This attribute is obsolete",
+                                              "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                            },
+                               "targets" => {
+                                              "attr" => 1
+                                            }
+                             },
           "attribute missing" => {
                                    "desc" => {
                                                "en" => "\n\n    <p>An attribute is not specified for the element.  You may want to\n    specify the element such that user agents can provide its full\n    functionality with regard to the element for the user.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>img</code> element</dt>\n\n    <dd>The <code>src</code> attribute is required.</dd>\n\n    <dd>In many cases, the <code>alt</code> attribute is\n    required.</dd>\n\n    <dd>If the element has the <code>math</code> role, the\n    <code>aria-describedby</code> attribute should be specified.</dd>\n\n    <dt>HTML <code>source</code> or <code>bgsound</code> element</dt>\n\n    <dd>The <code>src</code> attribute is required.</dd>\n\n    <dt>HTML <code>track</code> element</dt>\n\n    <dd>The <code>src</code> attribute is required.</dd>\n\n    <dd>If the <code>kind</code> attribute is <code>subtitles</code>\n    (which is the default), the <code>srclang</code> attribute is\n    required.</dd>\n\n    <dt>HTML <code>link</code> element</dt>\n\n    <dd>The <code>href</code> attribute must be specified.</dd>\n\n    <dd>Either <code>rel</code> or <code>itemprop</code> attribute\n    must be specified.  In the <code>body</code> element, an\n    <code>itemprop</code> attribute must be specified.</dd>\n\n    <dd>If the element is applied to the entire document, move the\n    element within the <code>head</code> element, not in the\n    <code>body</code> element.</dd>\n\n    <dt>HTML <code>meta</code> element</dt>\n\n    <dd>The <code>content</code> attribute must be specified.</dd>\n\n    <dd>In the <code>body</code> element, an <code>itemprop</code>\n    attribute must be specified.</dd>\n\n    <dd>If the element is applied to the entire document, move the\n    element within the <code>head</code> element, not in the\n    <code>body</code> element.</dd>\n\n    <dt>HTML <code>style</code> element</dt>\n\n    <dd>For the <code>style</code> element outside of the\n    <code>head</code> element, the <code>scoped</code> attribute must\n    be specified.</dd>\n\n    <dd>If the element is applied to the entire document, move the\n    element within the <code>head</code> element, not in the\n    <code>body</code> element.</dd>\n\n    <dt>HTML <code>input</code> element</dt>\n\n    <dd>If the <code>type</code> is <code>button</code>, the\n    <code>value</code> attribute must be specified.</dd>\n\n    <dd>If the <code>pattern</code> attribute is specified, the\n    <code>title</code> attribute should also be specified to describe\n    the restriction.</dd>\n\n    <dt>HTML <code>button</code> element</dt>\n\n    <dd>If the <code>type</code> is <code>menu</code>, the\n    <code>menu</code> attribute must be specified.</dd>\n\n    <dt>HTML <code>embed</code> element</dt>\n\n    <dd>An <code>embed</code> element with no <code>src</code>\n    attribute has no effect.  If the <code>itemprop</code> attribute\n    is specified, a <code>src</code> attribute must also be\n    specified.</dd>\n\n    <dt>HTML <code>object</code> element</dt>\n\n    <dd>If the <code>itemprop</code> attribute is specified, a\n    <code>data</code> attribute must also be specified.</dd>\n\n    <dd>If both <code>data</code> and <code>type</code> attributes are\n    specified, it might be a good practice to also specify the\n    <code>typemustmatch</code> attribute to ensure that the expected\n    content is rendered.</dd>\n\n    <dd>If the <code>classid</code> attribute is specified, the\n    <code>codetype</code> attribute should also be specified.</dd>\n\n    <dt>HTML <code>html</code> element</dt>\n\n    <dd>Although it is not required, it is encouraged to specify the\n    language of the document to the root <code>html</code> element\n    using the <code>lang</code> attribute.</dd>\n\n    <dt>HTML <code>optgroup</code> element</dt>\n\n    <dd>The <code>label</code> attribute is required.</dd>\n\n    <dt>HTML <code>textarea</code> element</dt>\n\n    <dd>If the <code>pattern</code> attribute is specified, the\n    <code>title</code> attribute should also be specified to describe\n    the restriction.</dd>\n\n    <dd>If the value of the <code>wrap</code> attribute is\n    <code>hard</code>, the <code>cols</code> attribute is\n    required.</dd>\n\n    <dt>HTML <code>a</code> element</dt>\n\n    <dd>If the <code>itemprop</code> attribute is specified, an\n    <code>href</code> attribute must also be specified.</dd>\n\n    <dt>HTML <code>map</code> element</dt>\n\n    <dd>The <code>name</code> attribute is required.</dd>\n\n    <dt>HTML <code>area</code> element</dt>\n\n    <dd>The <code>coords</code> attribute must be specified unless the\n    <code>shape</code> attribute value is <code>default</code>.</dd>\n\n    <dd>If the <code>href</code> attribute is specified, the\n    <code>alt</code> attribute is required.</dd>\n\n    <dd>If the <code>itemprop</code> attribute is specified, an\n    <code>href</code> attribute must also be specified.</dd>\n\n    <dt>HTML <code>bdo</code> element</dt>\n\n    <dd>The <code>dir</code> attribute is required.</dd>\n\n    <dt>HTML <code>b</code> or <code>i</code> element</dt>\n\n    <dd>It might be a good idea to specify the <code>class</code>\n    attribute for these elements such that their purpose can be\n    clarified and that it can be used as a hook for styling.</dd>\n\n    <dt>HTML <code>lang</code> attribute</dt>\n\n    <dd>If the <code>xml:lang</code> attribute is specified for an\n    HTML element, the <code>lang</code> attribute must also be\n    specified.  (You don't have to specify the <code>xml:lang</code>\n    attribute.)</dd>\n\n    <dt>HTML <code>meter</code> element</dt>\n\n    <dd>The <code>value</code> attribute is required.</dd>\n\n    <dt>HTML <code>menuitem</code> element</dt>\n\n    <dd>Either <code>label</code> or <code>command</code> attribute\n    must be specified.</dd>\n\n    <dt>HTML <code>iframe</code> element</dt>\n\n    <dd>If the <code>itemprop</code> attribute is specified, a\n    <code>src</code> attribute must also be specified.</dd>\n\n    <dt>HTML <code>param</code> element</dt>\n\n    <dd>Attributes <code>name</code> and <code>value</code> must be\n    specified.</dd>\n\n    <dt>HTML <code>applet</code> element</dt>\n\n    <dd>Attributes <code>width</code> and <code>height</code> must be\n    specified.</dd>\n\n    <dt>HTML <code>title</code> attribute</dt>\n\n    <dd>If the element has a <code>draggable</code> or\n    <code>dropzone</code> attribute, the <code>title</code> attribute\n    should contain the description.</dd>\n\n    <dt>ARIA <code>aria-valuenow</code> attribute</dt>\n\n    <dd>If the element has an <code>aria-valuetext</code> attribute,\n    the <code>aria-valuenow</code> attribute sohuld also be\n    specified.</dd>\n\n    <dd>If the element has the <code>progressbar</code> role and the\n    value is not indeterminate, the <code>aria-valuenow</code>\n    attribute should be specified.  In addition,\n    <code>aria-valuemin</code> and <code>aria-valuemax</code>\n    attributes should be specified, too.</dd>\n\n    <dt>ARIA <code>aria-label</code> attribute</dt>\n\n    <dd>If there are multiple elements with <code>role=toolbar</code>\n    in an element with role <code>application</code>, they must have\n    the <code>aria-label</code> attribute.</dd>\n\n    <dt>ARIA <code>aria-labelledby</code> attribute</dt>\n\n    <dd>If an element has role <code>document</code> or\n    <code>application</code>, the <code>aria-labelledby</code>\n    attribute should be specified to associate the label.</dd>\n\n    </dl>\n  ",
@@ -1197,7 +1209,7 @@ $WebHACC::_Errors = {
                                                 },
           "attribute not defined" => {
                                        "desc" => {
-                                                   "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{8981}\x{7d20}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5c5e}\x{6027}\x{306e}\x{4e00}\x{3064}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{5c5e}\x{6027}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\x{305f}\x{3060}\x{5358}\x{306b}\x{66f8}\x{304d}\x{9593}\x{9055}\x{3048}\x{305f}\x{306e}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>align</code>, <code>alink</code>,\n    <code>allowtransparency</code>, <code>background</code>,\n    <code>bgcolor</code>, <code>border</code>,\n    <code>cellpadding</code>, <code>cellspacing</code>,\n    <code>compact</code>, <code>frameborder</code>,\n    <code>hspace</code>, <code>link</code>, <code>nowrap</code>,\n    <code>text</code>, <code>valign</code>, <code>vlink</code>,\n    <code>vspace</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>property</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>OGP \x{3092}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{308b}\x{306a}\x{3089}\x{3001}\x{3053}\x{306e}\x{30a8}\x{30e9}\x{30fc}\x{306f}\x{7121}\x{8996}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>prefix</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>HTML <code>head</code> \x{8981}\x{7d20} <code>profile</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>profile</code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{308c}\x{306f}\x{6700}\x{65e9}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>a</code> \x{8981}\x{7d20}\x{3001} <code>link</code> \x{8981}\x{7d20}\n    <code>rev</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>rel</code> \x{5c5e}\x{6027}\x{3068}\x{9069}\x{5f53}\x{306a}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n    <code>rev=made</code> \x{3067}\x{306f}\x{306a}\x{304f} <code>rel=author</code>\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt><code>xmlns:<var>*</var></code> \x{5c5e}\x{6027}<!-- in no namespace --></dt>\n\n    <dd>HTML \x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{52b9}\x{679c}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt><code>embed</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>align</code>, <code>border</code>, <code>hspace</code>,\n    <code>vspace</code> \x{5404}\x{5c5e}\x{6027}\x{306f}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    <code>name</code> \x{5c5e}\x{6027}\x{306f}\n    <code>id</code> \x{5c5e}\x{6027}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt><code>img</code> \x{8981}\x{7d20}\n    <code>generator-unable-to-provide-required-alt</code>\n    \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{7279}\x{6b8a}\x{3067}\x{3001}\x{753b}\x{50cf}\x{306e}\x{4ee3}\x{66ff}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3092}\x{3069}\x{3046}\x{3057}\x{3066}\x{3082}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{306a}\x{3044}\x{3068}\x{304d}\x{306b}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{304c}\x{3001}\n    \x{4e0d}\x{9069}\x{5408}\x{3067}\x{3042}\x{308a}\x{53ef}\x{80fd}\x{306a}\x{3089}\x{907f}\x{3051}\x{308b}\x{3079}\x{304d}\x{3082}\x{306e}\x{3067}\x{3059}\x{3002}</dd>\n\n    </dl>\n  "
+                                                   "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{8981}\x{7d20}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5c5e}\x{6027}\x{306e}\x{4e00}\x{3064}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{5c5e}\x{6027}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\x{305f}\x{3060}\x{5358}\x{306b}\x{66f8}\x{304d}\x{9593}\x{9055}\x{3048}\x{305f}\x{306e}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>xmlns:<var>*</var></code> \x{5c5e}\x{6027}<!-- in no namespace --></dt>\n\n    <dd>HTML \x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{52b9}\x{679c}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
                                                  },
                                        "message" => {
                                                       "en" => "The attribute is not allowed",
@@ -2371,14 +2383,24 @@ $WebHACC::_Errors = {
                                         },
           "element not defined" => {
                                      "desc" => {
-                                                 "en" => "\n    <p>The element is not part of the language.  It might be an\n    obsolete element that are no longer part of the language, or it\n    might be simply an authoring error.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>center</code>, <code>marquee</code>,\n    <code>blink</code>, <code>strike</code>, <code>big</code>,\n    <code>font</code>, <code>tt</code>, and <code>nobr</code>\n    elements</dt>\n\n    <dd>These elements are obsolete.  Use CSS instead.</dd>\n\n    <dt>HTML <code>acronym</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>abbr</code> element\n    instead.</dd>\n\n    <dt>HTML <code>dir</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>ul</code> element\n    instead.</dd>\n\n    <dt>HTML <code>rb</code> element</dt>\n\n    <dd>This element is obsolete and redundant.  Use the content\n    directly in the <code>ruby</code> element.</dd>\n\n    <dt>HTML <code>rbc</code> and <code>rtc</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use multiple <code>rt</code>\n    elements and/or nested <code>ruby</code> elements in the\n    <code>ruby</code> element.</dd>\n\n    <dt>HTML <code>applet</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>object</code> element\n    instead.</dd>\n\n    <dt>HTML <code>bgsound</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>audio</code> element\n    instead.</dd>\n\n    <dt>HTML <code>listing</code>, <code>xmp</code>, and\n    <code>plaintext</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use <code>pre</code> and\n    <code>code</code> elements instead.</dd>\n\n    <dt>HTML <code>frameset</code>, <code>frame</code>, and\n    <code>noframes</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use the <code>iframe</code>\n    element instead.</dd>\n\n    <dt><code>g:plusone</code> element</dt>\n\n    <dd>The <code>g:plusone</code> element is non-standard.  To embed\n    the Google +1 Button, use the <code>div</code> element with\n    <code>class=\"g-plusone\"</code>.</dd>\n\n    </dl>\n  ",
-                                                 "ja" => "\n    <p>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a00}\x{8a9e}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{65e2}\x{306b}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{53e4}\x{3044}\x{8981}\x{7d20}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\n    \x{7de8}\x{96c6}\x{4e0a}\x{306e}\x{8aa4}\x{308a}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>center</code>, <code>marquee</code>,\n    <code>blink</code>, <code>strike</code>, <code>big</code>,\n    <code>font</code>, <code>tt</code>, <code>nobr</code>\n    \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4ee3}\x{308f}\x{308a}\x{306b} CSS \x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>acronym</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>abbr</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>dir</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>ul</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>rb</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{5197}\x{9577}\x{306a}\x{306e}\x{3067}\x{5fc5}\x{8981}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5185}\x{5bb9}\x{3092}\x{76f4}\x{63a5} <code>ruby</code> \x{8981}\x{7d20}\x{306b}\x{5165}\x{308c}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>rbc</code> \x{8981}\x{7d20}\x{3001} <code>rtc</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{4e21}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>rt</code> \x{8981}\x{7d20}\x{3092}\x{8907}\x{6570}\x{4f7f}\x{3063}\x{305f}\x{308a}\x{3001}\n    <code>ruby</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b} <code>ruby</code>\n    \x{3092}\x{5165}\x{308c}\x{305f}\x{308a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>applet</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>object</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>bgsound</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>audio</code> \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>listing</code>, <code>xmp</code>,\n    <code>plaintext</code> \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>pre</code> \x{8981}\x{7d20}\x{3068}\n    <code>code</code> \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>frameset</code>, <code>frame</code>,\n    <code>noframes</code> \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>iframe</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt><code>g:plusone</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>g:plusone</code> \x{8981}\x{7d20}\x{306f}\x{975e}\x{6a19}\x{6e96}\x{3067}\x{3059}\x{3002} Google +1\n    \x{30dc}\x{30bf}\x{30f3}\x{3092}\x{57cb}\x{3081}\x{8fbc}\x{3080}\x{306b}\x{306f} <code>div</code> \x{8981}\x{7d20}\x{3092}\n    <code>class=\"g-plusone\"</code> \x{3064}\x{304d}\x{3067}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
+                                                 "en" => "\n    <p>The element is not part of the language.  It might be an\n    obsolete element that are no longer part of the language, or it\n    might be simply an authoring error.</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>g:plusone</code> element</dt>\n\n    <dd>The <code>g:plusone</code> element is non-standard.  To embed\n    the Google +1 Button, use the <code>div</code> element with\n    <code>class=\"g-plusone\"</code>.</dd>\n\n    </dl>\n  ",
+                                                 "ja" => "\n    <p>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a00}\x{8a9e}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{65e2}\x{306b}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{53e4}\x{3044}\x{8981}\x{7d20}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\n    \x{7de8}\x{96c6}\x{4e0a}\x{306e}\x{8aa4}\x{308a}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>g:plusone</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>g:plusone</code> \x{8981}\x{7d20}\x{306f}\x{975e}\x{6a19}\x{6e96}\x{3067}\x{3059}\x{3002} Google +1\n    \x{30dc}\x{30bf}\x{30f3}\x{3092}\x{57cb}\x{3081}\x{8fbc}\x{3080}\x{306b}\x{306f} <code>div</code> \x{8981}\x{7d20}\x{3092}\n    <code>class=\"g-plusone\"</code> \x{3064}\x{304d}\x{3067}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
                                                },
                                      "message" => {
                                                     "en" => "The element is not allowed",
                                                     "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                   }
                                    },
+          "element:obsolete" => {
+                                  "desc" => {
+                                              "en" => "\n    <p>The element is obsolete.  It can no longer be used.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>center</code>, <code>marquee</code>,\n    <code>blink</code>, <code>strike</code>, <code>big</code>,\n    <code>font</code>, <code>tt</code>, and <code>nobr</code>\n    elements</dt>\n\n    <dd>These elements are obsolete.  Use CSS instead.</dd>\n\n    <dt>HTML <code>acronym</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>abbr</code> element\n    instead.</dd>\n\n    <dt>HTML <code>dir</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>ul</code> element\n    instead.</dd>\n\n    <dt>HTML <code>rb</code> element</dt>\n\n    <dd>This element is obsolete and redundant.  Use the content\n    directly in the <code>ruby</code> element.</dd>\n\n    <dt>HTML <code>rbc</code> and <code>rtc</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use multiple <code>rt</code>\n    elements and/or nested <code>ruby</code> elements in the\n    <code>ruby</code> element.</dd>\n\n    <dt>HTML <code>applet</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>object</code> element\n    instead.</dd>\n\n    <dt>HTML <code>bgsound</code> element</dt>\n\n    <dd>This element is obsolete.  Use the <code>audio</code> element\n    instead.</dd>\n\n    <dt>HTML <code>listing</code>, <code>xmp</code>, and\n    <code>plaintext</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use <code>pre</code> and\n    <code>code</code> elements instead.</dd>\n\n    <dt>HTML <code>frameset</code>, <code>frame</code>, and\n    <code>noframes</code> elements</dt>\n\n    <dd>These elements are obsolete.  Use the <code>iframe</code>\n    element instead.</dd>\n\n    </dl>\n  ",
+                                              "ja" => "\n    <p>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{306e}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>center</code>, <code>marquee</code>,\n    <code>blink</code>, <code>strike</code>, <code>big</code>,\n    <code>font</code>, <code>tt</code>, <code>nobr</code>\n    \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4ee3}\x{308f}\x{308a}\x{306b} CSS \x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>acronym</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>abbr</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>dir</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>ul</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>rb</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{5197}\x{9577}\x{306a}\x{306e}\x{3067}\x{5fc5}\x{8981}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5185}\x{5bb9}\x{3092}\x{76f4}\x{63a5} <code>ruby</code> \x{8981}\x{7d20}\x{306b}\x{5165}\x{308c}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>rbc</code> \x{8981}\x{7d20}\x{3001} <code>rtc</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{4e21}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>rt</code> \x{8981}\x{7d20}\x{3092}\x{8907}\x{6570}\x{4f7f}\x{3063}\x{305f}\x{308a}\x{3001}\n    <code>ruby</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b} <code>ruby</code>\n    \x{3092}\x{5165}\x{308c}\x{305f}\x{308a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>applet</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>object</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>bgsound</code> \x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>audio</code> \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>listing</code>, <code>xmp</code>,\n    <code>plaintext</code> \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>pre</code> \x{8981}\x{7d20}\x{3068}\n    <code>code</code> \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>frameset</code>, <code>frame</code>,\n    <code>noframes</code> \x{5404}\x{8981}\x{7d20}</dt>\n\n    <dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002} <code>iframe</code>\n    \x{8981}\x{7d20}\x{3092}\x{304a}\x{4f7f}\x{3044}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
+                                            },
+                                  "message" => {
+                                                 "en" => "This element is obsolete",
+                                                 "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                               }
+                                },
           "email:syntax error" => {
                                     "desc" => {
                                                 "en" => "\n    <p>The value is not a valid e-mail address.</p>\n    <p><code>quoted-string</code> in the <code>local-part</code>,\n    <code>domain-literal</code>, <code>comments</code>, and\n    <code>LWS</code> are not allowed in the address.</p>\n  ",
@@ -2727,6 +2749,32 @@ $WebHACC::_Errors = {
                                                      "attr" => 1
                                                    }
                                     },
+          "img:longnameattr" => {
+                                  "desc" => {
+                                              "en" => "\n    <p>The <code>generator-unable-to-provide-required-alt</code>\n    attribute of the <code>img</code> element is special.  It can be\n    used if there is no way to provide the alternative text to the\n    image, but still the attribute is non-conforming and should not be\n    used whenever possible.</p>\n  ",
+                                              "ja" => "\n    <p><code>img</code> \x{8981}\x{7d20}\x{306e}\n    <code>generator-unable-to-provide-required-alt</code>\n    \x{5c5e}\x{6027}\x{306f}\x{7279}\x{6b8a}\x{3067}\x{3001}\x{753b}\x{50cf}\x{306e}\x{4ee3}\x{66ff}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3092}\x{3069}\x{3046}\x{3057}\x{3066}\x{3082}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{306a}\x{3044}\x{3068}\x{304d}\x{306b}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{304c}\x{3001}\n    \x{4e0d}\x{9069}\x{5408}\x{3067}\x{3042}\x{308a}\x{3001}\x{53ef}\x{80fd}\x{306a}\x{3089}\x{907f}\x{3051}\x{308b}\x{3079}\x{304d}\x{3082}\x{306e}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                            },
+                                  "message" => {
+                                                 "en" => "The <code>generator-unable-to-provide-required-alt</code>\n  attribute is used",
+                                                 "ja" => "<code>generator-unable-to-provide-required-alt</code>\n  \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                               },
+                                  "targets" => {
+                                                 "attr" => 1
+                                               }
+                                },
+          "img:longnameattr:has alt" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>The <code>generator-unable-to-provide-required-alt</code>\n    attribute cannot be used when an <code>alt</code> attribute\n    is specified to the <code>img</code> element.</p>\n  ",
+                                                      "ja" => "\n    <p><code>img</code> \x{8981}\x{7d20}\x{306e}\n    <code>generator-unable-to-provide-required-alt</code>\n    \x{5c5e}\x{6027}\x{306f}\x{3001} <code>alt</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{6642}\x{306b}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
+                                          "message" => {
+                                                         "en" => "Both <code>alt</code> and\n  <code>generator-unable-to-provide-required-alt</code>\n  attributes are specified",
+                                                         "ja" => "<code>alt</code> \x{5c5e}\x{6027}\x{3068}\n  <code>generator-unable-to-provide-required-alt</code>\n  \x{5c5e}\x{6027}\x{304c}\x{4e21}\x{65b9}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                       },
+                                          "targets" => {
+                                                         "attr" => 1
+                                                       }
+                                        },
           "in CDATA:#eof" => {
                                "message" => {
                                               "en" => "Element is not closed before the end of\n  file."
@@ -3082,9 +3130,13 @@ $WebHACC::_Errors = {
                                                        }
                                         },
           "langtag:deprecated" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>Use of the language tag is deprecated, possibly in favor of\n    other language tag.</p>\n  ",
+                                                "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
                                     "message" => {
                                                    "en" => "Use of language tag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->.",
-                                                   "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}\x{3002}"
+                                                   "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                  }
                                   },
           "langtag:extension:duplication" => {
@@ -3092,22 +3144,77 @@ $WebHACC::_Errors = {
                                                            "en" => "\n    <p>\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{306b}\x{540c}\x{3058}1\x{6587}\x{5b57}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3067}\x{59cb}\x{307e}\x{308b}\x{62e1}\x{5f35}\x{304c}\x{8907}\x{6570}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{540c}\x{3058}\x{7a2e}\x{985e}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{62e1}\x{5f35}\x{306f}\x{3001}1\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\x{3067}1\x{56de}\x{3060}\x{3051}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                          },
                                                "message" => {
-                                                              "en" => "There is another extension subtag\n  <code><var>{value}</var></code> in the same language tag.",
-                                                              "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                              "en" => "There is another extension subtag\n  <code><var>{value}</var></code> in the same language tag",
+                                                              "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                             }
                                              },
           "langtag:extension:order" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>Language tag extensions should be ordered in ASCII order.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{306f} ASCII \x{9806}\x{3067}\x{4e26}\x{3079}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "Extension subtag <code><var>{value}</var></code>\n  is placed after subtag <code><var>{text}</var></code>."
+                                                        "en" => "Extension subtag <code><var>{value}</var></code>\n  is placed after subtag <code><var>{text}</var></code>",
+                                                        "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{304c} <code><var>{text}</var></code> \x{3088}\x{308a}\x{5f8c}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                       }
                                        },
+          "langtag:extension:t:case" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>A <code>t</code>-extension subtag contains one or more uppercase\n    letters.  Although language tags are ASCII case-insensitive, the\n    canonical form for <code>t</code>-extension is defined as the \n    lowercase form.</p>\n  ",
+                                                      "ja" => "\n    <p><code>t</code> \x{62e1}\x{5f35}\x{306e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{5927}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} ASCII \x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{3092}\x{533a}\x{5225}\x{3057}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    <code>t</code> \x{62e1}\x{5f35}\x{306e}\x{6b63}\x{6e96}\x{5f62}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                    },
+                                          "message" => {
+                                                         "en" => "The extension subtag is not in lowercase",
+                                                         "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                       }
+                                        },
+          "langtag:extension:t:field:duplication" => {
+                                                       "desc" => {
+                                                                   "en" => "\n    <p>A field cannot be used twice in the <code>t</code> extension\n    component of a language tag.</p>\n  ",
+                                                                   "ja" => "\n    <p>\x{540c}\x{3058}\x{6b04}\x{3092}\x{4e00}\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e} <code>t</code> \x{62e1}\x{5f35}\x{306e}\x{90e8}\x{5206}\x{3067}\x{4e8c}\x{5ea6}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                                 },
+                                                       "message" => {
+                                                                      "en" => "There is another field <code><var>{value}</var></code>\n  in the <code>t</code> extension in the language tag",
+                                                                      "ja" => "\x{6b04} <code><var>{value}</var></code>\n  \x{306f}\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e} <code>t</code> \x{62e1}\x{5f35}\x{3067}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                    }
+                                                     },
+          "langtag:extension:t:field:invalid" => {
+                                                   "desc" => {
+                                                               "en" => "\n    <p>The field must be one of allowed ones.</p>\n  ",
+                                                               "ja" => "\n    <p>\x{6b04}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                             },
+                                                   "message" => {
+                                                                  "en" => "The field is not valid",
+                                                                  "ja" => "\x{3053}\x{306e}\x{6b04}\x{306f}\x{59a5}\x{5f53}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                                }
+                                                 },
+          "langtag:extension:t:field:value:invalid" => {
+                                                         "desc" => {
+                                                                     "en" => "\n    <p>The field value must be one of allowed values.</p>\n  ",
+                                                                     "ja" => "\n    <p>\x{6b04}\x{306e}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                                   },
+                                                         "message" => {
+                                                                        "en" => "The value is not valid for the field\n  <code><var>{text}</var></code>",
+                                                                        "ja" => "\x{3053}\x{308c}\x{306f}\x{6b04} <code><var>{text}</var></code>\n  \x{306e}\x{59a5}\x{5f53}\x{306a}\x{5024}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                                      }
+                                                       },
+          "langtag:extension:t:irregular" => {
+                                               "desc" => {
+                                                           "en" => "\n    <p>A language tag of the <code>irregular</code> category\n    (i.e. <code>en-GB-oed</code>,\n    <code>sgn-be-FR</code>,\n    <code>sgn-be-NL</code>, or\n    <code>sgn-ch-DE</code>)\n    cannot be\n    used in the <code>t</code> extension of the language tag.</p>\n  ",
+                                                           "ja" => "\n    <p><code>irregular</code> \x{306b}\x{5c5e}\x{3059}\x{308b}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\n    (<code>en-GB-oed</code>,\n    <code>sgn-be-FR</code>,\n    <code>sgn-be-NL</code>,\n    <code>sgn-ch-DE</code>)\n    \x{306f} <code>t</code> \x{62e1}\x{5f35}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                         },
+                                               "message" => {
+                                                              "en" => "The language tag cannot be used in <code>t</code>\n  extension",
+                                                              "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} <code>t</code> \x{62e1}\x{5f35}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
+                                                            }
+                                             },
           "langtag:extension:u:attr:duplication" => {
                                                       "desc" => {
                                                                   "en" => "\n    <p>\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{306b}\x{540c}\x{3058}\x{5c5e}\x{6027}\x{304c}\x{8907}\x{6570}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\n    <code>u</code> \x{62e1}\x{5f35}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{3001}\n    1\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\x{3067}\x{305d}\x{308c}\x{305e}\x{308c}1\x{56de}\x{3060}\x{3051}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                                 },
                                                       "message" => {
-                                                                     "en" => "There is another attribute\n  <code><var>{value}</var></code> in the same language tag\n  extension.",
-                                                                     "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                                     "en" => "There is another attribute\n  <code><var>{value}</var></code> in the same language tag\n  extension",
+                                                                     "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                                    }
                                                     },
           "langtag:extension:u:attr:invalid" => {
@@ -3116,8 +3223,8 @@ $WebHACC::_Errors = {
                                                               "ja" => "\n    <p>\x{73fe}\x{6642}\x{70b9}\x{3067} <code>u</code> \x{62e1}\x{5f35}\x{306e}\x{5c5e}\x{6027}\x{306f}1\x{3064}\x{3082}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                             },
                                                   "message" => {
-                                                                 "en" => "Attribute <code><var>{value}</var></code>\n  is not defined.",
-                                                                 "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                                 "en" => "Attribute <code><var>{value}</var></code>\n  is not defined",
+                                                                 "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                                }
                                                 },
           "langtag:extension:u:attr:order" => {
@@ -3126,8 +3233,8 @@ $WebHACC::_Errors = {
                                                             "ja" => "\n    <p>\x{5c5e}\x{6027}\x{304c}\x{8907}\x{6570}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{30a2}\x{30eb}\x{30d5}\x{30a1}\x{30d9}\x{30c3}\x{30c8}\x{9806}\x{306b}\x{4e26}\x{3079}\x{308b}\x{306e}\x{304c}\x{6b63}\x{6e96}\x{5f62}\x{3067}\x{3059}\x{3002}</p>\n  "
                                                           },
                                                 "message" => {
-                                                               "en" => "Attribute <code><var>{value}</var></code>\n  should be placed <em>after</em> <code><var>{text}</var></code>.",
-                                                               "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{306f} <code><var>{text}</var></code> \n  \x{3088}\x{308a}\x{3082}<em>\x{5f8c}</em>\x{306b}\x{6765}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}"
+                                                               "en" => "Attribute <code><var>{value}</var></code>\n  is placed before <code><var>{text}</var></code>.",
+                                                               "ja" => "\x{5c5e}\x{6027} <code><var>{value}</var></code>\n  \x{304c} <code><var>{text}</var></code> \x{306e}\x{524d}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                              }
                                               },
           "langtag:extension:u:case" => {
@@ -3136,8 +3243,8 @@ $WebHACC::_Errors = {
                                                       "ja" => "\n    <p><code>u</code> \x{62e1}\x{5f35}\x{306e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{5927}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} ASCII \x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{3092}\x{533a}\x{5225}\x{3057}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    <code>u</code> \x{62e1}\x{5f35}\x{306e}\x{6b63}\x{6e96}\x{5f62}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
                                                     },
                                           "message" => {
-                                                         "en" => "Extension subtag <code><var>{value}</var></code> is\n  not in the preferred form, i.e. lowercase.",
-                                                         "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code> \n  \x{306f}\x{5c0f}\x{6587}\x{5b57}\x{8868}\x{8a18}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                         "en" => "The extension subtag is not in lowercase",
+                                                         "ja" => "\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "langtag:extension:u:key:duplication" => {
@@ -3145,8 +3252,8 @@ $WebHACC::_Errors = {
                                                                  "en" => "\n    <p>\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{306b}\x{540c}\x{3058}\x{30ad}\x{30fc}\x{304c}\x{8907}\x{6570}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\n    <code>u</code> \x{62e1}\x{5f35}\x{306e}\x{30ad}\x{30fc}\x{306f}\x{3001}\n    1\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\x{3067}\x{305d}\x{308c}\x{305e}\x{308c}1\x{56de}\x{3060}\x{3051}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                                },
                                                      "message" => {
-                                                                    "en" => "There is another key\n  <code><var>{value}</var></code> in the same language tag\n  extension.",
-                                                                    "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                                    "en" => "There is another key\n  <code><var>{value}</var></code> in the same language tag\n  extension",
+                                                                    "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{306f}\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{4e2d}\x{3067}\x{65e2}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                                   }
                                                    },
           "langtag:extension:u:key:invalid" => {
@@ -3155,8 +3262,8 @@ $WebHACC::_Errors = {
                                                              "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30ad}\x{30fc}\x{306f}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{5668}\x{304c}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{308b}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{30fb}\x{30c7}\x{30fc}\x{30bf}\x{30d9}\x{30fc}\x{30b9}\x{306e}\x{69cb}\x{7bc9}\x{306e}\x{6642}\x{70b9}\x{3067}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{30ad}\x{30fc}\x{3092}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                            },
                                                  "message" => {
-                                                                "en" => "Key <code><var>{value}</var></code>\n  is not defined.",
-                                                                "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                                "en" => "Key <code><var>{value}</var></code>\n  is not defined",
+                                                                "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                               }
                                                },
           "langtag:extension:u:key:order" => {
@@ -3165,18 +3272,38 @@ $WebHACC::_Errors = {
                                                            "ja" => "\n    <p>\x{30ad}\x{30fc}\x{304c}\x{8907}\x{6570}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{30a2}\x{30eb}\x{30d5}\x{30a1}\x{30d9}\x{30c3}\x{30c8}\x{9806}\x{306b}\x{4e26}\x{3079}\x{308b}\x{306e}\x{304c}\x{6b63}\x{6e96}\x{5f62}\x{3067}\x{3059}\x{3002}</p>\n  "
                                                          },
                                                "message" => {
-                                                              "en" => "Key <code><var>{value}</var></code>\n  should be placed <em>after</em> <code><var>{text}</var></code>.",
-                                                              "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{306f} <code><var>{text}</var></code> \n  \x{3088}\x{308a}\x{3082}<em>\x{5f8c}</em>\x{306b}\x{6765}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}"
+                                                              "en" => "Key <code><var>{value}</var></code>\n  is placed before <code><var>{text}</var></code>",
+                                                              "ja" => "\x{30ad}\x{30fc} <code><var>{value}</var></code>\n  \x{304c} <code><var>{text}</var></code>  \x{3088}\x{308a}\x{3082}\x{524d}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                             }
                                              },
+          "langtag:extension:u:type:deprecated" => {
+                                                     "desc" => {
+                                                                 "en" => "\n    <p>The type in the <code>U</code> extension of the language tag\n    is deprecated.</p>\n  ",
+                                                                 "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e} <code>U</code> \x{62e1}\x{5f35}\x{306e}\x{3053}\x{306e}\x{578b}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                               },
+                                                     "message" => {
+                                                                    "en" => "The type\n  is deprecated<!-- in favor of {value} (or undef) -->",
+                                                                    "ja" => "\x{3053}\x{306e}\x{578b}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
+                                                                  }
+                                                   },
+          "langtag:extension:u:type:duplication" => {
+                                                      "desc" => {
+                                                                  "en" => "\n    <p>For a key in the <code>U</code> extension of the language tag,\n    the same type can only be specified once.</p>\n  ",
+                                                                  "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e} <code>U</code> \x{62e1}\x{5f35}\x{306e}\x{30ad}\x{30fc}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{540c}\x{3058}\x{578b}\x{306f}\x{4e00}\x{5ea6}\x{3060}\x{3051}\x{3057}\x{304b}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                                },
+                                                      "message" => {
+                                                                     "en" => "The same type for key <code><var>{text}</var></code>\n  is specified twice",
+                                                                     "ja" => "\x{30ad}\x{30fc} <code><var>{text}</var></code>\n  \x{306b}\x{540c}\x{3058}\x{578b}\x{304c}\x{8907}\x{6570}\x{56de}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                   }
+                                                    },
           "langtag:extension:u:type:invalid" => {
                                                   "desc" => {
                                                               "en" => "\n    <p>At the time of construction of the language tag database used\n    by the conformance checker, the specified type is not defined.</p>\n    <p>Undefined type cannot be used in language tags.</p>\n  ",
                                                               "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{578b}\x{306f}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{5668}\x{304c}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{308b}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{30fb}\x{30c7}\x{30fc}\x{30bf}\x{30d9}\x{30fc}\x{30b9}\x{306e}\x{69cb}\x{7bc9}\x{306e}\x{6642}\x{70b9}\x{3067}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{578b}\x{3092}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                             },
                                                   "message" => {
-                                                                 "en" => "Type <code><var>{value}</var></code>\n  is not defined for key <code><var>{text}</var></code>.",
-                                                                 "ja" => "\x{578b} <code><var>{value}</var></code>\n  \x{306f}\x{30ad}\x{30fc} <code><var>{text}</var></code> \n  \x{306b}\x{5bfe}\x{3057}\x{3066}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                                 "en" => "Type <code><var>{value}</var></code>\n  is not defined for key <code><var>{text}</var></code>",
+                                                                 "ja" => "\x{578b} <code><var>{value}</var></code>\n  \x{306f}\x{30ad}\x{30fc} <code><var>{text}</var></code> \n  \x{306b}\x{5bfe}\x{3057}\x{3066}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                                }
                                                 },
           "langtag:extension:u:type:missing" => {
@@ -3185,8 +3312,8 @@ $WebHACC::_Errors = {
                                                               "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e} <code>u</code> \x{62e1}\x{5f35}\x{306e}\x{30ad}\x{30fc}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{578b} (\x{5024})\n    \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002} (\x{305f}\x{3060}\x{3057}\x{30ad}\x{30fc}\x{306b}\x{3088}\x{3063}\x{3066}\x{306f}\x{65e2}\x{5b9a}\x{306e}\x{578b}\n    <code>true</code> \x{3092}\x{7701}\x{7565}\x{3067}\x{304d}\x{308b}\x{3053}\x{3068}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002})</p>\n  "
                                                             },
                                                   "message" => {
-                                                                 "en" => "Type for key <code><var>{text}</var></code>\n  is not specified.",
-                                                                 "ja" => "\x{30ad}\x{30fc} <code><var>{text}</var></code>\n  \x{306e}\x{578b}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                                 "en" => "Type for key <code><var>{text}</var></code>\n  is not specified",
+                                                                 "ja" => "\x{30ad}\x{30fc} <code><var>{text}</var></code>\n  \x{306e}\x{578b}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                                }
                                                 },
           "langtag:extension:u:type:nosemantics" => {
@@ -3200,18 +3327,33 @@ $WebHACC::_Errors = {
                                                                    }
                                                     },
           "langtag:extension:unknown" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>The language tag extension must be registered.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{62e1}\x{5f35}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Extension <code><var>{value}</var></code> is not\n  defined when the conformance checker is written."
+                                                          "en" => "Extension <code><var>{value}</var></code> is not\n  registered",
+                                                          "ja" => "\x{62e1}\x{5f35} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                         }
                                          },
           "langtag:extlang:case" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>Although it is not required, it is considered as a good\n    practice to represent the extension language subtags by lowercase letters.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{62e1}\x{5f35}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{66f8}\x{304f}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "Extended language subtag\n  <code><var>{value}</var></code> is not in the preferred form, i.e. in \n  lowercase."
+                                                     "en" => "The extended language subtag is not in lowercase",
+                                                     "ja" => "\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                    }
                                     },
           "langtag:extlang:deprecated" => {
+                                            "desc" => {
+                                                        "en" => "\n    <p>Use of the extended language subtag is deprecated, possibly in\n    favor of other language or extended language subtag.</p>\n  ",
+                                                        "ja" => "\n    <p>\x{3053}\x{306e}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3084}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
                                             "message" => {
-                                                           "en" => "Use of extended language subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text}\n  language subtag (might be undef) -->."
+                                                           "en" => "Extended language subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text}\n  language subtag (might be undef) -->",
+                                                           "ja" => "\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code> \n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                          }
                                           },
           "langtag:extlang:invalid" => {
@@ -3220,38 +3362,68 @@ $WebHACC::_Errors = {
                                                      "ja" => "\n    <p>\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{306f} IANA \x{306b}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306f}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{5668}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{30fb}\x{30c7}\x{30fc}\x{30bf}\x{30d9}\x{30fc}\x{30b9}\x{306e}\x{69cb}\x{7bc9}\x{306e}\x{6642}\x{70b9}\x{3067}\n    IANA \x{306b}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}</p>\n    <p>\x{307e}\x{305f}\x{3001}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}2\x{3064}\x{76ee}\x{3068}3\x{3064}\x{76ee}\x{306f}\x{73fe}\x{5728}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}1\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\x{3067}1\x{3064}\x{3060}\x{3051}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
                                                    },
                                          "message" => {
-                                                        "en" => "Extended language subtag \n  <code><var>{value}</var></code> is not registered.",
-                                                        "ja" => "\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                        "en" => "Extended language subtag \n  <code><var>{value}</var></code> is not registered",
+                                                        "ja" => "\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                       }
                                        },
           "langtag:extlang:preferred" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>The primary and extended language subtags should be replaced by\n    another single primary language subtag.  Use of extended language\n    subtags is not recommended in general.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3068}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3092}\x{4ed6}\x{306e}\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3067}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    \x{4e00}\x{822c}\x{306b}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{63a8}\x{5968}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "The language subtag and the extended language\n  subtag <code><var>{value}</var></code> should be replaced by the\n  language subtag <code><var>{text}</var></code>.  Use of extended\n  language subtags is not recommended in general."
+                                                          "en" => "Language subtag <code><var>{text}</var></code>\n  is preferred to language subtags <code><var>{value}</var></code>",
+                                                          "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{3088}\x{308a}\x{3082}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{text}</var></code>\n  \x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3067}\x{3059}"
                                                         }
                                          },
           "langtag:extlang:prefix" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The extended language subtag must be used with another primary\n    language subtag.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{3053}\x{306e}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{4ed6}\x{306e}\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3068}\x{7d44}\x{307f}\x{5408}\x{308f}\x{305b}\x{3066}\x{4f7f}\x{308f}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Extended language subtag\n  <code><var>{text}</var></code> is not allowed in the combination with this\n  language (and extended language) subtag(s).  It must be used\n  with <code><var>{value}</var></code>."
+                                                       "en" => "The extended language subtag cannot be used\n  with the primary language subtag (Expected:\n  <code><var>{text}</var></code>)",
+                                                       "ja" => "\x{3053}\x{306e}\x{62e1}\x{5f35}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3068}\x{7d44}\x{307f}\x{5408}\x{308f}\x{305b}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\n  (<code><var>{text}</var></code> \x{304c}\x{9069}\x{5207})"
                                                      }
                                       },
           "langtag:grandfathered:case" => {
+                                            "desc" => {
+                                                        "en" => "\n    <p>Although it is not required, it is desired to represent the\n    region subtag in uppercase, the script subtag in titlecase, and\n    all other components in lowercase.</p>\n  ",
+                                                        "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{3059}\x{304c}\x{3001}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3001}\n    \x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5148}\x{982d}\x{306e}\x{307f}\x{5927}\x{6587}\x{5b57}\x{3001}\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306f}\x{3059}\x{3079}\x{3066}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{8868}\x{3059}\x{306e}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                      },
                                             "message" => {
-                                                           "en" => "Language tag <code><var>{value}</var></code> is\n  not in the preferred case combination."
+                                                           "en" => "The language tag is not in the canonical case",
+                                                           "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f}\x{6b63}\x{6e96}\x{5f62}\x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{4f7f}\x{3044}\x{5206}\x{3051}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                          }
                                           },
           "langtag:grandfathered:deprecated" => {
+                                                  "desc" => {
+                                                              "en" => "\n    <p>Use of the language tag is deprecated, possibly in favor of\n    other language tag.</p>\n  ",
+                                                              "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                            },
                                                   "message" => {
-                                                                 "en" => "Use of language tag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->."
+                                                                 "en" => "Language tag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                                 "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                                }
                                                 },
           "langtag:grandfathered:i-default" => {
+                                                 "desc" => {
+                                                             "en" => "\n    <p>The <code>i-default</code> language tag is prepared for the\n    special purpose.  It should not be used unless no other\n    appropriate value (or missing of the value) is available.</p>\n  ",
+                                                             "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>i-default</code> \x{306f}\x{7279}\x{5225}\x{306a}\x{3082}\x{306e}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n    \x{4ed6}\x{306b}\x{9069}\x{5207}\x{306a}\x{5024}\x{304c}\x{306a}\x{3044} (\x{5024}\x{3092}\x{7701}\x{7565}\x{3082}\x{3067}\x{304d}\x{306a}\x{3044}) \x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                           },
                                                  "message" => {
-                                                                "en" => "Language tag <code><var>i-default</var></code> \n  should not be used unless it is really necessary for some \n  reason."
+                                                                "en" => "Language tag <code>i-default</code> \n  is used",
+                                                                "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>i-default</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                               }
                                                },
           "langtag:grandfathered:invalid" => {
+                                               "desc" => {
+                                                           "en" => "\n    <p>The language tag <em>does</em> conform to the\n    <code>grandfathered</code> syntax of RFC 4646 but it is not a\n    registered grandfathered language tag.  Although the tag might be\n    valid in RFC 3066 age, it is no longer valid in RFC 4646 and not\n    even well-formed in RFC 5646.</p>\n  ",
+                                                           "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} RFC 4646 \x{306e} <code>grandfathered</code>\n    \x{751f}\x{6210}\x{898f}\x{5247}\x{306b}\x{4e00}\x{81f4}\x{306f}\x{3057}\x{3066}\x{3044}\x{308b}\x{306e}\x{3067}\x{3059}\x{304c}\x{3001}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    RFC 3066 \x{306e}\x{6642}\x{4ee3}\x{306b}\x{306f}\x{6b63}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3060}\x{3063}\x{305f}\x{5834}\x{5408}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{304c}\x{3001}\n    RFC 4646 \x{306b}\x{7167}\x{3089}\x{3057}\x{3066}\x{59a5}\x{5f53}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001} RFC 5646 \x{306b}\x{304a}\x{3044}\x{3066}\x{306f}\x{6574}\x{5f62}\x{5f0f}\x{3067}\x{3059}\x{3089}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                         },
                                                "message" => {
-                                                              "en" => "Language tag <code><var>{value}</var></code> is\n  not a combination of RFC 4646 subtags and is not a registered grandfathered\n  tag."
+                                                              "en" => "The language tag is not registered",
+                                                              "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                             }
                                              },
           "langtag:illegal" => {
@@ -3260,8 +3432,8 @@ $WebHACC::_Errors = {
                                              "ja" => "\n    <p>\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} (\x{72ed}\x{7fa9}\x{306e}\x{8a00}\x{8a9e}\x{3092}\x{8868}\x{3059}\x{90e8}\x{5206}) \n    \x{306f}2\x{6587}\x{5b57}\x{304b}3\x{6587}\x{5b57}\x{306e}\x{57fa}\x{672c}\x{30e9}\x{30c6}\x{30f3}\x{6587}\x{5b57} (<code>a</code>\x{301c}<code>z</code>) \n    \x{306e}\x{5217}\x{3067}\x{3042}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002} IANA \x{306b}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{8a00}\x{8a9e}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{306a}\x{3089} \n    <code>x-</code> \x{3092}\x{306f}\x{3058}\x{3081}\x{306b}\x{3064}\x{3051}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p>\x{305d}\x{306e}\x{4ed6}\x{306e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}1\x{6587}\x{5b57}\x{304b}\x{3089}8\x{6587}\x{5b57}\x{306e}\x{82f1}\x{6570}\x{5b57}\n    (<code>0</code>\x{301c}<code>9</code>,\n    <code>a</code>\x{301c}<code>z</code>) \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>RFC 1766 \x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{69cb}\x{6587} (\x{5ec3}\x{6b62}\x{6e08}\x{307f}) \x{3067}\x{306f}\x{6570}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}</p>\n  "
                                            },
                                  "message" => {
-                                                "en" => "Subtag <code><var>{value}</var></code> is \n  syntactically invalid.",
-                                                "ja" => "\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code> \n  \x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                "en" => "The subtag is syntactically illegal",
+                                                "ja" => "\x{3053}\x{306e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               }
                                },
           "langtag:language:case" => {
@@ -3270,51 +3442,88 @@ $WebHACC::_Errors = {
                                                    "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{306f}\x{5927}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3067}\x{306f} ASCII \x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{3092}\x{533a}\x{5225}\x{3057}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3067}\x{306f}\x{5e38}\x{306b}\x{5c0f}\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3046}\x{306e}\x{304c}\x{3088}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "It is a good practice to represent ISO 639\n  language code <code><var>{value}</var></code> in lowercase.",
-                                                      "ja" => "ISO 639 \x{8a00}\x{8a9e}\x{7b26}\x{53f7} <code><var>{value}</var></code>\n  \x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{8868}\x{3059}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                      "en" => "The primary language subtag is not in lowercase",
+                                                      "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                     }
                                      },
           "langtag:language:deprecated" => {
+                                             "desc" => {
+                                                         "en" => "\n    <p>Use of the language subtag is deprecated, possibly in favor of\n    other language subtag.</p>\n  ",
+                                                         "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                       },
                                              "message" => {
-                                                            "en" => "Use of language subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->."
+                                                            "en" => "Primary language subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                            "ja" => "\x{4e00}\x{6b21}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                           }
                                            },
           "langtag:language:invalid" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>The language subtag must be one of registered values.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
                                           "message" => {
-                                                         "en" => "Language subtag <code><var>{value}</var></code>\n  is not registered.",
-                                                         "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                         "en" => "Language subtag <code><var>{value}</var></code>\n  is not registered",
+                                                         "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                        }
                                         },
           "langtag:language:mis" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The <code>mis</code> language tag is prepared for the\n    special purpose.  It should not be used unless no other\n    appropriate value (or missing of the value) is available.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>is</code> \x{306f}\x{7279}\x{5225}\x{306a}\x{3082}\x{306e}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n    \x{4ed6}\x{306b}\x{9069}\x{5207}\x{306a}\x{5024}\x{304c}\x{306a}\x{3044} (\x{5024}\x{3092}\x{7701}\x{7565}\x{3082}\x{3067}\x{304d}\x{306a}\x{3044}) \x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "Langauge subtag <code>mis</code> should not be\n  used."
+                                                     "en" => "Language tag <code>mis</code> \n  is used",
+                                                     "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>mis</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                    }
                                     },
           "langtag:language:mul" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The <code>mul</code> language tag is prepared for the\n    special purpose.  It should not be used unless no other\n    appropriate value (or combination of values) is available.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>mul</code> \x{306f}\x{7279}\x{5225}\x{306a}\x{3082}\x{306e}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n    \x{4ed6}\x{306b}\x{9069}\x{5207}\x{306a}\x{5024} (\x{306e}\x{7d44}\x{307f}\x{5408}\x{308f}\x{305b}) \x{304c}\x{306a}\x{3044}\x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "Langauge subtag <code>mul</code> should not be\n  used unless it is really necessary."
+                                                     "en" => "Language tag <code>mul</code> \n  is used",
+                                                     "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>mul</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                    }
                                     },
           "langtag:language:nosemantics" => {
+                                              "desc" => {
+                                                          "en" => "\n    <p>Semantics of the language tag is not defined.  It is reserved\n    for future extension and should not be used.</p>\n  ",
+                                                          "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{610f}\x{5473}\x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\x{5c06}\x{6765}\x{306e}\x{62e1}\x{5f35}\x{306e}\x{305f}\x{3081}\x{306b}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{306e}\x{3067}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                        },
                                               "message" => {
-                                                             "en" => "No semantics is defined for language subtag\n  <code><var>{value}</var></code>.",
-                                                             "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                             "en" => "No semantics is defined for language subtag\n  <code><var>{value}</var></code>",
+                                                             "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                            }
                                             },
           "langtag:language:private" => {
+                                          "desc" => {
+                                                      "en" => "\n    <p>A private use language code is used, whose semantics might not\n    be conveyed.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{79c1}\x{7528}\x{306e}\x{8a00}\x{8a9e}\x{7b26}\x{53f7}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{305d}\x{306e}\x{610f}\x{5473}\x{306f}\x{6b63}\x{3057}\x{304f}\x{4f1d}\x{308f}\x{3089}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
                                           "message" => {
-                                                         "en" => "Language subtag <code><var>{value}</var></code>\n  is a private use code.",
-                                                         "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{79c1}\x{7528}\x{306e}\x{7b26}\x{53f7}\x{3067}\x{3059}\x{3002}"
+                                                         "en" => "Language subtag <code><var>{value}</var></code>\n  is a private use code",
+                                                         "ja" => "\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{79c1}\x{7528}\x{306e}\x{7b26}\x{53f7}\x{3067}\x{3059}"
                                                        }
                                         },
           "langtag:language:syntax" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>The language subtag must be specified by two basic\n    latin letters.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{57fa}\x{672c}\x{30e9}\x{30c6}\x{30f3}\x{6587}\x{5b57}2\x{3064}\x{3067}\x{8868}\x{3055}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "The language subtag <code><var>{value}</var></code>\n  is syntactically invalid.  Language subtag must contain one or more\n  basic latin characters."
+                                                        "en" => "The language is syntactically invalid",
+                                                        "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                       }
                                        },
           "langtag:language:und" => {
+                                      "desc" => {
+                                                  "en" => "\n    <p>The <code>und</code> language tag is prepared for the\n    special purpose.  It should not be used unless no other\n    appropriate value (or missing of the value) is available.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>und</code> \x{306f}\x{7279}\x{5225}\x{306a}\x{3082}\x{306e}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n    \x{4ed6}\x{306b}\x{9069}\x{5207}\x{306a}\x{5024}\x{304c}\x{306a}\x{3044} (\x{5024}\x{3092}\x{7701}\x{7565}\x{3082}\x{3067}\x{304d}\x{306a}\x{3044}) \x{5834}\x{5408}\x{3092}\x{9664}\x{304d}\x{3001}\n    \x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
                                       "message" => {
-                                                     "en" => "Langauge tag <code>und</code> should not be\n  used unless it is really necessary."
+                                                     "en" => "Language tag <code>und</code> \n  is used",
+                                                     "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code>und</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                    }
                                     },
           "langtag:notregistered" => {
@@ -3323,120 +3532,218 @@ $WebHACC::_Errors = {
                                                    "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} IANA \x{306b}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{672a}\x{767b}\x{9332}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{7981}\x{6b62}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306b}\x{554f}\x{984c}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "Language tag\n  <code><var>{value}</var></code> is not registered.",
-                                                      "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                      "en" => "Language tag\n  <code><var>{value}</var></code> is not registered",
+                                                      "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                     }
                                      },
           "langtag:private" => {
+                                 "desc" => {
+                                             "en" => "\n    <p>Private use tags should be avoided wherever possible to\n    facilitate interoperability.</p>\n  ",
+                                             "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{79c1}\x{7528}\x{30bf}\x{30b0}\x{306f}\x{3067}\x{304d}\x{308b}\x{9650}\x{308a}\x{907f}\x{3051}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                           },
                                  "message" => {
-                                                "en" => "Private use language tag \n  <code><var>{value}</var></code> should be avoided where \n  possible.",
-                                                "ja" => "\x{79c1}\x{7528}\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{3067}\x{304d}\x{308c}\x{3070}\x{907f}\x{3051}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}"
+                                                "en" => "A private use tag is used",
+                                                "ja" => "\x{79c1}\x{7528}\x{30bf}\x{30b0}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                               }
                                },
           "langtag:privateuse" => {
+                                    "desc" => {
+                                                "en" => "\n    <p>Private use subtags should be avoided wherever possible to\n    facilitate interoperability.</p>\n  ",
+                                                "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{79c1}\x{7528}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{3067}\x{304d}\x{308b}\x{9650}\x{308a}\x{907f}\x{3051}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                              },
                                     "message" => {
-                                                   "en" => "Private use subtag <code><var>{value}</var></code>\n  is used."
+                                                   "en" => "A private use subtag is used",
+                                                   "ja" => "\x{79c1}\x{7528}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                  }
                                   },
           "langtag:privateuse:case" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>Although it is not required, it is desired to represent the\n    region subtag in uppercase, the script subtag in titlecase, and\n    all other components in lowercase.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{3059}\x{304c}\x{3001}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3001}\n    \x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5148}\x{982d}\x{306e}\x{307f}\x{5927}\x{6587}\x{5b57}\x{3001}\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306f}\x{3059}\x{3079}\x{3066}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{8868}\x{3059}\x{306e}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "Subtag <code><var>{value}</var></code> is not \n  represented in the preferred case format."
+                                                        "en" => "The language tag is not in the canonical case",
+                                                        "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f}\x{6b63}\x{6e96}\x{5f62}\x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{4f7f}\x{3044}\x{5206}\x{3051}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                       }
                                        },
           "langtag:privateuse:syntax" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>The private use subtag of a language tag must be consist of one\n    or more subtags consist of basic latin letters and digits whose\n    length is in the range 1 to 8, inclusive, prefixed by\n    <code>x-</code>.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{79c1}\x{7528}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{3001} <code>x-</code> \x{306e}\x{5f8c}\x{306b}\x{57fa}\x{672c}\x{30e9}\x{30c6}\x{30f3}\x{6587}\x{5b57}\x{3068}\x{6570}\x{5b57}\n    1\x{301c}8\x{6587}\x{5b57}\x{3067}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}\x{90e8}\x{5206}\x{30bf}\x{30b0}1\x{3064}\x{4ee5}\x{4e0a}\x{304c}\x{7d9a}\x{304f}\x{5f62}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Private use subtag <code><var>{value}</var></code>\n  is syntactically invalid."
+                                                          "en" => "The private use subtag\n  is syntactically invalid",
+                                                          "ja" => "\x{3053}\x{306e}\x{79c1}\x{7528}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                         }
                                          },
           "langtag:redundant:case" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>Although it is not required, it is desired to represent the\n    region subtag in uppercase, the script subtag in titlecase, and\n    all other components in lowercase.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{3059}\x{304c}\x{3001}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3001}\n    \x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5148}\x{982d}\x{306e}\x{307f}\x{5927}\x{6587}\x{5b57}\x{3001}\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306f}\x{3059}\x{3079}\x{3066}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{8868}\x{3059}\x{306e}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Language tag <code><var>{value}</var></code> is\n  not in the preferred case combination."
+                                                       "en" => "The language tag is not in the canonical case",
+                                                       "ja" => "\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f}\x{6b63}\x{6e96}\x{5f62}\x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{4f7f}\x{3044}\x{5206}\x{3051}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
           "langtag:redundant:deprecated" => {
+                                              "desc" => {
+                                                          "en" => "\n    <p>Use of the language tag is deprecated, possibly in favor of\n    other language tag.</p>\n  ",
+                                                          "ja" => "\n    <p>\x{3053}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                        },
                                               "message" => {
-                                                             "en" => "Use of language tag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->."
+                                                             "en" => "Language tag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                             "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                            }
                                             },
           "langtag:region:case" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>Although it is not required, it is considered as a good\n    practice to represent the region subtag by uppercase letters.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3067}\x{66f8}\x{304f}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "It is a good practice to represent ISO 3166\n  country code <code><var>{value}</var></code> in uppercase."
+                                                    "en" => "The region subtag is not in uppercase",
+                                                    "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5927}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                   }
                                    },
           "langtag:region:deprecated" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>Use of the region subtag is deprecated, possibly in favor of\n    other region subtag.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Use of region subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->.",
-                                                          "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\n  <code><var>{value}</var></code> \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}\x{3002}"
+                                                          "en" => "Region subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                          "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                         }
                                          },
           "langtag:region:invalid" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The region subtag must be one of registered values.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Region subtag <code><var>{value}</var></code>\n  is not registered."
+                                                       "en" => "Region subtag <code><var>{value}</var></code>\n  is not registered",
+                                                       "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
           "langtag:region:nosemantics" => {
+                                            "desc" => {
+                                                        "en" => "\n    <p>Semantics of the region subtag is not defined.  It is reserved\n    for future extension and should not be used.</p>\n  ",
+                                                        "ja" => "\n    <p>\x{3053}\x{306e}\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{610f}\x{5473}\x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\x{5c06}\x{6765}\x{306e}\x{62e1}\x{5f35}\x{306e}\x{305f}\x{3081}\x{306b}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{306e}\x{3067}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
                                             "message" => {
-                                                           "en" => "No semantics is defined for region subtag\n  <code><var>{value}</var></code>."
+                                                           "en" => "No semantics is defined for region subtag\n  <code><var>{value}</var></code>",
+                                                           "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306e}\x{610f}\x{5473}\x{306f}\x{5b9a}\x{7fa9}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                          }
                                           },
           "langtag:region:private" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The region subtag must be one of registered values.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Private use country code\n  <code><var>{value}</var></code> should be avoided where\n  possible."
+                                                       "en" => "Region subtag <code><var>{value}</var></code>\n  is not registered",
+                                                       "ja" => "\x{5730}\x{57df}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
           "langtag:script:case" => {
+                                     "desc" => {
+                                                 "en" => "\n    <p>Although it is not required, it is considered as a good\n    practice to represent the script subtag by titlecase.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5148}\x{982d}\x{306e}\x{307f}\x{5927}\x{6587}\x{5b57}\x{3067}\x{3001}\n    \x{4ed6}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{66f8}\x{304f}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                               },
                                      "message" => {
-                                                    "en" => "Script subtag <code><var>{value}</var></code> is \n  not in the preferred form, i.e. titlecase."
+                                                    "en" => "The script subtag is not in titlecase",
+                                                    "ja" => "\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5148}\x{982d}\x{306e}\x{307f}\x{5927}\x{6587}\x{5b57}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                   }
                                    },
           "langtag:script:deprecated" => {
+                                           "desc" => {
+                                                       "en" => "\n    <p>Use of the script subtag is deprecated, possibly in favor of\n    other script subtag.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     },
                                            "message" => {
-                                                          "en" => "Use of script subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->."
+                                                          "en" => "Script subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                          "ja" => "\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                         }
                                          },
           "langtag:script:invalid" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The script subtag must be one of registered values.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Script subtag <code><var>{value}</var></code>\n  is not registered."
+                                                       "en" => "Script subtag <code><var>{value}</var></code>\n  is not registered",
+                                                       "ja" => "\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
           "langtag:script:private" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>A private use script code is used, whose semantics might not\n    be conveyed.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{79c1}\x{7528}\x{306e}\x{7528}\x{5b57}\x{5f62}\x{7b26}\x{53f7}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{305d}\x{306e}\x{610f}\x{5473}\x{306f}\x{6b63}\x{3057}\x{304f}\x{4f1d}\x{308f}\x{3089}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Script subtag <code><var>{value}</var></code>\n  is a private use code."
+                                                       "en" => "Script subtag <code><var>{value}</var></code>\n  is a private use code",
+                                                       "ja" => "\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{79c1}\x{7528}\x{306e}\x{7b26}\x{53f7}\x{3067}\x{3059}"
                                                      }
                                       },
           "langtag:script:suppress" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>The script subtag should be suppressed by the language subtag\n    as it is considered as the default script for the language.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{3053}\x{306e}\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{8a00}\x{8a9e}\x{306e}\x{65e2}\x{5b9a}\x{306e}\x{7528}\x{5b57}\x{5f62}\x{3067}\x{3042}\x{308a}\x{3001}\n    \x{7701}\x{7565}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "Script subtag <code><var>{value}</var></code>\n  should be suppressed when the language subtag is\n  <code><var>{text}</var></code>."
+                                                        "en" => "The script subtag \n  is redundant with language subtag <code><var>{text}</var></code>",
+                                                        "ja" => "\x{7528}\x{5b57}\x{5f62}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{8a00}\x{8a9e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\n  <code><var>{text}</var></code> \x{3068}\x{5197}\x{9577}\x{3067}\x{3059}"
                                                       }
                                        },
           "langtag:variant:case" => {
                                       "desc" => {
-                                                  "en" => "\n    <p>A variant subtag contains one or more uppercase letters.\n    Although language tags are ASCII case-insensitive, the preferred\n    form for variant subtags is defined as the lowercase form.</p>\n  ",
-                                                  "ja" => "\n    <p>\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{5927}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306f} ASCII\n    \x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{3092}\x{533a}\x{5225}\x{3057}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306b}\x{3064}\x{3044}\x{3066}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                                  "en" => "\n    <p>Although it is not required, it is considered as a good\n    practice to represent the variant subtag by lowercase letters.</p>\n  ",
+                                                  "ja" => "\n    <p>\x{5fc5}\x{9808}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{66f8}\x{304f}\x{306e}\x{304c}\x{826f}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
                                                 },
                                       "message" => {
-                                                     "en" => "Variant subtag <code><var>{value}</var></code> is\n  not in the preferred form, i.e. lowercase.",
-                                                     "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code> \n  \x{306f}\x{5c0f}\x{6587}\x{5b57}\x{8868}\x{8a18}\x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                     "en" => "The variant subtag is not in lowercase",
+                                                     "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                    }
                                     },
           "langtag:variant:combination" => {
+                                             "desc" => {
+                                                         "en" => "\n    <p>Certain combinations of variant subtags cannot be used in the\n    same language tag.</p>\n  ",
+                                                         "ja" => "\n    <p>\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{7d44}\x{307f}\x{5408}\x{308f}\x{305b}\x{306b}\x{3088}\x{3063}\x{3066}\x{306f}\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306b}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                       },
                                              "message" => {
-                                                            "en" => "Variant subtag <code><var>{text}</var></code> might\n  not be meaningful when it is used in combination with\n  <code><var>{value}</var></code>."
+                                                            "en" => "Variant subtag <code><var>{text}</var></code> might\n  not be meaningful when it is used in combination with\n  <code><var>{value}</var></code>",
+                                                            "ja" => "\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{text}</var></code> \n  \x{306f} <code><var>{value}</var></code> \x{3068}\x{7d44}\x{307f}\x{5408}\x{308f}\x{305b}\x{308b}\x{3068}\x{610f}\x{5473}\x{304c}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}"
                                                           }
                                            },
           "langtag:variant:deprecated" => {
+                                            "desc" => {
+                                                        "en" => "\n    <p>Use of the variant subtag is deprecated, possibly in favor of\n    other variant subtag.</p>\n  ",
+                                                        "ja" => "\n    <p>\x{3053}\x{306e}\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306e}\x{4f7f}\x{7528}\x{306f}\x{975e}\x{63a8}\x{5968}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{4ed6}\x{306b}\x{3088}\x{308a}\x{597d}\x{307e}\x{3057}\x{3044}\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
                                             "message" => {
-                                                           "en" => "Use of variant subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->."
+                                                           "en" => "Variant subtag\n  <code><var>{value}</var></code> is deprecated<!-- in favor of {text} (might\n  be undef) -->",
+                                                           "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{975e}\x{63a8}\x{5968}\x{3067}\x{3059}"
                                                          }
                                           },
           "langtag:variant:duplication" => {
+                                             "desc" => {
+                                                         "en" => "\n    <p>The same variant subtag cannot be used more than once in a\n    language tag.</p>\n  ",
+                                                         "ja" => "\n    <p>\x{540c}\x{3058}\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{3092}1\x{3064}\x{306e}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\x{3067}\x{8907}\x{6570}\x{56de}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                       },
                                              "message" => {
-                                                            "en" => "Variant subtag <code><var>{value}</var></code>\n  is specified twice in the same language tag."
+                                                            "en" => "The variant subtag\n  is specified twice in the same language tag",
+                                                            "ja" => "\x{3053}\x{306e}\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{540c}\x{3058}\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{4e2d}\x{3067}\x{8907}\x{6570}\x{56de}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                           }
                                            },
           "langtag:variant:invalid" => {
+                                         "desc" => {
+                                                     "en" => "\n    <p>The variant subtag must be one of registered values.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{305f}\x{3082}\x{306e}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
                                          "message" => {
-                                                        "en" => "Variant subtag <code><var>{value}</var></code>\n  is not registered."
+                                                        "en" => "Variant subtag <code><var>{value}</var></code>\n  is not registered",
+                                                        "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f}\x{767b}\x{9332}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                       }
                                        },
           "langtag:variant:order" => {
@@ -3445,13 +3752,18 @@ $WebHACC::_Errors = {
                                                    "ja" => "\n    <p>\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{304c}\x{8907}\x{6570}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{6700}\x{3082}\x{91cd}\x{8981}\x{306a}\x{3082}\x{306e}\x{304c}\x{5148}\x{306b}\x{6765}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    \x{91cd}\x{8981}\x{5ea6}\x{3092}\x{6c7a}\x{3081}\x{3089}\x{308c}\x{306a}\x{3044}\x{6642}\x{306f}\x{3001}\x{30a2}\x{30eb}\x{30d5}\x{30a1}\x{30d9}\x{30c3}\x{30c8}\x{9806}\x{306b}\x{4e26}\x{3079}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
                                                  },
                                        "message" => {
-                                                      "en" => "Variant subtag <code><var>{value}</var></code>\n  should be placed <em>after</em> <code><var>{text}</var></code>.",
-                                                      "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{306f} <code><var>{text}</var></code> \n  \x{3088}\x{308a}\x{3082}<em>\x{5f8c}</em>\x{306b}\x{6765}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}"
+                                                      "en" => "Variant subtag <code><var>{value}</var></code>\n  found before <code><var>{text}</var></code>",
+                                                      "ja" => "\x{7570}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{304c} <code><var>{text}</var></code> \n  \x{3088}\x{308a}\x{3082}\x{524d}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                     }
                                      },
           "langtag:variant:prefix" => {
+                                        "desc" => {
+                                                    "en" => "\n    <p>The variant subtag must be used in combination with the\n    specific sequence of subtags.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{3053}\x{306e}\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{306f}\x{7279}\x{5b9a}\x{306e}\x{90e8}\x{5206}\x{30bf}\x{30b0}\x{5217}\x{3068}\x{4f75}\x{7528}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                         "message" => {
-                                                       "en" => "Variant subtag <code><var>{value}</var></code>\n  cannot be used in this context.  It must be preceded by \n  <code><var>{text}</var></code>"
+                                                       "en" => "Variant subtag <code><var>{value}</var></code>\n  is not used with <code><var>{text}</var></code>",
+                                                       "ja" => "\x{907a}\x{4f53}\x{90e8}\x{5206}\x{30bf}\x{30b0} <code><var>{value}</var></code>\n  \x{304c} <code><var>{text}</var></code> \x{3068}\x{4f75}\x{7528}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                      }
                                       },
           "last resort" => {

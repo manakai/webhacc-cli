@@ -156,6 +156,34 @@ sub print_error ($$$) {
         defined $value ? ' ' . $self->_string ($value) : '',
         $self->_c ('error_type', $message));
   }
+  if (defined $error->{preferred}) {
+    my $pr = $error->{preferred};
+    my $type = $pr->{type};
+    if ($type eq 'html_element') {
+      $self->print (sprintf "  -> HTML <%s> element should be used instead\n", $pr->{name});
+    } elsif ($type eq 'html_attr') {
+      if (defined $pr->{element}) {
+        $self->print (sprintf qq{  -> HTML <%s %s=""> element should be used instead\n}, $pr->{element}, $pr->{name});
+      } else {
+        $self->print (sprintf "  -> %s attribute should be used instead\n", $pr->{name});
+      }
+    } elsif ($type eq 'css_prop') {
+      if (defined $pr->{value}) {
+        $self->print (sprintf "  -> CSS '%s: %s' should be used instead\n", $pr->{name}, $pr->{value});
+      } else {
+        $self->print (sprintf "  -> CSS '%s' property should be used instead\n", $pr->{name});
+      }
+    } elsif ($type eq 'omit') {
+      $self->print ("  -> It is useless so it should be omitted\n");
+    } else {
+      $self->print (sprintf "  -> %s should be used instead\n", {
+        css => 'CSS',
+        math => 'MathML',
+        comment => 'comment syntax',
+        text => 'text',
+      }->{$pr->{type}} // $pr->{type});
+    }
+  } # $error->{preferred}
   $self->print ("\n");
 } # print_error
 

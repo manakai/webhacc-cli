@@ -8,7 +8,7 @@ use JSON;
 sub print_error ($$$) {
   my ($self, $error, $lines) = @_;
   my $e = {};
-  for (qw(line column index value level type text)) {
+  for (qw(line column index value level type text preferred)) {
     $e->{$_} = $error->{$_} if defined $error->{$_};
   }
   # XXX node
