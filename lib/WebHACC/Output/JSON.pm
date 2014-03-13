@@ -42,6 +42,11 @@ sub print_webhacc_data ($$) {
   $self->{data}->{validator}->{timestamp} = $git_data->{at}; # or undef
 } # print_webhacc_data
 
+sub print_cron_lines ($$) {
+  my ($self, $lines) = @_;
+  push @{$self->{data}->{cron_lines} ||= []}, @$lines;
+} # print_cron_lines
+
 sub print_specs ($$) {
   my ($self, $specs) = @_;
   $self->{data}->{specs}->{$_}->{refs} = $specs->{$_}

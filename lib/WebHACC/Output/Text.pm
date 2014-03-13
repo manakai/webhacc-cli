@@ -238,6 +238,11 @@ sub print_webhacc_data ($$) {
   }
 } # print_webhacc_data
 
+sub print_cron_lines ($$) {
+  my ($self, $lines) = @_;
+  $self->print ("$_\x0A") for @$lines;
+} # print_cron_lines
+
 sub print_specs ($$) {
   my ($self, $specs) = @_;
   for my $name (sort { $a cmp $b } keys %$specs) {

@@ -110,6 +110,19 @@ sub get_specs ($) {
   return $all_items;
 } # get_specs
 
+sub get_cron_upgrade_line ($%) {
+  my ($self, %args) = @_;
+  my $webhacc_f = file (__FILE__)->dir->parent->parent->file ('webhacc')->absolute;
+  return join ' ',
+      int rand 60, # minute 0-59
+      int rand 24, # hour 0-23
+      '*', # day 1-31
+      '*', # month 1-12
+      int rand 7, # wday 0-6(7)
+      (defined $args{user} ? quotemeta $args{user} : ()), # user
+      $webhacc_f->stringify, '--upgrade'; # command
+} # get_cron_upgrade_line
+
 1;
 
 =head1 LICENSE
