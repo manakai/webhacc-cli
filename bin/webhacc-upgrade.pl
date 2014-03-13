@@ -37,9 +37,6 @@ if ($orig_rev eq $new_rev) {
 (system "echo '<!DOCTYPE html><title>x</title><p>a</p>' | ./webhacc > /dev/null") or rollback;
 
 warn "webhacc-upgrade: Done (@{[substr $orig_rev, 0, 10]} => @{[substr $new_rev, 0, 10]})\n";
-warn "webhacc-upgrade: Add following line to your crontab:\n\n";
-
-exec "./webhacc", "--generate-cron-lines";
 
 =head1 LICENSE
 
