@@ -5,6 +5,7 @@ use lib file (__FILE__)->dir->parent->parent->subdir ('t_deps', 'lib').'';
 use CommandTest;
 use Test::X1;
 use Test::More;
+use Data::Dumper;
 
 test {
   my $c = shift;
@@ -13,12 +14,13 @@ test {
       sub {
         my $result = shift;
         test {
+          warn Dumper $result unless $result->{status} == 0;
           is $result->{status}, 0;
           done $c;
           undef $c;
         } $c;
       };
-} n => 1, name => '--help';
+} n => 1, name => '--upgrade';
 
 run_tests;
 
