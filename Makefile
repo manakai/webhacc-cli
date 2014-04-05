@@ -5,10 +5,15 @@ all: lib/WebHACC/_Errors.pm
 clean:
 	rm -fr local/errors.json
 
-## ------ Setup ------
-
 WGET = wget
 GIT = git
+
+updatenightly: clean deps all
+	curl https://gist.githubusercontent.com/motemen/667573/raw/git-submodule-track | sh
+	perl local/bin/pmbp.pl --update
+	$(GIT) add lib config modules t_deps/modules
+
+## ------ Setup ------
 
 deps: git-submodules pmbp-install
 

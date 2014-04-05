@@ -21,7 +21,8 @@ sub rollback () {
   die "webhacc-upgrade: rollbacked\n";
 } # rollback
 
-(system 'git', 'checkout', 'master') == 0
+(system 'git', 'checkout', 'master') == 0 or
+(system 'git', 'checkout', '-b', 'master', 'origin/master')
     or die "webhacc-upgrade: git checkout master failed\n";
 (system 'git', 'pull') == 0 or die "webhacc-upgrade: git pull failed\n";
 

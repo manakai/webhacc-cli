@@ -175,6 +175,10 @@ sub print_error ($$$) {
       }
     } elsif ($type eq 'omit') {
       $self->print ("  -> It is useless so it should be omitted\n");
+    } elsif ($type eq 'atom_element') {
+      $self->print (sprintf "  -> Atom <%s> element should be used instead\n", $pr->{name});
+    } elsif ($type eq 'atom_attr') {
+      $self->print (sprintf qq{  -> Atom <%s %s=""> element should be used instead\n}, $pr->{element}, $pr->{name});
     } else {
       $self->print (sprintf "  -> %s should be used instead\n", {
         css => 'CSS',
