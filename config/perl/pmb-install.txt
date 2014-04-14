@@ -20,7 +20,7 @@ Exporter::Lite~0.04
 Data::Dumper~2.151
 Test::Tester~0.109
 Time::HiRes~1.9726
-Exporter~5.68
+Exporter~5.70
 AnyEvent::HTTP~2.15
 Carp~1.3301
 Test::More~1.001003
