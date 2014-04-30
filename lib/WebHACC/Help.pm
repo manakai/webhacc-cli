@@ -87,6 +87,7 @@ sub get_specs ($) {
     'Web::URL::Canonicalize',
     'Web::URL::Checker',
     'Web::RDF::XML::Parser',
+    'Web::RDF::Checker',
     'Web::DateTime',
     'Web::HTML::Table',
     'Web::HTML::Microdata',

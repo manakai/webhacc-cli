@@ -1,5 +1,3 @@
-# -*- Makefile -*-
-
 all: lib/WebHACC/_Errors.pm
 
 clean:
@@ -9,7 +7,7 @@ WGET = wget
 GIT = git
 
 updatenightly: clean deps all
-	curl https://gist.githubusercontent.com/motemen/667573/raw/git-submodule-track | sh
+	curl https://gist.githubusercontent.com/wakaba/34a71d3137a52abb562d/raw/gistfile1.txt | sh
 	perl local/bin/pmbp.pl --update
 	$(GIT) add lib config modules t_deps/modules
 
