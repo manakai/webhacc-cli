@@ -1295,8 +1295,13 @@ $WebHACC::_Errors = {
                                                  }
                                     },
           "bad rdf namespace" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The namespace URL for the RDF Vocabulary must be \n    <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>.</p>\n  ",
+                                           "ja" => "\n    <p>RDF \x{8a9e}\x{5f59}\x{306e}\x{540d}\x{524d}\x{7a7a}\x{9593} URL \x{306f}\n    <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>\n    \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
                                  "message" => {
-                                              "en" => "The namespace URI of an element that\n  represents an RDF concept must be \n  <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>."
+                                              "en" => "The namespace is a wrong RDF namespace URL",
+                                              "ja" => "\x{3053}\x{306e}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306f}\x{3001}\x{8aa4}\x{3063}\x{305f} RDF \x{540d}\x{524d}\x{7a7a}\x{9593} URL \x{3067}\x{3059}"
                                             }
                                },
           "bare ero" => {
@@ -2155,8 +2160,13 @@ $WebHACC::_Errors = {
                                           }
                              },
           "duplicate unqualified attr" => {
+                                          "desc" => {
+                                                    "en" => "\n    <p>There are both an attribute in no namespace and\n    an attribute in the RDF namespace.  Only the attribute\n    in the RDF namespace should be used.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{3068} RDF \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{304c}\x{3001}\n    RDF \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{307f}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                  },
                                           "message" => {
-                                                       "en" => "Both unqualified attribute and namespace\x{2010}qualified\n  RDF attribute are specified, which is not allowed."
+                                                       "en" => "There are same attributes in no namespace\n  and in the RDF namespace",
+                                                       "ja" => "\x{540c}\x{3058}\x{5c5e}\x{6027}\x{304c} null \x{540d}\x{524d}\x{7a7a}\x{9593}\x{3068} RDF\n  \x{540d}\x{524d}\x{7a7a}\x{9593}\x{3068}\x{4e21}\x{65b9}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                      }
                                         },
           "duplicate xattr" => {
@@ -4862,8 +4872,13 @@ $WebHACC::_Errors = {
                                          }
                             },
           "parse type other" => {
+                                "desc" => {
+                                          "en" => "\n    <p>The <code>rdf:parseType</code> attribute value must be\n    <code>Literal</code>, <code>Resource</code>, or\n    <code>Collection</code>.</p>\n  ",
+                                          "ja" => "\n    <p><code>rdf:parseType</code> \x{5c5e}\x{6027}\x{5024}\x{306f}\n    <code>Literal</code>, <code>Resource</code>,\n    <code>Collection</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                        },
                                 "message" => {
-                                             "en" => "An invalid value is specified to \n  the <code>parseType</code> attribute."
+                                             "en" => "An unknown <code>rdf:parseType</code>\n  value is specified",
+                                             "ja" => "\x{672a}\x{77e5}\x{306e} <code>rdf:parseType</code>\n  \x{5c5e}\x{6027}\x{5024}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                            }
                               },
           "pe not declared" => {
@@ -4933,6 +4948,66 @@ $WebHACC::_Errors = {
                                                "en" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{3088}\x{308a}\x{524d}\x{306b} <code><var>{text}</var></code>\n  \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              }
                                 },
+          "rdf vocab:not defined" => {
+                                     "desc" => {
+                                               "en" => "\n    <p>If a URL in an RDF triple or an RDF/XML document belongs to the\n    RDF namespace, it must be defined in the RDF Vocabulary.</p>\n  ",
+                                               "ja" => "\n    <p>RDF \x{4e09}\x{9805}\x{7d44}\x{3084} RDF/XML \x{6587}\x{66f8}\x{306b}\x{542b}\x{307e}\x{308c}\x{308b} URL \x{304c} RDF\n    \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3059}\x{3082}\x{306e}\x{3067}\x{3042}\x{308b}\x{5834}\x{5408}\x{3001} RDF \x{8a9e}\x{5f59}\x{306b}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{308b}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
+                                     "message" => {
+                                                  "en" => "The URL is not part of the RDF Vocabulary",
+                                                  "ja" => "\x{3053}\x{306e} URL \x{306f} RDF \x{8a9e}\x{5f59}\x{306b}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                }
+                                   },
+          "rdf-id:syntax error" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>The value of an <code>rdf:ID</code> or <code>rdf:nodeID</code>\n    attribute must be an XML 1.0 <code>NCName</code>.</p>\n  ",
+                                             "ja" => "\n    <p><code>rdf:ID</code> \x{5c5e}\x{6027}\x{3084} <code>rdf:nodeID</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\n    XML 1.0 \x{306e} <code>NCName</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
+                                   "message" => {
+                                                "en" => "The ID is not an XML NCName",
+                                                "ja" => "\x{3053}\x{306e} ID \x{306f} XML \x{306e} NCName \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                              }
+                                 },
+          "rdf:attr ignored" => {
+                                "desc" => {
+                                          "en" => "\n    <p>In RDF/XML, attributes whose name begins with <code>xml</code>\n    are ignored (except for <code>xml:lang</code>,\n    <code>xml:base</code>, and <code>xmlns</code>).</p>\n  ",
+                                          "ja" => "\n    <p>RDF/XML \x{3067}\x{306f}\x{540d}\x{524d}\x{304c} <code>xml</code> \x{304b}\x{3089}\x{59cb}\x{307e}\x{308b}\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\n    (<code>xml:lang</code>,\n    <code>xml:base</code>, <code>xmlns</code> \x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093})\x{3002}</p>\n  "
+                                        },
+                                "message" => {
+                                             "en" => "The attribute is ignored",
+                                             "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}"
+                                           }
+                              },
+          "rdf:langString:no lang" => {
+                                      "desc" => {
+                                                "en" => "\n    <p>For an RDF literal with datatype <code>rdf:langString</code>, a\n    language tag must be specified.</p>\n  ",
+                                                "ja" => "\n    <p>\x{30c7}\x{30fc}\x{30bf}\x{578b} <code>rdf:langString</code> \x{306e} RDF \x{30ea}\x{30c6}\x{30e9}\x{30eb}\x{306b}\x{306f}\x{8a00}\x{8a9e}\x{30bf}\x{30b0} \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                              },
+                                      "message" => {
+                                                   "en" => "Language tag is not specified",
+                                                   "ja" => "\x{8a00}\x{8a9e}\x{30bf}\x{30b0}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                    },
+          "rdf:unknown datatype" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>Conformance checking of the datatype in use is not supported.\n    The lexical form might or might not be conforming.</p>\n  ",
+                                              "ja" => "\n    <p>\x{3053}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{306e}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{3053}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b57}\x{53e5}\x{5f62}\x{306f}\x{9069}\x{5408}\x{3059}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\n    \x{3057}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
+                                    "message" => {
+                                                 "en" => "Conformance checking of the datatype is not\n  supported",
+                                                 "ja" => "\x{3053}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{306e}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                               }
+                                  },
+          "rdfxml:no root element" => {
+                                      "desc" => {
+                                                "en" => "\n    <p>There must be at least one RDF/XML element.</p>\n  ",
+                                                "ja" => "\n    <p>RDF/XML \x{306e}\x{8981}\x{7d20}\x{304c}\x{3044}\x{304f}\x{3064}\x{304b}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                              },
+                                      "message" => {
+                                                   "en" => "There is no RDF/XML element",
+                                                   "ja" => "RDF/XML \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                    },
           "ref outside of root element" => {
                                            "desc" => {
                                                      "en" => "\n    <p>General entity references are only allowed in attribute values\n    and in element contents.  It cannot be used outside of the root\n    element's start and end tags.</p>\n  ",
@@ -5102,8 +5177,13 @@ $WebHACC::_Errors = {
                                                  }
                                     },
           "second node element" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>In this context, there can be only an RDF/XML node element.</p>\n  ",
+                                             "ja" => "\n    <p>\x{3053}\x{306e}\x{6587}\x{8108}\x{3067}\x{306f} RDF/XML \x{7bc0}\x{70b9}\x{8981}\x{7d20}\x{3092}1\x{3064}\x{3060}\x{3051}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
                                    "message" => {
-                                                "en" => "There is another element, such that\n  this element is not allowed."
+                                                "en" => "There is another RDF/XML node element",
+                                                "ja" => "\x{4ed6}\x{306b}\x{3082} RDF/XML \x{7bc0}\x{70b9}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                               }
                                  },
           "second root element" => {
@@ -5942,13 +6022,23 @@ $WebHACC::_Errors = {
                                           }
                              },
           "unqualified attr" => {
+                                "desc" => {
+                                          "en" => "\n    <p>Attribute in no namespace is not allowed in RDF/XML.</p>\n  ",
+                                          "ja" => "\n    <p>\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3055}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{306f} RDF/XML \x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                        },
                                 "message" => {
-                                             "en" => "Unqualified attribute is not allowed."
+                                             "en" => "The attribute is in no namespace",
+                                             "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                            }
                               },
           "unqualified rdf attr" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>The RDF/XML attributes must be in the RDF namespace\n    <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>.  Some\n    attributes are also in null namespace for compatibility with 1999\n    version of RDF/XML but they should not be used.</p>\n  ",
+                                              "ja" => "\n    <p>RDF/XML \x{306e}\x{5c5e}\x{6027}\x{306f} RDF \x{540d}\x{524d}\x{7a7a}\x{9593}\n    <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>\n    \x{306b}\x{5c5e}\x{3057}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{3044}\x{304f}\x{3064}\x{304b}\x{306e}\x{5c5e}\x{6027}\x{306f} null\n    \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{304c}\x{3001} 1999\x{5e74}\x{7248}\x{306e} RDF/XML \x{3068}\x{306e}\x{4e92}\x{63db}\x{6027}\x{306e}\x{305f}\x{3081}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n    \x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
                                     "message" => {
-                                                 "en" => "RDF attribute should be\n  namespace\x{2010}qualified."
+                                                 "en" => "The attribute is not in the RDF namespace",
+                                                 "ja" => "\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f} RDF \x{540d}\x{524d}\x{7a7a}\x{9593}\x{306b}\x{5c5e}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                }
                                   },
           "url:empty" => {
@@ -6413,6 +6503,26 @@ $WebHACC::_Errors = {
                                                             "en" => "The value is not a non-negative integer",
                                                             "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                           }
+                                             },
+          "xsd:rdf:non-standard datatype" => {
+                                             "desc" => {
+                                                       "en" => "\n    <p>A non-standard datatype is used for an RDF literal.  For\n    interoperability, only standard datatype should be used.</p>\n  ",
+                                                       "ja" => "\n    <p>RDF \x{30ea}\x{30c6}\x{30e9}\x{30eb}\x{306b}\x{975e}\x{6a19}\x{6e96}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{306f}\x{6a19}\x{6e96}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{3060}\x{3051}\x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                     },
+                                             "message" => {
+                                                          "en" => "A non-standard datatype is used",
+                                                          "ja" => "\x{975e}\x{6a19}\x{6e96}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                        }
+                                           },
+          "xsd:rdf:unsuitable" => {
+                                  "desc" => {
+                                            "en" => "\n    <p>An XML Schema datatype that is not RDF-compatible cannot be\n    used in an RDF literal.</p>\n  ",
+                                            "ja" => "\n    <p>XML Schema \x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{306f} RDF \x{4e92}\x{63db}\x{306a}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070} RDF\n    \x{30ea}\x{30c6}\x{30e9}\x{30eb}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
+                                  "message" => {
+                                               "en" => "The datatype is not an RDF-compatible XSD\n  type",
+                                               "ja" => "\x{3053}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{306f} RDF \x{4e92}\x{63db} XSD \x{578b}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              }
+                                }
         };
 
