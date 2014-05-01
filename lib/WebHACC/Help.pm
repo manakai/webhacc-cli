@@ -3,6 +3,7 @@ use strict;
 use warnings;
 our $VERSION = '1.0';
 use Path::Class;
+use Encode;
 
 sub new ($) {
   return bless {}, $_[0];
@@ -33,7 +34,7 @@ sub extract_specs_section_of_f ($$) {
   my $in_section;
   my $extracted = {};
   my $item_name;
-  for ($_[1]->slurp) {
+  for (map { decode 'utf-8', $_ } $_[1]->slurp) {
     if (/^=head1\s+SPECIFICATIONS?\s*$/) {
       $in_section = 1;
     } elsif ($in_section) {
