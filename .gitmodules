@@ -46,3 +46,6 @@
 	path = modules/web-js
 	url = git://github.com/manakai/perl-web-js
 	track = master
+[submodule "modules/json-ps"]
+	path = modules/json-ps
+	url = git://github.com/wakaba/perl-json-ps
