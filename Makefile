@@ -37,9 +37,9 @@ local/errors.json:
 	$(WGET) -O $@ https://raw.github.com/manakai/data-errors/master/data/errors.json
 
 lib/WebHACC/_Errors.pm: local/errors.json Makefile deps
-	$(PERL) -MJSON -MData::Dumper -e ' #\
+	$(PERL) -MJSON::PS -MData::Dumper -e ' #\
           local $$/ = undef; #\
-          $$data = JSON->new->utf8->decode (scalar <>); #\
+          $$data = json_bytes2perl (scalar <>); #\
           $$Data::Dumper::Sortkeys = 1; #\
           $$Data::Dumper::Useqq = 1; #\
           $$pm = Dumper $$data; #\

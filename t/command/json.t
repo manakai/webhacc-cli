@@ -18,7 +18,7 @@ test {
           like $result->{stdout}, qr[^\{];
           like $result->{stdout}, qr{"errors"\s*:};
           like $result->{stdout}, qr[\}$];
-          like $result->{stdout}, qr["is_conforming"\s*:\s*(?:"1"|"")];
+          like $result->{stdout}, qr["is_conforming"\s*:\s*(?:"1"|1)];
           like $result->{stdout}, qr["is_non_conforming"\s*:\s*(?:""|"0"|0)];
           done $c;
           undef $c;
@@ -41,7 +41,7 @@ test {
           like $result->{stdout}, qr{"type"\s*:\s*"child element missing"};
           like $result->{stdout}, qr["m"\s*:\s*"?1"?];
           like $result->{stdout}, qr["is_conforming"\s*:\s*(?:""|"0"|0)];
-          like $result->{stdout}, qr["is_non_conforming"\s*:\s*(?:"1"|"")];
+          like $result->{stdout}, qr["is_non_conforming"\s*:\s*(?:"1"|1)];
           like $result->{stdout}, qr[\}$];
           done $c;
           undef $c;

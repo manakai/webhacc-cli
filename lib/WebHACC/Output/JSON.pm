@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use WebHACC::Output::FH;
 push our @ISA, qw(WebHACC::Output::FH);
-use JSON;
+use JSON::PS;
 
 sub print_error ($$$) {
   my ($self, $error, $lines) = @_;
@@ -18,7 +18,7 @@ sub print_error ($$$) {
 
 sub end_as_cv ($) {
   my $self = $_[0];
-  $self->print (JSON->new->encode ($self->{data} || {}));
+  $self->print (perl2json_chars ($self->{data} || {}));
   return $self->SUPER::end_as_cv;
 } # end_as_cv
 
