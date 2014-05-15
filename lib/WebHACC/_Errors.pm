@@ -1881,64 +1881,163 @@ $WebHACC::_Errors = {
                                             "en" => "There is a <code>--</code> sequence\n  in a comment."
                                           }
                              },
-          "dateortime:syntax error" => {
-                                       "message" => {
-                                                    "en" => "The value is not a date or time.",
-                                                    "ja" => "\x{5024}\x{304c}\x{65e5}\x{4ed8}\x{304b}\x{6642}\x{523b}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                  }
-                                     },
+          "date value not supported" => {
+                                        "desc" => {
+                                                  "en" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{65e5}\x{6642}\x{306e}\x{5024}\x{306f}\x{5927}\x{304d}\x{3059}\x{304e}\x{308b}\x{304b}\x{5c0f}\x{3055}\x{3059}\x{304e}\x{308b}\x{306e}\x{3067}\x{3001}\n    \x{6b63}\x{3057}\x{304f}\x{6271}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\x{3053}\x{306e}\x{5024}\x{306f}\x{9069}\x{5408}\x{3059}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3057}\x{3001}\n    \x{3057}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                },
+                                        "message" => {
+                                                     "en" => "The date/time value is too large or too small",
+                                                     "ja" => "\x{65e5}\x{6642}\x{306e}\x{5024}\x{304c}\x{5927}\x{304d}\x{3059}\x{304e}\x{308b}\x{304b}\x{3001}\x{5c0f}\x{3055}\x{3059}\x{304e}\x{307e}\x{3059}"
+                                                   }
+                                      },
+          "date:syntax error" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The value must be a valid date string.</p>\n\n    <p>In HTML, a date string must be in the format\n    <code><var>YYYY</var>-<var>MM</var>-<var>DD</var></code>.</p>\n  ",
+                                           "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{65e5}\x{4ed8}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{65e5}\x{4ed8}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>YYYY</var>-<var>MM</var>-<var>dd</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "The value is not a date string",
+                                              "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{65e5}\x{4ed8}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            }
+                               },
+          "dateandopttime:syntax error" => {
+                                           "desc" => {
+                                                     "en" => "\n    <p>The value must be a valid date string or a valid global date\n    and time string.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{65e5}\x{4ed8}\x{6587}\x{5b57}\x{5217}\x{304b}\x{59a5}\x{5f53}\x{306a}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                           "message" => {
+                                                        "en" => "The value is not a date string\n  or a global date and time string",
+                                                        "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{65e5}\x{4ed8}\x{6587}\x{5b57}\x{5217}\x{304b}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                      }
+                                         },
+          "datetime-local:syntax error" => {
+                                           "desc" => {
+                                                     "en" => "\n    <p>The value must be a valid local date and time string.</p>\n\n    <p>In HTML, a local date and time string must be in the format\n    <code><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var></code>.</p>\n  ",
+                                                     "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{5730}\x{65b9}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{5730}\x{65b9}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                           "message" => {
+                                                        "en" => "The value is not a local date and time string",
+                                                        "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5730}\x{65b9}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                      }
+                                         },
+          "datetime:-00:00" => {
+                               "desc" => {
+                                         "en" => "\n    <p>The time zone offset cannot be <code>-00:00</code>.</p>\n  ",
+                                         "ja" => "\n    <p>\x{6642}\x{5dee}\x{306f} <code>-00:00</code> \x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "Time zone <code>-00:00</code> is not allowed",
+                                            "ja" => "\x{6642}\x{9593}\x{5e2f} <code>-00:00</code> \x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          }
+                             },
           "datetime:bad day" => {
+                                "desc" => {
+                                          "en" => "\n    <p>The day component must be greater than 0 and less than or equal\n    to the number of days in the month.</p>\n  ",
+                                          "ja" => "\n    <p>\x{65e5}\x{306e}\x{5024}\x{306f}1\x{4ee5}\x{4e0a}\x{3001}\x{5f53}\x{8a72}\x{6708}\x{306e}\x{65e5}\x{6570}\x{4ee5}\x{4e0b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                        },
                                 "message" => {
-                                             "en" => "Day number is out of range.",
-                                             "ja" => "\x{65e5}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                             "en" => "The day is out of range",
+                                             "ja" => "\x{65e5}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                            }
                               },
           "datetime:bad hour" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The hour component must be greater than or equal to 0 and less\n    than 24.</p>\n  ",
+                                           "ja" => "\n    <p>\x{6642}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}24\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
                                  "message" => {
-                                              "en" => "Hour number is out of range.",
-                                              "ja" => "\x{6642}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                              "en" => "The hour is out of range",
+                                              "ja" => "\x{6642}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                             }
                                },
           "datetime:bad minute" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>The minute component must be greater than or equal to 0 and\n    less than 60.</p>\n  ",
+                                             "ja" => "\n    <p>\x{5206}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}60\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
                                    "message" => {
-                                                "en" => "Minute number is out of range.",
-                                                "ja" => "\x{5206}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                                "en" => "The minute is out of range",
+                                                "ja" => "\x{5206}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                               }
                                  },
           "datetime:bad month" => {
+                                  "desc" => {
+                                            "en" => "\n    <p>The month component must be greater than or equal to 1 and less\n    than or equal to 12.</p>\n  ",
+                                            "ja" => "\n    <p>\x{6708}\x{306e}\x{5024}\x{306f}1\x{4ee5}\x{4e0a}12\x{4ee5}\x{4e0b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
                                   "message" => {
-                                               "en" => "Month number is out of range.",
-                                               "ja" => "\x{6708}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                               "en" => "The month is out of range",
+                                               "ja" => "\x{6708}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                              }
                                 },
           "datetime:bad second" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>The second component must be greater than or equal to 0 and\n    less than 60.</p>\n    <p>Leap seconds are not supported.</p>\n  ",
+                                             "ja" => "\n    <p>\x{79d2}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}60\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{958f}\x{79d2}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
                                    "message" => {
-                                                "en" => "Second number is out of range.",
-                                                "ja" => "\x{79d2}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                                "en" => "The second is out of range",
+                                                "ja" => "\x{79d2}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                               }
                                  },
           "datetime:bad timezone hour" => {
+                                          "desc" => {
+                                                    "en" => "\n    <p>The hour component in the time zone offset must be greater than\n    or equal to 0 and less than 24.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{6642}\x{5dee}\x{306e}\x{6642}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}24\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
                                           "message" => {
-                                                       "en" => "Hour number of the timezone component is out of\n  range.",
-                                                       "ja" => "\x{6642}\x{9593}\x{5e2f}\x{306e}\x{90e8}\x{5206}\x{306e}\x{6642}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                                       "en" => "The hour in the time zone is out of\n  range",
+                                                       "ja" => "\x{6642}\x{9593}\x{5e2f}\x{306e}\x{6642}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                                      }
                                         },
           "datetime:bad timezone minute" => {
+                                            "desc" => {
+                                                      "en" => "\n    <p>The minute component in the time zone offset must be greater\n    than or equal to 0 and less than 60.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{6642}\x{5dee}\x{306e}\x{5206}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}60\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
                                             "message" => {
-                                                         "en" => "Minute number of the timezone component is out of\n  range.",
-                                                         "ja" => "\x{6642}\x{9593}\x{5e2f}\x{306e}\x{90e8}\x{5206}\x{306e}\x{5206}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                                         "en" => "The minute in the time zone is out of\n  range",
+                                                         "ja" => "\x{6642}\x{9593}\x{5e2f}\x{306e}\x{5206}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                                        }
                                           },
-          "datetime:bad year" => {
+          "datetime:bad week" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The week component must be greater than 0 and less than or\n    equal to the number of weeks in the year.</p>\n  ",
+                                           "ja" => "\n    <p>\x{9031}\x{306e}\x{5024}\x{306f}1\x{4ee5}\x{4e0a}\x{3001}\x{5f53}\x{8a72}\x{5e74}\x{306e}\x{9031}\x{6570}\x{4ee5}\x{4e0b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
                                  "message" => {
-                                              "en" => "Year number is out of range.",
-                                              "ja" => "\x{5e74}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}\x{3002}"
+                                              "en" => "The week is out of range",
+                                              "ja" => "\x{9031}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                             }
                                },
+          "datetime:bad year" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The year component must be greater than 0.</p>\n  ",
+                                           "ja" => "\n    <p>\x{5e74}\x{306e}\x{5024}\x{306f}\x{6b63}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "The year is out of range",
+                                              "ja" => "\x{5e74}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
+                                            }
+                               },
+          "datetime:fractional second" => {
+                                          "desc" => {
+                                                    "en" => "\n    <p>The second component of a vevent duration string cannot contain\n    a fractional part.</p>\n  ",
+                                                    "ja" => "\n    <p>vEvent \x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{79d2}\x{306e}\x{90e8}\x{5206}\x{306b}\x{306f}\x{3001}\x{5c0f}\x{6570}\x{90e8}\x{3092}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
+                                          "message" => {
+                                                       "en" => "Second component has a fractional part",
+                                                       "ja" => "\x{79d2}\x{306e}\x{5c0f}\x{6570}\x{90e8}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                     }
+                                        },
           "datetime:syntax error" => {
+                                     "desc" => {
+                                               "en" => "\n    <p>The value must be a valid global date and time string.</p>\n\n    <p>In HTML, a global date and time string must be in the format\n    <code><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var><var>zone</var></code>.</p>\n  ",
+                                               "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var><var>zone</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
                                      "message" => {
-                                                  "en" => "The value is not a datetime.",
-                                                  "ja" => "\x{5024}\x{304c}\x{65e5}\x{6642}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                  "en" => "The value is not a global date and time string",
+                                                  "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                 }
                                    },
           "deprecated:attr" => {
@@ -2197,6 +2296,56 @@ $WebHACC::_Errors = {
                                             "en" => "Extended attribute <code><var>{text}</var></code>\n  is already specified."
                                           }
                              },
+          "duration:case" => {
+                             "desc" => {
+                                       "en" => "\n    <p>In a duration string with prefix <code>P</code>, delimiter\n    characters must be in uppercase.</p>\n  ",
+                                       "ja" => "\n    <p><code>P</code> \x{304b}\x{3089}\x{59cb}\x{307e}\x{308b}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3001}\n    \x{533a}\x{5207}\x{308a}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                     },
+                             "message" => {
+                                          "en" => "A delimiter character in the duration is\n  in lowercase",
+                                          "ja" => "\x{6642}\x{9593}\x{306e}\x{533a}\x{5207}\x{308a}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{3059}"
+                                        }
+                           },
+          "duration:html duration" => {
+                                      "desc" => {
+                                                "en" => "\n    <p>The HTML duration string format is not allowed in vEvent,\n    Schema.org, or RDF.</p>\n  ",
+                                                "ja" => "\n    <p>HTML \x{306e}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{5f62}\x{5f0f}\x{306f} vEvent \x{3084} Schema.org \x{3084} RDF\n    \x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                      "message" => {
+                                                   "en" => "HTML's duration string format is used",
+                                                   "ja" => "HTML \x{306e}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{5f62}\x{5f0f}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                 }
+                                    },
+          "duration:months" => {
+                               "desc" => {
+                                         "en" => "\n    <p>In HTML, duration strings cannot contain the number of years\n    and/or months.</p>\n  ",
+                                         "ja" => "\n    <p>HTML \x{3067}\x{306f}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306b}\x{5e74}\x{6570}\x{3084}\x{6708}\x{6570}\x{3092}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "Years or months are specified in the \n  duration",
+                                            "ja" => "\x{5e74}\x{6570}\x{3084}\x{6708}\x{6570}\x{304c}\x{6642}\x{9593}\x{306b}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          }
+                             },
+          "duration:space" => {
+                              "desc" => {
+                                        "en" => "\n    <p>In a duration string with the <code>P</code> prefix, space\n    characters are not allowed.</p>\n  ",
+                                        "ja" => "\n    <p><code>P</code> \x{304b}\x{3089}\x{59cb}\x{307e}\x{308b}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{4e2d}\x{306b}\x{306f}\x{3001}\n    \x{7a7a}\x{767d}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                      },
+                              "message" => {
+                                           "en" => "Spaces are inserted in duration",
+                                           "ja" => "\x{6642}\x{9593}\x{306e}\x{9014}\x{4e2d}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                         }
+                            },
+          "duration:syntax error" => {
+                                     "desc" => {
+                                               "en" => "\n    <p>The value must be a valid duration string.</p>\n  ",
+                                               "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             },
+                                     "message" => {
+                                                  "en" => "The value is not a duration string",
+                                                  "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6642}\x{9593}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                }
+                                   },
           "e4x:syntax error" => {
                                 "message" => {
                                              "en" => "The specified value is not a valid value\n  for the attribute <code>e4x</code>."
@@ -4266,6 +4415,16 @@ $WebHACC::_Errors = {
                                               "en" => "The attribute value is not a valid mode\n  name."
                                             }
                                },
+          "month:syntax error" => {
+                                  "desc" => {
+                                            "en" => "\n    <p>The value must be a valid month string.</p>\n\n    <p>In HTML, a month string must be in the format\n    <code><var>YYYY</var>-<var>MM</var></code>.</p>\n  ",
+                                            "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{6708}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{6708}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>YYYY</var>-<var>MM</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
+                                  "message" => {
+                                               "en" => "The value is not a month string",
+                                               "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6708}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             }
+                                },
           "mq syntax error" => {
                                "message" => {
                                             "en" => "The specified value has a syntax error as a\n  media query."
@@ -5956,6 +6115,16 @@ $WebHACC::_Errors = {
                                           "ja" => "\x{6587}\x{5b57} <code><var>{value}</var></code>\n  \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                         }
                            },
+          "time:syntax error" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The value must be a valid time string.</p>\n\n    <p>In HTML, a time string must be in the format\n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>\n    (where the second component is optional).</p>\n  ",
+                                           "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{6642}\x{523b}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{6642}\x{523b}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093} (\x{79d2}\x{306f}\x{7701}\x{7565}\x{53ef}\x{80fd}\x{3067}\x{3059})\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "The value is not a time string",
+                                              "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6642}\x{523b}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            }
+                               },
           "type not defined" => {
                                 "message" => {
                                              "en" => "Type <code><var>{text}</var></code> is not \n  defined."
@@ -6483,6 +6652,16 @@ $WebHACC::_Errors = {
                                                     "ja" => "<code>--&gt;</code> \x{306e}\x{524d}\x{5f8c}\x{306e}\x{7a7a}\x{767d}\x{304c}\x{629c}\x{3051}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
                                                   }
                                      },
+          "week:syntax error" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The value must be a valid week string.</p>\n\n    <p>In HTML, a week string must be in the format\n    <code><var>YYYY</var>-W<var>ww</var></code>.</p>\n  ",
+                                           "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{9031}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{9031}\x{6587}\x{5b57}\x{5217}\x{306f}\n    <code><var>YYYY</var>-W<var>ww</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "The value is not a week string",
+                                              "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{9031}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            }
+                               },
           "window name:empty" => {
                                  "desc" => {
                                            "en" => "\n    <p>Browsing context names cannnot be the empty string.</p>\n  ",
@@ -6616,6 +6795,16 @@ $WebHACC::_Errors = {
                                           "ja" => "\x{540d}\x{524d}\x{7a7a}\x{9593}\x{63a5}\x{982d}\x{8f9e}\x{306e}\x{5ba3}\x{8a00}\x{306f}\x{53d6}\x{308a}\x{6d88}\x{305b}\x{307e}\x{305b}\x{3093}"
                                         }
                            },
+          "xpath:incompat with node-set" => {
+                                            "desc" => {
+                                                      "en" => "\n    <p>A non-node-set value is specified where a node-set is expected.\n    Values other than node-set cannot be casted to a node-set.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{7bc0}\x{70b9}\x{96c6}\x{5408}\x{3067}\x{306a}\x{3044}\x{5024}\x{304c}\x{7bc0}\x{70b9}\x{96c6}\x{5408}\x{3092}\x{671f}\x{5f85}\x{3059}\x{308b}\x{5834}\x{6240}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{7bc0}\x{70b9}\x{96c6}\x{5408}\x{4ee5}\x{5916}\x{306e}\x{5024}\x{3092}\x{7bc0}\x{70b9}\x{96c6}\x{5408}\x{306b}\x{578b}\x{5909}\x{63db}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
+                                            "message" => {
+                                                         "en" => "The specified value is incompatible with\n  node-set",
+                                                         "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{3092}\x{7bc0}\x{70b9}\x{96c6}\x{5408}\x{306b}\x{5909}\x{63db}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                       }
+                                          },
           "xs:nonNegativeInteger:bad value" => {
                                                "desc" => {
                                                          "en" => "\n    <p>The value must be a non-negative integer.</p>\n\n    <p>The value can be one or more ASCII digits, optionally preceded\n    by a <code>+</code> sign, or a <code>-</code> sign followed by one\n    or more <code>0</code>.</p>\n  ",
@@ -6645,6 +6834,16 @@ $WebHACC::_Errors = {
                                                "en" => "The datatype is not an RDF-compatible XSD\n  type",
                                                "ja" => "\x{3053}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{578b}\x{306f} RDF \x{4e92}\x{63db} XSD \x{578b}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              }
-                                }
+                                },
+          "year:syntax error" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>The value must be a valid year string.</p>\n\n    <p>In HTML, a year string must be a string of four or more digits,\n    greater than zero.</p>\n  ",
+                                           "ja" => "\n    <p>\x{5024}\x{306f}\x{59a5}\x{5f53}\x{306a}\x{5e74}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>HTML \x{3067}\x{306f}\x{5e74}\x{6587}\x{5b57}\x{5217}\x{306f}4\x{6841}\x{4ee5}\x{4e0a}\x{306e}0\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{6570}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "The value is not a year string",
+                                              "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5e74}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            }
+                               }
         };
 
