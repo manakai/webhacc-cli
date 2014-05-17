@@ -89,7 +89,7 @@ sub get_specs ($) {
     'Web::URL::Checker',
     'Web::RDF::XML::Parser',
     'Web::RDF::Checker',
-    'Web::DateTime',
+    'Web::DateTime::Parser',
     'Web::HTML::Table',
     'Web::HTML::Microdata',
     'Regexp::Parser::JavaScript',

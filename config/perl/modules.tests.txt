@@ -1,4 +1,5 @@
 AnyEvent::Util
 Exporter::Lite
 Path::Class
+Path::Tiny
 Test::More
