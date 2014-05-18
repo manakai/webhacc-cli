@@ -1930,6 +1930,15 @@ $WebHACC::_Errors = {
                                             "ja" => "\x{6642}\x{9593}\x{5e2f} <code>-00:00</code> \x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                           }
                              },
+          "datetime:alternative" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>Use of the alternative format in the duration might not be\n    interoperable.</p>\n  ",
+                                              "ja" => "\n    <p>\x{6642}\x{9593}\x{9577}\x{3067}\x{4ee3}\x{66ff}\x{66f8}\x{5f0f}\x{3092}\x{7528}\x{3044}\x{308b}\x{306e}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
+                                    "message" => {
+                                                 "en" => "\x{6642}\x{9593}\x{9577}\x{306e}\x{4ee3}\x{66ff}\x{66f8}\x{5f0f}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                               }
+                                  },
           "datetime:bad day" => {
                                 "desc" => {
                                           "en" => "\n    <p>The day component must be greater than 0 and less than or equal\n    to the number of days in the month.</p>\n  ",
@@ -2020,6 +2029,24 @@ $WebHACC::_Errors = {
                                               "ja" => "\x{5e74}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                             }
                                },
+          "datetime:expanded year" => {
+                                      "desc" => {
+                                                "en" => "\n    <p>The expanded representation of the year (sign followed by four\n    more more digits) might not be interoperable.</p>\n  ",
+                                                "ja" => "\n    <p>\x{5e74}\x{306e}\x{5c55}\x{958b}\x{8868}\x{73fe} (\x{7b26}\x{53f7}\x{306e}\x{5f8c}\x{306b}4\x{6841}\x{4ee5}\x{4e0a}\x{306e}\x{6570}\x{5b57}) \x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                      "message" => {
+                                                   "en" => "\x{5e74}\x{304c}\x{5c55}\x{958b}\x{8868}\x{73fe}\x{3067}\x{3059}"
+                                                 }
+                                    },
+          "datetime:fraction" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>Use of fractional part in the duration string might not be\n    interoperable.</p>\n  ",
+                                           "ja" => "\n    <p>\x{6642}\x{9593}\x{9577}\x{3067}\x{5c0f}\x{6570}\x{90e8}\x{5206}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{306e}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "\x{6642}\x{9593}\x{9577}\x{306b}\x{5c0f}\x{6570}\x{90e8}\x{5206}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                            }
+                               },
           "datetime:fractional second" => {
                                           "desc" => {
                                                     "en" => "\n    <p>The second component of a vevent duration string cannot contain\n    a fractional part.</p>\n  ",
@@ -2028,6 +2055,42 @@ $WebHACC::_Errors = {
                                           "message" => {
                                                        "en" => "Second component has a fractional part",
                                                        "ja" => "\x{79d2}\x{306e}\x{5c0f}\x{6570}\x{90e8}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                     }
+                                        },
+          "datetime:hyphen" => {
+                               "desc" => {
+                                         "en" => "\n    <p>Use of the character <code class=\"charname\">HYPHEN</code> in a\n    date/time representation is not well-supported.  For\n    interoperability, a <code>HYPHEN-MINUS</code> character\n    (<code>-</code>) should be used instead.</p>\n  ",
+                                         "ja" => "\n    <p>\x{65e5}\x{6642}\x{3067}\x{306e} <code class=\"charname\">HYPHEN</code>\n    \x{6587}\x{5b57}\x{306f}\x{3042}\x{307e}\x{308a}\x{5bfe}\x{5fdc}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{306e}\x{3067}\x{3001}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{3001}\n    <code>HYPHEN-MINUS</code> \x{6587}\x{5b57} (<code>-</code>)\n    \x{3092}\x{4f7f}\x{3063}\x{305f}\x{65b9}\x{304c}\x{826f}\x{3055}\x{305d}\x{3046}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "\x{6587}\x{5b57} <code class=\"charname\">HYPHEN</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          }
+                             },
+          "datetime:lowercase designator" => {
+                                             "desc" => {
+                                                       "en" => "\n    <p>Use of lowercase designator in place of uppercase designator\n    is not allowed unless uppercase letters are not available.</p>\n  ",
+                                                       "ja" => "\n    <p>\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{6307}\x{793a}\x{5b50}\x{3092}\x{5927}\x{6587}\x{5b57}\x{306e}\x{6307}\x{793a}\x{5b50}\x{306e}\x{4ee3}\x{308f}\x{308a}\x{306b}\x{4f7f}\x{3063}\x{3066}\x{826f}\x{3044}\x{306e}\x{306f}\x{3001}\n    \x{5927}\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3048}\x{306a}\x{3044}\x{74b0}\x{5883}\x{306e}\x{307f}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                     },
+                                             "message" => {
+                                                          "en" => "\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{6307}\x{793a}\x{5b50}\x{304c}\x{65e5}\x{6642}\x{5185}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                        }
+                                           },
+          "datetime:minus sign" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>Use of the character <code class=\"charname\">MINUS SIGN</code> in a\n    date/time representation is not well-supported.  For\n    interoperability, a <code>HYPHEN-MINUS</code> character\n    (<code>-</code>) should be used instead.</p>\n  ",
+                                             "ja" => "\n    <p>\x{65e5}\x{6642}\x{3067}\x{306e} <code class=\"charname\">MINUS SIGN</code>\n    \x{6587}\x{5b57}\x{306f}\x{3042}\x{307e}\x{308a}\x{5bfe}\x{5fdc}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{306e}\x{3067}\x{3001}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{3001}\n    <code>HYPHEN-MINUS</code> \x{6587}\x{5b57} (<code>-</code>)\n    \x{3092}\x{4f7f}\x{3063}\x{305f}\x{65b9}\x{304c}\x{826f}\x{3055}\x{305d}\x{3046}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                           },
+                                   "message" => {
+                                                "en" => "\x{6587}\x{5b57} <code class=\"charname\">MINUS SIGN</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              }
+                                 },
+          "datetime:pre-gregorio year" => {
+                                          "desc" => {
+                                                    "en" => "\n    <p>A year before introduction of the Gregorian Calendar might not\n    be interoperable.</p>\n  ",
+                                                    "ja" => "\n    <p>\x{30b0}\x{30ec}\x{30b4}\x{30ea}\x{30aa}\x{66a6}\x{5c0e}\x{5165}\x{524d}\x{306e}\x{5e74}\x{53f7}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                  },
+                                          "message" => {
+                                                       "en" => "\x{30b0}\x{30ec}\x{30b4}\x{30ea}\x{30aa}\x{66a6}\x{5c0e}\x{5165}\x{524d}\x{306e}\x{5e74}\x{3067}\x{3059}"
                                                      }
                                         },
           "datetime:syntax error" => {
@@ -2040,6 +2103,16 @@ $WebHACC::_Errors = {
                                                   "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                 }
                                    },
+          "decimal sign:period" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>In ISO 8601-based time formats, <code>,</code> is preferred to\n    <code>.</code> as a decimal separtor.</p>\n  ",
+                                             "ja" => "\n    <p>ISO 8601 \x{306b}\x{57fa}\x{3065}\x{304f}\x{6642}\x{523b}\x{306e}\x{66f8}\x{5f0f}\x{3067}\x{306f}\x{3001}\x{5c0f}\x{6570}\x{70b9}\x{3068}\x{3057}\x{3066} <code>.</code>\n    \x{3088}\x{308a}\x{3082} <code>,</code> \x{304c}\x{597d}\x{307e}\x{3057}\x{3044}\x{3068}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                           },
+                                   "message" => {
+                                                "en" => "A period character is used as a decimal separator",
+                                                "ja" => "\x{30d4}\x{30ea}\x{30aa}\x{30c9}\x{304c}\x{5c0f}\x{6570}\x{70b9}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              }
+                                 },
           "deprecated:attr" => {
                                "message" => {
                                             "en" => "This attribute is deprecated."
@@ -5161,6 +5234,16 @@ $WebHACC::_Errors = {
                                "message" => {
                                             "en" => "The parameter entity is not declared",
                                             "ja" => "\x{3053}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                          }
+                             },
+          "period:not 1<=2" => {
+                               "desc" => {
+                                         "en" => "\n    <p>The start date of the period string must be less than or equal\n    to the end date.</p>\n  ",
+                                         "ja" => "\n    <p>\x{671f}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{958b}\x{59cb}\x{65e5}\x{6642}\x{306f}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{5024}\x{3067}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "The start date is greater than the end date",
+                                            "ja" => "\x{958b}\x{59cb}\x{65e5}\x{6642}\x{304c}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{304f}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
                                           }
                              },
           "pi in pe in decl" => {
