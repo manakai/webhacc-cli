@@ -1939,6 +1939,16 @@ $WebHACC::_Errors = {
                                                  "en" => "\x{6642}\x{9593}\x{9577}\x{306e}\x{4ee3}\x{66ff}\x{66f8}\x{5f0f}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                }
                                   },
+          "datetime:bad CFWS" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>Tokens should be separated by only one <code>U+0020</code>\n    <code class=\"charname\">SPACE</code> character.  Use of other space\n    characters, multiple space characters, and comments should be\n    avoided.</p>\n  ",
+                                           "ja" => "\n    <p>\x{5b57}\x{53e5}\x{9593}\x{306f} <code>U+0020</code>\n    <code class=\"charname\">SPACE</code> \x{6587}\x{5b57}1\x{3064}\x{3060}\x{3051}\x{3067}\x{533a}\x{5207}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    \x{4ed6}\x{306e}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{3084}\x{8907}\x{6570}\x{306e}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{3084}\x{6ce8}\x{91c8}\x{306f}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "Tokens are not separated by only a space",
+                                              "ja" => "\x{5b57}\x{53e5}\x{9593}\x{304c}\x{30b9}\x{30da}\x{30fc}\x{30b9}1\x{6587}\x{5b57}\x{306e}\x{307f}\x{4ee5}\x{5916}\x{3067}\x{533a}\x{5207}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                            }
+                               },
           "datetime:bad day" => {
                                 "desc" => {
                                           "en" => "\n    <p>The day component must be greater than 0 and less than or equal\n    to the number of days in the month.</p>\n  ",
@@ -1981,8 +1991,8 @@ $WebHACC::_Errors = {
                                 },
           "datetime:bad second" => {
                                    "desc" => {
-                                             "en" => "\n    <p>The second component must be greater than or equal to 0 and\n    less than 60.</p>\n    <p>Leap seconds are not supported.</p>\n  ",
-                                             "ja" => "\n    <p>\x{79d2}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}60\x{672a}\x{6e80}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{958f}\x{79d2}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             "en" => "\n    <p>The second component must be greater than or equal to 0 and\n    less than 60.</p>\n    <p>Leap seconds are not supported by most Web date-time\n    formats.</p>\n  ",
+                                             "ja" => "\n    <p>\x{79d2}\x{306e}\x{5024}\x{306f}0\x{4ee5}\x{4e0a}59\x{4ee5}\x{4e0b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{307b}\x{3068}\x{3093}\x{3069}\x{306e} Web \x{306e}\x{65e5}\x{6642}\x{306e}\x{66f8}\x{5f0f}\x{306f}\x{958f}\x{79d2}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                            },
                                    "message" => {
                                                 "en" => "The second is out of range",
@@ -2019,6 +2029,16 @@ $WebHACC::_Errors = {
                                               "ja" => "\x{9031}\x{306e}\x{5024}\x{304c}\x{5024}\x{57df}\x{5916}\x{3067}\x{3059}"
                                             }
                                },
+          "datetime:bad weekday" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>The weekday component of the date must be equal to the day of\n    the week.</p>\n  ",
+                                              "ja" => "\n    <p>\x{65e5}\x{4ed8}\x{306e}\x{66dc}\x{65e5}\x{306e}\x{90e8}\x{5206}\x{306f}\x{305d}\x{306e}\x{65e5}\x{306e}\x{66dc}\x{65e5}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
+                                    "message" => {
+                                                 "en" => "The weekday name is wrong",
+                                                 "ja" => "\x{66dc}\x{65e5}\x{540d}\x{304c}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               }
+                                  },
           "datetime:bad year" => {
                                  "desc" => {
                                            "en" => "\n    <p>The year component must be greater than 0.</p>\n  ",
@@ -2084,6 +2104,16 @@ $WebHACC::_Errors = {
                                                 "en" => "\x{6587}\x{5b57} <code class=\"charname\">MINUS SIGN</code>\n  \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                               }
                                  },
+          "datetime:month:bad case" => {
+                                       "desc" => {
+                                                 "en" => "\n    <p>For interoperability, month names should be in titlecase.</p>\n  ",
+                                                 "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{6708}\x{540d}\x{306e}\x{5148}\x{982d}\x{306e}\x{6587}\x{5b57}\x{306f}\x{5927}\x{6587}\x{5b57}\x{306b}\x{3057}\x{3001}\n    \x{305d}\x{308c}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{306b}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                               },
+                                       "message" => {
+                                                    "en" => "The month name is not titlecased",
+                                                    "ja" => "\x{6708}\x{540d}\x{306e}\x{5148}\x{982d}\x{304c}\x{5927}\x{6587}\x{5b57}\x{3067}\x{305d}\x{308c}\x{4ee5}\x{5916}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                  }
+                                     },
           "datetime:pre-gregorio year" => {
                                           "desc" => {
                                                     "en" => "\n    <p>A year before introduction of the Gregorian Calendar might not\n    be interoperable.</p>\n  ",
@@ -2103,6 +2133,36 @@ $WebHACC::_Errors = {
                                                   "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                 }
                                    },
+          "datetime:tz:bad case" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>For interoperability, time zone names should be in uppercase.</p>\n  ",
+                                              "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{6642}\x{9593}\x{5e2f}\x{540d}\x{306f}\x{5927}\x{6587}\x{5b57}\x{306b}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                            },
+                                    "message" => {
+                                                 "en" => "The time zone name is not in uppercase",
+                                                 "ja" => "\x{6642}\x{9593}\x{5e2f}\x{540d}\x{304c}\x{5927}\x{6587}\x{5b57}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                               }
+                                  },
+          "datetime:tzname" => {
+                               "desc" => {
+                                         "en" => "\n    <p>For interoperability, time zone offset should be specified in\n    <code>+0000</code> format.</p>\n  ",
+                                         "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{6642}\x{5dee}\x{306f} <code>+0000</code> \x{5f62}\x{5f0f}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "The time zone is specified by a name",
+                                            "ja" => "\x{6642}\x{9593}\x{5e2f}\x{304c}\x{540d}\x{524d}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          }
+                             },
+          "datetime:weekday:bad case" => {
+                                         "desc" => {
+                                                   "en" => "\n    <p>For interoperability, weekday names should be in titlecase.</p>\n  ",
+                                                   "ja" => "\n    <p>\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{66dc}\x{65e5}\x{540d}\x{306e}\x{5148}\x{982d}\x{306e}\x{6587}\x{5b57}\x{306f}\x{5927}\x{6587}\x{5b57}\x{306b}\x{3057}\x{3001}\n    \x{305d}\x{308c}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{5c0f}\x{6587}\x{5b57}\x{306b}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                                 },
+                                         "message" => {
+                                                      "en" => "The weekday name is not titlecased",
+                                                      "ja" => "\x{66dc}\x{65e5}\x{540d}\x{306e}\x{5148}\x{982d}\x{304c}\x{5927}\x{6587}\x{5b57}\x{3067}\x{305d}\x{308c}\x{4ee5}\x{5916}\x{304c}\x{5c0f}\x{6587}\x{5b57}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                    }
+                                       },
           "decimal sign:period" => {
                                    "desc" => {
                                              "en" => "\n    <p>In ISO 8601-based time formats, <code>,</code> is preferred to\n    <code>.</code> as a decimal separtor.</p>\n  ",
