@@ -3532,6 +3532,76 @@ $WebHACC::_Errors = {
                                            "ja" => "JavaScript \x{69cb}\x{6587}\x{89e3}\x{6790}\x{30a8}\x{30e9}\x{30fc}: <code><var>{text}</var></code>"
                                          }
                             },
+          "json:bad array sep" => {
+                                  "desc" => {
+                                            "en" => "\n    <p>In a JSON array, items must be separated by a <code>,</code>\n    character.</p>\n  ",
+                                            "ja" => "\n    <p>JSON \x{914d}\x{5217}\x{5185}\x{3067}\x{306f}\x{9805}\x{76ee}\x{540c}\x{58eb}\x{306f} <code>,</code>\n    \x{3067}\x{533a}\x{5207}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
+                                  "message" => {
+                                               "en" => "There is no <code>,</code> between array items",
+                                               "ja" => "\x{914d}\x{5217}\x{306e}\x{9805}\x{76ee}\x{306e}\x{9593}\x{306b} <code>,</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             }
+                                },
+          "json:bad object name" => {
+                                    "desc" => {
+                                              "en" => "\n    <p>In a JSON object, only name/value pairs, where name is a JSON\n    string, are allowed.</p>\n  ",
+                                              "ja" => "\n    <p>JSON \x{30aa}\x{30d6}\x{30b8}\x{30a7}\x{30af}\x{30c8}\x{5185}\x{306b}\x{306f}\x{540d}\x{524d}\x{3068}\x{5024}\x{306e}\x{7d44}\x{3060}\x{3051}\x{3057}\x{304b}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{540d}\x{524d}\x{306f} JSON \x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                            },
+                                    "message" => {
+                                                 "en" => "There is no name for an object member",
+                                                 "ja" => "\x{30aa}\x{30d6}\x{30b8}\x{30a7}\x{30af}\x{30c8}\x{306e}\x{69cb}\x{6210}\x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               }
+                                  },
+          "json:bad object nv sep" => {
+                                      "desc" => {
+                                                "en" => "\n    <p>In a JSON object, name and value must be separated by a\n    <code>:</code> character.</p>\n  ",
+                                                "ja" => "\n    <p>JSON \x{30aa}\x{30d6}\x{30b8}\x{30a7}\x{30af}\x{30c8}\x{5185}\x{306e}\x{540d}\x{524d}\x{3068}\x{5024}\x{306f} <code>:</code>\n    \x{3067}\x{533a}\x{5207}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                              },
+                                      "message" => {
+                                                   "en" => "There is no <code>:</code> between name\n  and value",
+                                                   "ja" => "\x{540d}\x{524d}\x{3068}\x{5024}\x{306e}\x{9593}\x{306b} <code>:</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 }
+                                    },
+          "json:bad object sep" => {
+                                   "desc" => {
+                                             "en" => "\n    <p>In a JSON object, name/value pairs must be separated by a\n    <code>,</code> character.</p>\n  ",
+                                             "ja" => "\n    <p>JSON \x{30aa}\x{30d6}\x{30b8}\x{30a7}\x{30af}\x{30c8}\x{5185}\x{3067}\x{306f}\x{540d}\x{524d}\x{3068}\x{5024}\x{306e}\x{7d44}\x{540c}\x{58eb}\x{306f} <code>,</code>\n    \x{3067}\x{533a}\x{5207}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           },
+                                   "message" => {
+                                                "en" => "There is no <code>,</code> between name/value\n  pairs",
+                                                "ja" => "\x{540d}\x{524d}\x{3068}\x{5024}\x{306e}\x{7d44}\x{540c}\x{58eb}\x{306e}\x{9593}\x{306b} <code>,</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                              }
+                                 },
+          "json:bad string" => {
+                               "desc" => {
+                                         "en" => "\n    <p>The JSON string is syntactically invalid.  It must be enclosed\n    by <code>\"</code> characters.  It cannot contain bare\n    newlines.</p>\n  ",
+                                         "ja" => "\n    <p>\x{3053}\x{306e} JSON \x{6587}\x{5b57}\x{5217}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{6587}\x{5b57}\x{5217}\x{306f} <code>\"</code> \x{3067}\x{56f2}\x{307e}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{6587}\x{5b57}\x{5217}\x{4e2d}\x{306b}\x{6539}\x{884c}\x{3092}\x{305d}\x{306e}\x{307e}\x{307e}\x{66f8}\x{304f}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "The string is broken",
+                                            "ja" => "\x{3053}\x{306e}\x{6587}\x{5b57}\x{5217}\x{306f}\x{58ca}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          }
+                             },
+          "json:bad value" => {
+                              "desc" => {
+                                        "en" => "\n    <p>There is no JSON value where a JSON value is expected.  JSON\n    value is either <code>true</code>, <code>false</code>,\n    <code>null</code>, a number, a string, an array, or an object.</p>\n    <p>Comments are not allowed in JSON.</p>\n  ",
+                                        "ja" => "\n    <p>JSON \x{5024}\x{304c}\x{5fc5}\x{8981}\x{306a}\x{3068}\x{3053}\x{308d}\x{306b} JSON \x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002} JSON\n    \x{5024}\x{306f} <code>true</code>, <code>false</code>,\n    <code>null</code>, \x{6570}\x{5024}\x{3001}\x{6587}\x{5b57}\x{5217}\x{3001}\x{914d}\x{5217}\x{3001}\x{30aa}\x{30d6}\x{30b8}\x{30a7}\x{30af}\x{30c8}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{3059}\x{3002}</p>\n    <p>JSON \x{3067}\x{306f}\x{30b3}\x{30e1}\x{30f3}\x{30c8}\x{306f}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                      },
+                              "message" => {
+                                           "en" => "There is no JSON value",
+                                           "ja" => "JSON \x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                         }
+                            },
+          "json:eof expected" => {
+                                 "desc" => {
+                                           "en" => "\n    <p>There is a garbage after the JSON value.</p>\n    <p>Comments are not allowed in JSON.</p>\n  ",
+                                           "ja" => "\n    <p>JSON \x{5024}\x{306e}\x{5f8c}\x{306b}\x{4f55}\x{304b}\x{3054}\x{307f}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p>JSON \x{3067}\x{306f}\x{30b3}\x{30e1}\x{30f3}\x{30c8}\x{306f}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         },
+                                 "message" => {
+                                              "en" => "There is an invalid character after\n  the JSON value",
+                                              "ja" => "JSON \x{5024}\x{306e}\x{5f8c}\x{306b}\x{304a}\x{304b}\x{3057}\x{306a}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                            }
+                               },
           "lang selector not closed" => {
                                         "message" => {
                                                      "en" => "Argument list of the <code>:lang</code>\n  selector is not closed by a <code>)</code> character."
