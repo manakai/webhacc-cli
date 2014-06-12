@@ -1,4 +1,4 @@
-Net::SSLeay~1.63
+Net::SSLeay~1.64
 Scalar::Util~1.39
 Pod::Usage~1.63
 File::Spec~3.47
