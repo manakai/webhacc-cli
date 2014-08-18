@@ -2,7 +2,7 @@ Net::SSLeay~1.65
 Capture::Tiny~0.25
 Pod::Usage~1.64
 Pod::Text~3.18
-JE~0.061
+JE~0.062
 Test::NoWarnings~1.04
 Encode~2.62
 Time::Zone~2.24
