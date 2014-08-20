@@ -12,6 +12,54 @@ $WebHACC::_Errors = {
                                                                "en" => "<code>(?p{<var>...</var>})</code> is\n  obsolete."
                                                              }
                                                 },
+          "</br>" => {
+                     "default_level" => "m",
+                     "desc" => {
+                               "en" => "<p>A <code>&lt;/br&gt;</code> end tag is not allowed.  It is interpreted\nas a start tag.</p>",
+                               "ja" => "<p><code>&lt;/br&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n<code>&lt;/br&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3068}\x{307f}\x{306a}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                             },
+                     "layer" => "tree-construction",
+                     "message" => {
+                                  "en" => "There is a <code>&lt;/br&gt;</code> end tag",
+                                  "ja" => "<code>&lt;/br&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                },
+                     "modules" => {
+                                  "Web::HTML::Parser::tree_constructor" => 1
+                                },
+                     "parser_error_names" => {
+                                             "in-body-end-br" => 1
+                                           },
+                     "parser_tests" => [
+                                       {
+                                         "index" => 15,
+                                         "input" => "<!DOCTYPE HTML></br>"
+                                       }
+                                     ]
+                   },
+          "</p>" => {
+                    "default_level" => "m",
+                    "desc" => {
+                              "en" => "<p>A <code>&lt;/p&gt;</code> end tag is not allowed unless there is an\nopening <code>p</code> element.  It is interpreted as a start tag.</p>",
+                              "ja" => "<p><code>&lt;/p&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{3001}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b} \n<code>p</code> \x{8981}\x{7d20}\x{3092}\x{9589}\x{3058}\x{308b}\x{6642}\x{4ee5}\x{5916}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n<code>&lt;/p&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3068}\x{307f}\x{306a}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                            },
+                    "layer" => "tree-construction",
+                    "message" => {
+                                 "en" => "There is a <code>&lt;/p&gt;</code> end tag while there is no\nopening <code>p</code> element",
+                                 "ja" => "\x{958b}\x{3044}\x{3066}\x{3044}\x{308b} <code>p</code> \x{8981}\x{7d20}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001} <code>&lt;/p&gt;</code> \n\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                               },
+                    "modules" => {
+                                 "Web::HTML::Parser::tree_constructor" => 1
+                               },
+                    "parser_error_names" => {
+                                            "in-body-end-p" => 1
+                                          },
+                    "parser_tests" => [
+                                      {
+                                        "index" => 21,
+                                        "input" => "<!DOCTYPE HTML><body></p>"
+                                      }
+                                    ]
+                  },
           "<option label value> not empty" => {
                                               "desc" => {
                                                         "en" => "\n    <p>The content of the <code>option</code> element with both\n    <code>label</code> and <code>value</code> attributes must be\n    empty.  No child elements or non-space characters are allowed.</p>\n  ",
@@ -192,14 +240,22 @@ $WebHACC::_Errors = {
                                                        }
                                           },
           "NULL" => {
+                    "default_level" => "m",
                     "desc" => {
-                              "en" => "\n    <p>The <code>U+0000</code> <code class=\"charname\">NULL</code>\n    character must not be used in a document.</p>\n  ",
-                              "ja" => "\n    <p><code>U+0000</code> <code class=\"charname\">NULL</code> \n    \x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                              "en" => "<p>The <code>U+0000</code> <code class=\"charname\">NULL</code>\ncharacter must not be used in a document.</p>",
+                              "ja" => "<p><code>U+0000</code> <code class=\"charname\">NULL</code> \n\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                             },
+                    "layer" => "character-set",
                     "message" => {
                                  "en" => "There is a <code class=\"charname\">NULL</code> character",
                                  "ja" => "<code class=\"charname\">NULL</code> \x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                               }
+                               },
+                    "modules" => {
+                                 "Web::HTML::Parser::tokenizer" => 1
+                               },
+                    "parser_error_names" => {
+                                            "NULL" => 1
+                                          }
                   },
           "Nested quantifiers" => {
                                   "message" => {
@@ -593,12 +649,29 @@ $WebHACC::_Errors = {
                                            }
                               },
           "after head" => {
+                          "default_level" => "m",
                           "desc" => {
-                                    "en" => "\n    <p>A start tag appears after the <code>head</code> element is closed\n    but before the <code>body</code> element is opened.\n    The document is non-conforming.</p>\n  "
+                                    "en" => "<p>There is a start tag of an element that should be a child of the\n<code>head</code> element, or another <code>&lt;head&gt;</code> start\ntag, after the <code>&lt;/head&gt;</code> end tag.\n\n</p><p>Only white space characters and comments are allowed between the\n<code>&lt;/head&gt;</code> end tag and the <code>&lt;body&gt;</code> start\ntag.</p>",
+                                    "ja" => "<p><code>head</code> \x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{3068}\x{306a}\x{308b}\x{3079}\x{304d}\x{8981}\x{7d20}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3001}\n<code>&lt;/head&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}\n\n</p><p><code>&lt;/head&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3068} <code>&lt;body&gt;</code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{9593}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{3068}\x{6ce8}\x{91c8}\x{3057}\x{304b}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                   },
+                          "layer" => "tree-construction",
                           "message" => {
-                                       "en" => "The <code><var>{text}</var></code> element cannot be\n  inserted between <code>head</code> and <code>body</code>\n  elements."
-                                     }
+                                       "en" => "There is a start-tag <code>&lt;<var>{text}</var>&gt;</code> after the\n<code>&lt;/head&gt;</code> end tag",
+                                       "ja" => "\x{958b}\x{59cb}\x{30bf}\x{30b0} <code>&lt;<var>{text}</var>&gt;</code> \x{304c}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\n<code>&lt;/head&gt;</code> \x{3088}\x{308a}\x{5f8c}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tree_constructor" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "after-head-start-b3lmnsstt" => 1,
+                                                  "after-head-start-head" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 22,
+                                              "input" => "<!DOCTYPE html></head><link>"
+                                            }
+                                          ]
                         },
           "after html" => {
                           "desc" => {
@@ -631,6 +704,50 @@ $WebHACC::_Errors = {
                                         "en" => "An extended attribute is not followed by \n  a <code>,</code> character or a <code>]</code> character."
                                       }
                          },
+          "after-after-body-else" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>Nothing other than white space characters and comments are allowed\nafter the end tag of the <code>html</code> element.</p>",
+                                               "ja" => "<p><code>html</code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{306f}\x{3001}\x{7a7a}\x{767d}\x{3068}\x{6ce8}\x{91c8}\x{4ee5}\x{5916}\x{306f}\x{4f55}\x{3082}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "tree-construction",
+                                     "message" => {
+                                                  "en" => "There is a text or tag after the <code>&lt;/html&gt;</code> end tag",
+                                                  "ja" => "<code>&lt;/html&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3084}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::HTML::Parser::tree_constructor" => 1
+                                                },
+                                     "parser_error_names" => {
+                                                             "after-after-body-else" => 1,
+                                                             "after-after-frameset-else" => 1
+                                                           },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 22,
+                                                         "input" => "<!DOCTYPE html></html><p>"
+                                                       }
+                                                     ]
+                                   },
+          "after-body-else" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>Nothing other than the end tag of the <code>html</code> element,\nwhite space characters, and comments are allowed after the end tag of\nthe <code>body</code> element or the outermost <code>frameset</code>\nelement.</p>",
+                                         "ja" => "<p><code>body</code> \x{8981}\x{7d20}\x{3084}\x{6700}\x{5916} <code>frameset</code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{306f}\x{3001}\n<code>html</code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3068}\x{7a7a}\x{767d}\x{3001}\x{6ce8}\x{91c8}\x{4ee5}\x{5916}\x{306f}\x{4f55}\x{3082}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "tree-construction",
+                               "message" => {
+                                            "en" => "There is a text or tag after the end tag of the body element",
+                                            "ja" => "\x{6587}\x{66f8} <code>body</code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3084}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::HTML::Parser::tree_constructor" => 1
+                                          },
+                               "parser_error_names" => {
+                                                       "after-body-else" => 1,
+                                                       "after-frameset-else" => 1
+                                                     }
+                             },
           "an+b not closed" => {
                                "message" => {
                                             "en" => "Argument list of the pseudo-class is\n  not closed by a <code>)</code> character."
@@ -1081,6 +1198,35 @@ $WebHACC::_Errors = {
                                                     "en" => "Extended attribute <code><var>{text}</var></code>\n  is specified for an attribute whose type is not an interface."
                                                   }
                                      },
+          "attr:no =" => {
+                         "default_level" => "m",
+                         "desc" => {
+                                   "en" => "<p>There must be a <code>=</code> character between an attribute name\nand an attribute value.  Characters <code>\"</code> and <code>'</code>\ncannot be used as part of an attribute name or an unquoted attribute\nvalue.</p>",
+                                   "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b}\x{306f}\x{6587}\x{5b57} <code>=</code> \n\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{307e}\x{305f}\x{3001}\x{6587}\x{5b57} <code>\"</code> \x{3084}\x{6587}\x{5b57} <code>'</code>\n\x{3092}\x{5c5e}\x{6027}\x{540d}\x{3084}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                 },
+                         "layer" => "tokenization",
+                         "message" => {
+                                      "en" => "No <code>=</code> between attribute name and value",
+                                      "ja" => "\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b} <code>=</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::HTML::Parser::tokenizer" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "after-attribute-name-0022" => 1,
+                                                 "after-attribute-name-0027" => 1
+                                               },
+                         "parser_tests" => [
+                                           {
+                                             "index" => 24,
+                                             "input" => "<!DOCTYPE html><foo bar \"></foo>"
+                                           },
+                                           {
+                                             "index" => 24,
+                                             "input" => "<!DOCTYPE html><foo bar '></foo>"
+                                           }
+                                         ]
+                       },
           "attr:obsolete" => {
                              "desc" => {
                                        "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{306e}\x{3067}\x{3082}\x{3046}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>align</code>, <code>alink</code>,\n    <code>allowtransparency</code>, <code>background</code>,\n    <code>bgcolor</code>, <code>border</code>,\n    <code>cellpadding</code>, <code>cellspacing</code>,\n    <code>compact</code>, <code>frameborder</code>,\n    <code>hspace</code>, <code>link</code>, <code>nowrap</code>,\n    <code>text</code>, <code>valign</code>, <code>vlink</code>,\n    <code>vspace</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>prefix</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>HTML <code>head</code> \x{8981}\x{7d20} <code>profile</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>profile</code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{308c}\x{306f}\x{6700}\x{65e9}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>a</code> \x{8981}\x{7d20}\x{3001} <code>link</code> \x{8981}\x{7d20}\n    <code>rev</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>rel</code> \x{5c5e}\x{6027}\x{3068}\x{9069}\x{5f53}\x{306a}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n    <code>rev=made</code> \x{3067}\x{306f}\x{306a}\x{304f} <code>rel=author</code>\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt><code>xmlns:<var>*</var></code> \x{5c5e}\x{6027}<!-- in no namespace --></dt>\n\n    <dd>HTML \x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{52b9}\x{679c}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt><code>embed</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>align</code>, <code>border</code>, <code>hspace</code>,\n    <code>vspace</code> \x{5404}\x{5c5e}\x{6027}\x{306f}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    <code>name</code> \x{5c5e}\x{6027}\x{306f}\n    <code>id</code> \x{5c5e}\x{6027}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</dd>\n\n    </dl>\n  "
@@ -1294,17 +1440,89 @@ $WebHACC::_Errors = {
                                            }
                               },
           "bad attribute name" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>An attribute name cannot contain a <code>\"</code> or <code>'</code>\ncharacter, as it is used as a quotation mark of an attribute value.</p>",
+                                            "ja" => "<p><code>\"</code> \x{3084} <code>'</code> \x{306f}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{5f15}\x{7528}\x{7b26}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{308f}\x{308c}\x{308b}\x{306e}\x{3067}\x{3001}\n\x{5c5e}\x{6027}\x{540d}\x{306b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "tokenization",
                                   "message" => {
-                                               "en" => "Attribute name cannot contain characters\n  <code>\"</code>, <code>'</code>, and <code>=</code>."
-                                             }
+                                               "en" => "The attribute name contains a <code>\"</code> or <code>'</code>",
+                                               "ja" => "\x{5c5e}\x{6027}\x{540d}\x{306b} <code>\"</code> \x{3084} <code>'</code> \x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Parser::tokenizer" => 1
+                                             },
+                                  "parser_error_names" => {
+                                                          "attribute-name-0022" => 1,
+                                                          "attribute-name-0027" => 1,
+                                                          "before-attribute-name-0022" => 1,
+                                                          "before-attribute-name-0027" => 1
+                                                        },
+                                  "parser_tests" => [
+                                                    {
+                                                      "index" => 21,
+                                                      "input" => "<!DOCTYPE html><p foo\"aa>"
+                                                    },
+                                                    {
+                                                      "index" => 21,
+                                                      "input" => "<!DOCTYPE html><p foo'aa>"
+                                                    }
+                                                  ]
                                 },
           "bad attribute value" => {
+                                   "default_level" => "m",
                                    "desc" => {
-                                             "en" => "\n    <p>In an unquoted attribute value, a character <code>\"</code>\n    (<code>U+0022</code> <code class=\"charname\">QUOTATION MARK</code>),\n    <code>'</code> (<code>U+0026</code> \n    <code class=\"charname\">APOSTROPHE</code>), or <code>=</code>\n    (<code>U+003D</code> <code class=\"charname\">EQUAL SIGN</code>)\n    is contained.  These characters are not allowed in unquoted attribute\n    values, since they are used to quote attribute values or to separate\n    attribute name and value.</p>\n\n    <p>This error is also raised if one try to use empty attribute\n    value like <code class=\"html bad example\">&lt;foo bar= baz=&gt;</code>;\n    in this example, <code class=\"html bad example\">baz=</code> is\n    treated as an invalid attribute value for the attribute\n    <code class=\"html bad example\">bar</code>, not as another attribute.</p>\n  "
+                                             "en" => "<p>In an unquoted attribute value, characters <code>\"</code>\n(<code>U+0022</code> <code class=\"charname\">QUOTATION MARK</code>),\n<code>'</code> (<code>U+0026</code> <code class=\"charname\">APOSTROPHE</code>), and <code>=</code>\n(<code>U+003D</code> <code class=\"charname\">EQUAL SIGN</code>) are not\nallowed.  To contain these characters in an attribute value, the\nentire attribute value must be quoted by <code>\"</code> or\n<code>'</code>.\n\n</p><p>Note that an unquoted attribute value cannot be the empty string.\nFor example, <code class=\"html bad\nexample\">&lt;foo <mark>bar= baz=</mark>&gt;</code> is\ninterpreted to have a <code>bar</code> attribute whose value is\n<code>bar=</code> (with a parse error as the <code>=</code> character\ncannot be used in an unquoted attribute value).  To represent empty\nattribute value, omit the <code>=</code> character, or explicitly\nspecify an empty quoted string: <code class=\"html bad\nexample\">&lt;foo bar baz=<mark>\"\"</mark>&gt;</code>.</p>",
+                                             "ja" => "<p>\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{3067}\x{306f} <code>\"</code>\n(<code>U+0022</code> <code class=\"charname\">QUOTATION MARK</code>),\n<code>'</code> (<code>U+0026</code> <code class=\"charname\">APOSTROPHE</code>), <code>=</code>\n(<code>U+003D</code> <code class=\"charname\">EQUAL SIGN</code>)\n\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{3053}\x{308c}\x{3089}\x{3092}\x{542b}\x{3081}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001}\n\x{5168}\x{4f53}\x{3092} <code>\"</code> \x{3084} <code>'</code> \x{3067}\x{62ec}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{306a}\x{304a}\x{3001}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n<code class=\"html bad\nexample\">&lt;foo <mark>bar= baz=</mark>&gt;</code>\n\x{306f} <code>bar</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{304c} <code>bar=</code> (\x{3067}\x{3001} <code>=</code>\n\x{3092}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{306a}\x{3044}\x{305f}\x{3081}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{30a8}\x{30e9}\x{30fc})\n\x{3068}\x{89e3}\x{91c8}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}\x{5c5e}\x{6027}\x{5024}\x{304c}\x{7a7a}\x{3067}\x{3042}\x{308b}\x{3053}\x{3068}\x{3092}\x{8868}\x{3059}\x{306b}\x{306f}\x{3001} <code class=\"html bad\nexample\">&lt;foo bar baz=<mark>\"\"</mark>&gt;</code>\n\x{306e}\x{3088}\x{3046}\x{306b} <code>=</code> \x{3092}\x{7701}\x{7565}\x{3059}\x{308b}\x{304b}\x{3001}\x{5f15}\x{7528}\x{7b26}\x{3092}\x{660e}\x{793a}\x{3059}\x{308b}\x{304b}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                            },
+                                   "layer" => "tokenization",
                                    "message" => {
-                                                "en" => "Attribute value must be quoted by <code>\"</code>\n  or <code>'</code> if it contains a <code>\"</code>, <code>'</code>, or\n  <code>=</code> character."
-                                              }
+                                                "en" => "An unquoted attribute value contains <code>\"</code>, <code>'</code>,\n<code>`</code>, or <code>=</code>",
+                                                "ja" => "\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b} <code>\"</code>, <code>'</code>,\n<code>`</code>, <code>=</code> \x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Parser::tokenizer" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "attribute-value-unquoted-0022" => 1,
+                                                           "attribute-value-unquoted-0027" => 1,
+                                                           "attribute-value-unquoted-003d" => 1,
+                                                           "attribute-value-unquoted-0060" => 1,
+                                                           "before-attribute-value-003d" => 1,
+                                                           "before-attribute-value-003e" => 1,
+                                                           "before-attribute-value-0060" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 25,
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar\">"
+                                                     },
+                                                     {
+                                                       "index" => 25,
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar'>"
+                                                     },
+                                                     {
+                                                       "index" => 25,
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar`>"
+                                                     },
+                                                     {
+                                                       "index" => 25,
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar=>"
+                                                     },
+                                                     {
+                                                       "index" => 22,
+                                                       "input" => "<!DOCTYPE HTML><p foo=`>"
+                                                     },
+                                                     {
+                                                       "index" => 22,
+                                                       "input" => "<!DOCTYPE HTML><p foo==>"
+                                                     },
+                                                     {
+                                                       "index" => 26,
+                                                       "input" => "<!DOCTYPE HTML><p foo= bar=>"
+                                                     }
+                                                   ]
                                  },
           "bad character encoding" => {
                                       "desc" => {
@@ -1335,28 +1553,84 @@ $WebHACC::_Errors = {
                                    }
                       },
           "bare etago" => {
+                          "default_level" => "m",
                           "desc" => {
-                                    "en" => "\n    <p>There is a <code>&lt;</code> (<code>U+003C</code> \n    <code class=\"charname\">LESS-THAN SIGN</code>) character\n    immediately followed by a <code>/</code> (<code>U+005F</code>\n    <code>SOLIDUS</code>) character, which is not part\n    of any end tag, in the input stream.  The document\n    is non-conforming.</p>\n\n    <p>The <code>&lt;/</code> sequence immediately followed\n    by an <abbr title=\"End of file pseudo-character\">EOF</abbr> is\n    interpreted as a string data of <code>&lt;/</code>.</p>\n\n    <p>The <code>&lt;/</code> sequence as string data must\n    be escaped as:\n    </p>\n    <pre class=\"html example\">\n<code>&amp;lt;/</code></pre>\n  "
+                                    "en" => "<p>There is a <code>&lt;</code> (<code>U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) character immediately followed\nby a <code>/</code> (<code>U+005F</code> <code>SOLIDUS</code>)\ncharacter, which is not followed by a tag name.\n\n</p><p>To represent a string <code>&lt;/</code>, the <code>&lt;</code>\ncharacter must be escaped as <code>&amp;lt;</code>.</p>",
+                                    "ja" => "<p><code>&lt;</code> (<code>U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) \x{306e}\x{5f8c}\x{306b}\n<code>/</code> (<code>U+005F</code> <code>SOLIDUS</code>)\n\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{304c}\x{3001}\x{305d}\x{306e}\x{5f8c}\x{306b}\x{30bf}\x{30b0}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p><code>&lt;/</code> \x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{5217}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001} <code>&lt;</code>\n\x{3092} <code>&amp;lt;</code> \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                   },
+                          "layer" => "tokenization",
                           "message" => {
-                                       "en" => "A <code>&lt;/</code> string is not followed\n  by a tag name."
-                                     }
+                                       "en" => "The <code>&lt;/</code> is not followed by a tag name",
+                                       "ja" => "<code>&lt;/</code> \x{306e}\x{5f8c}\x{306b}\x{30bf}\x{30b0}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tokenizer" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "end-tag-open-else" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 17,
+                                              "input" => "<!DOCTYPE HTML></!?>"
+                                            }
+                                          ]
                         },
           "bare hcro" => {
+                         "default_level" => "m",
                          "desc" => {
-                                   "en" => "\n   <p>The string <code>&amp;#x</code> or <code>&amp;#X</code> which\n   is not part of any reference appears in the input stream.\n    The document is non-conforming.</p>\n\n    <p>The string <code>&amp;#x</code> or <code>&amp;#X</code> must\n    be the first three characters of a hexadecimal reference:\n      <pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n    where <var>h</var> is the hexadecimal representation\n    of the code point of the character to be referenced.</p>\n\n    <p>To represent <code>&amp;#x</code> as data characters, use\n    a named entity reference for the <code>&amp;</code> character:\n      <pre class=\"html example\">\n<code>&amp;amp;#x</code></pre>\n    </p>\n  "
+                                   "en" => "<p>The string <code>&amp;#x</code> is used to introduce a hexadecimal\ncharacter reference.  It must be followed by a hexadecimal number,\nrepresenting the code point of a character, followed by a\n<code>;</code> character.\n\n</p><p>To represent a string <code>&amp;#x</code>, the <code>&amp;</code>\ncharacter must be escaped as <code>&amp;amp;</code>.</p>",
+                                   "ja" => "<p>\x{6587}\x{5b57}\x{5217} <code>&amp;#x</code> \x{306f}\x{5341}\x{516d}\x{9032}\x{6570}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{8868}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n\x{305d}\x{306e}\x{5f8c}\x{306b}\x{306f}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3092}\x{8868}\x{3059}\x{5341}\x{516d}\x{9032}\x{6570}\x{3068} <code>;</code> \n\x{304c}\x{7d9a}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p><code>&amp;#x</code> \x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{5217}\x{81ea}\x{4f53}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001} <code>&amp;</code>\n\x{306f} <code>&amp;amp;</code> \x{3068}\x{66f8}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                  },
+                         "layer" => "tokenization",
                          "message" => {
-                                      "en" => "The hexadecimal representation of the code position\n  of a character must be specified after <code>&amp;#x</code>."
-                                    }
+                                      "en" => "There is an <code>&amp;#x</code> not followed by a code point number",
+                                      "ja" => "<code>&amp;#x</code> \x{306e}\x{5f8c}\x{306b}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{6570}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::HTML::Parser::tokenizer" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "character-reference-before-hexadecimal-number-else" => 1
+                                               },
+                         "parser_tests" => [
+                                           {
+                                             "index" => 18,
+                                             "input" => "<!DOCTYPE HTML>&#x"
+                                           },
+                                           {
+                                             "index" => 18,
+                                             "input" => "<!DOCTYPE HTML>&#Xzza"
+                                           }
+                                         ]
                        },
           "bare nero" => {
+                         "default_level" => "m",
                          "desc" => {
-                                   "en" => "\n    <p>An <code>&amp;</code> (<code>U+0026</code>\n    <code class=\"charname\">AMPERSAND</code>) character immediately\n    followed by a <code>#</code> (<code>U+0023</code>\n    <code>NUMBER SIGN</code>) character which\n    is not part of any reference appears in the input stream.\n    The document is non-conforming.</p>\n\n    <p>The string <code>&amp;#</code> must be the first two characters\n    of a reference:\n      <dl class=\"switch\">\n      <dt>Numeric character reference</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#<var>d</var>;</code></pre>\n          where <var>d</var> is the decimal representation of\n          the code point of the character to be referenced.</dd>\n      <dt>Hexadecimal character reference</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n          where <var>h</var> is the hexadecimal representation\n          of the code point of the character to be referenced.</dd>\n      </dl>\n    </p>\n\n    <p>To represent <code>&amp;#</code> as data characters, use\n    a named entity reference for the <code>&amp;</code> character:\n      <pre class=\"html example\">\n<code>&amp;amp;#</code></pre>\n    </p>\n  "
+                                   "en" => "<p>The string <code>&amp;#</code> is used to introduce a character\nreference.  It must be followed by a decimal number or a\n<code>x</code> character followed by a hexadecimal number,\nrepresenting the code point of a character, followed by a\n<code>;</code> character.\n\n</p><p>To represent a string <code>&amp;#</code>, the <code>&amp;</code>\ncharacter must be escaped as <code>&amp;amp;</code>.</p>",
+                                   "ja" => "<p>\x{6587}\x{5b57}\x{5217} <code>&amp;#</code> \x{306f}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{8868}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n\x{305d}\x{306e}\x{5f8c}\x{306b}\x{306f}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3092}\x{8868}\x{3059}\x{5341}\x{9032}\x{6570}\x{304b}\x{3001} <code>x</code>\n\x{3068}\x{5341}\x{516d}\x{9032}\x{6570}\x{304c}\x{3042}\x{3063}\x{3066}\x{3001}\x{305d}\x{306e}\x{5f8c}\x{306b} <code>;</code> \x{304c}\x{7d9a}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p><code>&amp;#</code> \x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{5217}\x{81ea}\x{4f53}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001} <code>&amp;</code>\n\x{306f} <code>&amp;amp;</code> \x{3068}\x{66f8}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                  },
+                         "layer" => "tokenization",
                          "message" => {
-                                      "en" => "The decimal representation of the code position\n  of a character must be specified after <code>&amp;#</code>."
-                                    }
+                                      "en" => "There is an <code>&amp;#</code> not followed by a code point number",
+                                      "ja" => "<code>&amp;#</code> \x{306e}\x{5f8c}\x{306b}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{6570}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::HTML::Parser::tokenizer" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "character-reference-number-else" => 1
+                                               },
+                         "parser_tests" => [
+                                           {
+                                             "index" => 18,
+                                             "input" => "<!DOCTYPE HTML>a&#"
+                                           },
+                                           {
+                                             "index" => 18,
+                                             "input" => "<!DOCTYPE HTML>a&#abx"
+                                           }
+                                         ]
                        },
           "bare pero" => {
                          "desc" => {
@@ -1369,13 +1643,29 @@ $WebHACC::_Errors = {
                                     }
                        },
           "bare stago" => {
+                          "default_level" => "m",
                           "desc" => {
-                                    "en" => "\n    <p>A <code>&lt;</code> (<code class=\"char\">U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) character which is not\n    part of any markup appears in the input stream.</p>\n\n    <p>The <code>&lt;</code> character as a data character must\n    be escaped as:\n    </p>\n    <pre class=\"html example\">\n<code>&amp;lt;</code></pre>\n  ",
-                                    "ja" => "\n    <p>\x{6587}\x{5b57} <code>&lt;</code> (<code class=\"char\">U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) \x{304c}\x{51fa}\x{73fe}\x{3057}\x{307e}\x{3057}\x{305f}\x{304c}\x{3001}\n    \x{6b63}\x{3057}\x{3044}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>&lt;</code> \x{3092}\x{30c7}\x{30fc}\x{30bf}\x{6587}\x{5b57}\x{3068}\x{3057}\x{3066}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001}\n    \x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <pre class=\"html example\">\n<code>&amp;lt;</code></pre>\n  "
+                                    "en" => "<p>A <code>&lt;</code> (<code class=\"char\">U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) character which is not\n    part of any markup appears in the input.\n\n    </p><p>The <code>&lt;</code> character as a data character must\n    be escaped as:\n    </p>\n    <pre class=\"html example\">\n<code>&amp;lt;</code></pre>",
+                                    "ja" => "<p>\x{6587}\x{5b57} <code>&lt;</code> (<code class=\"char\">U+003C</code> <code class=\"charname\">LESS-THAN SIGN</code>) \x{304c}\x{51fa}\x{73fe}\x{3057}\x{307e}\x{3057}\x{305f}\x{304c}\x{3001}\n    \x{6b63}\x{3057}\x{3044}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>&lt;</code> \x{3092}\x{30c7}\x{30fc}\x{30bf}\x{6587}\x{5b57}\x{3068}\x{3057}\x{3066}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001}\n    \x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <pre class=\"html example\">\n<code>&amp;lt;</code></pre>"
                                   },
+                          "layer" => "tokenization",
                           "message" => {
-                                       "en" => "\x{6587}\x{5b57} <code>&lt;</code> \x{306e}\x{6b21}\x{304c}\x{30bf}\x{30b0}\x{540d}\x{3067}\x{3082}\n  <code>!</code>, <code>/</code>,\n  <code>?</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                     }
+                                       "en" => "The <code>&lt;</code> character is not followed by a tag name or a\n<code>!</code>, <code>/</code>, or <code>?</code>",
+                                       "ja" => "\x{6587}\x{5b57} <code>&lt;</code> \x{306e}\x{6b21}\x{304c}\x{30bf}\x{30b0}\x{540d}\x{3067}\x{3082}\n<code>!</code>, <code>/</code>, <code>?</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tokenizer" => 1,
+                                       "Whatpm::WebVTT::Parser" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "tag-open-else" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 16,
+                                              "input" => "<!DOCTYPE HTML><\""
+                                            }
+                                          ]
                         },
           "basehref after URL attribute" => {
                                             "desc" => {
@@ -1451,6 +1741,78 @@ $WebHACC::_Errors = {
                                              "en" => "Block is not closed before the end of\n  file."
                                            }
                               },
+          "bogus DOCTYPE" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>There is a bogus string within the DOCTYPE.  The DOCTYPE must be\n<code>&lt;!DOCTYPE HTML&gt;</code>.  No other string is required.</p>",
+                                       "ja" => "DOCTYPE \x{5185}\x{306b}\x{304a}\x{304b}\x{3057}\x{306a}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002} DOCTYPE \x{306f}\n<code>&lt;!DOCTYPE HTML&gt;</code> \x{3060}\x{3051}\x{3067}\x{3088}\x{304f}\x{3001}\n\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3092}\x{66f8}\x{3044}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                     },
+                             "layer" => "tokenization",
+                             "message" => {
+                                          "en" => "There is a bogus string in the DOCTYPE",
+                                          "ja" => "DOCTYPE \x{5185}\x{306b}\x{304a}\x{304b}\x{3057}\x{306a}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                        },
+                             "modules" => {
+                                          "Web::HTML::Parser::tokenizer" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "after-doctype-name-else" => 1,
+                                                     "after-doctype-public-identifier-else" => 1,
+                                                     "after-doctype-public-keyword-else" => 1,
+                                                     "after-doctype-system-identifier-else" => 1,
+                                                     "after-doctype-system-keyword-else" => 1,
+                                                     "before-doctype-public-identifier-else" => 1,
+                                                     "before-doctype-system-identifier-else" => 1,
+                                                     "between-doctype-public-and-system-identifiers-else" => 1,
+                                                     "doctype-else" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 15,
+                                                 "input" => "<!DOCTYPE html !>"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE html PUBLIC!>"
+                                               },
+                                               {
+                                                 "index" => 25,
+                                                 "input" => "<!DOCTYPE html public \"a\"!>"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE html SYSTEM?>"
+                                               },
+                                               {
+                                                 "index" => 24,
+                                                 "input" => "<!DOCTYPE html system \"\"\@p>"
+                                               },
+                                               {
+                                                 "index" => 67,
+                                                 "input" => "<!DOCTYPE html PUBLIC \"abc\" \"http://www.w3.org/TR/html4/strict.dtd\"?>"
+                                               },
+                                               {
+                                                 "index" => 22,
+                                                 "input" => "<!DOCTYPE html PUBLIC hoge>"
+                                               },
+                                               {
+                                                 "index" => 22,
+                                                 "input" => "<!DOCTYPE html SYSTEM hoge>"
+                                               },
+                                               {
+                                                 "index" => 28,
+                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\"hoge>"
+                                               },
+                                               {
+                                                 "index" => 29,
+                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\" hoge>"
+                                               },
+                                               {
+                                                 "index" => 9,
+                                                 "input" => "<!DOCTYPE!>"
+                                               }
+                                             ]
+                           },
           "bogus XML declaration" => {
                                      "desc" => {
                                                "en" => "\n    <p>An XML declaration must only contain <code>version</code>,\n    <code>encoding</code>, and <code>standalone</code>\n    pseudo-attributes, in this order, in appropriate syntax.</p>\n\n    <p>A text declaration must only contain <code>version</code> and\n    <code>encoding</code> pseudo-attributes in this order, in\n    appropriate syntax.</p>\n  ",
@@ -1462,12 +1824,32 @@ $WebHACC::_Errors = {
                                                 }
                                    },
           "bogus comment" => {
+                             "default_level" => "m",
                              "desc" => {
-                                       "en" => "\n    <p>There is a <code>&lt;</code> (<code>U+003C</code> \n    <code class=\"charname\">LESS-THAN SIGN</code>) character\n    followed by a <code>!</code> (<code>U+0021</code>\n    <code class=\"charname\">EXCLAMATION MARK</code>) character,\n    which is not followed by a <code>--</code> or\n    <code>!DOCTYPE</code>.  The document is non-conforming.</p>\n\n    <dl class=\"switch\">\n    <dt>Comments</dt>\n      <dd>In HTML document, comments must be introduced by\n      <code class=\"example\">&lt;!--</code> (<code>&lt;!</code>\n      <em>immediately</em> followed\n      by <em>two</em> <code>-</code>s) and must be terminated by\n      <code class=\"example\">--&gt;</code>.\n      Strings <code>&lt;!</code> not followed\n      by <code>--</code> and <code>&lt;!-</code> not followed by\n      <code>-</code> are not valid open delimiters for comments.</dd>\n    <dt>Marked sections, including <code>CDATA</code> sections</dt>\n      <dd>Marked sections are not allowed in HTML document.</dd>\n    <dt>Markup declarations</dt>\n      <dd>Markup declarations, except for <code>DOCTYPE</code>\n      and comment declarations, are not allowed in HTML document.</dd>\n    <dt>String <code>&lt;!</code></dt>\n      <dd>String <code>&lt;!</code> must be escaped as\n      <code class=\"example\">&amp;lt;!</code>.</dd>\n    </dl>\n  "
+                                       "en" => "<p>There is a <code>&lt;</code> (<code>U+003C</code> \n    <code class=\"charname\">LESS-THAN SIGN</code>) character\n    followed by a <code>!</code> (<code>U+0021</code>\n    <code class=\"charname\">EXCLAMATION MARK</code>) character,\n    which is not followed by a <code>--</code> or\n    <code>DOCTYPE</code>.\n\n    </p><dl class=\"switch\">\n    <dt>Comments</dt>\n      <dd>In HTML document, comments must be introduced by\n      <code class=\"example\">&lt;!--</code> (<code>&lt;!</code>\n      <em>immediately</em> followed\n      by <em>two</em> <code>-</code>s) and must be terminated by\n      <code class=\"example\">--&gt;</code>.\n      Strings <code>&lt;!</code> not followed\n      by <code>--</code> and <code>&lt;!-</code> not followed by\n      <code>-</code> are not valid open delimiters for comments.</dd>\n    <dt>Marked sections, including <code>CDATA</code> sections</dt>\n      <dd>Marked sections are not allowed in HTML elements.</dd>\n    <dt>Markup declarations</dt>\n      <dd>Markup declarations, except for <code>DOCTYPE</code>\n      and comment declarations, are not allowed in HTML document.</dd>\n    <dt>String <code>&lt;!</code></dt>\n      <dd>String <code>&lt;!</code> must be escaped as\n      <code class=\"example\">&amp;lt;!</code>.</dd>\n    </dl>",
+                                       "ja" => "<p><code>&lt;</code> (<code>U+003C</code> \n    <code class=\"charname\">LESS-THAN SIGN</code>) \x{306e}\x{5f8c}\x{306b}\n    <code>!</code> (<code>U+0021</code>\n    <code class=\"charname\">EXCLAMATION MARK</code>) \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{304c}\x{3001}\n    \x{305d}\x{306e}\x{5f8c}\x{304c} <code>--</code> \x{3067}\x{3082} <code>DOCTYPE</code> \x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\n    </p><dl class=\"switch\">\n    <dt>\x{6ce8}\x{91c8}\n      </dt><dd>HTML \x{3067}\x{306f}\x{6ce8}\x{91c8}\x{306f}\n      <code class=\"example\">&lt;!--</code> (<code>&lt;!</code>\n      \x{306e}<em>\x{76f4}\x{5f8c}</em>\x{306b} <code>-</code> <em>2\x{3064}</em>)\n      \x{304b}\x{3089}\x{306f}\x{3058}\x{307e}\x{308a}\x{3001}\n      <code class=\"example\">--&gt;</code> \x{3067}\x{7d42}\x{308f}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n      <code>&lt;!</code> \x{3060}\x{3051}\x{3084} <code>&lt;!-</code> \x{3060}\x{3051}\x{3067}\x{306f}\x{3001}\n      \x{305f}\x{3060}\x{3057}\x{3044}\x{6ce8}\x{91c8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    </dd><dt><code>CDATA</code> \x{533a}\x{9593}\x{306a}\x{3069}\x{3001}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{533a}\x{9593}\n      </dt><dd>HTML \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{533a}\x{9593}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    </dd><dt>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\n      </dt><dd>HTML \x{6587}\x{66f8}\x{3067}\x{306f} <code>DOCTYPE</code> \x{5ba3}\x{8a00}\x{3068}\x{6ce8}\x{91c8}\x{5ba3}\x{8a00}\x{3092}\x{9664}\x{304d}\x{3001}\n      \x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    </dd><dt>\x{6587}\x{5b57}\x{5217} <code>&lt;!</code></dt>\n      <dd>\x{6587}\x{5b57}\x{5217} <code>&lt;!</code> \x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001}\n      <code class=\"example\">&amp;lt;!</code> \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    </dd></dl>"
                                      },
+                             "layer" => "tokenization",
                              "message" => {
-                                          "en" => "String <code>&lt;!</code> is not followed\n  by <code>--</code>."
-                                        }
+                                          "en" => "The <code>&lt;!</code> is not followed by <code>--</code>",
+                                          "ja" => "<code>&lt;!</code> \x{306e}\x{5f8c}\x{306b} <code>--</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                        },
+                             "modules" => {
+                                          "Web::HTML::Parser::tokenizer" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "markup-declaration-open-else" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 17,
+                                                 "input" => "<!DOCTYPE HTML><!HOGE>"
+                                               },
+                                               {
+                                                 "index" => 23,
+                                                 "input" => "<!DOCTYPE HTML><!DOCTYPO>"
+                                               }
+                                             ]
                            },
           "bogus end tag" => {
                              "desc" => {
@@ -2211,6 +2593,91 @@ $WebHACC::_Errors = {
                                                   "ja" => "\x{6587}\x{66f8}\x{578b}\x{3088}\x{308a}\x{524d}\x{306b}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}"
                                                 }
                                    },
+          "doctype:bad context" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>There must not be anything other than white space characters and\ncomments before the DOCTYPE.  It cannot appear after another DOCTYPE\nor within an element.</p>",
+                                             "ja" => "<p>DOCTYPE \x{306e}\x{524d}\x{306b}\x{7f6e}\x{3051}\x{308b}\x{306e}\x{306f}\x{7a7a}\x{767d}\x{3068}\x{6ce8}\x{91c8}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}DOCTYPE \x{304c}2\x{3064}\x{3042}\x{3063}\x{305f}\x{308a}\x{3001}\n\x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{3063}\x{305f}\x{308a}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                           },
+                                   "layer" => "tree-construction",
+                                   "message" => {
+                                                "en" => "The DOCTYPE is not at the beginning of the document",
+                                                "ja" => "DOCTYPE \x{304c}\x{6587}\x{66f8}\x{306e}\x{5148}\x{982d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Parser::tree_constructor" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "after-body-doctype" => 1,
+                                                           "after-frameset-doctype" => 1,
+                                                           "after-head-doctype" => 1,
+                                                           "before-head-doctype" => 1,
+                                                           "before-html-doctype" => 1,
+                                                           "in-body-doctype" => 1,
+                                                           "in-column-group-doctype" => 1,
+                                                           "in-foreign-content-doctype" => 1,
+                                                           "in-frameset-doctype" => 1,
+                                                           "in-head-doctype" => 1,
+                                                           "in-head-noscript-doctype" => 1,
+                                                           "in-select-doctype" => 1,
+                                                           "in-table-doctype" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 15,
+                                                       "input" => "<!DOCTYPE html><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 21,
+                                                       "input" => "<!DOCTYPE html><html><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 22,
+                                                       "input" => "<!DOCTYPE HTML></body><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 36,
+                                                       "input" => "<!DOCTYPE HTML><frameset></frameset><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 22,
+                                                       "input" => "<!DOCTYPE HTML></head><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 21,
+                                                       "input" => "<!DOCTYPE HTML><body><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 32,
+                                                       "input" => "<!DOCTYPE HTML><table><colgroup><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 20,
+                                                       "input" => "<!DOCTYPE HTML><svg><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 25,
+                                                       "input" => "<!DOCTYPE HTML><frameset><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 21,
+                                                       "input" => "<!DOCTYPE HTML><head><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 31,
+                                                       "input" => "<!DOCTYPE HTML><head><noscript><!DOCTYPE HTML>",
+                                                       "noscript" => 1
+                                                     },
+                                                     {
+                                                       "index" => 23,
+                                                       "input" => "<!DOCTYPE HTML><select><!DOCTYPE HTML>"
+                                                     },
+                                                     {
+                                                       "index" => 22,
+                                                       "input" => "<!DOCTYPE HTML><table><!DOCTYPE HTML>"
+                                                     }
+                                                   ]
+                                 },
           "document element not serializable" => {
                                                  "desc" => {
                                                            "en" => "\n    <p>Unless the document element of the HTML document is the\n    <code>html</code> element in the HTML namespace, the document is\n    not serializable in the HTML syntax.</p>\n  ",
@@ -2286,6 +2753,41 @@ $WebHACC::_Errors = {
                                                 "ja" => "<code>autofocus</code> \x{5c5e}\x{6027}\x{306e}\x{3042}\x{308b}\x{8981}\x{7d20}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
                                               }
                                  },
+          "duplicate body/html tag" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>The HTML <code>html</code> and <code>body</code> elements cannot be\nnested by themselves (directly or indirectly).  There must not be more\nthan one pairs of <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code>\nstart tags in a document.</p>",
+                                                 "ja" => "<p>HTML <code>html</code> \x{8981}\x{7d20}\x{3068} HTML <code>body</code> \x{8981}\x{7d20}\x{306f} \n(\x{76f4}\x{63a5}\x{3067}\x{3042}\x{308c}\x{9593}\x{63a5}\x{3067}\x{3042}\x{308c}) \x{305d}\x{308c}\x{81ea}\x{4f53}\x{3092}\x{5165}\x{308c}\x{5b50}\x{306b}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6587}\x{66f8}\x{4e2d}\x{306b} <code>&lt;html&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3084} <code>&lt;body&gt;</code> \n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}2\x{7d44}\x{4ee5}\x{4e0a}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "tree-construction",
+                                       "message" => {
+                                                    "en" => "There is a <code>&lt;<var>{value}</var>&gt;</code> start tag in the\n<code>body</code> element",
+                                                    "ja" => "<code>body</code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;<var>{value}</var>&gt;</code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Parser::tree_constructor" => 1
+                                                  },
+                                       "parser_error_names" => {
+                                                               "in-body-start-body" => 1,
+                                                               "in-body-start-html" => 1
+                                                             },
+                                       "parser_tests" => [
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE HTML><body><body>",
+                                                           "value" => "body"
+                                                         },
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE HTML><body><html>",
+                                                           "value" => "html"
+                                                         }
+                                                       ],
+                                       "value" => [
+                                                  "token",
+                                                  "tag name"
+                                                ]
+                                     },
           "duplicate constructor name" => {
                                           "message" => {
                                                        "en" => "Constructor name <code><var>{value}</var></code>\n  specified by extended attribute <code><var>{text}</var></code> is already\n  used for an interface."
@@ -2789,6 +3291,101 @@ $WebHACC::_Errors = {
                                                      "ja" => "\x{89aa}\x{8981}\x{7d20}\x{306f}\x{5b50}\x{8981}\x{7d20}\x{3092}\x{8a8d}\x{3081}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                    }
                                       },
+          "element not closed before implied ancestor end tag" => {
+                                                                  "default_level" => "m",
+                                                                  "desc" => {
+                                                                            "en" => "<p>Some start tag implies an end tag of another element, if necessary.\nFor example, a <code>&lt;li&gt;</code> start tag closes any opening\n<code>li</code> element.  Any descendant of that element must be\nclosed before the start tag (except for a few elements whose end tag\ncan be omitted, e.g. <code>p</code>).</p>",
+                                                                            "ja" => "<p>\x{4e00}\x{90e8}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{3092}\x{9589}\x{3058}\x{307e}\x{3059}\x{3002}\x{4f8b}\x{3048}\x{3070}\n<code>&lt;li&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{6642}\x{70b9}\x{3067}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b}\n<code>li</code> \x{8981}\x{7d20}\x{306f}\x{9589}\x{3058}\x{3089}\x{308c}\x{307e}\x{3059}\x{3002}\n\x{305d}\x{306e}\x{5b50}\x{5b6b}\x{306f} (<code>p</code> \x{8981}\x{7d20}\x{306a}\x{3069}\x{4e00}\x{90e8}\x{4f8b}\x{5916}\x{3092}\x{9664}\x{304d})\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{524d}\x{306b}\x{9589}\x{3058}\x{3066}\x{304a}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                                          },
+                                                                  "layer" => "tree-construction",
+                                                                  "message" => {
+                                                                               "en" => "The <code>&lt;<var>{text}</var>&gt;</code> element is not closed before\na start tag <code><var>{value}</var></code>",
+                                                                               "ja" => "<code><var>{value}</var></code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{524d}\x{3067}\n<code>&lt;<var>{text}</var>&gt;</code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                                             },
+                                                                  "modules" => {
+                                                                               "Web::HTML::Parser::tree_constructor" => 1
+                                                                             },
+                                                                  "parser_error_names" => {
+                                                                                          "in-body-start-dd-dt" => 1,
+                                                                                          "in-body-start-dd-dt-2" => 1,
+                                                                                          "in-body-start-li" => 1,
+                                                                                          "in-body-start-rp-rt" => 1,
+                                                                                          "in-caption-start-c3t6-2" => 1,
+                                                                                          "in-foreign-content-start-b5ccd4eeh8iillmmnopprs7ttuuv" => 1,
+                                                                                          "in-foreign-content-start-font" => 1,
+                                                                                          "in-select-start-input-keygen-textarea" => 1
+                                                                                        },
+                                                                  "parser_tests" => [
+                                                                                    {
+                                                                                      "index" => 25,
+                                                                                      "input" => "<!DOCTYPE HTML><dt><span><dt>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "dt"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 25,
+                                                                                      "input" => "<!DOCTYPE HTML><dt><span><dd>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "dd"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 25,
+                                                                                      "input" => "<!DOCTYPE HTML><li><span><li>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "li"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 31,
+                                                                                      "input" => "<!DOCTYPE HTML><ruby><rp><span><rt>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "rt"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 31,
+                                                                                      "input" => "<!DOCTYPE HTML><ruby><rt><span><rp>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "rp"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 37,
+                                                                                      "input" => "<!DOCTYPE HTML><table><caption><span><caption>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "caption"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 37,
+                                                                                      "input" => "<!DOCTYPE HTML><table><caption><span><tr>",
+                                                                                      "text" => "span",
+                                                                                      "value" => "tr"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 20,
+                                                                                      "input" => "<!DOCTYPE HTML><svg><p>",
+                                                                                      "text" => "svg",
+                                                                                      "value" => "p"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 20,
+                                                                                      "input" => "<!DOCTYPE HTML><svg><font face>",
+                                                                                      "text" => "svg",
+                                                                                      "value" => "font"
+                                                                                    },
+                                                                                    {
+                                                                                      "index" => 23,
+                                                                                      "input" => "<!DOCTYPE HTML><select><input>",
+                                                                                      "text" => "select",
+                                                                                      "value" => "input"
+                                                                                    }
+                                                                                  ],
+                                                                  "text" => [
+                                                                            "oe[-1]",
+                                                                            "local name"
+                                                                          ],
+                                                                  "value" => [
+                                                                             "token",
+                                                                             "tag name"
+                                                                           ]
+                                                                },
           "element not defined" => {
                                    "desc" => {
                                              "en" => "\n    <p>The element is not part of the language.  It might be an\n    obsolete element that are no longer part of the language, or it\n    might be simply an authoring error.</p>\n\n    <dl class=\"switch\">\n\n    <dt><code>g:plusone</code> element</dt>\n\n    <dd>The <code>g:plusone</code> element is non-standard.  To embed\n    the Google +1 Button, use the <code>div</code> element with\n    <code>class=\"g-plusone\"</code>.</dd>\n\n    </dl>\n  ",
@@ -2870,10 +3467,29 @@ $WebHACC::_Errors = {
                                              }
                                 },
           "empty end tag" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>In HTML, XML, and WebVTT, empty end tag, i.e. end\n    tag with no tag name, is not allowed.</p>\n    <p>To represent an end tag, specify the\n    tag name explicitly.</p>\n    <p>To represent a string with the <code>&lt;</code> character,\n    use a character reference: <code>&amp;lt;</code>.</p>",
+                                       "ja" => "<p>HTML\x{3001}XML\x{3001}WebVTT \x{3067}\x{306f}\x{3001}\x{30bf}\x{30b0}\x{540d}\x{306e}\x{7121}\x{3044}\x{7a7a}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{8a18}\x{8ff0}\x{3059}\x{308b}\x{6642}\x{306f}\x{30bf}\x{30b0}\x{540d}\x{3082}\x{660e}\x{793a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{300c}<code>&lt;</code>\x{300d}\x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3044}\x{305f}\x{3044}\x{6642}\x{306f}\x{6587}\x{5b57}\x{53c2}\x{7167}\n    \x{300c}<code>&amp;lt;</code>\x{300d}\x{3092}\x{4f7f}\x{308f}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                     },
+                             "layer" => "tokenization",
                              "message" => {
-                                          "en" => "\n    <p>In HTML, XML, and WebVTT, empty end tag, i.e. end\n    tag with no tag name, is not allowed.</p>\n    <p>To represent an end tag, you have to specify the\n    tag name explicitly.</p>\n    <p>To represent a string with the <code>&lt;</code> character,\n    you have to use the character reference: <code>&amp;lt;</code>.</p>\n  ",
-                                          "ja" => "\n    <p>HTML\x{3001}XML\x{3001}WebVTT \x{3067}\x{306f}\x{3001}\x{30bf}\x{30b0}\x{540d}\x{306e}\x{7121}\x{3044}\x{7a7a}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{8a18}\x{8ff0}\x{3059}\x{308b}\x{6642}\x{306f}\x{30bf}\x{30b0}\x{540d}\x{3082}\x{660e}\x{793a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    <p>\x{300c}<code>&lt;</code>\x{300d}\x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3044}\x{305f}\x{3044}\x{6642}\x{306f}\x{6587}\x{5b57}\x{53c2}\x{7167}\n    \x{300c}<code>&amp;lt;</code>\x{300d}\x{3092}\x{4f7f}\x{308f}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                        }
+                                          "en" => "There is an empty end tag",
+                                          "ja" => "\x{7a7a}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                        },
+                             "modules" => {
+                                          "Web::HTML::Parser::tokenizer" => 1,
+                                          "Whatpm::WebVTT::Parser" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "end-tag-open-003e" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 20,
+                                                 "input" => "<!DOCTYPE HTML><p></>"
+                                               }
+                                             ]
                            },
           "empty form name" => {
                                "desc" => {
@@ -3127,9 +3743,28 @@ $WebHACC::_Errors = {
                                                }
                                   },
           "image" => {
+                     "default_level" => "m",
+                     "desc" => {
+                               "en" => "<p>There is no <code>image</code> element, in fact.  Use the\n<code>img</code> element instead.</p>",
+                               "ja" => "<p>\x{5b9f}\x{306e}\x{3068}\x{3053}\x{308d} HTML \x{306b} <code>image</code> \x{8981}\x{7d20}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n<code>img</code> \x{8981}\x{7d20}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>"
+                             },
+                     "layer" => "tree-construction",
                      "message" => {
-                                  "en" => "The <code>image</code> element is\n  obsolete."
-                                }
+                                  "en" => "There is a start tag <code>&lt;image&gt;</code>",
+                                  "ja" => "<code>&lt;image&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                },
+                     "modules" => {
+                                  "Web::HTML::Parser::tree_constructor" => 1
+                                },
+                     "parser_error_names" => {
+                                             "in-body-start-image" => 1
+                                           },
+                     "parser_tests" => [
+                                       {
+                                         "index" => 21,
+                                         "input" => "<!DOCTYPE HTML><body><image>"
+                                       }
+                                     ]
                    },
           "img border:0" => {
                             "desc" => {
@@ -3214,11 +3849,6 @@ $WebHACC::_Errors = {
                                               "attr" => 1
                                             }
                                },
-          "in PCDATA:#eof" => {
-                              "message" => {
-                                           "en" => "Element is not closed before the end of\n  file."
-                                         }
-                            },
           "in XML:charset" => {
                               "desc" => {
                                         "en" => "\n    <p>In XML document, the character encoding declaration\n    (<code>&lt;meta charset&gt;</code> or <code>&lt;meta\n    http-equiv=Content-Type&gt;</code>) cannot be used.</p>\n\n    <p>The only exception to this rule is that <code>&lt;meta\n    charset=utf-8&gt;</code> is allowed in XML document.  (However,\n    <code>&lt;meta http-equiv=Content-Type&gt;</code> is not allowed even\n    with UTF-8.)</p>\n\n    <p>Instad, specify the character encoding by the\n    <code>charset</code> parameter in the <code>Content-Type</code>\n    header and/or the <code>encoding</code> pseudo-attribute of the\n    XML declaration.</p>\n  ",
@@ -3265,89 +3895,298 @@ $WebHACC::_Errors = {
                                          "attr" => 1
                                        }
                           },
-          "in a:a" => {
-                      "desc" => {
-                                "en" => "\n    <p>HTML <code>a</code> elements cannot be nested.\n    The document is non-conforming.</p>\n\n    <p>In the HTML syntax, a start tag of the <code>a</code>\n    implies the end tag of any opening <code>a</code> element.</p>\n  "
-                              },
-                      "message" => {
-                                   "en" => "Anchor cannot be nested."
-                                 }
-                    },
           "in body" => {
+                       "default_level" => "m",
                        "desc" => {
-                                 "en" => "\n    <p>The start or end tag of an element, which \n    cannot be a descendant of <code>body</code> element, appears\n    in the input stream while the <code>body</code> element has been opened.\n    The document is non-conforming.</p>\n  "
+                                 "en" => "<p>In an HTML <code>body</code> element, the start tag cannot be used.\nThe start tag is ignored.\n\n  </p><dl class=\"switch\">\n\n  <dt><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>,\n  <code>&lt;tfoot&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>,\n  <code>&lt;td&gt;</code>, <code>&lt;caption&gt;</code>,\n  <code>&lt;colgroup&gt;</code>, <code>&lt;col&gt;</code>\n\n  </dt><dd>These tags can only be used in a table.\n\n  </dd><dt><code>&lt;head&gt;</code>\n\n  </dt><dd>The <code>head</code> element can only be used before the\n  <code>body</code> element.  There cannot be more than one\n  <code>head</code> elements.\n\n  </dd><dt><code>&lt;frameset&gt;</code>, <code>&lt;frame&gt;</code>\n\n  </dt><dd>They are obsolete.  Use the <code>iframe</code> element instead.\n\n  </dd></dl>",
+                                 "ja" => "<p>HTML <code>body</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{3053}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{3053}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}\n\n  </p><dl class=\"switch\">\n\n  <dt><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>,\n  <code>&lt;tfoot&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>,\n  <code>&lt;td&gt;</code>, <code>&lt;caption&gt;</code>,\n  <code>&lt;colgroup&gt;</code>, <code>&lt;col&gt;</code>\n\n  </dt><dd>\x{3053}\x{308c}\x{3089}\x{306e}\x{30bf}\x{30b0}\x{306f}\x{8868}\x{306e}\x{4e2d}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </dd><dt><code>&lt;head&gt;</code>\n\n  </dt><dd><code>head</code> \x{8981}\x{7d20}\x{306f}\n  <code>body</code> \x{8981}\x{7d20}\x{306e}\x{524d}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\x{6587}\x{66f8}\x{4e2d}\x{306b}\n  <code>head</code> \x{8981}\x{7d20}\x{3092}\x{8907}\x{6570}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </dd><dt><code>&lt;frameset&gt;</code>, <code>&lt;frame&gt;</code>\n\n  </dt><dd>\x{3069}\x{3061}\x{3089}\x{3082}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{304b}\x{308f}\x{308a}\x{306b}\n  <code>iframe</code> \x{8981}\x{7d20}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n\n  </dd></dl>"
                                },
+                       "layer" => "tree-construction",
                        "message" => {
-                                    "en" => "Start tag <code>&lt;<var>{text}</var>&gt;</code>\n  is not allowed in the <code>body</code> element."
-                                  }
+                                    "en" => "There is a start tag <code>&lt;<var>{text}</var>&gt;</code> in the\n<code>body</code> element",
+                                    "ja" => "<code>body</code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;<var>{text}</var></code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                  },
+                       "modules" => {
+                                    "Web::HTML::Parser::tree_constructor" => 1
+                                  },
+                       "parser_error_names" => {
+                                               "in-body-start-c3fht6" => 1,
+                                               "in-body-start-frameset" => 1
+                                             },
+                       "parser_tests" => [
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><tr>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><col>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><head>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><frame>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><frameset>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><tbody>"
+                                         },
+                                         {
+                                           "index" => 21,
+                                           "input" => "<!DOCTYPE HTML><body><td>"
+                                         }
+                                       ]
                      },
           "in body:#eof" => {
+                            "default_level" => "m",
+                            "desc" => {
+                                      "en" => "<p>Except for some exceptions (e.g. <code>body</code>,\n<code>html</code>, <code>p</code>, and so on), all elements must be\nexplicitly closed by their end tags before the end of file.</p>",
+                                      "ja" => "<p>\x{3044}\x{304f}\x{3064}\x{304b}\x{306e}\x{4f8b}\x{5916} (<code>body</code>,\n<code>html</code>, <code>p</code> \x{306a}\x{3069}) \x{3092}\x{9664}\x{304d}\x{3001}\n\x{8981}\x{7d20}\x{306f}\x{3059}\x{3079}\x{3066}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306e}\x{672b}\x{5c3e}\x{307e}\x{3067}\x{306b}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                    },
+                            "layer" => "tree-construction",
                             "message" => {
-                                         "en" => "Some element is not closed before the end of\n  file."
-                                       }
+                                         "en" => "The <code><var>{text}</var></code> element is not closed\nat the end of file",
+                                         "ja" => "\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306e}\x{672b}\x{5c3e}\x{3067} <code><var>{text}</var></code>\n\x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                       },
+                            "modules" => {
+                                         "Web::HTML::Parser::tree_constructor" => 1
+                                       },
+                            "parser_error_names" => {
+                                                    "in-body-eof" => 1,
+                                                    "in-frameset-eof" => 1,
+                                                    "in-template-eof" => 1,
+                                                    "text-eof" => 1
+                                                  },
+                            "parser_tests" => [
+                                              {
+                                                "index" => 21,
+                                                "input" => "<!DOCTYPE HTML><hoge>",
+                                                "text" => "hoge"
+                                              },
+                                              {
+                                                "index" => 25,
+                                                "input" => "<!DOCTYPE HTML><frameset>",
+                                                "text" => "frameset"
+                                              },
+                                              {
+                                                "index" => 25,
+                                                "input" => "<!DOCTYPE HTML><template>",
+                                                "text" => "template"
+                                              },
+                                              {
+                                                "index" => 30,
+                                                "input" => "<!DOCTYPE HTML><template><foo>",
+                                                "text" => "foo"
+                                              },
+                                              {
+                                                "index" => 20,
+                                                "input" => "<!DOCTYPE HTML><xmp>",
+                                                "text" => "xmp"
+                                              },
+                                              {
+                                                "index" => 27,
+                                                "input" => "<!DOCTYPE HTML><plaintext>a",
+                                                "text" => "plaintext"
+                                              }
+                                            ],
+                            "text" => [
+                                      "oe[-1]",
+                                      "local name"
+                                    ]
                           },
-          "in button:button" => {
-                                "message" => {
-                                             "en" => "The <code>button</code> element cannot be\n  nested."
-                                           }
-                              },
           "in caption" => {
+                          "default_level" => "m",
                           "desc" => {
-                                    "en" => "\n    <p>In a <code>caption</code> element's <code>innerHTML</code>,\n    start tags <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>, and\n    <code>&lt;tr&gt;</code> are not allowed and are ignored.</p>\n  ",
-                                    "ja" => "\n    <p><code>caption</code> \x{8981}\x{7d20}\x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{958b}\x{59cb}\x{30bf}\x{30b0}\n    <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>,\n    <code>&lt;tr&gt;</code> \x{306f}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{305a}\x{3001}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                    "en" => "<p>In a <code>caption</code> element's <code>innerHTML</code>,\n    start tags <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>, and\n    <code>&lt;tr&gt;</code> are not allowed and are ignored.</p>",
+                                    "ja" => "<p><code>caption</code> \x{8981}\x{7d20}\x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{958b}\x{59cb}\x{30bf}\x{30b0}\n    <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>,\n    <code>&lt;tr&gt;</code> \x{306f}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{305a}\x{3001}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
                                   },
+                          "layer" => "tree-construction",
                           "message" => {
-                                       "en" => "The <code>&lt;<var>{text}</var>&gt;</code> tag\n  is not allowed in a <code>caption</code>",
-                                       "ja" => "\x{30bf}\x{30b0} <code>&lt;<var>{text}</var>&gt;</code>\n  \x{306f} <code>caption</code> \x{5185}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
-                                     }
+                                       "en" => "There is a start tag <code>&lt;<var>{text}</var>&gt;</code>\nin a table caption",
+                                       "ja" => "\x{8868}\x{984c}\x{5185}\x{306b}  <code>&lt;<var>{text}</var>&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tree_constructor" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "in-caption-start-c3t6" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "context" => "caption",
+                                              "index" => 0,
+                                              "input" => "<tbody>",
+                                              "text" => "tbody"
+                                            },
+                                            {
+                                              "context" => "caption",
+                                              "index" => 0,
+                                              "input" => "<col>",
+                                              "text" => "col"
+                                            }
+                                          ],
+                          "text" => [
+                                    "token",
+                                    "tag name"
+                                  ]
                         },
           "in cell" => {
+                       "default_level" => "m",
                        "desc" => {
-                                 "en" => "\n    <p>\x{8868}\x{306e}\x{3053}\x{307e} (<code>td</code> \x{8981}\x{7d20}\x{3084}\n    <code>th</code> \x{8981}\x{7d20}) \x{5185}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{306a}\x{3044}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n\n    <p><code>td</code> \x{3084}\n    <code>th</code> \x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{3001}\x{6b21}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n    <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>,\n    <code>&lt;tr&gt;</code>\x{3002}</p>\n  "
+                                 "en" => "<p>A start tag that is not allowed in table cells (<code>td</code>\n    or <code>th</code> elements) is used.</p>\n\n    <p>In <code>innerHTML</code> of a <code>td</code> or\n    <code>th</code> element, following start tags are not allowed:\n    <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>, and\n    <code>&lt;tr&gt;</code>.</p>",
+                                 "ja" => "<p>\x{8868}\x{306e}\x{3053}\x{307e} (<code>td</code> \x{8981}\x{7d20}\x{3084}\n    <code>th</code> \x{8981}\x{7d20}) \x{5185}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{306a}\x{3044}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n\n    <p><code>td</code> \x{3084}\n    <code>th</code> \x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{3001}\x{6b21}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n    <code>&lt;caption&gt;</code>, <code>&lt;col&gt;</code>,\n    <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>,\n    <code>&lt;td&gt;</code>, <code>&lt;tfoot&gt;</code>,\n    <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>,\n    <code>&lt;tr&gt;</code>\x{3002}</p>"
                                },
+                       "layer" => "tree-construction",
                        "message" => {
-                                    "en" => "The <code>&lt;<var>{value}</var>&gt;</code> tag\n  is used in table cell",
-                                    "ja" => "\x{30bf}\x{30b0} <code>&lt;<var>{value}</var>&gt;</code>\n  \x{304c}\x{8868}\x{306e}\x{3053}\x{307e}\x{5185}\x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                  }
+                                    "en" => "There is a start tag <code>&lt;<var>{text}</var>&gt;</code>\nin a table cell",
+                                    "ja" => "\x{8868}\x{306e}\x{3053}\x{307e}\x{5185}\x{306b}  <code>&lt;<var>{text}</var>&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                  },
+                       "modules" => {
+                                    "Web::HTML::Parser::tree_constructor" => 1
+                                  },
+                       "parser_error_names" => {
+                                               "in-cell-start-c3t6" => 1
+                                             },
+                       "text" => [
+                                 "token",
+                                 "tag name"
+                               ]
                      },
           "in colgroup" => {
+                           "default_level" => "m",
                            "desc" => {
-                                     "en" => "\n    <p>No element other than a <code>col</code> or\n    <code>template</code> element or non-space character is not\n    allowed in the <code>colgroup</code> element or in the\n    <code>template</code> element containing <code>col</code>\n    elements.</p>\n  ",
-                                     "ja" => "\n    <p><code>col</code> \x{3068} <code>template</code> \x{4ee5}\x{5916}\x{306e}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{3001}\n    <code>colgroup</code> \x{8981}\x{7d20}\x{3084}\x{3001} <code>col</code> \x{8981}\x{7d20}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{308b}\n    <code>template</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                     "en" => "<p>No element other than a <code>col</code> or\n    <code>template</code> element or non-space character is not\n    allowed in the <code>colgroup</code> element or in the\n    <code>template</code> element containing <code>col</code>\n    elements.</p>",
+                                     "ja" => "<p><code>col</code> \x{3068} <code>template</code> \x{4ee5}\x{5916}\x{306e}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{3001}\n    <code>colgroup</code> \x{8981}\x{7d20}\x{3084}\x{3001} <code>col</code> \x{8981}\x{7d20}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{308b}\n    <code>template</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                    },
+                           "layer" => "tree-construction",
                            "message" => {
-                                        "en" => "An elements or non-space character other\n  than a <code>col</code> element is used in the <code>colgroup</code>\n  element",
-                                        "ja" => "<code>colgroup</code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>col</code>\n  \x{4ee5}\x{5916}\x{306e}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                      }
+                                        "en" => "There is a text or tag in a <code>colgroup</code> element",
+                                        "ja" => "<code>colgroup</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{304b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                      },
+                           "modules" => {
+                                        "Web::HTML::Parser::tree_constructor" => 1
+                                      },
+                           "parser_error_names" => {
+                                                   "in-column-group-else" => 1
+                                                 },
+                           "parser_tests" => [
+                                             {
+                                               "context" => "colgroup",
+                                               "index" => 0,
+                                               "input" => "<p>"
+                                             },
+                                             {
+                                               "context" => "colgroup",
+                                               "index" => 0,
+                                               "input" => "</p>"
+                                             },
+                                             {
+                                               "context" => "colgroup",
+                                               "index" => 0,
+                                               "input" => "h"
+                                             }
+                                           ]
                          },
-          "in form:form" => {
-                            "message" => {
-                                         "en" => "Start tag <code>&lt;form&gt;</code> is\n  not allowed in a <code>form</code> element."
-                                       }
-                          },
           "in frameset" => {
+                           "default_level" => "m",
+                           "desc" => {
+                                     "en" => "<p>No element other than a <code>frameset</code> or\n    <code>frame</code> element or non-space character is not\n    allowed in the <code>frameset</code> element.</p>",
+                                     "ja" => "<p><code>frameset</code> \x{3068} <code>frame</code> \x{4ee5}\x{5916}\x{306e}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{3001}\n    <code>frameset</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                   },
+                           "layer" => "tree-construction",
                            "message" => {
-                                        "en" => "Start tag <code>&lt;<var>{text}</var>&gt;</code> is\n  not allowed in a <code>framset</code> element."
-                                      }
+                                        "en" => "There is a text or tag in a <code>frameset</code> element",
+                                        "ja" => "<code>frameset</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{304b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                      },
+                           "modules" => {
+                                        "Web::HTML::Parser::tree_constructor" => 1
+                                      },
+                           "parser_error_names" => {
+                                                   "in-frameset-else" => 1
+                                                 },
+                           "parser_tests" => [
+                                             {
+                                               "context" => "frameset",
+                                               "index" => 0,
+                                               "input" => "<p>"
+                                             },
+                                             {
+                                               "context" => "frameset",
+                                               "index" => 0,
+                                               "input" => "</p>"
+                                             },
+                                             {
+                                               "context" => "frameset",
+                                               "index" => 0,
+                                               "input" => "h"
+                                             }
+                                           ]
                          },
-          "in frameset:#text" => {
-                                 "message" => {
-                                              "en" => "Non\x{2010}white\x{2010}space characters are not allowed\n  in a <code>frameset</code> element."
-                                            }
-                               },
-          "in frameset:/" => {
-                             "message" => {
-                                          "en" => "End tag <code>&lt;/<var>{text}</var>&gt;</code> is\n  not allowed in a <code>frameset</code> element."
-                                        }
-                           },
           "in head:head" => {
+                            "default_level" => "m",
                             "desc" => {
-                                      "en" => "\n    <p>There is a start tag <code>&lt;head&gt;</code> in the\n    <code>&lt;head&gt;</code> element.  The document is non-conforming.</p>\n\n    <p>In an HTML document there must not be more than\n    one <code>head</code> element, therefore no more than one\n    start tag <code>&lt;head&gt;</code> can appear in the input stream.</p>\n  "
+                                      "en" => "<p>There is a start tag <code>&lt;head&gt;</code> in the HTML\n<code>&lt;head&gt;</code> element.  In an HTML document there must not be\nmore than one <code>head</code> element.</p>",
+                                      "ja" => "<p>HTML <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;head&gt;</code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002} HTML \x{6587}\x{66f8}\x{306b}\x{306f} <code>head</code>\n\x{8981}\x{7d20}\x{304c}\x{8907}\x{6570}\x{3042}\x{3063}\x{3066}\x{306f}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                     },
+                            "layer" => "tree-construction",
                             "message" => {
-                                         "en" => "Start tag <code>&lt;head&gt;</code>\n  is not allowed in the <code>head</code> element."
-                                       }
+                                         "en" => "There is a start tag <code>&lt;head&gt;</code> in the <code>head</code>\nelement",
+                                         "ja" => "<code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;head&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                       },
+                            "modules" => {
+                                         "Web::HTML::Parser::tree_constructor" => 1
+                                       },
+                            "parser_error_names" => {
+                                                    "in-head-start-head" => 1
+                                                  },
+                            "parser_tests" => [
+                                              {
+                                                "index" => 21,
+                                                "input" => "<!DOCTYPE HTML><head><head>"
+                                              }
+                                            ]
                           },
+          "in hn:hn" => {
+                        "default_level" => "m",
+                        "desc" => {
+                                  "en" => "<p>HTML elements <code>h1</code>, <code>h2</code>, <code>h3</code>,\n<code>h4</code>, <code>h5</code>, and <code>h6</code> cannot be\nnested.\n\n</p><p>To represent a subtitle or tagline, use the <code>hgroup</code>\nelement.\n\n</p><p>To change font size, use CSS.</p>",
+                                  "ja" => "<p>HTML \x{8981}\x{7d20} <code>h1</code>, <code>h2</code>, <code>h3</code>,\n<code>h4</code>, <code>h5</code>, <code>h6</code>\n\x{3092}\x{5165}\x{308c}\x{5b50}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{526f}\x{984c}\x{3084}\x{30ad}\x{30e3}\x{30c3}\x{30c1}\x{30d5}\x{30ec}\x{30fc}\x{30ba}\x{3092}\x{8a18}\x{8ff0}\x{3057}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001} <code>hgroup</code>\n\x{8981}\x{7d20}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n\n</p><p>\x{6587}\x{5b57}\x{306e}\x{5927}\x{304d}\x{3055}\x{3092}\x{5909}\x{3048}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>"
+                                },
+                        "layer" => "tree-construction",
+                        "message" => {
+                                     "en" => "There is a start tag <code>&lt;<var>{value}</var>&gt;</code> in\nan element <code><var>{text}</var></code>",
+                                     "ja" => "<code><var>{text}</var></code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;<var>{value}</var>&gt;</code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                   },
+                        "modules" => {
+                                     "Web::HTML::Parser::tree_constructor" => 1
+                                   },
+                        "parser_error_names" => {
+                                                "in-body-start-h6" => 1
+                                              },
+                        "parser_tests" => [
+                                          {
+                                            "index" => 19,
+                                            "input" => "<!DOCTYPE HTML><h3><h5>",
+                                            "text" => "h3",
+                                            "value" => "h5"
+                                          }
+                                        ],
+                        "text" => [
+                                  "oe[-1]",
+                                  "local name"
+                                ],
+                        "value" => [
+                                   "token",
+                                   "tag name"
+                                 ]
+                      },
           "in html:#DOCTYPE" => {
                                 "desc" => {
                                           "en" => "\n    <p>A <code>DOCTYPE</code> appears after any element or data character\n    has been seen.  The document is non-conforming.</p>\n    \n    <p>The <code>DOCTYPE</code> must be placed before any\n    tag, reference, or data character.  Only white space characters\n    and comments can be inserted before the <code>DOCTYPE</code>.</p>\n  "
@@ -3356,102 +4195,275 @@ $WebHACC::_Errors = {
                                              "en" => "A <code>DOCTYPE</code> appears after any\n  element or data character has been seen."
                                            }
                               },
-          "in nobr:nobr" => {
-                            "message" => {
-                                         "en" => "The <code>nobr</code> element cannot be\n  nested."
-                                       }
-                          },
           "in noscript" => {
+                           "default_level" => "m",
                            "desc" => {
-                                     "en" => "\n    <p>The start tag is not allowed in the <code>noscript</code>\n    element.</p><!-- The |noscript| element is closed here. -->\n  ",
-                                     "ja" => "\n    <p>\x{3053}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f} <code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                     "en" => "<p>Within a <code>noscript</code> element in a <code>head</code>\nelement, only limited set of HTML elements such as <code>link</code>\nand <code>meta</code> can be used.</p>",
+                                     "ja" => "<p><code>head</code> \x{8981}\x{7d20}\x{5185}\x{306e} <code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{3001}\n<code>link</code> \x{3084} <code>meta</code> \x{306a}\x{3069}\x{4e00}\x{90e8}\x{306e} HTML\n\x{8981}\x{7d20}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                    },
+                           "layer" => "tree-construction",
                            "message" => {
-                                        "en" => "An unexpected start tag\n  <code>&lt;<var>{text}</var>&gt;</code> is used in the <code>noscript</code>\n  element",
-                                        "ja" => "\x{958b}\x{59cb}\x{30bf}\x{30b0} <code>&lt;<var>{text}</var>&gt;</code>\n  \x{304c} <code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}"
-                                      }
-                         },
-          "in noscript:#eof" => {
-                                "desc" => {
-                                          "en" => "\n    <p>The <code>noscript</code> element must be closed explicitly by\n    an end tag.</p>\n  ",
-                                          "ja" => "\n    <p><code>noscript</code> \x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3067}\x{660e}\x{793a}\x{7684}\x{306b}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                        },
-                                "message" => {
-                                             "en" => "The tag <code>&lt;/noscript&gt;</code>\n  not found before the end-of-file",
-                                             "ja" => "\x{672b}\x{7aef}\x{307e}\x{3067}\x{306b} <code>&lt;/noscript&gt;</code>\n  \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                           }
-                              },
-          "in noscript:#text" => {
-                                 "desc" => {
-                                           "en" => "\n    <p>Non-space characters cannot be used in the\n    <code>noscript</code> element in the <code>head</code>\n    element.</p>\n  ",
-                                           "ja" => "\n    <p><code>head</code> \x{8981}\x{7d20}\x{5185}\x{306e} <code>noscript</code>\n    \x{8981}\x{7d20}\x{306b}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                         },
-                                 "message" => {
-                                              "en" => "A non-space character is found in the\n  <code>noscript</code> element",
-                                              "ja" => "<code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}"
-                                            }
-                               },
-          "in noscript:/" => {
-                             "desc" => {
-                                       "en" => "\n    <p>The end tag is not allowed in the <code>noscript</code>\n    element.</p><!-- The |noscript| element is closed here. -->\n\n    <dl class=\"switch\">\n\n    <dt>The end tag <code>&lt;/br&gt;</code></dt>\n\n    <dd>The <code>br</code> element cannot be used in the\n    <code>noscript</code> element in the <code>head</code>\n    element.</dd>\n\n    </dl>\n  ",
-                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f} <code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/br&gt;</code></dt>\n\n    <dd><code>br</code> \x{8981}\x{7d20}\x{306f} <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306e}\n    <code>noscript</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    </dl>\n  "
-                                     },
-                             "message" => {
-                                          "en" => "An unexpected end tag\n  <code>&lt;/<var>{text}</var>&gt;</code> is used in the <code>noscript</code>\n  element",
-                                          "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/<var>{text}</var>&gt;</code>\n  \x{304c} <code>noscript</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}"
-                                        }
-                           },
-          "in select" => {
-                         "message" => {
-                                      "en" => "Start tag <code>&lt;<var>{text}</var>&gt;</code>\n  is not allowed in a <code>select</code> element."
-                                    }
-                       },
-          "in select:/" => {
-                           "message" => {
-                                        "en" => "End tag <code>&lt;/<var>{text}</var>&gt;</code>\n  is not allowed in a <code>select</code> element."
-                                      }
-                         },
-          "in table" => {
-                        "desc" => {
-                                  "en" => "\n    <p>The start or end tag of an element, which\n    cannot be a child of <code>table</code> element, appears\n    in the input stream while the <code>table</code> element has been opened\n    but no other element has been opened.  The document is non-conforming.</p>\n\n    <p>In <code>table</code>, only table related elements\n    are allowed; any other element must be contained in\n    <code>td</code> or <code>th</code> element to form \n    a part of the table, or <code>caption</code> element to create\n    a table caption.</p>\n  "
-                                },
-                        "message" => {
-                                     "en" => "Start tag <code>&lt;<var>{text}</var>&gt;</code>\n  is not allowed in a <code>table</code> element."
-                                   }
-                      },
-          "in table:#text" => {
-                              "desc" => {
-                                        "en" => "\n    <p>A non\x{2010}white\x{2010}space character appears in <code>table</code>.\n    The document is non-conforming.</p>\n\n    <p>In <code>table</code>, only table related elements\n    are allowed; any other element and data character must be contained in\n    <code>td</code> or <code>th</code> element to form \n    a part of the table, or <code>caption</code> element to create\n    a table caption.</p>\n  "
+                                        "en" => "The <code>noscript</code> element is not closed before\na text, tag, or end of file",
+                                        "ja" => "\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3084}\x{30bf}\x{30b0}\x{3001}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306e}\x{672b}\x{5c3e}\x{306e}\x{524d}\x{3067} <code>noscript</code>\n\x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                       },
-                              "message" => {
-                                           "en" => "Non\x{2010}white\x{2010}space character is not allowed within \n  the <code>table</code> element, outside of the caption and cells."
-                                         }
-                            },
-          "in table:/" => {
-                          "message" => {
-                                       "en" => "End tag <code>&lt;/<var>{text}</var>&gt;</code>\n  is not allowed in a <code>table</code> element."
-                                     }
-                        },
-          "in table:form" => {
-                             "desc" => {
-                                       "en" => "\n    <p>The <code>form</code> element cannot be used <em>directly</em>\n    within a <code>table</code>, <code>tbody</code>,\n    <code>thead</code>, <code>tfoot</code>, or <code>tr</code>\n    element.  The start tag is not ignored but it has complex\n    interactions with form controls and any other <code>form</code>\n    element.</p>\n\n    <p>If you want to associate form controls in table cells with the\n    <code>form</code> element, move the <code>form</code> outside of\n    the table and use the <code>form</code> attribute on form controls\n    if necessary.</p>\n  ",
-                                       "ja" => "\n    <p><code>form</code> \x{8981}\x{7d20}\x{306f} <code>table</code>, <code>tbody</code>,\n    <code>thead</code>, <code>tfoot</code>, <code>tr</code>\n    \x{5404}\x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}<em>\x{76f4}\x{63a5}</em>\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{3053}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{3084}\x{4ed6}\x{306e}\n    <code>form</code> \x{8981}\x{7d20}\x{3068}\x{8907}\x{96d1}\x{306b}\x{76f8}\x{4e92}\x{4f5c}\x{7528}\x{3059}\x{308b}\x{3053}\x{3068}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{8868}\x{306e}\x{3053}\x{307e}\x{5185}\x{306e}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{3092} <code>form</code>\n    \x{8981}\x{7d20}\x{3068}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001} <code>form</code> \x{3092}\x{8868}\x{306e}\x{5916}\x{5074}\x{306b}\x{79fb}\x{52d5}\x{3057}\x{3066}\x{3001}\n    \x{5fc5}\x{8981}\x{306a}\x{3089}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{306e} <code>form</code>\n    \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n  "
-                                     },
-                             "message" => {
-                                          "en" => "The tag <code>&lt;form&gt;</code> is used\n  in a table",
-                                          "ja" => "\x{30bf}\x{30b0} <code>&lt;form&gt;</code> \x{304c}\x{8868}\x{5185}\x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                        }
-                           },
-          "in table:form ignored" => {
-                                     "desc" => {
-                                               "en" => "\n    <p>The <code>form</code> element cannot be used <em>directly</em>\n    within a <code>table</code>, <code>tbody</code>,\n    <code>thead</code>, <code>tfoot</code>, or <code>tr</code>\n    element.  The start tag is ignored.</p>\n\n    <p>If you want to associate form controls in table cells with the\n    <code>form</code> element, move the <code>form</code> outside of\n    the table and use the <code>form</code> attribute on form controls\n    if necessary.</p>\n  ",
-                                               "ja" => "\n    <p><code>form</code> \x{8981}\x{7d20}\x{306f} <code>table</code>, <code>tbody</code>,\n    <code>thead</code>, <code>tfoot</code>, <code>tr</code>\n    \x{5404}\x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}<em>\x{76f4}\x{63a5}</em>\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{3053}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{8868}\x{306e}\x{3053}\x{307e}\x{5185}\x{306e}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{3092} <code>form</code>\n    \x{8981}\x{7d20}\x{3068}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001} <code>form</code> \x{3092}\x{8868}\x{306e}\x{5916}\x{5074}\x{306b}\x{79fb}\x{52d5}\x{3057}\x{3066}\x{3001}\n    \x{5fc5}\x{8981}\x{306a}\x{3089}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{306e} <code>form</code>\n    \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n  "
+                           "modules" => {
+                                        "Web::HTML::Parser::tree_constructor" => 1
+                                      },
+                           "parser_error_names" => {
+                                                   "in-head-noscript-else" => 1,
+                                                   "in-head-noscript-start-head-noscript" => 1
+                                                 },
+                           "parser_tests" => [
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript><p>",
+                                               "noscript" => 1
                                              },
-                                     "message" => {
-                                                  "en" => "The tag <code>&lt;form&gt;</code> is used\n  in a table",
-                                                  "ja" => "\x{30bf}\x{30b0} <code>&lt;form&gt;</code> \x{304c}\x{8868}\x{5185}\x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                }
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript><hoge>",
+                                               "noscript" => 1
+                                             },
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript>foo",
+                                               "noscript" => 1
+                                             },
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript>",
+                                               "noscript" => 1
+                                             },
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript><noscript></noscript>",
+                                               "noscript" => 1
+                                             },
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript><head></noscript>",
+                                               "noscript" => 1
+                                             },
+                                             {
+                                               "index" => 31,
+                                               "input" => "<!DOCTYPE HTML><head><noscript><body>",
+                                               "noscript" => 1
+                                             }
+                                           ]
+                         },
+          "in select" => {
+                         "default_level" => "m",
+                         "desc" => {
+                                   "en" => "<p>In an HTML <code>select</code> element, only HTML\n<code>option</code> and <code>optgroup</code> elements can be used.</p>",
+                                   "ja" => "<p>HTML <code>select</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f} HTML\n<code>optgroup</code> \x{8981}\x{7d20}\x{3068} HTML <code>option</code>\n\x{8981}\x{7d20}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                 },
+                         "layer" => "tree-construction",
+                         "message" => {
+                                      "en" => "There is a tag in a <code>select</code> element",
+                                      "ja" => "<code>colgroup</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                    },
+                         "modules" => {
+                                      "Web::HTML::Parser::tree_constructor" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "in-select-else" => 1
+                                               },
+                         "parser_tests" => [
+                                           {
+                                             "index" => 23,
+                                             "input" => "<!DOCTYPE HTML><Select><foo>"
+                                           },
+                                           {
+                                             "index" => 23,
+                                             "input" => "<!DOCTYPE HTML><Select></foo>"
+                                           }
+                                         ]
+                       },
+          "in select in table:end tag" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>An HTML <code>select</code> element must be closed before a\ntable-related element is closed.</p>",
+                                                    "ja" => "<p>HTML <code>select</code> \x{8981}\x{7d20}\x{306f}\x{3001}\n\x{8868}\x{95a2}\x{4fc2}\x{306e}\x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{308b}\x{524d}\x{306b}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "tree-construction",
+                                          "message" => {
+                                                       "en" => "The <code>select</code> element is not closed before\nan end tag <code>&lt;/<var>{value}</var>&gt;</code>",
+                                                       "ja" => "<code>&lt;/<var>{value}</var>&gt;</code> \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{524d}\x{306b}\n<code>select</code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::HTML::Parser::tree_constructor" => 1
+                                                     },
+                                          "parser_error_names" => {
+                                                                  "in-select-in-table-end-ct7" => 1
+                                                                },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 30,
+                                                              "input" => "<!DOCTYPE HTML><table><select></tbody>",
+                                                              "value" => "tbody"
+                                                            }
+                                                          ],
+                                          "value" => [
+                                                     "token",
+                                                     "tag name"
+                                                   ]
+                                        },
+          "in select in table:start tag" => {
+                                            "default_level" => "m",
+                                            "desc" => {
+                                                      "en" => "<p>An HTML <code>select</code> element must be closed before a\ntable-related element is opened.</p>",
+                                                      "ja" => "<p>HTML <code>select</code> \x{8981}\x{7d20}\x{306f}\x{3001}\n\x{8868}\x{95a2}\x{4fc2}\x{306e}\x{8981}\x{7d20}\x{304c}\x{958b}\x{304b}\x{308c}\x{308b}\x{524d}\x{306b}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                            "layer" => "tree-construction",
+                                            "message" => {
+                                                         "en" => "The <code>select</code> element is not closed before\na start tag <code>&lt;<var>{value}</var>&gt;</code>",
+                                                         "ja" => "<code>&lt;<var>{value}</var>&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{524d}\x{306b}\n<code>select</code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::HTML::Parser::tree_constructor" => 1
+                                                       },
+                                            "parser_error_names" => {
+                                                                    "in-select-in-table-start-ct7" => 1
+                                                                  },
+                                            "parser_tests" => [
+                                                              {
+                                                                "index" => 30,
+                                                                "input" => "<!DOCTYPE HTML><table><select><tbody>",
+                                                                "value" => "tbody"
+                                                              }
+                                                            ],
+                                            "value" => [
+                                                       "token",
+                                                       "tag name"
+                                                     ]
+                                          },
+          "in table" => {
+                        "default_level" => "m",
+                        "desc" => {
+                                  "en" => "<p>Tags not related to tables are not allowed in an HTML\n<code>table</code> element.  It must be put in an HTML\n<code>caption</code> element, or in an HTML <code>td</code> or\n<code>th</code> element, or must be moved outside of the table.</p>",
+                                  "ja" => "<p>\x{8868}\x{3068}\x{95a2}\x{4fc2}\x{306e}\x{306a}\x{3044}\x{30bf}\x{30b0}\x{3092} HTML \x{306e} <code>table</code>\n\x{8981}\x{7d20}\x{306b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} HTML \x{306e}\n<code>caption</code>, <code>td</code>, <code>th</code>\n\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{306e}\x{8981}\x{7d20}\x{306b}\x{542b}\x{3081}\x{308b}\x{304b}\x{3001}\x{8868}\x{306e}\x{5916}\x{306b}\x{51fa}\x{3055}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                },
+                        "layer" => "tree-construction",
+                        "message" => {
+                                     "en" => "There is a tag in a <code>table</code> element",
+                                     "ja" => "<code>table</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                    },
+                        "modules" => {
+                                     "Web::HTML::Parser::tree_constructor" => 1
+                                   },
+                        "parser_error_names" => {
+                                                "in-table-else" => 1,
+                                                "in-table-start-form" => 1,
+                                                "in-table-start-input" => 1
+                                              },
+                        "parser_tests" => [
+                                          {
+                                            "index" => 22,
+                                            "input" => "<!DOCTYPE HTML><table><p>"
+                                          },
+                                          {
+                                            "index" => 22,
+                                            "input" => "<!DOCTYPE HTML><table></gfoo>"
+                                          },
+                                          {
+                                            "index" => 22,
+                                            "input" => "<!DOCTYPE HTML><table><form>"
+                                          },
+                                          {
+                                            "index" => 22,
+                                            "input" => "<!DOCTYPE HTML><table><input>"
+                                          }
+                                        ]
+                      },
+          "in table body" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>In the <code>innerHTML</code> of an HTML <code>thead</code>,\n<code>tbody</code>, or <code>tfoot</code> element, HTML elements\n<code>caption</code>, <code>colgroup</code>, <code>col</code>,\n<code>thead</code>, <code>tbody</code>, and <code>tfoot</code> are not\nallowed.</p>",
+                                       "ja" => "<p>HTML <code>thead</code> \x{8981}\x{7d20}\x{3001} HTML <code>tbody</code> \x{8981}\x{7d20}\x{3001}\nHTML <code>tfoot</code> \x{8981}\x{7d20}\x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{3001}\nHTML \x{8981}\x{7d20} <code>caption</code>, <code>colgroup</code>,\n<code>col</code>, <code>thead</code>, <code>tbody</code>,\n<code>tfoot</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                     },
+                             "layer" => "tree-construction",
+                             "message" => {
+                                          "en" => "There is a start tag <code>&lt;<var>{value}</var>&gt;</code> in a\ntable row group",
+                                          "ja" => "\x{8868}\x{306e}\x{884c}\x{7fa4}\x{5185}\x{306b} <code>&lt;<var>{value}</var>&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                        },
+                             "modules" => {
+                                          "Web::HTML::Parser::tree_constructor" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "in-table-body-start-c3t3" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "context" => "tbody",
+                                                 "index" => 0,
+                                                 "input" => "<tbody>",
+                                                 "value" => "tbody"
+                                               }
+                                             ],
+                             "value" => [
+                                        "token",
+                                        "tag name"
+                                      ]
+                           },
+          "in table row" => {
+                            "default_level" => "m",
+                            "desc" => {
+                                      "en" => "<p>In the <code>innerHTML</code> of an HTML <code>tr</code> element,\nHTML elements <code>caption</code>, <code>colgroup</code>,\n<code>col</code>, <code>thead</code>, <code>tbody</code>,\n<code>tfoot</code>, and <code>tr</code> are not allowed.</p>",
+                                      "ja" => "<p>HTML <code>tr</code> \x{8981}\x{7d20}\x{306e} <code>innerHTML</code> \x{3067}\x{306f}\x{3001}\nHTML \x{8981}\x{7d20} <code>caption</code>, <code>colgroup</code>,\n<code>col</code>, <code>thead</code>, <code>tbody</code>,\n<code>tfoot</code>, <code>tr</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                    },
+                            "layer" => "tree-construction",
+                            "message" => {
+                                         "en" => "There is a start tag <code>&lt;<var>{value}</var>&gt;</code> in a\ntable row",
+                                         "ja" => "\x{8868}\x{306e}\x{884c}\x{5185}\x{306b} <code>&lt;<var>{value}</var>&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                       },
+                            "modules" => {
+                                         "Web::HTML::Parser::tree_constructor" => 1
+                                       },
+                            "parser_error_names" => {
+                                                    "in-row-start-c3t4" => 1
+                                                  },
+                            "parser_tests" => [
+                                              {
+                                                "context" => "tr",
+                                                "index" => 0,
+                                                "input" => "<tbody>",
+                                                "value" => "tbody"
+                                              }
+                                            ],
+                            "value" => [
+                                       "token",
+                                       "tag name"
+                                     ]
+                          },
+          "in table:#text" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>Text other than white space characters is not allowed in an HTML\n<code>table</code> element.  It must be put in an HTML\n<code>caption</code> element, or in an HTML <code>td</code> or\n<code>th</code> element, or must be moved outside of the table.</p>",
+                                        "ja" => "<p>\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{4ee5}\x{5916}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3092} HTML \x{306e} <code>table</code>\n\x{8981}\x{7d20}\x{306b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{306f} HTML \x{306e}\n<code>caption</code>, <code>td</code>, <code>th</code>\n\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{306e}\x{8981}\x{7d20}\x{306b}\x{542b}\x{3081}\x{308b}\x{304b}\x{3001}\x{8868}\x{306e}\x{5916}\x{306b}\x{51fa}\x{3055}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                      },
+                              "layer" => "tree-construction",
+                              "message" => {
+                                           "en" => "There is a text in a <code>table</code> element",
+                                           "ja" => "<code>table</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                         },
+                              "modules" => {
+                                           "Web::HTML::Parser::tree_constructor" => 1
+                                         },
+                              "parser_error_names" => {
+                                                      "in-table-char" => 1,
+                                                      "in-table-text-else" => 1
+                                                    },
+                              "parser_tests" => [
+                                                {
+                                                  "index" => 22,
+                                                  "input" => "<!DOCTYPE HTML><table>abc"
+                                                },
+                                                {
+                                                  "index" => 25,
+                                                  "input" => "<!DOCTYPE HTML><table><p>abc"
+                                                }
+                                              ]
+                            },
           "input attr not applicable" => {
                                          "desc" => {
                                                    "en" => "\n    <p>Attributes of the <code>input</code> element does or does not\n    apply to the <code>input</code> element depending on the\n    <code>type</code> attribute value.  If the attribute does not\n    apply, it cannot be specified to the element.</p>\n  ",
@@ -3513,14 +4525,22 @@ $WebHACC::_Errors = {
                                               }
                                  },
           "isindex" => {
+                       "default_level" => "m",
                        "desc" => {
-                                 "en" => "\n    <p>The <code>isindex</code> element is obsolete and it cannot be\n    used in the document.  The tag <code>&lt;isindex&gt;</code> is\n    expanded to a <code>form</code> element and its children.</p>\n  ",
-                                 "ja" => "\n    <p><code>isindex</code> \x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    <code>&lt;isindex&gt;</code> \x{30bf}\x{30b0}\x{306f} <code>form</code> \x{8981}\x{7d20}\x{3068}\x{5b50}\x{5b6b}\x{306b}\x{5c55}\x{958b}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                 "en" => "<p>The <code>isindex</code> element is obsolete.  Use the\n<code>form</code> element instead.</p>",
+                                 "ja" => "<p><code>isindex</code> \x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n<code>form</code> \x{8981}\x{7d20}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>"
                                },
+                       "layer" => "tree-construction",
                        "message" => {
-                                    "en" => "The <code>isindex</code> element is\n  used",
-                                    "ja" => "<code>isindex</code> \x{8981}\x{7d20}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                  }
+                                    "en" => "There is a start tag <code>&lt;isindex&gt;</code>",
+                                    "ja" => "<code>&lt;isindex&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                  },
+                       "modules" => {
+                                    "Web::HTML::Parser::tree_constructor" => 1
+                                  },
+                       "parser_error_names" => {
+                                               "in-body-start-isindex" => 1
+                                             }
                      },
           "js:parse error" => {
                               "desc" => {
@@ -4605,14 +5625,6 @@ $WebHACC::_Errors = {
                                                                 "en" => "Whether the specified character encoding name\n  <code><var>{value}</var></code> matches to the actual character encoding\n  name cannot be checked since the input is not a byte stream."
                                                               }
                                                  },
-          "missing start tag:tr" => {
-                                    "desc" => {
-                                              "en" => "\n    <p>Start tag of a <code>tr</code> element, which is <em>not</em>\n    optional, is missing.  The document is non-conforming.</p>\n\n    <p>In a table section, a <code>&lt;tr&gt;</code> start tag\n    must occur before any <code>&lt;td&gt;</code> or\n    <code>&lt;th&gt;</code> start tag.  Though the HTML5 parser\n    implies the <code>&lt;tr&gt;</code> start tag before\n    these start tags, it must be explicitly specified.</p>\n  "
-                                            },
-                                    "message" => {
-                                                 "en" => "Start tag of <code>tr</code>\n  element is missing."
-                                               }
-                                  },
           "mode:syntax error" => {
                                  "message" => {
                                               "en" => "The attribute value is not a valid mode\n  name."
@@ -4676,6 +5688,34 @@ $WebHACC::_Errors = {
                                   "en" => "Polytheistic slash (<code>/&gt;</code>) cannot be\n  used for this element."
                                 }
                    },
+          "nestc has no net" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>When an element is self-closing, the start tag must be closed by\n<code>/&gt;</code>.  The <code>/</code> character must be immediately\nfollowed by a <code>&gt;</code> character.</p>",
+                                          "ja" => "<p>\x{8981}\x{7d20}\x{3092}\x{305d}\x{306e}\x{5834}\x{3067}\x{9589}\x{3058}\x{3066}\x{5185}\x{5bb9}\x{3092}\x{7a7a}\x{3068}\x{3059}\x{308b}\x{3068}\x{304d}\x{306f}\x{3001}\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f} <code>/&gt;</code> \x{3067}\x{7d42}\x{3048}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n<code>/</code> \x{306e}\x{76f4}\x{5f8c}\x{306b} <code>&gt;</code> \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenization",
+                                "message" => {
+                                             "en" => "The tag is not closed by <code>&gt;</code> after <code>/</code>",
+                                             "ja" => "\x{30bf}\x{30b0}\x{304c} <code>/</code> \x{306e}\x{5f8c} <code>&gt;</code> \x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::HTML::Parser::tokenizer" => 1
+                                           },
+                                "parser_error_names" => {
+                                                        "self-closing-start-tag-else" => 1
+                                                      },
+                                "parser_tests" => [
+                                                  {
+                                                    "index" => 19,
+                                                    "input" => "<!DOCTYPE HTML><p / >"
+                                                  },
+                                                  {
+                                                    "index" => 18,
+                                                    "input" => "<!DOCTYPE HTML><p/hoge>"
+                                                  }
+                                                ]
+                              },
           "newline in value" => {
                                 "desc" => {
                                           "en" => "\n    <p>The value cannot contain any newline.</p>\n  ",
@@ -4726,18 +5766,114 @@ $WebHACC::_Errors = {
                                            "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f} 0 \x{3067}\x{3059}"
                                          }
                             },
-          "no DOCTYPE" => {
-                          "desc" => {
-                                    "en" => "\n    <p>The document does not start with a <code>DOCTYPE</code>.\n    The document is non-conforming.</p>\n\n    <p>An HTML document must start by a <code>DOCTYPE</code>:\n      <pre class=\"html example\">\n<code>&lt;!DOCTYPE HTML&gt;</code></pre>\n    </p>\n\n    <p>Only white space characters and comments are allowed\n    before the <code>DOCTYPE</code>.  XML declaration is <em>not</em>\n    allowed in HTML document.</p>\n  "
+          "no <tr>" => {
+                       "default_level" => "m",
+                       "desc" => {
+                                 "en" => "<p>The start tag <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> must be\nin an HTML <code>tr</code> element.</p>",
+                                 "ja" => "<p>\x{958b}\x{59cb}\x{30bf}\x{30b0} <code>&lt;td&gt;</code> \x{3084}\x{958b}\x{59cb}\x{30bf}\x{30b0} <code>&lt;th&gt;</code>\n\x{306e}\x{524d}\x{306b} HTML <code>tr</code> \x{8981}\x{7d20}\x{304c}\x{958b}\x{3044}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                               },
+                       "layer" => "tree-construction",
+                       "message" => {
+                                    "en" => "There is the start tag of a table cell without a <code>tr</code> element",
+                                    "ja" => "<code>tr</code> \x{8981}\x{7d20}\x{306a}\x{3057}\x{3067}\x{8868}\x{306e}\x{3053}\x{307e}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                   },
+                       "modules" => {
+                                    "Web::HTML::Parser::tree_constructor" => 1
+                                  },
+                       "parser_error_names" => {
+                                               "in-table-body-start-td-th" => 1
+                                             },
+                       "parser_tests" => [
+                                         {
+                                           "index" => 22,
+                                           "input" => "<!DOCTYPE HTML><table><td>"
+                                         }
+                                       ]
+                     },
+          "no DOCTYPE" => {
+                          "default_level" => "m",
+                          "desc" => {
+                                    "en" => "<p>The document does not have the DOCTYPE.  An HTML document must\nbegin with the DOCTYPE (<code>&lt;!DOCTYPE HTML&gt;</code>).\n\n</p><p>Before the DOCTYPE, only white space characters and comments are\nallowed.</p>",
+                                    "ja" => "<p>\x{3053}\x{306e}\x{6587}\x{66f8}\x{306f} DOCTYPE \x{304b}\x{3089}\x{59cb}\x{307e}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}HTML \x{6587}\x{66f8}\x{306f} DOCTYPE\n(<code>&lt;!DOCTYPE HTML&gt;</code>) \x{304b}\x{3089}\x{59cb}\x{307e}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                  },
+                          "layer" => "tree-construction",
                           "message" => {
-                                       "en" => "This document does not start with a\n  <code>DOCTYPE</code>."
-                                     }
+                                       "en" => "There is no DOCTYPE",
+                                       "ja" => "DOCTYPE \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tree_constructor" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "initial-else" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 0,
+                                              "input" => "hoge"
+                                            },
+                                            {
+                                              "index" => 7,
+                                              "input" => "<!---->hoge"
+                                            }
+                                          ]
                         },
+          "no DOCTYPE literal" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>There must be a quoted string after the <code>PUBLIC</code> or\n<code>SYSTEM</code> keyword, containing the public or system\nidentifier.</p>",
+                                            "ja" => "<p>\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} <code>PUBLIC</code> \x{3084} <code>SYSTEM</code>\n\x{306e}\x{5f8c}\x{306b}\x{306f}\x{3001}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{304b}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{3092}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3063}\x{305f}\x{6587}\x{5b57}\x{5217}\x{304c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "tokenization",
+                                  "message" => {
+                                               "en" => "There is no quoted string",
+                                               "ja" => "\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Parser::tokenizer" => 1
+                                             },
+                                  "parser_error_names" => {
+                                                          "after-doctype-public-keyword-003e" => 1,
+                                                          "after-doctype-system-keyword-003e" => 1,
+                                                          "before-doctype-public-identifier-003e" => 1,
+                                                          "before-doctype-system-identifier-003e" => 1
+                                                        },
+                                  "parser_tests" => [
+                                                    {
+                                                      "index" => 21,
+                                                      "input" => "<!DOCTYPE html PUBLIC>"
+                                                    },
+                                                    {
+                                                      "index" => 22,
+                                                      "input" => "<!DOCTYPE html PUBLIC >"
+                                                    },
+                                                    {
+                                                      "index" => 21,
+                                                      "input" => "<!DOCTYPE html system>"
+                                                    },
+                                                    {
+                                                      "index" => 23,
+                                                      "input" => "<!DOCTYPE html system  >"
+                                                    }
+                                                  ]
+                                },
           "no DOCTYPE name" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>The DOCTYPE must be <code>&lt;!DOCTYPE html&gt;</code> (in HTML) or\nmust contain the root element name (in XML).</p>",
+                                         "ja" => "<p>DOCTYPE \x{306f} <code>&lt;!DOCTYPE html&gt;</code> \x{3068}\x{3059}\x{308b} (HTML)\n\x{304b}\x{3001}\x{6839}\x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\x{3092}\x{542b}\x{3081}\x{308b} (XML) \x{304b}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "tokenization",
                                "message" => {
-                                            "en" => "After the string <code>&lt;!DOCTYPE </code>, the\n  document type name must be specified."
-                                          }
+                                            "en" => "There is no document type name",
+                                            "ja" => "\x{6587}\x{66f8}\x{578b}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          },
+                               "modules" => {
+                                            "Web::HTML::Parser::tokenizer" => 1
+                                          },
+                               "parser_error_names" => {
+                                                       "before-doctype-name-003e" => 1
+                                                     }
                              },
           "no PUBLIC literal" => {
                                  "message" => {
@@ -4839,15 +5975,6 @@ $WebHACC::_Errors = {
                                                 "ja" => "\x{6587}\x{66f8}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               }
                                  },
-          "no end tag at EOF" => {
-                                 "desc" => {
-                                           "ja" => "\n    <p>\x{307b}\x{3068}\x{3093}\x{3069}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3067}\x{660e}\x{793a}\x{7684}\x{306b}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306e}\x{672b}\x{5c3e}\x{307e}\x{3067}\x{306b}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}</p>\n  "
-                                         },
-                                 "message" => {
-                                              "en" => "The tag <code>&lt;/<var>{text}</var>&gt;</code>\n  not found before the end-of-file",
-                                              "ja" => "\x{672b}\x{7aef}\x{307e}\x{3067}\x{306b} <code>&lt;/<var>{text}</var>&gt;</code>\n  \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                            }
-                               },
           "no fallback entry URL" => {
                                      "message" => {
                                                   "en" => "Fallback entry URL is missing."
@@ -4904,9 +6031,37 @@ $WebHACC::_Errors = {
                                            }
                               },
           "no refc" => {
+                       "default_level" => "m",
+                       "desc" => {
+                                 "en" => "<p>A character or entity reference must be terminated by a\n<code>;</code> character.</p>",
+                                 "ja" => "<p>\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3084}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306e}\x{672b}\x{5c3e}\x{306b}\x{306f} <code>;</code> \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                               },
+                       "layer" => "tokenization",
                        "message" => {
-                                    "en" => "Character reference must be closed by a\n  <code>;</code> character."
-                                  }
+                                    "en" => "There is no <code>;</code> at the end of a reference",
+                                    "ja" => "\x{53c2}\x{7167}\x{306e}\x{672b}\x{5c3e}\x{306b} <code>;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                  },
+                       "modules" => {
+                                    "Web::HTML::Parser::tokenizer" => 1
+                                  },
+                       "parser_error_names" => {
+                                               "character-reference-decimal-number-else" => 1,
+                                               "character-reference-hexadecimal-number-else" => 1
+                                             },
+                       "parser_tests" => [
+                                         {
+                                           "index" => 20,
+                                           "input" => "<!DOCTYPE HTML>&#125abc;"
+                                         },
+                                         {
+                                           "index" => 22,
+                                           "input" => "<!DOCTYPE HTML>&#x125azabc;"
+                                         },
+                                         {
+                                           "index" => 19,
+                                           "input" => "<!DOCTYPE HTML>&amp**"
+                                         }
+                                       ]
                      },
           "no referenced control" => {
                                      "desc" => {
@@ -5039,20 +6194,77 @@ $WebHACC::_Errors = {
                                                        }
                                           },
           "no space before attr name" => {
+                                         "default_level" => "m",
                                          "desc" => {
-                                                   "en" => "\n    <p>There must be one or more white space characters between\n    attributes and before the first attribute.</p>\n\n    <p>Character <code>U+000C</code> cannot be used as a space before\n    an attribute in an HTML document.</p>\n\n    <p>Characters <code>U+0085</code> and <code>U+202B</code> cannot\n    be used as a space before an attribute in an HTML or XML 1.0\n    document.</p>\n  ",
-                                                   "ja" => "\n    <p>\x{5c5e}\x{6027}\x{306e}\x{9593}\x{3084}\x{6700}\x{521d}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304c}1\x{3064}\x{4ee5}\x{4e0a}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+000C</code> \x{3092} XML \x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+0085</code> \x{3084}\x{6587}\x{5b57} <code>U+202B</code>\n    \x{3092} HTML \x{3084} XML 1.0 \x{306e}\x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   "en" => "<p>There must be one or more white space characters between\n    attributes and before the first attribute.</p>\n\n    <p>Character <code>U+000C</code> cannot be used as a space before\n    an attribute in an HTML document.</p>\n\n    <p>Characters <code>U+0085</code> and <code>U+202B</code> cannot\n    be used as a space before an attribute in an HTML or XML 1.0\n    document.</p>"
                                                  },
+                                         "layer" => "tokenization",
                                          "message" => {
-                                                      "en" => "There is no space before an attribute",
-                                                      "ja" => "\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                    }
+                                                      "en" => "There is no space before an attribute\n\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}",
+                                                      "ja" => "<p>\x{5c5e}\x{6027}\x{306e}\x{9593}\x{3084}\x{6700}\x{521d}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304c}1\x{3064}\x{4ee5}\x{4e0a}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+000C</code> \x{3092} XML \x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+0085</code> \x{3084}\x{6587}\x{5b57} <code>U+202B</code>\n    \x{3092} HTML \x{3084} XML 1.0 \x{306e}\x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                         "modules" => {
+                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                    },
+                                         "parser_error_names" => {
+                                                                 "after-attribute-value-quoted-else" => 1
+                                                               },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 24,
+                                                             "input" => "<!DOCTYPE html><p foo=\"\"bar=\"\">"
+                                                           }
+                                                         ]
                                        },
-          "no space between attributes" => {
-                                           "message" => {
-                                                        "en" => "Attributes must be separeted by at least a\n  white space character."
-                                                      }
-                                         },
+          "no space before literal" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>There must be one or more white space characters between the\nkeyword <code>PUBLIC</code> or <code>SYSTEM</code> and the quoted\nstring, and between two quoted strings.</p>",
+                                                 "ja" => "<p>\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} <code>PUBLIC</code> \x{3084} <code>SYSTEM</code>\n\x{3068}\x{305d}\x{306e}\x{5f8c}\x{306e}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306e}\x{9593}\x{3084}\x{3001}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}2\x{3064}\x{306e}\x{9593}\x{306b}\x{306f}\x{3001}\n1\x{3064}\x{4ee5}\x{4e0a}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                               },
+                                       "layer" => "tokenization",
+                                       "message" => {
+                                                    "en" => "There is no space before a quoted string",
+                                                    "ja" => "\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306e}\x{524d}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Parser::tokenizer" => 1
+                                                  },
+                                       "parser_error_names" => {
+                                                               "after-doctype-public-identifier-0022" => 1,
+                                                               "after-doctype-public-identifier-0027" => 1,
+                                                               "after-doctype-public-keyword-0022" => 1,
+                                                               "after-doctype-public-keyword-0027" => 1,
+                                                               "after-doctype-system-keyword-0022" => 1,
+                                                               "after-doctype-system-keyword-0027" => 1
+                                                             },
+                                       "parser_tests" => [
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE html PUBLIC\"abc\">"
+                                                         },
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE html SYSTEM\"\">"
+                                                         },
+                                                         {
+                                                           "index" => 24,
+                                                           "input" => "<!DOCTYPE html PUBLIC \"\"\"\">"
+                                                         },
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE html PUBLIC'abc'>"
+                                                         },
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE html SYSTEM''>"
+                                                         },
+                                                         {
+                                                           "index" => 27,
+                                                           "input" => "<!DOCTYPE html PUBLIC \"abc\"'http'>"
+                                                         }
+                                                       ]
+                                     },
           "no sss" => {
                       "message" => {
                                    "en" => "Sequence of simple selectors is\n  expected."
@@ -5176,14 +6388,157 @@ $WebHACC::_Errors = {
                                      }
                         },
           "not closed before ancestor end tag" => {
+                                                  "default_level" => "m",
                                                   "desc" => {
-                                                            "en" => "\n    <p>Most of elements must be explicitly closed by its end tag, but\n    there is no such a tag.  There <i>is</i> an end tag for ancestor\n    element, or one of <code>h<var>n</var></code> elements which is\n    different from the currently opened element.  The end tag closes\n    all descendant or mismatched <code>h<var>n</var></code>\n    element.</p>\n\n    <p>Ensure all elements whose end tag can't be omitted have end\n    tags, their start and end tag names are matching, and they are not\n    misnested.</p>\n  ",
-                                                            "ja" => "\n    <p>\x{307b}\x{3068}\x{3093}\x{3069}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3067}\x{660e}\x{793a}\x{7684}\x{306b}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}\x{3057}\x{304b}\x{3057}\x{7956}\x{5148}\x{306e}\x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304b}\x{3001}\n    \x{73fe}\x{5728}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b}\x{8981}\x{7d20}\x{3068}\x{306f}\x{9055}\x{3046} <code>h<var>n</var></code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{305d}\x{308c}\x{306b}\x{3088}\x{3063}\x{3066}\x{5b50}\x{5b6b}\x{3084}\x{9593}\x{9055}\x{3063}\x{305f} <code>h<var>n</var></code> \n    \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{7701}\x{7565}\x{3067}\x{304d}\x{306a}\x{3044}\x{8981}\x{7d20}\x{304c}\x{3059}\x{3079}\x{3066}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{6301}\x{3064}\x{3053}\x{3068}\x{3001}\n    \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3068}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{30bf}\x{30b0}\x{540d}\x{304c}\x{4e00}\x{81f4}\x{3057}\x{3066}\x{3044}\x{308b}\x{3053}\x{3068}\x{3001}\n    \x{30bf}\x{30b0}\x{306e}\x{5165}\x{308c}\x{5b50}\x{95a2}\x{4fc2}\x{304c}\x{6b63}\x{3057}\x{3044}\x{3053}\x{3068}\x{3092}\x{78ba}\x{8a8d}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n  "
+                                                            "en" => "<p>Most of elements must be explicitly closed by its end tag, but\n    there is no such a tag.  There <i>is</i> an end tag for ancestor\n    element, or one of <code>h<var>n</var></code> elements which is\n    different from the currently opened element.  The end tag closes\n    all descendant or mismatched <code>h<var>n</var></code>\n    element.</p>\n\n    <p>Ensure all elements whose end tag can't be omitted have end\n    tags, their start and end tag names are matching, and they are not\n    misnested.</p>",
+                                                            "ja" => "<p>\x{307b}\x{3068}\x{3093}\x{3069}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3067}\x{660e}\x{793a}\x{7684}\x{306b}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}\x{3057}\x{304b}\x{3057}\x{7956}\x{5148}\x{306e}\x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304b}\x{3001}\n    \x{73fe}\x{5728}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b}\x{8981}\x{7d20}\x{3068}\x{306f}\x{9055}\x{3046} <code>h<var>n</var></code> \x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{3042}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{305d}\x{308c}\x{306b}\x{3088}\x{3063}\x{3066}\x{5b50}\x{5b6b}\x{3084}\x{9593}\x{9055}\x{3063}\x{305f} <code>h<var>n</var></code> \n    \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{7701}\x{7565}\x{3067}\x{304d}\x{306a}\x{3044}\x{8981}\x{7d20}\x{304c}\x{3059}\x{3079}\x{3066}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{6301}\x{3064}\x{3053}\x{3068}\x{3001}\n    \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3068}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{30bf}\x{30b0}\x{540d}\x{304c}\x{4e00}\x{81f4}\x{3057}\x{3066}\x{3044}\x{308b}\x{3053}\x{3068}\x{3001}\n    \x{30bf}\x{30b0}\x{306e}\x{5165}\x{308c}\x{5b50}\x{95a2}\x{4fc2}\x{304c}\x{6b63}\x{3057}\x{3044}\x{3053}\x{3068}\x{3092}\x{78ba}\x{8a8d}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>"
                                                           },
+                                                  "layer" => "tree-construction",
                                                   "message" => {
-                                                               "en" => "The <code><var>{text}</var></code> element\n  is not closed before the <code>&lt;/<var>{value}</var>&gt;</code>\n  tag",
-                                                               "ja" => "\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{524d}\x{3067}\n  <code><var>{text}</var></code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
-                                                             }
+                                                               "en" => "The <code><var>{text}</var></code> element is not closed before the\n<code>&lt;/<var>{value}</var>&gt;</code> tag",
+                                                               "ja" => "\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{524d}\x{3067} <code><var>{text}</var></code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                             },
+                                                  "modules" => {
+                                                               "Web::HTML::Parser::tree_constructor" => 1
+                                                             },
+                                                  "parser_error_names" => {
+                                                                          "-steps-close-a-p-element" => 1,
+                                                                          "-steps-close-the-cell" => 1,
+                                                                          "in-body-end-a3bbcd5f4hhlmmnopssu-2" => 1,
+                                                                          "in-body-end-applet-marquee-object-2" => 1,
+                                                                          "in-body-end-body-2" => 1,
+                                                                          "in-body-end-dd-dt-2" => 1,
+                                                                          "in-body-end-else" => 1,
+                                                                          "in-body-end-form-2" => 1,
+                                                                          "in-body-end-form-4" => 1,
+                                                                          "in-body-end-h6-2" => 1,
+                                                                          "in-body-end-html-2" => 1,
+                                                                          "in-body-end-li-2" => 1,
+                                                                          "in-caption-end-caption-2" => 1,
+                                                                          "in-caption-end-table-2" => 1,
+                                                                          "in-cell-end-td-th-2" => 1,
+                                                                          "in-foreign-content-end-else" => 1,
+                                                                          "in-foreign-content-end-script" => 1,
+                                                                          "in-head-end-template-2" => 1
+                                                                        },
+                                                  "parser_tests" => [
+                                                                    {
+                                                                      "index" => 26,
+                                                                      "input" => "<!DOCTYPE HTML><div><span></div>",
+                                                                      "text" => "span",
+                                                                      "value" => "div"
+                                                                    },
+                                                                    {
+                                                                      "index" => 30,
+                                                                      "input" => "<!DOCTYPE HTML><marquee><span></marquee>",
+                                                                      "text" => "span",
+                                                                      "value" => "marquee"
+                                                                    },
+                                                                    {
+                                                                      "index" => 26,
+                                                                      "input" => "<!DOCTYPE HTML><body><div></body>",
+                                                                      "text" => "div",
+                                                                      "value" => "body"
+                                                                    },
+                                                                    {
+                                                                      "index" => 31,
+                                                                      "input" => "<!DOCTYPE HTML><body><dt><span></dt>",
+                                                                      "text" => "span",
+                                                                      "value" => "dt"
+                                                                    },
+                                                                    {
+                                                                      "index" => 31,
+                                                                      "input" => "<!DOCTYPE HTML><body><h3><span></h3>",
+                                                                      "text" => "span",
+                                                                      "value" => "h3"
+                                                                    },
+                                                                    {
+                                                                      "index" => 33,
+                                                                      "input" => "<!DOCTYPE HTML><body><form><span></form>",
+                                                                      "text" => "span",
+                                                                      "value" => "form"
+                                                                    },
+                                                                    {
+                                                                      "index" => 43,
+                                                                      "input" => "<!DOCTYPE HTML><body><template><form><span></form></template>",
+                                                                      "text" => "span",
+                                                                      "value" => "form"
+                                                                    },
+                                                                    {
+                                                                      "index" => 20,
+                                                                      "input" => "<!DOCTYPE HTML><div></html>",
+                                                                      "text" => "div",
+                                                                      "value" => "html"
+                                                                    },
+                                                                    {
+                                                                      "index" => 33,
+                                                                      "input" => "<!DOCTYPE HTML><body><hoge><span></hoge>",
+                                                                      "text" => "span",
+                                                                      "value" => "hoge"
+                                                                    },
+                                                                    {
+                                                                      "index" => 25,
+                                                                      "input" => "<!DOCTYPE HTML><li><span></li>",
+                                                                      "text" => "span",
+                                                                      "value" => "li"
+                                                                    },
+                                                                    {
+                                                                      "index" => 37,
+                                                                      "input" => "<!DOCTYPE HTML><table><caption><span></caption>",
+                                                                      "text" => "span",
+                                                                      "value" => "caption"
+                                                                    },
+                                                                    {
+                                                                      "index" => 37,
+                                                                      "input" => "<!DOCTYPE HTML><table><caption><span></table>",
+                                                                      "text" => "span",
+                                                                      "value" => "table"
+                                                                    },
+                                                                    {
+                                                                      "index" => 36,
+                                                                      "input" => "<!DOCTYPE HTML><table><tr><td><span></td>",
+                                                                      "text" => "span",
+                                                                      "value" => "td"
+                                                                    },
+                                                                    {
+                                                                      "index" => 26,
+                                                                      "input" => "<!DOCTYPE HTML><svg><g><h></g>",
+                                                                      "text" => "h",
+                                                                      "value" => "g"
+                                                                    },
+                                                                    {
+                                                                      "index" => 31,
+                                                                      "input" => "<!DOCTYPE HTML><svg><script><h></script>",
+                                                                      "text" => "h",
+                                                                      "value" => "script"
+                                                                    },
+                                                                    {
+                                                                      "index" => 37,
+                                                                      "input" => "<!DOCTYPE HTML><template><meta><hoge></template>",
+                                                                      "text" => "hoge",
+                                                                      "value" => "template"
+                                                                    },
+                                                                    {
+                                                                      "index" => 24,
+                                                                      "input" => "<!DOCTYPE HTML><p><span><p>",
+                                                                      "text" => "span",
+                                                                      "value" => "p"
+                                                                    },
+                                                                    {
+                                                                      "index" => 36,
+                                                                      "input" => "<!DOCTYPE HTML><table><tr><td><span><td>",
+                                                                      "text" => "span",
+                                                                      "value" => "td"
+                                                                    }
+                                                                  ],
+                                                  "text" => [
+                                                            "oe[-1]",
+                                                            "local name"
+                                                          ],
+                                                  "value" => [
+                                                             "token",
+                                                             "tag name"
+                                                           ]
                                                 },
           "not encoding label" => {
                                   "desc" => {
@@ -5237,14 +6592,36 @@ $WebHACC::_Errors = {
                                                }
                                   },
           "obs DOCTYPE" => {
+                           "default_level" => "m",
                            "desc" => {
-                                     "en" => "\n    <p>The simplest DOCTYPE syntax <code>&lt;!DOCTYPE html&gt;</code>\n    should be used.  Use of <code>PUBLIC</code> or <code>SYSTEM</code>\n    identifiers, which was encouraged in 90s, is discouraged.</p>\n  ",
-                                     "ja" => "\n    <p>DOCTYPE \x{306f} <code>&lt;!DOCTYPE html&gt;</code> \x{3068}\x{3060}\x{3051}\x{3042}\x{308c}\x{3070}\x{5341}\x{5206}\x{3067}\x{3059}\x{3002}\n    90\x{5e74}\x{4ee3}\x{306b}\x{306f} <code>PUBLIC</code> \x{3084} <code>SYSTEM</code>\n    \x{3092}\x{66f8}\x{304f}\x{306e}\x{304c}\x{6d41}\x{884c}\x{308a}\x{307e}\x{3057}\x{305f}\x{304c}\x{3001}\x{4eca}\x{306f}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                     "en" => "<p>The simplest DOCTYPE syntax <code>&lt;!DOCTYPE html&gt;</code> should\nalways be used.  Use of <code>PUBLIC</code> or <code>SYSTEM</code>\nidentifiers, which was encouraged in 00s, is discouraged.</p>",
+                                     "ja" => "<p>DOCTYPE \x{306f} <code>&lt;!DOCTYPE html&gt;</code> \x{3068}\x{3060}\x{3051}\x{3042}\x{308c}\x{3070}\x{5341}\x{5206}\x{3067}\x{3059}\x{3002}00\n\x{5e74}\x{4ee3}\x{306b}\x{306f} <code>PUBLIC</code> \x{3084} <code>SYSTEM</code>\n\x{3092}\x{66f8}\x{304f}\x{306e}\x{304c}\x{6d41}\x{884c}\x{308a}\x{307e}\x{3057}\x{305f}\x{304c}\x{3001}\x{4eca}\x{306f}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                    },
+                           "layer" => "tree-construction",
                            "message" => {
-                                        "en" => "The DOCTYPE has public and/or system\n  identifiers",
+                                        "en" => "The DOCTYPE has public and/or system identifiers",
                                         "ja" => "DOCTYPE \x{306b}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                      }
+                                      },
+                           "modules" => {
+                                        "Web::HTML::Parser::tree_constructor" => 1
+                                      },
+                           "parser_error_names" => {
+                                                   "initial-doctype" => 1
+                                                 },
+                           "parser_tests" => [
+                                             {
+                                               "index" => 0,
+                                               "input" => "<!DOCTYPE html4>"
+                                             },
+                                             {
+                                               "index" => 0,
+                                               "input" => "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
+                                             },
+                                             {
+                                               "index" => 0,
+                                               "input" => "<!DOCTYPE HTML system \"\">"
+                                             }
+                                           ]
                          },
           "ogp:bad property" => {
                                 "desc" => {
@@ -5356,6 +6733,256 @@ $WebHACC::_Errors = {
                                              "ja" => "\x{672a}\x{77e5}\x{306e} <code>rdf:parseType</code>\n  \x{5c5e}\x{6027}\x{5024}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                            }
                               },
+          "parser:EOF" => {
+                          "default_level" => "m",
+                          "desc" => {
+                                    "en" => "<p>There is an end-of-file within a tag, declaration, or section.</p>",
+                                    "ja" => "<p>\x{30bf}\x{30b0}\x{3084}\x{5ba3}\x{8a00}\x{3001}\x{533a}\x{9593}\x{306e}\x{9014}\x{4e2d}\x{3067}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{304c}\x{7d42}\x{308f}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>"
+                                  },
+                          "layer" => "tokenization",
+                          "message" => {
+                                       "en" => "Unexpected end of file in a tag or declaration",
+                                       "ja" => "\x{30bf}\x{30b0}\x{3084}\x{5ba3}\x{8a00}\x{306e}\x{9014}\x{4e2d}\x{3067}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{304c}\x{9014}\x{5207}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Parser::tokenizer" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "EOF" => 1
+                                                }
+                        },
+          "parser:NULL" => {
+                           "default_level" => "m",
+                           "desc" => {
+                                     "en" => "<p>The <code>U+0000</code> <code class=\"charname\">NULL</code>\ncharacter must not be used in a document.  The <code class=\"charname\">NULL</code> character in an element is ignored.</p>",
+                                     "ja" => "<p><code>U+0000</code> <code class=\"charname\">NULL</code> \n\x{6587}\x{5b57}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{8981}\x{7d20}\x{5185}\x{306e} <code class=\"charname\">NULL</code>\n\x{6587}\x{5b57}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                   },
+                           "layer" => "tree-construction",
+                           "message" => {
+                                        "en" => "The <code>NULL</code> character is ignored",
+                                        "ja" => "<code>NULL</code> \x{6587}\x{5b57}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}"
+                                      },
+                           "modules" => {
+                                        "Web::HTML::Parser::tree_constructor" => 1
+                                      },
+                           "parser_error_names" => {
+                                                   "in-body-null" => 1,
+                                                   "in-foreign-content-null" => 1,
+                                                   "in-select-null" => 1,
+                                                   "in-table-text-null" => 1
+                                                 },
+                           "parser_tests" => [
+                                             {
+                                               "index" => 21,
+                                               "input" => "<!DOCTYPE HTML><body>\0"
+                                             },
+                                             {
+                                               "index" => 26,
+                                               "input" => "<!DOCTYPE HTML><body><svg>\0"
+                                             },
+                                             {
+                                               "index" => 23,
+                                               "input" => "<!DOCTYPE HTML><select>\0"
+                                             },
+                                             {
+                                               "index" => 22,
+                                               "input" => "<!DOCTYPE HTML><table>\0"
+                                             }
+                                           ]
+                         },
+          "parser:comment closed" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>A comment must be closed by a <code>--&gt;</code>, whose\n<code>--</code> must not be the <code>-</code>s in\n<code>&lt;!--</code>.\n\n</p><p>A comment's data cannot start with <code>&gt;</code> or\n<code>-&gt;</code>.</p>",
+                                               "ja" => "<p>\x{6ce8}\x{91c8}\x{306f} <code>--&gt;</code> \x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\x{305d}\x{306e}\x{4e2d}\x{306e}\n<code>--</code> \x{306f} <code>&lt;!--</code> \x{306e} <code>-</code>\n\x{3068}\x{91cd}\x{8907}\x{3057}\x{3066}\x{3044}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{6ce8}\x{91c8}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{3092} <code>&gt;</code> \x{3084} <code>-&gt;</code>\n\x{3067}\x{59cb}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "tokenization",
+                                     "message" => {
+                                                  "en" => "The comment is closed by <code>&gt;</code>",
+                                                  "ja" => "\x{6ce8}\x{91c8}\x{304c} <code>&gt;</code> \x{306b}\x{3088}\x{3063}\x{3066}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::HTML::Parser::tokenizer" => 1
+                                                },
+                                     "parser_error_names" => {
+                                                             "comment-start-003e" => 1,
+                                                             "comment-start-dash-003e" => 1
+                                                           },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 19,
+                                                         "input" => "<!DOCTYPE HTML><!-->"
+                                                       },
+                                                       {
+                                                         "index" => 20,
+                                                         "input" => "<!DOCTYPE HTML><!--->"
+                                                       }
+                                                     ]
+                                   },
+          "parser:comment not closed" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>A comment must be closed by <code>--&gt;</code>.  The comment's data\ncannot contain <code>--</code>, even when it is not immediately\nfollowed by a <code>&gt;</code> character.  The comment's data cannot end\nwith a <code>-</code> character.</p>",
+                                                   "ja" => "<p>\x{6ce8}\x{91c8}\x{306f} <code>--&gt;</code> \x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6ce8}\x{91c8}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{306b}\x{306f}\x{3001} <code>&gt;</code> \x{304c}\x{76f4}\x{5f8c}\x{306b}\x{306a}\x{3044}\x{3068}\x{3057}\x{3066}\x{3082}\x{3001} <code>--</code>\n\x{3092}\x{542b}\x{3081}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{6ce8}\x{91c8}\x{306e}\x{30c7}\x{30fc}\x{30bf}\x{304c} <code>-</code>\n\x{3067}\x{7d42}\x{308f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                 },
+                                         "layer" => "tokenization",
+                                         "message" => {
+                                                      "en" => "The comment contains <code>--</code>",
+                                                      "ja" => "\x{6ce8}\x{91c8}\x{304c} <code>--</code> \x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{307e}\x{3059}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                    },
+                                         "parser_error_names" => {
+                                                                 "comment-end-0021" => 1,
+                                                                 "comment-end-002d" => 1,
+                                                                 "comment-end-else" => 1
+                                                               },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 22,
+                                                             "input" => "<!DOCTYPE HTML><!--a--!>"
+                                                           },
+                                                           {
+                                                             "index" => 22,
+                                                             "input" => "<!DOCTYPE HTML><!--a--->"
+                                                           },
+                                                           {
+                                                             "index" => 22,
+                                                             "input" => "<!DOCTYPE HTML><!--a--b-->"
+                                                           }
+                                                         ]
+                                       },
+          "parser:element not nestable" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>HTML elements <code>a</code>, <code>button</code>,\n<code>form</code>, and <code>nobr</code> cannot be nested.\n\n  </p><dl class=\"switch\">\n\n  <dt><code>&lt;form&gt;</code>\n\n  </dt><dd>To associate some form controls in a <code>form</code> element\n  with another form, use the <code>form</code> attribute of form\n  controls.\n\n  </dd></dl>",
+                                                     "ja" => "<p>HTML \x{8981}\x{7d20} <code>a</code>, <code>button</code>, <code>form</code>,\n<code>nobr</code> \x{3092}\x{5165}\x{308c}\x{5b50}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n\n\n  </p><dl class=\"switch\">\n\n  <dt><code>&lt;form&gt;</code>\n\n  </dt><dd><code>form</code> \x{8981}\x{7d20}\x{5185}\x{306e}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{3092}\x{4ed6}\x{306e}\x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{3068}\x{95a2}\x{9023}\x{4ed8}\x{3051}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001}\n  \x{30d5}\x{30a9}\x{30fc}\x{30e0}\x{5236}\x{5fa1}\x{5b50}\x{306e} <code>form</code> \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n\n  </dd></dl>"
+                                                   },
+                                           "layer" => "tree-construction",
+                                           "message" => {
+                                                        "en" => "There is a start tag <code>&lt;<var>{value}</var>&gt;</code> in\nan element <code><var>{value}</var></code>",
+                                                        "ja" => "<code><var>{value}</var></code> \x{8981}\x{7d20}\x{5185}\x{306b} <code>&lt;<var>{value}</var>&gt;</code>\n\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::HTML::Parser::tree_constructor" => 1
+                                                      },
+                                           "parser_error_names" => {
+                                                                   "in-body-start-a" => 1,
+                                                                   "in-body-start-button" => 1,
+                                                                   "in-body-start-form" => 1,
+                                                                   "in-body-start-nobr" => 1,
+                                                                   "in-select-start-select" => 1,
+                                                                   "in-table-start-table" => 1
+                                                                 },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 18,
+                                                               "input" => "<!DOCTYPE HTML><a><a>",
+                                                               "value" => "a"
+                                                             },
+                                                             {
+                                                               "index" => 21,
+                                                               "input" => "<!DOCTYPE HTML><form><form>",
+                                                               "value" => "form"
+                                                             },
+                                                             {
+                                                               "index" => 23,
+                                                               "input" => "<!DOCTYPE HTML><button><button>",
+                                                               "value" => "button"
+                                                             },
+                                                             {
+                                                               "index" => 21,
+                                                               "input" => "<!DOCTYPE HTML><nobr><nobr>",
+                                                               "value" => "nobr"
+                                                             },
+                                                             {
+                                                               "index" => 23,
+                                                               "input" => "<!DOCTYPE HTML><select><select>",
+                                                               "value" => "select"
+                                                             },
+                                                             {
+                                                               "index" => 22,
+                                                               "input" => "<!DOCTYPE HTML><table><table>",
+                                                               "value" => "table"
+                                                             }
+                                                           ],
+                                           "value" => [
+                                                      "token",
+                                                      "tag name"
+                                                    ]
+                                         },
+          "parser:literal not closed" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>The public or system identifier must be terminated by an\nappropriate quotation mark before the declaration in which the\nidentifier appears is closed by <code>&gt;</code>.\n\n</p><p>The public or system identifier cannot contain a <code>&gt;</code>\ncharacter.</p>",
+                                                   "ja" => "<p>\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306f}\x{3001}\x{5ba3}\x{8a00}\x{304c} <code>&gt;</code>\n\x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{308b}\x{524d}\x{306b}\x{9069}\x{5207}\x{306a}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306b} <code>&gt;</code>\n\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                 },
+                                         "layer" => "tokenization",
+                                         "message" => {
+                                                      "en" => "The quoted string is not terminated before the declaration\nis closed",
+                                                      "ja" => "\x{5ba3}\x{8a00}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{308b}\x{524d}\x{306b}\x{9589}\x{3058}\x{5f15}\x{7528}\x{7b26}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                    },
+                                         "parser_error_names" => {
+                                                                 "doctype-public-identifier-double-quoted-003e" => 1,
+                                                                 "doctype-public-identifier-single-quoted-003e" => 1,
+                                                                 "doctype-system-identifier-double-quoted-003e" => 1,
+                                                                 "doctype-system-identifier-single-quoted-003e" => 1
+                                                               },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 23,
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \">\">"
+                                                           },
+                                                           {
+                                                             "index" => 23,
+                                                             "input" => "<!DOCTYPE HTML SYSTEM \">\">"
+                                                           },
+                                                           {
+                                                             "index" => 26,
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" \">\">"
+                                                           },
+                                                           {
+                                                             "index" => 23,
+                                                             "input" => "<!DOCTYPE HTML PUBLIC '>'>"
+                                                           },
+                                                           {
+                                                             "index" => 23,
+                                                             "input" => "<!DOCTYPE HTML SYSTEM '>'>"
+                                                           },
+                                                           {
+                                                             "index" => 26,
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" '>'>"
+                                                           }
+                                                         ]
+                                       },
+          "parser:no attr name" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>An attribute in a start tag must have a name.  The attribute name\ncannot contain a <code>=</code> character, as it is used to separate\nattribute name and value.</p>",
+                                             "ja" => "<p>\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306e}\x{5c5e}\x{6027}\x{306b}\x{306f}\x{540d}\x{524d}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{5c5e}\x{6027}\x{540d}\x{306b}\x{306f} <code>=</code>\n\x{3092}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002} <code>=</code> \x{306f}\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{533a}\x{5207}\x{308a}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{308f}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                           },
+                                   "layer" => "tokenization",
+                                   "message" => {
+                                                "en" => "The attribute name is missing before <code>=</code>",
+                                                "ja" => "<code>=</code> \x{306e}\x{524d}\x{306b}\x{5c5e}\x{6027}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Parser::tokenizer" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "before-attribute-name-003d" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 18,
+                                                       "input" => "<!DOCTYPE html><p =foo>"
+                                                     }
+                                                   ]
+                                 },
           "pe not declared" => {
                                "desc" => {
                                          "en" => "\n    <p>A parameter entity must referece a parameter entity declared by\n    an entity declaration.</p>\n  ",
@@ -5387,12 +7014,32 @@ $WebHACC::_Errors = {
                                            }
                               },
           "pio" => {
+                   "default_level" => "m",
                    "desc" => {
-                             "en" => "\n    <p>Processing instructions (<code>&lt;?<var>...</var>?&gt;</code>),\n    including XML declaration (<code>&lt;?xml <var>...</var>?&gt;</code>)\n    and XML style sheet <abbr title=\"processing instruction\">PI</abbr>\n    (<code>&lt;?xml-stylesheet <var>...</var>?&gt;</code>), are not allowed \n    in the HTML syntax.  The document is non-conforming.</p>\n\n    <dl class=\"switch\">\n    <dt><code>&lt;?xbl?&gt;</code> (<abbr>XBL</abbr> Association)</dt>\n      <dd>An <abbr>XBL</abbr> binding cannot be associated by \n      <abbr title=\"processing instruction\">PI</abbr> in <abbr>HTML</abbr>\n      document.  Use <code>binding</code> property in <abbr>CSS</abbr>\n      style sheet as:\n        <pre class=\"html example\">\n<code>&lt;style&gt;\np {\n  binding: url(binding.xbl);\n}\n&lt;/style&gt;</code></pre>\n      </dd>\n    <dt><code>&lt;?xml?&gt;</code> (XML declaration)</dt>\n        <dd>XML declaration is unnecessary for HTML documents.</dd>\n    <dt><code>&lt;?xml-stylesheet?&gt;</code> (XML style sheet\n    <abbr title=\"processing instruction\">PI</abbr>)</dt>\n        <dd>Use HTML <code>link</code> element with <code>rel</code>\n        attribute set to <code>stylesheet</code> (or,\n        <code>alternate stylesheet</code> for an alternate style \n        sheet).\n          <pre class=\"example html\">\n<code>&lt;link rel=stylesheet href=\"path/to/stylesheet.css\"&gt;</code></pre>\n        </dd>\n    <dt><code>&lt;?php?&gt;</code> or \n    <code>&lt;? <var>... <abbr>PHP</abbr> code ...</var> ?&gt;</code> \n    (<abbr>PHP</abbr> code)</dt>\n        <dd>The conformance checker does <em>not</em> support\n        checking for PHP source documents.</dd>\n    <dt>Other processing instructions</dt>\n        <dd>Processing instructions cannot be inserted in an HTML\n        document.  Use XML document or insert \n        <code>ProcessingInstruction</code> node by scripting.</dd>\n    </dl>\n\n    <p>Web browsers will parse processing instructions as bogus\n    comments.  Some legacy Web browsers, such as IE:mac and\n    some mobile Web browsers, will display processing instructions\n    as string.</p>\n  "
+                             "en" => "<p>Processing instructions (<code>&lt;?<var>...</var>?&gt;</code>) and\nthe XML declaration (<code>&lt;?xml <var>...</var>?&gt;</code>) are not\nallowed in HTML document.\n\n    </p><dl class=\"switch\">\n    <dt><code>&lt;?xml?&gt;</code> (XML declaration)</dt>\n        <dd>The XML declaration is not necessary in an HTML document.</dd>\n    <dt><code>&lt;?xml-stylesheet?&gt;</code> (XML style sheet declaration)\n        </dt><dd>Use HTML <code>link</code> element with <code>rel</code>\n        attribute set to <code>stylesheet</code> (or,\n        <code>alternate stylesheet</code> for an alternative style \n        sheet).\n          <pre class=\"example html\">\n<code>&lt;link rel=stylesheet href=\"path/to/stylesheet.css\"&gt;</code></pre>\n        </dd>\n    <dt><code>&lt;?php?&gt;</code> (<abbr>PHP</abbr> code)</dt>\n        <dd>PHP is not supported.  It must be interpreted within\n        server such that public documents must not contain any\n        PHP code.\n    </dd><dt>Other processing instructions</dt>\n        <dd>Processing instructions cannot be inserted in an HTML\n        document.  If a processing instruction is required, use XML\n        with an appropriate MIME type\n        (e.g. <code>application/xhtml+xml</code>).\n    </dd></dl>",
+                             "ja" => "<p>\x{51e6}\x{7406}\x{6307}\x{4ee4} (<code>&lt;?<var>...</var>?&gt;</code>) \x{3084}\nXML \x{5ba3}\x{8a00} (<code>&lt;?xml <var>...</var>?&gt;</code>)\n\x{306f} HTML\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n    </p><dl class=\"switch\">\n    <dt><code>&lt;?xml?&gt;</code> (XML \x{5ba3}\x{8a00})</dt>\n        <dd>XML \x{5ba3}\x{8a00}\x{306f} HTML \x{6587}\x{66f8}\x{306b}\x{306f}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}\n    </dd><dt><code>&lt;?xml-stylesheet?&gt;</code> (XML \x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{5ba3}\x{8a00})\n        </dt><dd>HTML <code>link</code> \x{8981}\x{7d20}\x{306e} <code>rel</code>\n        \x{5c5e}\x{6027}\x{3092} <code>stylesheet</code> (\x{4ee3}\x{66ff}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{306e}\x{5834}\x{5408}\x{306f}\n        <code>alternate stylesheet</code>) \x{306b}\x{3057}\x{3066}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n          <pre class=\"example html\">\n<code>&lt;link rel=stylesheet href=\"path/to/stylesheet.css\"&gt;</code></pre>\n        </dd>\n    <dt><code>&lt;?php?&gt;</code> (<abbr>PHP</abbr> \x{30b3}\x{30fc}\x{30c9})</dt>\n        <dd>PHP \x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002} PHP \x{306f}\x{30b5}\x{30fc}\x{30d0}\x{30fc}\x{5185}\x{3067}\x{51e6}\x{7406}\x{3059}\x{308b}\x{3082}\x{306e}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n        \x{516c}\x{958b}\x{6587}\x{66f8}\x{306b} PHP \x{306e}\x{30b3}\x{30fc}\x{30c9}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    </dd><dt>\x{305d}\x{306e}\x{4ed6}\x{306e}\x{51e6}\x{7406}\x{6307}\x{4ee4}\n        </dt><dd>\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306f} HTML \x{6587}\x{66f8}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n        \x{51e6}\x{7406}\x{6307}\x{4ee4}\x{304c}\x{5fc5}\x{8981}\x{306a}\x{3068}\x{304d}\x{306f}\x{3001}\x{9069}\x{5207}\x{306a} MIME \x{578b}\n        (<code>application/xhtml+xml</code> \x{306a}\x{3069}) \x{3067} XML\n        \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n    </dd></dl>"
                            },
+                   "layer" => "tokenization",
                    "message" => {
-                                "en" => "Processing instruction \n  (<code>&lt;?<var>...</var>&gt;</code>) is not allowed in HTML\n  document."
-                              }
+                                "en" => "There is a processing instruction",
+                                "ja" => "\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                              },
+                   "modules" => {
+                                "Web::HTML::Parser::tokenizer" => 1
+                              },
+                   "parser_error_names" => {
+                                           "tag-open-003f" => 1
+                                         },
+                   "parser_tests" => [
+                                     {
+                                       "index" => 1,
+                                       "input" => "<?xml version=\"1.0\"?><!DOCTYPE HTML>"
+                                     },
+                                     {
+                                       "index" => 16,
+                                       "input" => "<!DOCTYPE HTML><?php print (\"Hello!\")?>"
+                                     }
+                                   ]
                  },
           "precision:syntax error" => {
                                       "desc" => {
@@ -5959,20 +7606,339 @@ $WebHACC::_Errors = {
                                           }
                              },
           "stray end tag" => {
+                             "default_level" => "m",
                              "desc" => {
-                                       "en" => "\n    <p>The end tag has no corresponding start tag.  There must be a\n    start tag with the same tag name before the end tag.  The end tag\n    is ignored.</p>\n\n    <p>Note that void elements have no end tag, that is, following\n    elements cannot have end tags: <code>area</code>,\n    <code>base</code>, <code>br</code>, <code>col</code>,\n    <code>embed</code>, <code>hr</code>, <code>img</code>,\n    <code>input</code>, <code>keygen</code>, <code>link</code>,\n    <code>menuitem</code>, <code>meta</code>, <code>param</code>,\n    <code>source</code>, <code>track</code>, and <code>wbr</code>.</p>\n  ",
-                                       "ja" => "\n    <p>\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{524d}\x{306b}\x{540c}\x{3058}\x{30bf}\x{30b0}\x{540d}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\n    \x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{306a}\x{304a} void \x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{6301}\x{3061}\x{307e}\x{305b}\x{3093}\x{304b}\x{3089}\x{3001}\x{6b21}\x{306e}\x{8981}\x{7d20}\x{3067}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n    <code>area</code>,\n    <code>base</code>, <code>br</code>, <code>col</code>,\n    <code>embed</code>, <code>hr</code>, <code>img</code>,\n    <code>input</code>, <code>keygen</code>, <code>link</code>,\n    <code>menuitem</code>, <code>meta</code>, <code>param</code>,\n    <code>source</code>, <code>track</code>, <code>wbr</code>\x{3002}</p>\n  "
+                                       "en" => "<p>The end tag has no corresponding start tag.  There must be a start\ntag with the same tag name before the end tag.  The end tag is\nignored.</p>\n\n<p>Note that void elements have no end tag, that is, following\nelements cannot have end tags: <code>area</code>, <code>base</code>,\n<code>br</code>, <code>col</code>, <code>embed</code>,\n<code>hr</code>, <code>img</code>, <code>input</code>,\n<code>keygen</code>, <code>link</code>, <code>menuitem</code>,\n<code>meta</code>, <code>param</code>, <code>source</code>,\n<code>track</code>, and <code>wbr</code>.</p>\n\n<p>The <code>html</code> and <code>html</code> elements cannot be\nclosed in a table.  Such an end tag is ignored.</p>",
+                                       "ja" => "<p>\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{524d}\x{306b}\x{540c}\x{3058}\x{30bf}\x{30b0}\x{540d}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n\n<p>\x{306a}\x{304a} void \x{8981}\x{7d20}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{6301}\x{3061}\x{307e}\x{305b}\x{3093}\x{304b}\x{3089}\x{3001}\x{6b21}\x{306e}\x{8981}\x{7d20}\x{3067}\x{306f}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3092}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n<code>area</code>, <code>base</code>, <code>br</code>,\n<code>col</code>, <code>embed</code>, <code>hr</code>,\n<code>img</code>, <code>input</code>, <code>keygen</code>,\n<code>link</code>, <code>menuitem</code>, <code>meta</code>,\n<code>param</code>, <code>source</code>, <code>track</code>,\n<code>wbr</code>\x{3002}</p>\n\n<p>\x{8868}\x{306e}\x{4e2d}\x{3067}\x{306f} <code>html</code> \x{8981}\x{7d20}\x{3084} <code>body</code>\n\x{8981}\x{7d20}\x{3092}\x{9589}\x{3058}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{306e}\x{3088}\x{3046}\x{306a}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{3063}\x{3066}\x{3082}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
                                      },
+                             "layer" => "tree-construction",
                              "message" => {
-                                          "en" => "The tag <code>&lt;/<var>{value}</var>&gt;</code>\n  has no corresponding start tag",
-                                          "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/<var>{value}</var>&gt;</code>\n  \x{306b}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                        }
+                                          "en" => "The tag <code>&lt;/<var>{value}</var>&gt;</code> has no corresponding\nstart tag",
+                                          "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/<var>{value}</var>&gt;</code>\n\x{306b}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                        },
+                             "modules" => {
+                                          "Web::HTML::Parser::tree_constructor" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "after-body-end-html" => 1,
+                                                     "after-head-end-else" => 1,
+                                                     "before-head-end-else" => 1,
+                                                     "before-html-end-else" => 1,
+                                                     "in-body-end-a3bbcd5f4hhlmmnopssu" => 1,
+                                                     "in-body-end-applet-marquee-object" => 1,
+                                                     "in-body-end-body" => 1,
+                                                     "in-body-end-dd-dt" => 1,
+                                                     "in-body-end-else-2" => 1,
+                                                     "in-body-end-form" => 1,
+                                                     "in-body-end-form-3" => 1,
+                                                     "in-body-end-h6" => 1,
+                                                     "in-body-end-html" => 1,
+                                                     "in-body-end-li" => 1,
+                                                     "in-caption-end-bccht6" => 1,
+                                                     "in-caption-end-caption" => 1,
+                                                     "in-caption-end-table" => 1,
+                                                     "in-cell-end-bc3h" => 1,
+                                                     "in-cell-end-t5" => 1,
+                                                     "in-cell-end-td-th" => 1,
+                                                     "in-column-group-end-col" => 1,
+                                                     "in-column-group-end-colgroup" => 1,
+                                                     "in-frameset-end-frameset" => 1,
+                                                     "in-head-end-else" => 1,
+                                                     "in-head-end-template" => 1,
+                                                     "in-head-noscript-end-else" => 1,
+                                                     "in-row-end-bc3htt" => 1,
+                                                     "in-row-end-table" => 1,
+                                                     "in-row-end-tbody-tfoot-thead" => 1,
+                                                     "in-row-end-tr" => 1,
+                                                     "in-select-end-optgroup" => 1,
+                                                     "in-select-end-option" => 1,
+                                                     "in-select-end-select" => 1,
+                                                     "in-table-body-end-bc3ht3" => 1,
+                                                     "in-table-body-end-table" => 1,
+                                                     "in-table-body-end-tbody-tfoot-thead" => 1,
+                                                     "in-table-end-bc3ht6" => 1,
+                                                     "in-table-end-table" => 1,
+                                                     "in-template-end-else" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 15,
+                                                 "input" => "<!DOCTYPE html></hoge>",
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE html><html></hoge>",
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "index" => 22,
+                                                 "input" => "<!DOCTYPE html></head></hoge>",
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "context" => "html",
+                                                 "index" => 22,
+                                                 "input" => "<!DOCTYPE html></body></html>",
+                                                 "value" => "html"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></div>",
+                                                 "value" => "div"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></object>",
+                                                 "value" => "object"
+                                               },
+                                               {
+                                                 "context" => "body",
+                                                 "index" => 0,
+                                                 "input" => "</body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></dt>",
+                                                 "value" => "dt"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></form>",
+                                                 "value" => "form"
+                                               },
+                                               {
+                                                 "index" => 35,
+                                                 "input" => "<!DOCTYPE HTML><body><template><br></form>",
+                                                 "value" => "form"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></h4>",
+                                                 "value" => "h4"
+                                               },
+                                               {
+                                                 "context" => "body",
+                                                 "index" => 0,
+                                                 "input" => "</html>",
+                                                 "value" => "html"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></hoge>",
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><body></li>",
+                                                 "value" => "li"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></html>",
+                                                 "value" => "html"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></thead>",
+                                                 "value" => "thead"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></tbody>",
+                                                 "value" => "tbody"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></tfoot>",
+                                                 "value" => "tfoot"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><table><caption></col>",
+                                                 "value" => "col"
+                                               },
+                                               {
+                                                 "context" => "caption",
+                                                 "index" => 0,
+                                                 "input" => "</caption>",
+                                                 "value" => "caption"
+                                               },
+                                               {
+                                                 "context" => "caption",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></col>",
+                                                 "value" => "col"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></html>",
+                                                 "value" => "html"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></colgroup>",
+                                                 "value" => "colgroup"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></caption>",
+                                                 "value" => "caption"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></thead>",
+                                                 "value" => "thead"
+                                               },
+                                               {
+                                                 "context" => "tr",
+                                                 "index" => 4,
+                                                 "input" => "<td></tbody>",
+                                                 "value" => "tbody"
+                                               },
+                                               {
+                                                 "context" => "td",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><td></th>",
+                                                 "value" => "th"
+                                               },
+                                               {
+                                                 "index" => 30,
+                                                 "input" => "<!DOCTYPE HTML><table><tr><th></td>",
+                                                 "value" => "td"
+                                               },
+                                               {
+                                                 "index" => 32,
+                                                 "input" => "<!DOCTYPE HTML><table><colgroup></col>",
+                                                 "value" => "col"
+                                               },
+                                               {
+                                                 "context" => "colgroup",
+                                                 "index" => 0,
+                                                 "input" => "</colgroup>",
+                                                 "value" => "colgroup"
+                                               },
+                                               {
+                                                 "context" => "frameset",
+                                                 "index" => 0,
+                                                 "input" => "</frameset>",
+                                                 "value" => "frameset"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><head></hoge>",
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "index" => 21,
+                                                 "input" => "<!DOCTYPE HTML><head></template>",
+                                                 "value" => "template"
+                                               },
+                                               {
+                                                 "index" => 31,
+                                                 "input" => "<!DOCTYPE HTML><head><noscript></hoge>",
+                                                 "noscript" => 1,
+                                                 "value" => "hoge"
+                                               },
+                                               {
+                                                 "index" => 26,
+                                                 "input" => "<!DOCTYPE HTML><table><tr></body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "context" => "tr",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "context" => "tr",
+                                                 "index" => 0,
+                                                 "input" => "</tbody>",
+                                                 "value" => "tbody"
+                                               },
+                                               {
+                                                 "context" => "tbody",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "context" => "tr",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "context" => "select",
+                                                 "index" => 0,
+                                                 "input" => "</select>",
+                                                 "value" => "select"
+                                               },
+                                               {
+                                                 "index" => 23,
+                                                 "input" => "<!DOCTYPE HTML><select></option>",
+                                                 "value" => "option"
+                                               },
+                                               {
+                                                 "index" => 23,
+                                                 "input" => "<!DOCTYPE HTML><select></optgroup>",
+                                                 "value" => "optgroup"
+                                               },
+                                               {
+                                                 "index" => 29,
+                                                 "input" => "<!DOCTYPE HTML><table><tbody></body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "context" => "tbody",
+                                                 "index" => 0,
+                                                 "input" => "</thead>",
+                                                 "value" => "thead"
+                                               },
+                                               {
+                                                 "index" => 22,
+                                                 "input" => "<!DOCTYPE HTML><table></body>",
+                                                 "value" => "body"
+                                               },
+                                               {
+                                                 "context" => "table",
+                                                 "index" => 0,
+                                                 "input" => "</table>",
+                                                 "value" => "table"
+                                               },
+                                               {
+                                                 "index" => 25,
+                                                 "input" => "<!DOCTYPE HTML><template></fpopo>",
+                                                 "value" => "fpopo"
+                                               }
+                                             ],
+                             "value" => [
+                                        "token",
+                                        "tag name"
+                                      ]
                            },
-          "string after DOCTYPE name" => {
-                                         "message" => {
-                                                      "en" => "There is a bogus string after the document type\n  name."
-                                                    }
-                                       },
           "string after PUBLIC" => {
                                    "message" => {
                                                 "en" => "There is a bogus string after the keyword\n  <code>PUBLIC</code>."
@@ -6034,6 +8000,50 @@ $WebHACC::_Errors = {
                                                         "en" => "This <code>rowspan</code> attribute\n  results in creating a table row that does not contain\n  any cell anchored to it."
                                                       }
                                          },
+          "tag not closed" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>A start or end tag must be closed by a <code>&gt;</code> character\nbefore following text or another tag.\n\n</p><p>A bare <code>&lt;</code> character cannot be used in start or end\ntags (except within quoted attribute values).</p>",
+                                        "ja" => "<p>\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3084}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306f}\x{3001}\x{6b21}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3084}\x{4ed6}\x{306e}\x{30bf}\x{30b0}\x{306e}\x{524d}\x{306b}\x{6587}\x{5b57}\n<code>&gt;</code> \x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{6587}\x{5b57} <code>&lt;</code> \x{3092}\x{305d}\x{306e}\x{307e}\x{307e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3084}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{4e2d}\n(\x{62ec}\x{3089}\x{308c}\x{305f}\x{5c5e}\x{6027}\x{5024}\x{4ee5}\x{5916}) \x{3067}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                      },
+                              "layer" => "tokenization",
+                              "message" => {
+                                           "en" => "Tag is not closed",
+                                           "ja" => "\x{30bf}\x{30b0}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                         },
+                              "modules" => {
+                                           "Web::HTML::Parser::tokenizer" => 1
+                                         },
+                              "parser_error_names" => {
+                                                      "after-attribute-name-003c" => 1,
+                                                      "attribute-name-003c" => 1,
+                                                      "attribute-value-unquoted-003c" => 1,
+                                                      "before-attribute-name-003c" => 1,
+                                                      "before-attribute-value-003c" => 1
+                                                    },
+                              "parser_tests" => [
+                                                {
+                                                  "index" => 22,
+                                                  "input" => "<!DOCTYPE html><p foo <bar>"
+                                                },
+                                                {
+                                                  "index" => 21,
+                                                  "input" => "<!DOCTYPE html><p foo<bar>"
+                                                },
+                                                {
+                                                  "index" => 18,
+                                                  "input" => "<!DOCTYPE html><p <bar>"
+                                                },
+                                                {
+                                                  "index" => 22,
+                                                  "input" => "<!DOCTYPE HTML><p foo=<bar>"
+                                                },
+                                                {
+                                                  "index" => 23,
+                                                  "input" => "<!DOCTYPE HTML><p foo=a<bar>"
+                                                }
+                                              ]
+                            },
           "temma:bad macro name" => {
                                     "desc" => {
                                               "en" => "\n    <p>The specified macro name is syntactically non-conforming.</p>\n    <p>The macro name must match the regular expression\n    <code>[a-z_.][a-z_.0-9-]*</code>.  Macro names are ASCII\n    case-insensitive.</p>\n  ",
@@ -6358,16 +8368,6 @@ $WebHACC::_Errors = {
                                              "en" => "The <code>DOCTYPE</code> is not closed by a\n  <code>&gt;</code> character."
                                            }
                               },
-          "unclosed PUBLIC literal" => {
-                                       "message" => {
-                                                    "en" => "The public identifier literal is not closed by a\n  quotation mark."
-                                                  }
-                                     },
-          "unclosed SYSTEM literal" => {
-                                       "message" => {
-                                                    "en" => "The system identifier literal is not closed by a\n  quotation mark."
-                                                  }
-                                     },
           "unclosed attribute value" => {
                                         "message" => {
                                                      "en" => "Attribute value is not closed by a quotation\n  mark."
