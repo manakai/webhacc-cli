@@ -38,6 +38,8 @@ test {
           is $result->{status}, 1;
           like $result->{stdout}, qr[^\{];
           like $result->{stdout}, qr{"errors"\s*:};
+          like $result->{stdout}, qr{"line"\s*:};
+          like $result->{stdout}, qr{"column"\s*:};
           like $result->{stdout}, qr{"type"\s*:\s*"child element missing"};
           like $result->{stdout}, qr["m"\s*:\s*"?1"?];
           like $result->{stdout}, qr["is_conforming"\s*:\s*(?:""|"0"|0)];
@@ -47,7 +49,7 @@ test {
           undef $c;
         } $c;
       };
-} n => 8, name => 'has a MUST error';
+} n => 10, name => 'has a MUST error';
 
 run_tests;
 
