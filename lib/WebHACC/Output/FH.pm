@@ -16,6 +16,13 @@ sub locale ($) {
   return $_[0]->{locale};
 } # locale
 
+sub di_data_set ($;$) {
+  if (@_ > 1) {
+    $_[0]->{di_data_set} = $_[1];
+  }
+  return $_[0]->{di_data_set} ||= [];
+} # di_data_set
+
 sub handle ($) {
   my $self = $_[0];
   return $self->{handle} ||= AnyEvent::Handle->new

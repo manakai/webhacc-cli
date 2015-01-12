@@ -38,6 +38,7 @@ GetOptions (
     die "Can't run webhacc-upgrade.pl\n";
   },
   '--version' => sub { $Mode = 'version' },
+  '--xml-external-entities' => \$ValidationOptions->{xml_external_entities},
 ) or do {
   $HelpLevel = 2;
 };
@@ -89,11 +90,12 @@ sub main () {
   $val->check_error_response ($CheckErrorResponse);
   $val->noscript ($Noscript);
   $val->validation_options ($ValidationOptions);
+  $out->di_data_set ($val->di_data_set);
 
   $val->onerror (sub {
-    my ($error, $lines) = @_;
+    my ($error) = @_;
     $result->add_error ($error);
-    $out->print_error ($error, $lines);
+    $out->print_error ($error);
   });
 
   return $val->validate->then (sub {
@@ -102,6 +104,7 @@ sub main () {
     });
   })->then (sub {
     $out->print_result ($result, $val->headers, $val->document);
+    $out->print_di_data_set ($val->di_data_set);
     return $out->end->then (sub { return $result });
   });
 } # main
@@ -215,6 +218,11 @@ Upgrade the webhacc software.
 Show short information on the command and exits without validation.
 This option can be combined with C<--json>.
 
+=item --xml-external-entities
+
+If specified, the XML parser will read and process any XML external
+entities referenced in the XML file.
+
 =back
 
 =head1 ENVIRONMENT VARIABLE
@@ -235,7 +243,7 @@ command exits with non C<0> status.
 
 Run the following command:
 
-  $ curl http://wakaba.github.io/packages/webhacc | sh
+  $ curl https://wakaba.github.io/packages/webhacc | sh
 
 Wait a few minutes.  WebHACC program files are installed into
 C<./local/webhacc> and the C<webhacc> runner command is copied as
@@ -246,13 +254,13 @@ Then, setup automatic upgrading (see subsection below).
 The C<WEBHACC_DIR> environment variable can be used to specify where
 WebHACC program files are installed:
 
-  $ curl http://wakaba.github.io/packages/webhacc | \
+  $ curl https://wakaba.github.io/packages/webhacc | \
     WEBHACC_DIR=path/to/webhacc sh
 
 If your system's Perl is older than Perl 5.10, set the
 C<PMBP_PERL_VERSION> environment variable:
 
-  $ curl http://wakaba.github.io/packages/webhacc | PMBP_PERL_VERSION=latest sh
+  $ curl https://wakaba.github.io/packages/webhacc | PMBP_PERL_VERSION=latest sh
 
 ... such that newer version of Perl is installed for the WebHACC
 script (in C<./local/webhacc/local/>).  As this compiles perl, it

@@ -68,14 +68,16 @@ sub _http (%) {
     undef $timer;
   };
 
+  print STDERR "Fetching <$url>..."; # XXXblocking
   AnyEvent::HTTP::http_request
       $args{request_method},
       $url,
       timeout => $timeout,
-      recurse => 0,
+      recurse => 0, # XXX redirect
       on_header => sub {
         my $headers = $_[0];
         # XXX $self->content_type
+        print STDERR "...\n"; # XXXblocking
         $onheaders->($headers) if not $headers_called++ and not $done_called;
         return $continue;
       },

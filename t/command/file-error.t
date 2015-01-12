@@ -29,7 +29,7 @@ test {
       sub {
         my $result = shift;
         test {
-          is $result->{status}, 1;
+          is $result->{status}, 0;
           like $result->{stdout}, qr{not found};
           done $c;
           undef $c;
@@ -41,7 +41,7 @@ run_tests;
 
 =head1 LICENSE
 
-Copyright 2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2013-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
