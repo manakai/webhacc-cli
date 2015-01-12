@@ -6,8 +6,13 @@ sub new ($) {
   return bless {}, $_[0];
 } # new
 
+sub aborted ($) {
+  return $_[0]->{aborted};
+} # aborted
+
 sub add_error ($$) {
   my ($self, $error) = @_;
+  $self->{aborted} = 1 if $error->{type} eq 'status XXX';
   $self->{error_count}->{$error->{level}}++;
 } # add_error
 

@@ -22,8 +22,8 @@ sub end ($) {
   return $self->SUPER::end;
 } # end
 
-sub print_result ($$$$) {
-  my ($self, $result, $headers, $doc) = @_;
+sub print_result ($$$$$) {
+  my ($self, $result, $headers, $doc, $opts) = @_;
   $self->{data}->{document}->{url} = $doc->url;
   $self->{data}->{document}->{status} = $headers->{Status};
   $self->{data}->{document}->{status_text} = $headers->{Reason};
@@ -34,6 +34,14 @@ sub print_result ($$$$) {
   $self->{data}->{is_conforming} = $result->is_conforming;
   $self->{data}->{is_non_conforming} = $result->is_non_conforming;
   $self->{data}->{errors} ||= [];
+
+  unless ($result->aborted) {
+    $self->{data}->{inner_html} = $doc->inner_html if $opts->{inner_html};
+    if ($opts->{dump}) {
+      require Web::HTML::Dumper;
+      $self->{data}->{dump} = Web::HTML::Dumper::dumptree ($doc);
+    }
+  } # not aborted
 } # print_result
 
 sub print_di_data_set ($$) {
