@@ -20,6 +20,7 @@ my $Noscript;
 my $ContentType;
 my $ValidationOptions = {};
 my $OutputClass = 'WebHACC::Output::Text';
+my $ResultOptions = {};
 GetOptions (
   '--check-error-response' => \$CheckErrorResponse,
   '--content-type=s' => \$ContentType,
@@ -30,6 +31,8 @@ GetOptions (
   '--image-viewable' => \$ValidationOptions->{image_viewable},
   '--json' => sub { $OutputClass = 'WebHACC::Output::JSON' },
   '--noscript' => sub { $Noscript = 1 },
+  '--show-dump' => \$ResultOptions->{dump},
+  '--show-inner-html' => \$ResultOptions->{inner_html},
   '--specs' => sub { $Mode = 'specs' },
   '--generate-cron-lines' => sub { $Mode = 'cron' },
   '--cron-user=s' => \$CronUser,
@@ -98,12 +101,12 @@ sub main () {
     $out->print_error ($error);
   });
 
-  return $val->validate->then (sub {
-    return $webhacc->get_git_data->then (sub {
-      $out->print_webhacc_data ($_[0]);
-    });
+  return $webhacc->get_git_data->then (sub {
+    $out->print_webhacc_data ($_[0]);
   })->then (sub {
-    $out->print_result ($result, $val->headers, $val->document);
+    return $val->validate;
+  })->then (sub {
+    $out->print_result ($result, $val->headers, $val->document, $ResultOptions);
     $out->print_di_data_set ($val->di_data_set);
     return $out->end->then (sub { return $result });
   });
@@ -116,6 +119,8 @@ exit ($cv->recv->is_conforming ? 0 : 1);
 # XXX list of data-* attributes
 # XXX list of classes
 # XXX list of IDs
+
+# XXX include options to JSON output
 
 =head1 NAME
 
@@ -203,6 +208,19 @@ Disable scripting for the purpose of parsing and validation.  By
 default scripting is enabled.  Note that the validator supports no
 scripting language at the moment.  This option affects conformance of
 C<noscript> elements.
+
+=item --show-dump
+
+Show a dump of the parsed DOM tree, in the format similar to
+html5lib's test data (see L<Web::HTML::Dumper>).
+
+In JSON output, the dump is available as C<dump> value.
+
+=item --show-inner-html
+
+Show the C<innerHTML>-serialized value of the parsed DOM tree.
+
+In JSON output, the value is available as C<inner_html> value.
 
 =item --specs
 

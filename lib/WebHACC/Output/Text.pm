@@ -18,6 +18,7 @@ my $Classes = {
   check_result => 'blue',
   heading => 'blue',
   caution => 'on_bright_red bright_white',
+  hr => 'white',
 };
 
 sub colored ($) {
@@ -212,9 +213,32 @@ sub print_error ($$) {
   $self->print ("\n");
 } # print_error
 
-sub print_result ($$$$) {
-  my ($self, $result, $headers, $doc) = @_;
+sub print_result ($$$$$) {
+  my ($self, $result, $headers, $doc, $opts) = @_;
 
+  unless ($result->aborted) {
+    if ($opts->{inner_html}) {
+      $self->print ("\n");
+
+      $self->print_heading ('innerHTML');
+      $self->print_hr;
+      $self->print ($doc->inner_html);
+      $self->print ("\n");
+      $self->print_hr;
+    }
+
+    if ($opts->{dump}) {
+      $self->print ("\n");
+
+      require Web::HTML::Dumper;
+      $self->print_heading ('Dump');
+      $self->print_hr;
+      $self->print (Web::HTML::Dumper::dumptree ($doc));
+      $self->print_hr;
+    }
+  } # not aborted
+
+  $self->print ("\n");
   $self->print (sprintf "URL:\t<%s>\n", $doc->url);
   $self->print (sprintf "Status:\t%d %s\n", $headers->{Status} || 0, $headers->{Reason} // '');
   $self->print (sprintf "MIME type:\t%s\n", $doc->content_type);
@@ -244,8 +268,12 @@ sub print_result ($$$$) {
 } # print_result
 
 sub print_heading ($$) {
-  $_[0]->print ($_[0]->_c ('heading', $_[1]));
+  $_[0]->print ($_[0]->_c ('heading', "* $_[1]\n"));
 } # print_heading
+
+sub print_hr ($$) {
+  $_[0]->print ($_[0]->_c ('hr', ('=' x 60) . "\n"));
+} # print_hr
 
 sub print_di_data_set ($$) {
   #
@@ -276,7 +304,7 @@ sub print_cron_lines ($$) {
 sub print_specs ($$) {
   my ($self, $specs) = @_;
   for my $name (sort { $a cmp $b } keys %$specs) {
-    $self->print_heading ("[$name] ");
+    $self->print ($self->_c ('heading', "[$name] "));
     $self->print (join "", map { $_ . "\n\n" } @{$specs->{$name}});
   }
 } # print_specs
