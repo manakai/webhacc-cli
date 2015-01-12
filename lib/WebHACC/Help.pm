@@ -71,6 +71,8 @@ sub get_specs ($) {
     'Web::HTML::Tokenizer',
     'Web::HTML::Parser',
     'Web::XML::Parser',
+    'Web::XML::DTDValidator',
+    'Web::XML::Parser::ForValidatorChecker',
     'Web::CSS::Tokenizer',
     'Web::CSS::Parser',
     'Web::CSS::Colors',

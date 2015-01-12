@@ -5,6 +5,7 @@ use lib file (__FILE__)->dir->parent->parent->subdir ('t_deps', 'lib').'';
 use CommandTest;
 use Test::X1;
 use Test::More;
+use JSON::PS;
 
 test {
   my $c = shift;
@@ -43,11 +44,36 @@ test {
       };
 } n => 3, name => 'scripting disabled';
 
+test {
+  my $c = shift;
+  cmd
+      \'<!DOCTYPE html><html lang=en><meta charset=utf-8><title>a</title><p><noscript><p></p><iframe </noscript>',
+      '-',
+      '--json',
+      sub {
+        my $result = shift;
+        test {
+          my $json = json_bytes2perl $result->{stdout};
+          for (@{$json->{errors}}) {
+            if ($_->{type} eq 'no significant content') {
+              is $_->{line}, 1;
+              is $_->{column}, 66;
+            } elsif ($_->{type} eq 'unclosed tag') {
+              is $_->{line}, 1;
+              is $_->{column}, 92;
+            }
+          }
+          done $c;
+          undef $c;
+        } $c;
+      };
+} n => 4, name => 'scripting enabled l/c';
+
 run_tests;
 
 =head1 LICENSE
 
-Copyright 2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2014-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
