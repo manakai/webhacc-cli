@@ -18,9 +18,11 @@ my $Mode = '';
 my $CronUser;
 my $Noscript;
 my $ImageOK;
+my $ContentType;
 my $OutputClass = 'WebHACC::Output::Text';
 GetOptions (
   '--check-error-response' => \$CheckErrorResponse,
+  '--content-type=s' => \$ContentType,
   '--help' => sub { $HelpLevel = {-verbose => 99,
                                   -sections => [qw(NAME SYNOPSIS DESCRIPTION ARGUMENTS), 'ENVIRONMENT VARIABLE', 'EXIT STATUS'],
                                   -exitval => 0} },
@@ -86,6 +88,7 @@ sub main_as_cv () {
     my $f = file ($url);
     $fetcher = WebHACC::Fetcher->new_from_f ($f);
   }
+  $fetcher->content_type ($ContentType);
   my $val = WebHACC::Validator->new_from_fetcher ($fetcher);
   $val->check_error_response ($CheckErrorResponse);
   $val->noscript ($Noscript);
@@ -152,6 +155,14 @@ If this option is specified, run the validator even when the response
 is in error (in network error or has status code other than 200-299)
 or is redirect (has status code 300-399).  Otherwise, validation is
 not performed when the response is in error.
+
+=item --content-type=mime-type
+
+If this option is specified, it is used as the MIME type when the
+input source is a file or the standard input.
+
+In a future version, this option might also be applied to HTTP input
+to override server's C<Content-Type>.
 
 =item --cron-user=user-name
 
@@ -309,7 +320,7 @@ Wakaba <wakaba@suikawiki.org>.
 
 =head1 LICENSE
 
-Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

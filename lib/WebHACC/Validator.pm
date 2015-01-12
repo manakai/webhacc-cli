@@ -6,9 +6,6 @@ use Encode;
 use AnyEvent;
 use Web::MIME::Type;
 use Web::DOM::Document;
-use Web::HTML::Parser;
-use Web::XML::Parser;
-use Web::HTML::Validator;
 use Web::HTML::SourceMap;
 
 sub new_from_fetcher ($$) {
@@ -134,45 +131,42 @@ sub validate_as_cv ($) {
     # XXX Content-Type sniffing
 
     if ($ct and $ct->type eq 'text' and $ct->subtype eq 'html') {
+      require Web::HTML::Parser;
       $parser = Web::HTML::Parser->new;
+    } elsif ($ct and $ct->is_xml_mime_type) {
+      require Web::XML::Parser;
+      $parser = Web::XML::Parser->new;
+    } else {
+      $doc->_set_content_type (defined $ct ? $ct->as_valid_mime_type_with_no_params : 'application/octet-stream');
+      push @error, {type => 'unknown mime type XXX', level => 'u', value => $_[0]->{'content-type'}};
+    }
+    if (defined $parser) {
       $parser->di_data_set ($dids);
       $parser->scripting (not $self->noscript);
       $parser->onerror (sub { push @error, {@_} });
       $parser->parse_bytes_start (undef, $doc);
-    } elsif ($ct and $ct->is_xml_mime_type) {
-      # XXX
-      $parser = Web::XML::Parser->new;
-      $parser->onerror (sub { push @error, {@_} });
-    } else {
-      push @error, {type => 'unknown mime type XXX', level => 'u', value => $_[0]->{'content-type'}};
     }
   });
 
   $fetcher->onbodychunk (sub {
     return if $stopped;
     $start ||= 1 if time - $start_time > 0.500;
-    $parser->parse_bytes_feed ($_[0], start_parsing => $start)
-        if $parser and $parser->isa ('Web::HTML::Parser');
+    $parser->parse_bytes_feed ($_[0], start_parsing => $start) if defined $parser;
     $body .= $_[0];
   });
 
   $fetcher->ondone (sub {
     unless ($stopped) {
-      if ($parser) {
-        if ($parser->isa ('Web::HTML::Parser')) {
-          $parser->parse_bytes_end if $parser;
-        } else {
-          # XXX
-          $parser->parse_char_string ((decode 'utf-8', $body) => $doc);
-        }
-      }
+      $parser->parse_bytes_end if defined $parser;
       #warn "done (@{[time - $start_time]} s)"; # XXX
 
       $body = decode $doc->input_encoding, $body; # XXXencoding
-      $dids->[$parser->di]->{lc_map} = create_index_lc_mapping $body;
+      $dids->[$parser->di]->{lc_map} = create_index_lc_mapping $body
+          if defined $parser;
       $body = ['', (split /\x0D\x0A?|\x0A/, $body, -1), '', ''];
 
       if ($parser) {
+        require Web::HTML::Validator;
         my $val = Web::HTML::Validator->new;
         $val->di_data_set ($dids);
         $val->scripting (not $self->noscript);
