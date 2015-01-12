@@ -16,11 +16,11 @@ sub print_error ($$$) {
   push @{$self->{data}->{errors} ||= []}, $e;
 } # print_error
 
-sub end_as_cv ($) {
+sub end ($) {
   my $self = $_[0];
   $self->print (perl2json_chars ($self->{data} || {}));
-  return $self->SUPER::end_as_cv;
-} # end_as_cv
+  return $self->SUPER::end;
+} # end
 
 sub print_result ($$$$) {
   my ($self, $result, $headers, $doc) = @_;

@@ -4,6 +4,7 @@ use warnings;
 use Encode;
 use AnyEvent;
 use AnyEvent::Handle;
+use Promise;
 
 sub new_from_fh_and_locale ($$$) {
   my $cv = AE::cv;
@@ -56,16 +57,16 @@ sub print ($$) {
   }
 } # print
 
-sub end_as_cv ($) {
+sub end ($) {
   $_[0]->{shutdown} = 1;
-  return $_[0]->{cv};
-}
+  return Promise->from_cv ($_[0]->{cv});
+} # end
 
 1;
 
 =head1 LICENSE
 
-Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

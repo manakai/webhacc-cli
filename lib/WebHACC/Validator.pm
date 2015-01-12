@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Time::HiRes qw(time);
 use Encode;
-use AnyEvent;
+use Promise;
 use Web::MIME::Type;
 use Web::DOM::Document;
 use Web::HTML::SourceMap;
@@ -78,9 +78,10 @@ sub _process_errors ($$$$) {
   }
 } # _process_errors
 
-sub validate_as_cv ($) {
+sub validate ($) {
   my $self = $_[0];
-  my $cv = AE::cv;
+  my $ok;
+  my $promise = new Promise (sub { $ok = $_[0] });
 
   my $fetcher = $_[0]->{fetcher};
   my $onerror = $self->onerror;
@@ -180,17 +181,18 @@ sub validate_as_cv ($) {
 
       _process_errors $self->di_data_set, \@error, $body => $onerror;
     }
-    $cv->send;
+    $ok->();
 
     @error = ();
     undef $doc;
     undef $self;
     undef $fetcher;
+    undef $ok;
   });
 
   $fetcher->start;
-  return $cv;
-} # validate_as_cv
+  return $promise;
+} # validate
 
 sub headers ($) {
   # XXX API is not stable! don't rely on this!!

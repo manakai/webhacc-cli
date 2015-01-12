@@ -51,9 +51,7 @@ eval qq{ require $OutputClass } or die $@;
 
 my $url = shift; # or STDIN
 
-sub main_as_cv () {
-  my $cv = AE::cv;
-
+sub main () {
   my $locale = WebHACC::Locale->new_from_lang_env ($ENV{LANG});
   my $out = $OutputClass->new_from_fh_and_locale (\*STDOUT, $locale);
 
@@ -64,20 +62,17 @@ sub main_as_cv () {
     require WebHACC::Help;
     my $help = WebHACC::Help->new;
     $out->print_specs ($help->get_specs); # blocking
-    $out->end_as_cv->cb (sub { $cv->send ($result) });
-    return $cv;
+    return $out->end->then (sub { return $result });
   } elsif ($Mode eq 'cron') {
     require WebHACC::Help;
     my $help = WebHACC::Help->new;
     $out->print_cron_lines ([$help->get_cron_upgrade_line (user => $CronUser)]);
-    $out->end_as_cv->cb (sub { $cv->send ($result) });
-    return $cv;
+    return $out->end->then (sub { return $result });
   } elsif ($Mode eq 'version') {
-    $webhacc->get_git_data_as_cv->cb (sub {
-      $out->print_webhacc_data ($_[0]->recv);
-      $out->end_as_cv->cb (sub { $cv->send ($result) });
+    return $webhacc->get_git_data->then (sub {
+      $out->print_webhacc_data ($_[0]);
+      return $out->end->then (sub { return $result });
     });
-    return $cv;
   }
 
   my $fetcher;
@@ -100,20 +95,20 @@ sub main_as_cv () {
     $result->add_error ($error);
     $out->print_error ($error, $lines);
   });
-  $val->validate_as_cv->cb (sub {
-    $webhacc->get_git_data_as_cv->cb (sub {
-      $out->print_webhacc_data ($_[0]->recv);
-      $out->print_result ($result, $val->headers, $val->document);
-      $out->end_as_cv->cb (sub { $cv->send ($result) });
+
+  return $val->validate->then (sub {
+    return $webhacc->get_git_data->then (sub {
+      $out->print_webhacc_data ($_[0]);
     });
+  })->then (sub {
+    $out->print_result ($result, $val->headers, $val->document);
+    return $out->end->then (sub { return $result });
   });
+} # main
 
-  return $cv;
-} # main_as_cv
-
-my $result = main_as_cv->recv;
-
-exit ($result->is_conforming ? 0 : 1);
+my $cv = AE::cv;
+main->then (sub { $cv->send ($_[0]) });
+exit ($cv->recv->is_conforming ? 0 : 1);
 
 # XXX list of data-* attributes
 # XXX list of classes
