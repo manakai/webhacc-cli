@@ -1,6 +1,7 @@
 package WebHACC::Fetcher;
 use strict;
 use warnings;
+use Encode;
 use AnyEvent::Handle;
 use AnyEvent::HTTP;
 use Web::URL::Canonicalize qw(url_to_canon_url);
@@ -56,17 +57,6 @@ sub _http (%) {
   my $continue = 1;
   my $headers_called;
   my $done_called;
-  my $timer; $timer = AE::timer $timeout, 0, sub {
-    unless ($headers_called++) {
-      $onheaders->({Status => 595, Reason => "Timeout ($timeout)",
-                    URL => $url});
-    } else {
-      warn "<$url>: Timeout ($timeout)\n";
-    }
-    $ondone->(0) unless $done_called++;
-    $continue = 0;
-    undef $timer;
-  };
 
   print STDERR "Fetching <$url>..."; # XXXblocking
   AnyEvent::HTTP::http_request
@@ -87,11 +77,11 @@ sub _http (%) {
         return $continue;
       },
       sub {
-        if ($@) {
+        if ($!) {
           unless ($headers_called++) {
-            $onheaders->({Status => 599, Reason => $@, URL => $url});
+            $onheaders->({Status => 599, Reason => (decode 'utf-8', $!), URL => $url});
           } else {
-            warn "<$url>: $@\n";
+            warn "<$url>: $!\n"; # XXX
           }
         }
         $ondone->($continue) unless $done_called++;

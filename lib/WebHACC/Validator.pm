@@ -161,6 +161,7 @@ sub validate ($) {
       $parser->scripting (not $self->noscript);
       $parser->onerror (sub { push @error, {@_} });
       $parser->strict_checker ('Web::XML::Parser::ForValidatorChecker');
+      $parser->max_entity_expansions (100_000);
 
       if ($self->validation_options->{xml_external_entities}) {
         $parser->onextentref (sub {
