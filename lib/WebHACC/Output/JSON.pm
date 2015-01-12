@@ -5,8 +5,8 @@ use WebHACC::Output::FH;
 push our @ISA, qw(WebHACC::Output::FH);
 use JSON::PS;
 
-sub print_error ($$$) {
-  my ($self, $error, $lines) = @_;
+sub print_error ($$) {
+  my ($self, $error) = @_;
   my $e = {};
   for (qw(line column di index value level type text preferred)) {
     $e->{$_} = $error->{$_} if defined $error->{$_};
@@ -35,6 +35,19 @@ sub print_result ($$$$) {
   $self->{data}->{is_non_conforming} = $result->is_non_conforming;
   $self->{data}->{errors} ||= [];
 } # print_result
+
+sub print_di_data_set ($$) {
+  my ($self, $dids) = @_;
+  for my $di (0..$#$dids) {
+    my $did = $dids->[$di];
+    unless (defined $did->{map}) {
+      $self->{data}->{input_data}->{$di}->{di} = $di;
+      for (qw(url file_name status)) {
+        $self->{data}->{input_data}->{$di}->{$_} = $did->{$_} if defined $did->{$_};
+      }
+    }
+  }
+} # print_di_data_set
 
 sub print_webhacc_data ($$) {
   my ($self, $git_data) = @_;

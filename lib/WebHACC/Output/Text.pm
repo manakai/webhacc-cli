@@ -6,6 +6,7 @@ use WebHACC::Output::FH;
 push our @ISA, qw(WebHACC::Output::FH);
 use Web::DOM::Node;
 use WebHACC::_Errors;
+use Web::HTML::SourceMap;
 
 my $Classes = {
   line_number => 'white',
@@ -129,34 +130,52 @@ sub _print_by_lc ($$$$) {
     }
 } # _print_by_lc
 
-sub print_error ($$$) {
-  my ($self, $error, $lines) = @_;
+sub print_error ($$) {
+  my ($self, $error) = @_;
   return if $error->{level} eq 'mh';
+
   my $message = $self->locale->plain_text_by_error ($error);
+
   my $value = $error->{value};
   if (not defined $value and $error->{node}) {
     my $def = $WebHACC::_Errors->{$error->{type}};
     $value = $error->{node}->node_value
         unless $def->{targets}->{attr};
   }
+
+  $self->print (sprintf "[%s]", $self->_level ($error->{level}));
   if ($error->{line}) {
-    $self->print (sprintf "[%s] Line %d column %d%s%s %s\n",
-        $self->_level ($error->{level}),
-        $error->{line}, $error->{column},
-        $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
-        defined $value ? ' ' . $self->_string ($value) : '',
-        $self->_c ('error_type', $message));
-    if (defined $error->{node}) {
-      $self->print (sprintf "  %s\n", $self->_node_path ($error->{node}));
-    }
-    $self->_print_by_lc ($lines, $error->{line}, $error->{column});
-  } else {
-    $self->print (sprintf "[%s]%s%s %s\n",
-        $self->_level ($error->{level}),
-        $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
-        defined $value ? ' ' . $self->_string ($value) : '',
-        $self->_c ('error_type', $message));
+    $self->print (sprintf " Line %d column %d", $error->{line}, $error->{column});
   }
+  $self->print (sprintf "%s%s %s\n",
+      $error->{node} ? ' ' . $self->_node ($error->{node}) : '',
+      defined $value ? ' ' . $self->_string ($value) : '',
+      $self->_c ('error_type', $message));
+
+  my $dids = $self->di_data_set;
+  if (defined $error->{di} and $error->{di} != 1) {
+    my $url = $dids->[$error->{di}]->{url};
+    if (defined $url) {
+      $self->print (sprintf "  Document <%s>", $url);
+    } else {
+      $self->print (sprintf "  Document #%d", $error->{di});
+    }
+    if (defined $error->{node}) {
+      $self->print (sprintf " %s\n", $self->_node_path ($error->{node}));
+    } else {
+      $self->print ("\n");
+    }
+  } else {
+    $self->print (sprintf "  %s\n", $self->_node_path ($error->{node}))
+        if defined $error->{node};
+  }
+
+  if ($error->{line} and defined $error->{di} and
+      defined $dids->[$error->{di}]->{lines}) {
+    $self->_print_by_lc ($dids->[$error->{di}]->{lines},
+                         $error->{line}, $error->{column});
+  }
+
   if (defined $error->{preferred}) {
     my $pr = $error->{preferred};
     my $type = $pr->{type};
@@ -189,6 +208,7 @@ sub print_error ($$$) {
       }->{$pr->{type}} // $pr->{type});
     }
   } # $error->{preferred}
+
   $self->print ("\n");
 } # print_error
 
@@ -226,6 +246,10 @@ sub print_result ($$$$) {
 sub print_heading ($$) {
   $_[0]->print ($_[0]->_c ('heading', $_[1]));
 } # print_heading
+
+sub print_di_data_set ($$) {
+  #
+} # print_di_data_set
 
 sub print_webhacc_data ($$) {
   my ($self, $git_data) = @_;
