@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Time::HiRes qw(time);
 use Encode;
-use AnyEvent;
+use Promise;
 use Web::MIME::Type;
 use Web::DOM::Document;
 use Web::HTML::SourceMap;
@@ -19,19 +19,19 @@ sub check_error_response ($;$) {
   return $_[0]->{check_error_response};
 } # check_error_response
 
+sub validation_options ($;$) {
+  if (@_ > 1) {
+    $_[0]->{validation_options} = $_[1];
+  }
+  return $_[0]->{validation_options} || {};
+} # validation_options
+
 sub noscript ($;$) {
   if (@_ > 1) {
     $_[0]->{noscript} = $_[1];
   }
   return $_[0]->{noscript};
 } # noscript
-
-sub image_viewable ($;$) {
-  if (@_ > 1) {
-    $_[0]->{image_viewable} = $_[1];
-  }
-  return $_[0]->{image_viewable};
-} # image_viewable
 
 sub onerror ($;$) {
   if (@_ > 1) {
@@ -78,9 +78,10 @@ sub _process_errors ($$$$) {
   }
 } # _process_errors
 
-sub validate_as_cv ($) {
+sub validate ($) {
   my $self = $_[0];
-  my $cv = AE::cv;
+  my $ok;
+  my $promise = new Promise (sub { $ok = $_[0] });
 
   my $fetcher = $_[0]->{fetcher};
   my $onerror = $self->onerror;
@@ -170,24 +171,28 @@ sub validate_as_cv ($) {
         my $val = Web::HTML::Validator->new;
         $val->di_data_set ($dids);
         $val->scripting (not $self->noscript);
-        $val->image_viewable ($self->image_viewable);
+        my $vo = $self->validation_options;
+        for (qw(force_dtd_validation image_viewable)) {
+          $val->$_ ($vo->{$_}) if defined $vo->{$_};
+        }
         $val->onerror (sub { push @error, {@_} });
         $val->check_node ($doc);
       }
 
       _process_errors $self->di_data_set, \@error, $body => $onerror;
     }
-    $cv->send;
+    $ok->();
 
     @error = ();
     undef $doc;
     undef $self;
     undef $fetcher;
+    undef $ok;
   });
 
   $fetcher->start;
-  return $cv;
-} # validate_as_cv
+  return $promise;
+} # validate
 
 sub headers ($) {
   # XXX API is not stable! don't rely on this!!
