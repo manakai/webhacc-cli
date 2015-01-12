@@ -9,6 +9,7 @@ use Web::DOM::Document;
 use Web::HTML::Parser;
 use Web::XML::Parser;
 use Web::HTML::Validator;
+use Web::HTML::SourceMap;
 
 sub new_from_fetcher ($$) {
   return bless {fetcher => $_[1]}, $_[0];
@@ -42,12 +43,31 @@ sub onerror ($;$) {
   return $_[0]->{onerror} || sub { };
 } # onerror
 
-sub _process_errors ($$$) {
-  my ($errors, $lines => $onerror) = @_;
+sub di_data_set ($;$) {
+  if (@_ > 1) {
+    $_[0]->{di_data_set} = $_[1];
+  }
+  return $_[0]->{di_data_set} ||= [];
+} # di_data_set
+
+sub _process_errors ($$$$) {
+  my ($dids, $errors, $lines => $onerror) = @_;
   for (@$errors) {
-    if ($_->{node} and not $_->{line}) {
-      $_->{line} = $_->{node}->get_user_data ('manakai_source_line');
-      $_->{column} = $_->{node}->get_user_data ('manakai_source_column');
+    if (defined $_->{node} and
+        not defined $_->{index} and
+        (not defined $_->{di} or $_->{di} == -1)) {
+      my $l = $_->{node}->manakai_get_source_location;
+      $_->{di} = $l->[1];
+      $_->{index} = $l->[2];
+    }
+
+    if (defined $_->{index} and defined $_->{di} and $_->{di} != -1) {
+      my ($di, $index) = resolve_index_pair $dids, $_->{di}, $_->{index};
+      my ($l, $c) = index_pair_to_lc_pair $dids, $di, $index;
+      if (defined $c) {
+        $_->{line} = $l;
+        $_->{column} = $c;
+      }
     }
   }
   {
@@ -80,6 +100,7 @@ sub validate_as_cv ($) {
   my $start = 0;
   my $body = '';
   my $stopped;
+  my $dids = $self->di_data_set;
 
   $fetcher->onheaders (sub {
     #use Data::Dumper;
@@ -114,6 +135,7 @@ sub validate_as_cv ($) {
 
     if ($ct and $ct->type eq 'text' and $ct->subtype eq 'html') {
       $parser = Web::HTML::Parser->new;
+      $parser->di_data_set ($dids);
       $parser->scripting (not $self->noscript);
       $parser->onerror (sub { push @error, {@_} });
       $parser->parse_bytes_start (undef, $doc);
@@ -147,17 +169,19 @@ sub validate_as_cv ($) {
       #warn "done (@{[time - $start_time]} s)"; # XXX
 
       $body = decode $doc->input_encoding, $body; # XXXencoding
+      $dids->[$parser->di]->{lc_map} = create_index_lc_mapping $body;
       $body = ['', (split /\x0D\x0A?|\x0A/, $body, -1), '', ''];
 
       if ($parser) {
         my $val = Web::HTML::Validator->new;
+        $val->di_data_set ($dids);
         $val->scripting (not $self->noscript);
         $val->image_viewable ($self->image_viewable);
         $val->onerror (sub { push @error, {@_} });
         $val->check_node ($doc);
       }
 
-      _process_errors \@error, $body => $onerror;
+      _process_errors $self->di_data_set, \@error, $body => $onerror;
     }
     $cv->send;
 
