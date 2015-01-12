@@ -8,7 +8,7 @@ use JSON::PS;
 sub print_error ($$$) {
   my ($self, $error, $lines) = @_;
   my $e = {};
-  for (qw(line column index value level type text preferred)) {
+  for (qw(line column di index value level type text preferred)) {
     $e->{$_} = $error->{$_} if defined $error->{$_};
   }
   # XXX node
@@ -27,6 +27,7 @@ sub print_result ($$$$) {
   $self->{data}->{document}->{url} = $doc->url;
   $self->{data}->{document}->{status} = $headers->{Status};
   $self->{data}->{document}->{status_text} = $headers->{Reason};
+  $self->{data}->{document}->{content_type} = $doc->content_type;
   $self->{data}->{document}->{input_encoding} = $doc->input_encoding;
   $self->{data}->{error_count}->{$_} = $result->error_count ($_)
       for qw(m mh s w i u);
@@ -57,7 +58,7 @@ sub print_specs ($$) {
 
 =head1 LICENSE
 
-Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

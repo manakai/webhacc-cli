@@ -17,6 +17,13 @@ sub new_from_f ($$) {
   return bless {f => $_[1]}, $_[0];
 } # new_from_f
 
+sub content_type ($;$) {
+  if (@_ > 1) {
+    $_[0]->{content_type} = $_[1];
+  }
+  return $_[0]->{content_type};
+} # content_type
+
 sub onheaders ($;$) {
   if (@_ > 1) {
     $_[0]->{onheaders} = $_[1];
@@ -68,6 +75,7 @@ sub _http (%) {
       recurse => 0,
       on_header => sub {
         my $headers = $_[0];
+        # XXX $self->content_type
         $onheaders->($headers) if not $headers_called++ and not $done_called;
         return $continue;
       },
@@ -98,7 +106,7 @@ sub _fh (%) {
        on_read => sub {
          my $hdl = $_[0];
          $args{onheaders}->({Status => 200, Reason => 'OK', URL => $args{url},
-                             'content-type' => 'text/html'}) # XXX
+                             'content-type' => $args{content_type} // 'text/html'})
              unless $headers_called++;
          $args{onbodychunk}->($hdl->{rbuf}) unless $done_called;
          substr ($hdl->{rbuf}, 0) = '';
@@ -167,6 +175,7 @@ sub start ($) {
     _fh
         fh => $fh,
         url => $url,
+        content_type => $self->content_type,
         onheaders => $self->onheaders,
         onbodychunk => $self->onbodychunk,
         ondone => $self->ondone;
@@ -187,7 +196,7 @@ sub DESTROY ($) {
 
 =head1 LICENSE
 
-Copyright 2007-2013 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

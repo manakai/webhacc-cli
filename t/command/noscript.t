@@ -16,7 +16,7 @@ test {
         my $result = shift;
         test {
           is $result->{status}, 1;
-          unlike $result->{stdout}, qr{bad attribute name};
+          unlike $result->{stdout}, qr{tag not closed};
           unlike $result->{stdout}, qr{attribute missing};
           done $c;
           undef $c;
@@ -35,7 +35,7 @@ test {
         my $result = shift;
         test {
           is $result->{status}, 1;
-          like $result->{stdout}, qr{bad attribute name}; # </noscript>=""
+          like $result->{stdout}, qr{tag not closed}; # </noscript>=""
           like $result->{stdout}, qr{attribute missing};
           done $c;
           undef $c;

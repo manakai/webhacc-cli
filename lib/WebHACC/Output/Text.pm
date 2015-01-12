@@ -113,6 +113,7 @@ sub _print_by_lc ($$$$) {
                         $self->_c ('line_number', $line . ':'),
                         $body->[$line]);
     } else {
+      no warnings 'substr';
       my $start = 0;
       $start = $column - 30 if $start < $column - 30;
       $self->print (sprintf "  %s %s%s%s\n",
@@ -196,6 +197,7 @@ sub print_result ($$$$) {
 
   $self->print (sprintf "URL:\t<%s>\n", $doc->url);
   $self->print (sprintf "Status:\t%d %s\n", $headers->{Status} || 0, $headers->{Reason} // '');
+  $self->print (sprintf "MIME type:\t%s\n", $doc->content_type);
   $self->print (sprintf "Encoding:\t%s\n", $doc->input_encoding);
   if ($result->is_conforming) {
     $self->print ($self->_c ('pass', "The document is conforming\n"));
@@ -259,7 +261,7 @@ sub print_specs ($$) {
 
 =head1 LICENSE
 
-Copyright 2007-2014 Wakaba <wakaba@suikawiki.org>.
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
