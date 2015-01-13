@@ -4,6 +4,16 @@ $WebHACC::_Errors = {
                                                               "en" => "<code><var>{text}</var></code> matches\n  the empty string too many times."
                                                             }
                                                },
+          "&lt;option label value> not empty" => {
+                                                 "desc" => {
+                                                           "en" => "\n    <p>The content of the <code>option</code> element with both\n    <code>label</code> and <code>value</code> attributes must be\n    empty.  No child elements or non-space characters are allowed.</p>\n  ",
+                                                           "ja" => "\n    <p><code>option</code> \x{8981}\x{7d20}\x{306b} <code>label</code> \x{5c5e}\x{6027}\x{3068}\n    <code>value</code> \x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5b50}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                         },
+                                                 "message" => {
+                                                              "en" => "The element is not empty",
+                                                              "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                            }
+                                               },
           "(?p{}) is deprecated -- use (??{})" => {
                                                   "desc" => {
                                                             "en" => "\n    <p><code>(?p{})</code> is obsolete.  It was deprecated in\n    Perl 5.8 and is <em>no longer supported</em> in Perl 5.10.</p>\n\n    <p>You can use <code>(??{<var>...</var>})</code> instead.</p>\n  "
@@ -32,7 +42,8 @@ $WebHACC::_Errors = {
                      "parser_tests" => [
                                        {
                                          "index" => 15,
-                                         "input" => "<!DOCTYPE HTML></br>"
+                                         "input" => "<!DOCTYPE HTML></br>",
+                                         "lang" => "HTML"
                                        }
                                      ]
                    },
@@ -56,20 +67,11 @@ $WebHACC::_Errors = {
                     "parser_tests" => [
                                       {
                                         "index" => 21,
-                                        "input" => "<!DOCTYPE HTML><body></p>"
+                                        "input" => "<!DOCTYPE HTML><body></p>",
+                                        "lang" => "HTML"
                                       }
                                     ]
                   },
-          "<option label value> not empty" => {
-                                              "desc" => {
-                                                        "en" => "\n    <p>The content of the <code>option</code> element with both\n    <code>label</code> and <code>value</code> attributes must be\n    empty.  No child elements or non-space characters are allowed.</p>\n  ",
-                                                        "ja" => "\n    <p><code>option</code> \x{8981}\x{7d20}\x{306b} <code>label</code> \x{5c5e}\x{6027}\x{3068}\n    <code>value</code> \x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5b50}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                      },
-                                              "message" => {
-                                                           "en" => "The element is not empty",
-                                                           "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                         }
-                                            },
           "AAA:formatting element not current" => {
                                                   "default_level" => "m",
                                                   "desc" => {
@@ -88,6 +90,7 @@ $WebHACC::_Errors = {
                                                                     {
                                                                       "index" => 23,
                                                                       "input" => "<!DOCTYPE HTML><b><div></b>",
+                                                                      "lang" => "HTML",
                                                                       "value" => "b"
                                                                     }
                                                                   ],
@@ -114,6 +117,7 @@ $WebHACC::_Errors = {
                                                                      {
                                                                        "index" => 26,
                                                                        "input" => "<!DOCTYPE HTML><b><table>b</b>a",
+                                                                       "lang" => "HTML",
                                                                        "value" => "b"
                                                                      }
                                                                    ],
@@ -140,6 +144,7 @@ $WebHACC::_Errors = {
                                                                      {
                                                                        "index" => 31,
                                                                        "input" => "<!DOCTYPE HTML><span><b></span></b>",
+                                                                       "lang" => "HTML",
                                                                        "value" => "b"
                                                                      }
                                                                    ],
@@ -168,6 +173,21 @@ $WebHACC::_Errors = {
                                                       "en" => "Quantifier <code>{<var>n</var>,<var>m</var>}</code>\n  cannot be <span class=\"math\"><var>n</var> &gt; <var>m</var></span>."
                                                     }
                                        },
+          "Deterministic Content Models" => {
+                                            "default_level" => "m",
+                                            "desc" => {
+                                                      "en" => "<p>A content model has to be deterministic or unambiguous.\nThat is, it is not allowed for an element to be able to match\nwith multiple items in the content model.</p>",
+                                                      "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306f}\x{6c7a}\x{5b9a}\x{7684}\x{3067}\x{66d6}\x{6627}\x{7121}\x{3044}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{3059}\x{306a}\x{308f}\x{3061}\x{3001}\x{3042}\x{308b}\x{8981}\x{7d20}\x{304c}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306e}\x{8907}\x{6570}\x{306e}\x{9805}\x{76ee}\x{306b}\x{4e00}\x{81f4}\x{3059}\x{308b}\x{53ef}\x{80fd}\x{6027}\x{304c}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                            "layer" => "dtd",
+                                            "message" => {
+                                                         "en" => "The content model is ambiguous",
+                                                         "ja" => "\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{304c}\x{66d6}\x{6627}\x{3067}\x{3059}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::XML::DTDValidator" => 1
+                                                       }
+                                          },
           "Empty \\%s{}" => {
                            "message" => {
                                         "en" => "An escape <code>\\<var>{text}</var>{}</code>\n  is empty."
@@ -329,7 +349,8 @@ $WebHACC::_Errors = {
                                  "ja" => "<code class=\"charname\">NULL</code> \x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                },
                     "modules" => {
-                                 "Web::HTML::Parser::tokenizer" => 1
+                                 "Web::HTML::Parser::tokenizer" => 1,
+                                 "Web::XML::Parser::tokenizer" => 1
                                },
                     "parser_error_names" => {
                                             "NULL" => 1
@@ -592,61 +613,531 @@ $WebHACC::_Errors = {
                                                                   "en" => "Modifier <code>(?<var>{text}</var>)</code>\n  <em>in</em> a regular expression has no effect."
                                                                 }
                                                    },
-          "WFC:No External Entity References" => {
-                                                 "desc" => {
-                                                           "en" => "\n    <p>An entity reference in an attribute value cannot reference an\n    external entity.</p>\n  ",
-                                                           "ja" => "\n    <p>\x{5c5e}\x{6027}\x{5024}\x{5185}\x{306e}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n  "
+          "VC:Attribute Default Value Syntactically Correct:enumeration" => {
+                                                                            "default_level" => "m",
+                                                                            "desc" => {
+                                                                                      "en" => "<p>The value of an attribute whose type is a list of enumerated values\nmust be one of those values.</p>",
+                                                                                      "ja" => "<p>\x{5217}\x{6319}\x{578b}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{305d}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                                                    },
+                                                                            "layer" => "dtd",
+                                                                            "message" => {
+                                                                                         "en" => "The value is not one of allowed tokens",
+                                                                                         "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b57}\x{53e5}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                                                       },
+                                                                            "modules" => {
+                                                                                         "Web::XML::DTDValidator" => 1
+                                                                                       }
+                                                                          },
+          "VC:Attribute Value Type:declared" => {
+                                                "default_level" => "m",
+                                                "desc" => {
+                                                          "en" => "<p>The attribute must be declared by an <code>ATTLIST</code> declaration.</p>",
+                                                          "ja" => "<p>\x{5c5e}\x{6027}\x{306f} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{3067}\x{5ba3}\x{8a00}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                        },
+                                                "layer" => "dtd",
+                                                "message" => {
+                                                             "en" => "The attribute is not declared",
+                                                             "ja" => "\x{5c5e}\x{6027}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::DTDValidator" => 1
+                                                           }
+                                              },
+          "VC:Element Valid:EMPTY" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>The element whose content is <code>EMPTY</code> cannot contain\nany child.</p>",
+                                                "ja" => "<p>\x{5185}\x{5bb9}\x{304c} <code>EMPTY</code> \x{306e}\x{8981}\x{7d20}\x{306f}\x{5b50}\x{4f9b}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "dtd",
+                                      "message" => {
+                                                   "en" => "The element is not empty",
+                                                   "ja" => "\x{8981}\x{7d20}\x{304c}\x{7a7a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::XML::DTDValidator" => 1
+                                                 }
+                                    },
+          "VC:Element Valid:charref in element content" => {
+                                                           "default_level" => "m",
+                                                           "desc" => {
+                                                                     "en" => "<p>An element whose type is declared with an element content\n(i.e. a content model group with no <code>#PCDATA</code>\nkeyword) cannot contain character references.</p>",
+                                                                     "ja" => "<p>\x{8981}\x{7d20}\x{5185}\x{5bb9} (<code>#PCDATA</code> \x{7121}\x{3057}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}) \n\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{578b}\x{306e}\x{8981}\x{7d20}\x{306f}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{542b}\x{3080}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                                   },
+                                                           "layer" => "entity",
+                                                           "message" => {
+                                                                        "en" => "An element-content element contains a character reference",
+                                                                        "ja" => "\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{3068}\x{3057}\x{3066}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{304c}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{307e}\x{3059}"
+                                                                      },
+                                                           "modules" => {
+                                                                        "Web::XML::Parser::tokenizer" => 1
+                                                                      }
                                                          },
+          "VC:Element Valid:declared" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>The element type must be declared by an <code>ELEMENT</code> declaration.</p>",
+                                                   "ja" => "<p>\x{8981}\x{7d20}\x{578b}\x{306f} <code>ELEMENT</code> \x{5ba3}\x{8a00}\x{3067}\x{5ba3}\x{8a00}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                 },
+                                         "layer" => "dtd",
+                                         "message" => {
+                                                      "en" => "The element type is not declared",
+                                                      "ja" => "\x{8981}\x{7d20}\x{578b}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::XML::DTDValidator" => 1
+                                                    }
+                                       },
+          "VC:Element Valid:element child:element" => {
+                                                      "default_level" => "m",
+                                                      "desc" => {
+                                                                "en" => "<p>The element declared with an element content can only contain\nthe elements matching to the content model.</p>",
+                                                                "ja" => "<p>\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{3068}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{3068}\x{3057}\x{3066}\x{306f}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306b}\x{5408}\x{81f4}\x{3059}\x{308b}\x{8981}\x{7d20}\x{306e}\x{307f}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>"
+                                                              },
+                                                      "layer" => "dtd",
+                                                      "message" => {
+                                                                   "en" => "The element is not one of allowed elements (<code><var>{text}</var></code>)",
+                                                                   "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093} (<code><var>{text}</var></code>)"
+                                                                 },
+                                                      "modules" => {
+                                                                   "Web::XML::DTDValidator" => 1
+                                                                 }
+                                                    },
+          "VC:Element Valid:element child:required element" => {
+                                                               "default_level" => "m",
+                                                               "desc" => {
+                                                                         "en" => "<p>The element declared with an element content must contain\nits required child elements.</p>",
+                                                                         "ja" => "<p>\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{3068}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{3068}\x{3057}\x{3066}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{3067}\x{8981}\x{6c42}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                                                       },
+                                                               "layer" => "dtd",
+                                                               "message" => {
+                                                                            "en" => "There is no required element (<code><var>{text}</var></code>)",
+                                                                            "ja" => "\x{5fc5}\x{9808}\x{306e}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093} (<code><var>{text}</var></code>)"
+                                                                          },
+                                                               "modules" => {
+                                                                            "Web::XML::DTDValidator" => 1
+                                                                          }
+                                                             },
+          "VC:Element Valid:element children:text" => {
+                                                      "default_level" => "m",
+                                                      "desc" => {
+                                                                "en" => "<p>An element whose type is declared with a element content\n(i.e. a content model group without <code>#PCDATA</code>)\ncannot contain characters other than white spaces.</p>",
+                                                                "ja" => "<p>\x{8981}\x{7d20}\x{5185}\x{5bb9} (<code>#PCDATA</code> \x{7121}\x{3057}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4})\n\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{578b}\x{306e}\x{8981}\x{7d20}\x{306f}\x{3001}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{3092}\x{542b}\x{3080}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                              },
+                                                      "layer" => "dtd",
+                                                      "message" => {
+                                                                   "en" => "An element-content element contains a non-space character",
+                                                                   "ja" => "\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{306e}\x{8981}\x{7d20}\x{306b}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                 },
+                                                      "modules" => {
+                                                                   "Web::XML::DTDValidator" => 1
+                                                                 }
+                                                    },
+          "VC:Element Valid:mixed child" => {
+                                            "default_level" => "m",
+                                            "desc" => {
+                                                      "en" => "<p>The element declared with a mixed content can only contain\nthe listed elements as child.</p>",
+                                                      "ja" => "<p>\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{306b}\x{306f}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{3057}\x{304b}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                            "layer" => "dtd",
+                                            "message" => {
+                                                         "en" => "The element is not allowed by the content model",
+                                                         "ja" => "\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{3067}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::XML::DTDValidator" => 1
+                                                       }
+                                          },
+          "VC:Entity Name:declared" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>The value specified by an <code>ENTITY</code> or <code>ENTITIES</code>\ntyped attribute must be a general entity name.</p>",
+                                                 "ja" => "<p><code>ENTITY</code> \x{578b}\x{3084} <code>ENTITIES</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{3001}\n\x{4e00}\x{822c}\x{5b9f}\x{4f53}\x{540d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "dtd",
+                                       "message" => {
+                                                    "en" => "The entity is not declared",
+                                                    "ja" => "\x{3053}\x{306e}\x{5b9f}\x{4f53}\x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::DTDValidator" => 1
+                                                  }
+                                     },
+          "VC:Entity Name:unparsed" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>The entity specified by an <code>ENTITY</code> or <code>ENTITIES</code>\ntyped attribute must be an unparsed entity.</p>",
+                                                 "ja" => "<p><code>ENTITY</code> \x{578b}\x{3084} <code>ENTITIES</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5b9f}\x{4f53}\x{306f}\x{3001}\n\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "dtd",
+                                       "message" => {
+                                                    "en" => "The entity is not an unparsed entity",
+                                                    "ja" => "\x{3053}\x{306e}\x{5b9f}\x{4f53}\x{306f}\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::DTDValidator" => 1
+                                                  }
+                                     },
+          "VC:Enumeration" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>The value of an attribute whose type is a list of enumerated values\nmust be one of those values.</p>",
+                                        "ja" => "<p>\x{5217}\x{6319}\x{578b}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{305d}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                      },
+                              "layer" => "dtd",
+                              "message" => {
+                                           "en" => "The value is not one of allowed tokens",
+                                           "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b57}\x{53e5}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                         },
+                              "modules" => {
+                                           "Web::XML::DTDValidator" => 1
+                                         }
+                            },
+          "VC:Fixed Attribute Default" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>If an attribute has the fixed default value, its value\nmust be equal to the default value.</p>",
+                                                    "ja" => "<p>\x{5c5e}\x{6027}\x{304c}\x{56fa}\x{5b9a}\x{65e2}\x{5b9a}\x{5024}\x{3092}\x{6301}\x{3064}\x{306a}\x{3089}\x{3001}\x{5c5e}\x{6027}\x{5024}\x{3068}\x{65e2}\x{5b9a}\x{5024}\x{306f}\x{7b49}\x{3057}\x{304f}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "dtd",
+                                          "message" => {
+                                                       "en" => "The value is different from the fixed default value",
+                                                       "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{56fa}\x{5b9a}\x{65e2}\x{5b9a}\x{5024}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::DTDValidator" => 1
+                                                     }
+                                        },
+          "VC:ID Attribute Default" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>An <code>ID</code>-typed attribute cannot have any default value.</p>",
+                                                 "ja" => "<p><code>ID</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{65e2}\x{5b9a}\x{5024}\x{3092}\x{6301}\x{3066}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "dtd",
+                                       "message" => {
+                                                    "en" => "An <code>ID</code> attribute cannot contain a default value",
+                                                    "ja" => "<code>ID</code> \x{5c5e}\x{6027}\x{306e}\x{65e2}\x{5b9a}\x{5024}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::DTDValidator" => 1
+                                                  }
+                                     },
+          "VC:ID:unique" => {
+                            "default_level" => "m",
+                            "desc" => {
+                                      "en" => "<p>The <code>ID</code> must be unique in the document</p>",
+                                      "ja" => "<p><code>ID</code> \x{306f}\x{6587}\x{66f8}\x{5185}\x{3067}\x{56fa}\x{6709}\x{306e}\x{5024}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                    },
+                            "layer" => "dtd",
+                            "message" => {
+                                         "en" => "There is anothor <code>ID</code> attribute with same value",
+                                         "ja" => "\x{4ed6}\x{306b}\x{3082}\x{540c}\x{3058}\x{5024}\x{306e} <code>ID</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                       },
+                            "modules" => {
+                                         "Web::XML::DTDValidator" => 1
+                                       }
+                          },
+          "VC:IDREF:referenced element" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>A value of an attribute whose type is <code>IDREF</code> or \n<code>IDREFS</code> must be an <code>ID</code> of an element in the document.</p>",
+                                                     "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>IDREF</code> \x{3084} <code>IDREFS</code> \x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{3001}\n\x{6587}\x{66f8}\x{4e2d}\x{306e}\x{8981}\x{7d20}\x{306e} <code>ID</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                   },
+                                           "layer" => "dtd",
+                                           "message" => {
+                                                        "en" => "The specified element is not found",
+                                                        "ja" => "\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::DTDValidator" => 1
+                                                      }
+                                         },
+          "VC:No Duplicate Tokens" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>Allowed tokens cannot contain duplication.</p>",
+                                                "ja" => "<p>\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{5b57}\x{53e5}\x{306f}\x{7570}\x{306a}\x{308b}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "dtd",
+                                      "message" => {
+                                                   "en" => "The token is already specified",
+                                                   "ja" => "\x{3053}\x{306e}\x{5b57}\x{53e5}\x{306f}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::XML::DTDValidator" => 1
+                                                 }
+                                    },
+          "VC:No Duplicate Types" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>In a group, there must not be the same element type more than\nonce.</p>",
+                                               "ja" => "<p>\x{7fa4}\x{5185}\x{306b}\x{540c}\x{3058}\x{8981}\x{7d20}\x{578b}\x{3092}\x{4e8c}\x{5ea6}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "dtd",
+                                     "message" => {
+                                                  "en" => "The element type is already specified",
+                                                  "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{578b}\x{306f}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::DTDValidator" => 1
+                                                }
+                                   },
+          "VC:No Notation on Empty Element" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>An element type whose content is <code>EMPTY</code> cannot have\na <code>NOTATION</code>-typed attribute.</p>",
+                                                         "ja" => "<p>\x{5185}\x{5bb9}\x{304c} <code>EMPTY</code> \x{306e}\x{8981}\x{7d20}\x{578b}\x{306f} <code>NOTATION</code>\n\x{578b}\x{306e}\x{5c5e}\x{6027}\x{3092}\x{6301}\x{3064}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "dtd",
+                                               "message" => {
+                                                            "en" => "A <code>NOTATION</code> attribute is declared on an <code>EMPTY</code> element",
+                                                            "ja" => "<code>NOTATION</code> \x{5c5e}\x{6027}\x{304c} <code>EMPTY</code> \x{8981}\x{7d20}\x{306b}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::DTDValidator" => 1
+                                                          }
+                                             },
+          "VC:Notation Attributes:declared" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>The notation allowed for a notation attribute must be declared\nby a <code>NOTATION</code> declaration.</p>",
+                                                         "ja" => "<p>\x{8a18}\x{6cd5}\x{5ba3}\x{8a00}\x{3067}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{8a18}\x{6cd5}\x{306f} <code>NOTATION</code> \n\x{5ba3}\x{8a00}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "dtd",
+                                               "message" => {
+                                                            "en" => "The notation is not declared",
+                                                            "ja" => "\x{8a18}\x{6cd5}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::DTDValidator" => 1
+                                                          }
+                                             },
+          "VC:Notation Attributes:enumeration" => {
+                                                  "default_level" => "m",
+                                                  "desc" => {
+                                                            "en" => "<p>The value of an attribute whose type is a list of enumerated values\nmust be one of those values.</p>",
+                                                            "ja" => "<p>\x{5217}\x{6319}\x{578b}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{305d}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                          },
+                                                  "layer" => "dtd",
+                                                  "message" => {
+                                                               "en" => "The value is not one of allowed tokens",
+                                                               "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b57}\x{53e5}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                             },
+                                                  "modules" => {
+                                                               "Web::XML::DTDValidator" => 1
+                                                             }
+                                                },
+          "VC:Notation Declared" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>The notation specified with the <code>NDATA</code> keyword\nmust be declared with a <code>NOTATION</code> declaration.</p>",
+                                              "ja" => "<p><code>NDATA</code> \x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{3068}\x{5171}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8a18}\x{6cd5}\x{540d}\x{306f}\n<code>NOTATION</code> \x{5ba3}\x{8a00}\x{3067}\x{5ba3}\x{8a00}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "dtd",
+                                    "message" => {
+                                                 "en" => "The notation is not declared",
+                                                 "ja" => "\x{8a18}\x{6cd5}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::XML::DTDValidator" => 1
+                                               }
+                                  },
+          "VC:One ID per Element Type" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>There can be at most one <code>ID</code>-typed attribute.</p>",
+                                                    "ja" => "<p><code>ID</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "dtd",
+                                          "message" => {
+                                                       "en" => "There are multiple <code>ID</code> attributes",
+                                                       "ja" => "<code>ID</code> \x{5c5e}\x{6027}\x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::DTDValidator" => 1
+                                                     }
+                                        },
+          "VC:One Notation per Element Type" => {
+                                                "default_level" => "m",
+                                                "desc" => {
+                                                          "en" => "<p>There can be at most one <code>NOTATION</code>-typed attribute.</p>",
+                                                          "ja" => "<p><code>NOTATION</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                        },
+                                                "layer" => "dtd",
+                                                "message" => {
+                                                             "en" => "There are multiple <code>NOTATION</code> attributes",
+                                                             "ja" => "<code>NOTATION</code> \x{5c5e}\x{6027}\x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::DTDValidator" => 1
+                                                           }
+                                              },
+          "VC:Required Attribute" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>The required attribute must be specified.</p>",
+                                               "ja" => "<p>\x{5fc5}\x{9808}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "dtd",
+                                     "message" => {
+                                                  "en" => "The <code><var>{text}</var></code> attribute is not specified",
+                                                  "ja" => "<code><var>{text}</var></code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::DTDValidator" => 1
+                                                }
+                                   },
+          "VC:Standalone Document Declaration:attr" => {
+                                                       "default_level" => "m",
+                                                       "desc" => {
+                                                                 "en" => "<p>In an XML document with <code>standalone=\"yes\"</code>,\nelement attributes must not be affected by <code>ATTLIST</code>\ndeclarations in an external entity.</p>",
+                                                                 "ja" => "<p><code>standalone=\"yes\"</code> \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\n\x{8981}\x{7d20}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f} <code>ATTLIST</code>\n\x{5ba3}\x{8a00}\x{306e}\x{5f71}\x{97ff}\x{3092}\x{53d7}\x{3051}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                               },
+                                                       "layer" => "dtd-augmentation",
+                                                       "message" => {
+                                                                    "en" => "Attributes are affected by an external <code>ATTLIST</code> declaration",
+                                                                    "ja" => "\x{5c5e}\x{6027}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306e}\x{5f71}\x{97ff}\x{3092}\x{53d7}\x{3051}\x{307e}\x{3059}"
+                                                                  },
+                                                       "modules" => {
+                                                                    "Web::XML::Parser::tree_constructor" => 1
+                                                                  }
+                                                     },
+          "VC:Standalone Document Declaration:entity" => {
+                                                         "default_level" => "m",
+                                                         "desc" => {
+                                                                   "en" => "<p>In an XML document with <code>standalone=\"yes\"</code>,\nan externally declared entity cannot be referenced.</p>",
+                                                                   "ja" => "<p><code>standalone=\"yes\"</code> \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                                 },
+                                                         "layer" => "entity",
+                                                         "message" => {
+                                                                      "en" => "An externally declared entity is referenced in a standalone document",
+                                                                      "ja" => "\x{5358}\x{72ec}\x{6587}\x{66f8}\x{304b}\x{3089}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                    },
+                                                         "modules" => {
+                                                                      "Web::XML::Parser::tokenizer" => 1
+                                                                    },
+                                                         "parser_tests" => [
+                                                                           {
+                                                                             "index" => 117,
+                                                                             "input" => "<?xml version=\"1.0\" standalone=\"yes\"?><!DOCTYPE html [\n<!ENTITY % x PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"x\">\n%x;\n]><p>&copy;</p>",
+                                                                             "lang" => "XML",
+                                                                             "value" => "&copy;"
+                                                                           }
+                                                                         ]
+                                                       },
+          "VC:Standalone Document Declaration:ws" => {
+                                                     "default_level" => "m",
+                                                     "desc" => {
+                                                               "en" => "<p>In a standalone document, an element whose type is declared\nwith a element content (i.e. a content model group without\n<code>#PCDATA</code>) cannot contain white spaces.</p>",
+                                                               "ja" => "<p>\x{5358}\x{72ec}\x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\x{8981}\x{7d20}\x{5185}\x{5bb9} (<code>#PCDATA</code> \x{7121}\x{3057}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4})\n\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{578b}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{767d}\x{3092}\x{542b}\x{3080}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                             },
+                                                     "layer" => "dtd",
+                                                     "message" => {
+                                                                  "en" => "An element-content element contains a space character",
+                                                                  "ja" => "\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{306e}\x{8981}\x{7d20}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                },
+                                                     "modules" => {
+                                                                  "Web::XML::DTDValidator" => 1
+                                                                }
+                                                   },
+          "WFC:No External Entity References" => {
+                                                 "default_level" => "m",
+                                                 "desc" => {
+                                                           "en" => "<p>An external entity cannot be referenced in an attribute value.</p>",
+                                                           "ja" => "<p>\x{5c5e}\x{6027}\x{5024}\x{3067}\x{306f}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                         },
+                                                 "layer" => "entity",
                                                  "message" => {
-                                                              "en" => "An external entity is referenced in\n  an attribute value",
-                                                              "ja" => "\x{5c5e}\x{6027}\x{5024}\x{5185}\x{3067}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                            }
+                                                              "en" => "An external entity is referenced in an attribute value",
+                                                              "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304b}\x{3089}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                            },
+                                                 "modules" => {
+                                                              "Web::XML::Parser::tokenizer" => 1
+                                                            },
+                                                 "parser_tests" => [
+                                                                   {
+                                                                     "index" => 44,
+                                                                     "input" => "<!DOCTYPE a[<!ENTITY x SYSTEM \"foo\">]><a b=\"&x;\">",
+                                                                     "lang" => "XML",
+                                                                     "value" => "&x;"
+                                                                   }
+                                                                 ]
                                                },
           "WFC:No Recursion" => {
+                                "default_level" => "m",
                                 "desc" => {
-                                          "en" => "\n    <p>An entity reference cannot be used to recursively reference a\n    currently open entity.</p>\n  ",
-                                          "ja" => "\n    <p>\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{73fe}\x{5728}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b}\x{5b9f}\x{4f53}\x{3092}\x{518d}\x{5e30}\x{7684}\x{306b}\x{53c2}\x{7167}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          "en" => "<p>An entity cannot be referenced recursively.</p>",
+                                          "ja" => "<p>\x{5b9f}\x{4f53}\x{3092}\x{518d}\x{5e30}\x{7684}\x{306b}\x{53c2}\x{7167}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                         },
+                                "layer" => "entity",
                                 "message" => {
-                                             "en" => "The entity reference points an open entity",
-                                             "ja" => "\x{3053}\x{306e}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{958b}\x{3044}\x{3066}\x{3044}\x{308b}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                           }
+                                             "en" => "An entity is recursively referenced",
+                                             "ja" => "\x{540c}\x{3058}\x{5b9f}\x{4f53}\x{304c}\x{518d}\x{5e30}\x{7684}\x{306b}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tokenizer" => 1
+                                           },
+                                "parser_tests" => [
+                                                  {
+                                                    "index" => 29,
+                                                    "input" => "<!DOCTYPE p[\n  <!ENTITY foo \"&foo;\">\n]><p>&foo;",
+                                                    "lang" => "XML",
+                                                    "value" => "&foo;"
+                                                  }
+                                                ]
                               },
+          "WFC:PEs in Internal Subset" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>A parameter entity reference is not allowed in a markup declaration\nin the internal subset or a parameter entity referenced from the\ninternal subset.</p>",
+                                                    "ja" => "<p>\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{3001}\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3084}\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "entity",
+                                          "message" => {
+                                                       "en" => "There is an entity reference in a markup declaration",
+                                                       "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{5185}\x{306b}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tokenizer" => 1
+                                                     },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 43,
+                                                              "input" => "<!DOCTYPE a[<!ENTITY % foo \"x ''\"><!ENTITY %foo;>]><a/>",
+                                                              "lang" => "XML",
+                                                              "value" => "%foo;"
+                                                            }
+                                                          ]
+                                        },
           "XML 1.0 NCName:syntax error" => {
                                            "message" => {
                                                         "en" => "The specified value is not a legal XML Namespaces\n  1.0 <code>NCName</code>."
                                                       }
                                          },
-          "XML encoding:syntax error" => {
-                                         "desc" => {
-                                                   "en" => "\n    <p>The value of the <code>encoding</code> pseudo-attribute in an\n    XML or text declaration must be a string consist of one or more\n    ASCII letters, digits, <code>.</code>, <code>_</code>, and\n    <code>-</code>.  The first character must be an ASCII letter.</p>\n  ",
-                                                   "ja" => "\n    <p>XML \x{5ba3}\x{8a00}\x{3084}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306e} <code>encoding</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\n    ASCII \x{306e}\x{30a2}\x{30eb}\x{30d5}\x{30a1}\x{30d9}\x{30c3}\x{30c8}\x{3001}\x{6570}\x{5b57}\x{3001} <code>.</code>\x{3001} <code>_</code>\x{3001}\n    <code>-</code> \x{306e}\x{307f}\x{304b}\x{3089}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} ASCII \x{306e}\x{30a2}\x{30eb}\x{30d5}\x{30a1}\x{30d9}\x{30c3}\x{30c8}\x{3067}\x{306a}\x{3051}\x{308c}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                 },
-                                         "message" => {
-                                                      "en" => "The value is not a syntactically valid\n  encoding label",
-                                                      "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{3044}\x{7b26}\x{53f7}\x{5316}\x{306e}\x{540d}\x{672d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                    }
-                                       },
           "XML standalone:syntax error" => {
+                                           "default_level" => "m",
                                            "desc" => {
-                                                     "en" => "\n    <p>The value of the <code>standalone</code> pseudo-attribute in an\n    XML declaration must be either <code>yes</code> or <code>no</code>.</p>\n  ",
-                                                     "ja" => "\n    <p>XML \x{5ba3}\x{8a00}\x{306e} <code>encoding</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\n    <code>yes</code> \x{304b} <code>no</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     "en" => "<p>The <code>standalone</code> pseudo-attribute value must be\n<code>yes</code> or <code>no</code>.</p>",
+                                                     "ja" => "<p><code>standalone</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{5024}\x{306f} <code>yes</code> \x{304b}\n<code>no</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                    },
+                                           "layer" => "tokenizer",
                                            "message" => {
-                                                        "en" => "The value is neither <code>yes</code> nor\n  <code>no</code>",
-                                                        "ja" => "\x{3053}\x{306e}\x{5024}\x{306f} <code>yes</code> \x{3067}\x{3082}\n  <code>no</code> \x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                      }
+                                                        "en" => "The <code>standalone</code> value is neither <code>yes</code> nor\n<code>no</code>",
+                                                        "ja" => "<code>standalone</code> \x{5c5e}\x{6027}\x{5024}\x{304c} <code>yes</code> \x{3067}\x{3082} <code>no</code>\n\x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::Parser::tokenizer" => 1
+                                                      },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 32,
+                                                               "input" => "<?xml version=\"1.0\" standalone=\"true\"?><a/>",
+                                                               "lang" => "XML",
+                                                               "value" => "true"
+                                                             }
+                                                           ]
                                          },
-          "XML version:syntax error" => {
-                                        "desc" => {
-                                                  "en" => "\n    <p>The value of the <code>version</code> pseudo-attribute in the\n    XML or text declaration must be a string <code>1.</code> followed\n    by one or more digits.</p>\n  ",
-                                                  "ja" => "\n    <p>XML \x{5ba3}\x{8a00}\x{3084}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306e} <code>version</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\n    <code>1.</code> \x{306e}\x{5f8c}\x{306b}\x{6570}\x{5b57}\x{304c}1\x{6841}\x{4ee5}\x{4e0a}\x{7d9a}\x{304f}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                },
-                                        "message" => {
-                                                     "en" => "The value is not an XML version",
-                                                     "ja" => "\x{3053}\x{306e}\x{5024}\x{306f} XML \x{306e}\x{7248}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                   }
-                                      },
           "_charset_ value" => {
                                "desc" => {
                                          "en" => "\n    <p>If the <code>input</code> element whose <code>type</code>\n    is <code>hidden</code> has the <code>name</code> attribute\n    with the value <code>_charset_</code>, the <code>value</code>\n    attribute cannot be specified.</p>\n  ",
@@ -738,7 +1229,8 @@ $WebHACC::_Errors = {
                           "parser_tests" => [
                                             {
                                               "index" => 22,
-                                              "input" => "<!DOCTYPE html></head><link>"
+                                              "input" => "<!DOCTYPE html></head><link>",
+                                              "lang" => "HTML"
                                             }
                                           ]
                         },
@@ -794,7 +1286,8 @@ $WebHACC::_Errors = {
                                      "parser_tests" => [
                                                        {
                                                          "index" => 22,
-                                                         "input" => "<!DOCTYPE html></html><p>"
+                                                         "input" => "<!DOCTYPE html></html><p>",
+                                                         "lang" => "HTML"
                                                        }
                                                      ]
                                    },
@@ -1279,7 +1772,8 @@ $WebHACC::_Errors = {
                                       "ja" => "\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b} <code>=</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                     },
                          "modules" => {
-                                      "Web::HTML::Parser::tokenizer" => 1
+                                      "Web::HTML::Parser::tokenizer" => 1,
+                                      "Web::XML::Parser::tokenizer" => 1
                                     },
                          "parser_error_names" => {
                                                  "after-attribute-name-0022" => 1,
@@ -1288,11 +1782,13 @@ $WebHACC::_Errors = {
                          "parser_tests" => [
                                            {
                                              "index" => 24,
-                                             "input" => "<!DOCTYPE html><foo bar \"></foo>"
+                                             "input" => "<!DOCTYPE html><foo bar \"></foo>",
+                                             "lang" => "HTML"
                                            },
                                            {
                                              "index" => 24,
-                                             "input" => "<!DOCTYPE html><foo bar '></foo>"
+                                             "input" => "<!DOCTYPE html><foo bar '></foo>",
+                                             "lang" => "HTML"
                                            }
                                          ]
                        },
@@ -1362,13 +1858,18 @@ $WebHACC::_Errors = {
                                                       }
                                          },
           "attribute missing:encoding" => {
+                                          "default_level" => "m",
                                           "desc" => {
-                                                    "en" => "\n    <p>A <code>encoding</code> pseudo-attribute must be specified in\n    the text declaration.</p>\n  ",
-                                                    "ja" => "\n    <p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306b}\x{306f} <code>encoding</code>\n    \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    "en" => "<p>There must be the <code>encoding</code> pseudo-attribute in\na text declaration.</p>",
+                                                    "ja" => "<p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306b}\x{306f} <code>encoding</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                                   },
+                                          "layer" => "tokenizer",
                                           "message" => {
-                                                       "en" => "No <code>encoding</code> pseudo-attribute\n  is specified",
-                                                       "ja" => "<code>encoding</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                       "en" => "There is no <code>encoding</code> attribute",
+                                                       "ja" => "<code>encoding</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tokenizer" => 1
                                                      }
                                         },
           "attribute missing:href|target" => {
@@ -1412,14 +1913,36 @@ $WebHACC::_Errors = {
                                                                     }
                                                        },
           "attribute missing:version" => {
+                                         "default_level" => "m",
                                          "desc" => {
-                                                   "en" => "\n    <p>A <code>version</code> pseudo-attribute must be specified as\n    the first pseudo-attribute of the XML declaration.</p>\n  ",
-                                                   "ja" => "\n    <p>XML \x{5ba3}\x{8a00}\x{306e}\x{6700}\x{521d}\x{306e}\x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{3068}\x{3057}\x{3066} <code>version</code>\n    \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   "en" => "<p>There must be the <code>version</code> pseudo-attribute in\nan XML declaration.</p>",
+                                                   "ja" => "<p>XML \x{5ba3}\x{8a00}\x{306b}\x{306f} <code>version</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                                  },
+                                         "layer" => "tokenizer",
                                          "message" => {
-                                                      "en" => "No <code>version</code> pseudo-attribute\n  is specified",
-                                                      "ja" => "<code>version</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                    }
+                                                      "en" => "There is no <code>version</code> attribute",
+                                                      "ja" => "<code>version</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::XML::Parser::tokenizer" => 1
+                                                    },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 2,
+                                                             "input" => "<?xml?><a/>",
+                                                             "lang" => "XML"
+                                                           },
+                                                           {
+                                                             "index" => 6,
+                                                             "input" => "<?xml encoding=\"utf-8\"?><a/>",
+                                                             "lang" => "XML"
+                                                           },
+                                                           {
+                                                             "index" => 7,
+                                                             "input" => "<?xml  encoding=\"utf-8\"?><a/>",
+                                                             "lang" => "XML"
+                                                           }
+                                                         ]
                                        },
           "attribute not allowed" => {
                                      "desc" => {
@@ -1461,13 +1984,18 @@ $WebHACC::_Errors = {
                                                       }
                                          },
           "attribute not allowed:standalone" => {
+                                                "default_level" => "m",
                                                 "desc" => {
-                                                          "en" => "\n    <p>The <code>standalone</code> pseudo-attribute is only allowed\n    in an XML declaration, not in a text declaration.</p>\n  ",
-                                                          "ja" => "\n    <p><code>standalone</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306f} XML \x{5ba3}\x{8a00}\x{3067}\x{306e}\x{307f}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{3001}\n    \x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                          "en" => "<p>The <code>standalone</code> pseudo-attribute is not allowed\nin a text declaration.</p>",
+                                                          "ja" => "<p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{3067}\x{306f} <code>standalone</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                         },
+                                                "layer" => "tokenizer",
                                                 "message" => {
-                                                             "en" => "A <code>standalone</code> pseudo-attribute is\n  specified in a text declaration",
-                                                             "ja" => "\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306b} <code>standalone</code>\n  \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                             "en" => "There is a <code>standalone</code> attribute",
+                                                             "ja" => "<code>standalone</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::Parser::tokenizer" => 1
                                                            }
                                               },
           "attribute not defined" => {
@@ -1516,8 +2044,8 @@ $WebHACC::_Errors = {
                                         },
                                 "layer" => "tree-construction",
                                 "message" => {
-                                             "en" => "The DOCTYPE name is not the root element name",
-                                             "ja" => "DOCTYPE \x{306e}\x{540d}\x{524d}\x{304c}\x{6839}\x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\x{3068}\x{9055}\x{3044}\x{307e}\x{3059}"
+                                             "en" => "The DOCTYPE name <code><var>{value}</var></code> is not the\nroot element name <code><var>{text}</var></code>",
+                                             "ja" => "DOCTYPE \x{306e}\x{540d}\x{524d} <code><var>{value}</var></code> \x{304c}\x{6839}\x{8981}\x{7d20}\x{306e}\x{540d}\x{524d}\n<code><var>{text}</var></code> \x{3068}\x{9055}\x{3044}\x{307e}\x{3059}"
                                            },
                                 "modules" => {
                                              "Web::HTML::Parser::tokenizer" => 1
@@ -1526,11 +2054,15 @@ $WebHACC::_Errors = {
                                                   {
                                                     "index" => 0,
                                                     "input" => "<!DOCTYPE foo>",
+                                                    "lang" => "HTML",
+                                                    "text" => "html",
                                                     "value" => "foo"
                                                   },
                                                   {
                                                     "index" => 0,
                                                     "input" => "<!DOCTYPE html4>",
+                                                    "lang" => "HTML",
+                                                    "text" => "html",
                                                     "value" => "html4"
                                                   }
                                                 ]
@@ -1547,7 +2079,8 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{5c5e}\x{6027}\x{540d}\x{306b} <code>\"</code> \x{3084} <code>'</code> \x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                              },
                                   "modules" => {
-                                               "Web::HTML::Parser::tokenizer" => 1
+                                               "Web::HTML::Parser::tokenizer" => 1,
+                                               "Web::XML::Parser::tokenizer" => 1
                                              },
                                   "parser_error_names" => {
                                                           "attribute-name-0022" => 1,
@@ -1558,11 +2091,13 @@ $WebHACC::_Errors = {
                                   "parser_tests" => [
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE html><p foo\"aa>"
+                                                      "input" => "<!DOCTYPE html><p foo\"aa>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE html><p foo'aa>"
+                                                      "input" => "<!DOCTYPE html><p foo'aa>",
+                                                      "lang" => "HTML"
                                                     }
                                                   ]
                                 },
@@ -1578,7 +2113,8 @@ $WebHACC::_Errors = {
                                                 "ja" => "\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b} <code>\"</code>, <code>'</code>,\n<code>`</code>, <code>=</code> \x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                               },
                                    "modules" => {
-                                                "Web::HTML::Parser::tokenizer" => 1
+                                                "Web::HTML::Parser::tokenizer" => 1,
+                                                "Web::XML::Parser::tokenizer" => 1
                                               },
                                    "parser_error_names" => {
                                                            "attribute-value-unquoted-0022" => 1,
@@ -1592,31 +2128,38 @@ $WebHACC::_Errors = {
                                    "parser_tests" => [
                                                      {
                                                        "index" => 25,
-                                                       "input" => "<!DOCTYPE HTML><p foo=bar\">"
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar\">",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 25,
-                                                       "input" => "<!DOCTYPE HTML><p foo=bar'>"
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar'>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 25,
-                                                       "input" => "<!DOCTYPE HTML><p foo=bar`>"
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar`>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 25,
-                                                       "input" => "<!DOCTYPE HTML><p foo=bar=>"
+                                                       "input" => "<!DOCTYPE HTML><p foo=bar=>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 22,
-                                                       "input" => "<!DOCTYPE HTML><p foo=`>"
+                                                       "input" => "<!DOCTYPE HTML><p foo=`>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 22,
-                                                       "input" => "<!DOCTYPE HTML><p foo==>"
+                                                       "input" => "<!DOCTYPE HTML><p foo==>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 26,
-                                                       "input" => "<!DOCTYPE HTML><p foo= bar=>"
+                                                       "input" => "<!DOCTYPE HTML><p foo= bar=>",
+                                                       "lang" => "HTML"
                                                      }
                                                    ]
                                  },
@@ -1628,6 +2171,29 @@ $WebHACC::_Errors = {
                                                    "en" => "Character encoding <code><var>{text}</var></code>\n  should not be used for <abbr>HTML</abbr> document."
                                                  }
                                     },
+          "bad predefined entity decl" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>The entity declaration for a predefined entity must be\nequivalent to the predefined entity.</p>",
+                                                    "ja" => "<p>\x{5b9a}\x{7fa9}\x{6e08}\x{307f}\x{5b9f}\x{4f53}\x{306e}\x{5b9f}\x{4f53}\x{5ba3}\x{8a00}\x{306f}\x{5b9a}\x{7fa9}\x{6e08}\x{307f}\x{5b9f}\x{4f53}\x{3068}\x{7b49}\x{4fa1}\x{306a}\x{3082}\x{306e}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "entity",
+                                          "message" => {
+                                                       "en" => "The predefined entity declaration is wrong",
+                                                       "ja" => "\x{3053}\x{306e}\x{5b9a}\x{7fa9}\x{6e08}\x{307f}\x{5b9f}\x{4f53}\x{306e}\x{5ba3}\x{8a00}\x{306f}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tree_constructor" => 1
+                                                     },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 15,
+                                                              "input" => "<!DOCTYPE a[\n  <!ENTITY amp \"hoge\">\n]><a/>",
+                                                              "lang" => "XML",
+                                                              "value" => "amp"
+                                                            }
+                                                          ]
+                                        },
           "bad rdf namespace" => {
                                  "desc" => {
                                            "en" => "\n    <p>The namespace URL for the RDF Vocabulary must be \n    <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>.</p>\n  ",
@@ -1639,14 +2205,37 @@ $WebHACC::_Errors = {
                                             }
                                },
           "bare ero" => {
+                        "default_level" => "m",
                         "desc" => {
-                                  "en" => "\n    <p>An <code>&amp;</code> character which\n    is not part of any reference appears in the input stream.</p>\n\n    <p><em>Any <code>&amp;</code> character in URLs\n    must be escaped as <code class=\"example\">&amp;amp;</code>.</em></p>\n\n    <p>The <code>&amp;</code> character must\n    be the first character of a reference:\n    </p>\n\n      <dl class=\"switch\">\n      <dt>Named character reference (HTML / WebVTT)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;<var>entity-name</var>;</code></pre>\n          where <var>entity-name</var> is the name of the\n          character to be referenced.</dd>\n      <dt>Numeric character reference (HTML only)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#<var>d</var>;</code></pre>\n          where <var>d</var> is the decimal representation of\n          the code position of the character to be referenced.</dd>\n      <dt>Hexadecimal character reference (HTML only)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n          where <var>h</var> is the hexadecimal representation\n          of the code position of the character to be referenced.</dd>\n      </dl>\n\n    <p>To represent <code>&amp;</code> as a data character, use\n    named character reference:\n    </p>\n      <pre class=\"html example\">\n<code>&amp;amp;</code></pre>\n  ",
-                                  "ja" => "\n    <p>\x{6587}\x{5b57} <code>&amp;</code> \x{304c}\x{3001}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001}\n    \x{5358}\x{72ec}\x{3067}\x{73fe}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n\n    <p><em>URL \x{4e2d}\x{306e} <code>&amp;</code> \x{6587}\x{5b57}\x{3082}\n    <code class=\"example\">&amp;amp;</code> \n    \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</em></p>\n\n    <p>\x{6587}\x{5b57} <code>&amp;</code> \x{306f}\x{53c2}\x{7167}\x{306e}\x{6700}\x{521d}\x{306e}1\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    </p>\n\n      <dl class=\"switch\">\n      <dt>\x{540d}\x{524d}\x{4ed8}\x{304d}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML / WebVTT)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;<var>\x{5b9f}\x{4f53}\x{540d}</var>;</code></pre>\n          \x{306e}<var>\x{5b9f}\x{4f53}\x{540d}</var>\x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{540d}\x{524d}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      <dt>\x{6570}\x{5024}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML \x{306e}\x{307f})</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#<var>d</var>;</code></pre>\n          \x{306e} <var>d</var> \x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{5341}\x{9032}\x{8868}\x{73fe}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      <dt>\x{5341}\x{516d}\x{9032}\x{6570}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML \x{306e}\x{307f})</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n          \x{306e} <var>h</var> \x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{5341}\x{516d}\x{9032}\x{8868}\x{73fe}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      </dl>\n\n    <p>\x{30c7}\x{30fc}\x{30bf}\x{6587}\x{5b57}\x{3068}\x{3057}\x{3066}\x{306e} <code>&amp;</code> \x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001}\n    \x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n    </p>\n      <pre class=\"html example\">\n<code>&amp;amp;</code></pre>\n  "
+                                  "en" => "<p>An <code>&amp;</code> character which\n    is not part of any reference appears in the input stream.</p>\n\n    <p><em>Any <code>&amp;</code> character in URLs\n    must be escaped as <code class=\"example\">&amp;amp;</code>.</em></p>\n\n    <p>The <code>&amp;</code> character must\n    be the first character of a reference:\n    </p>\n\n      <dl class=\"switch\">\n      <dt>Named character reference (HTML / WebVTT)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;<var>entity-name</var>;</code></pre>\n          where <var>entity-name</var> is the name of the\n          character to be referenced.</dd>\n      <dt>Numeric character reference (HTML only)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#<var>d</var>;</code></pre>\n          where <var>d</var> is the decimal representation of\n          the code position of the character to be referenced.</dd>\n      <dt>Hexadecimal character reference (HTML only)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n          where <var>h</var> is the hexadecimal representation\n          of the code position of the character to be referenced.</dd>\n      </dl>\n\n    <p>To represent <code>&amp;</code> as a data character, use\n    named character reference:\n    </p>\n      <pre class=\"html example\">\n<code>&amp;amp;</code></pre>",
+                                  "ja" => "<p>\x{6587}\x{5b57} <code>&amp;</code> \x{304c}\x{3001}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{306e}\x{4e00}\x{90e8}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001}\n    \x{5358}\x{72ec}\x{3067}\x{73fe}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n\n    <p><em>URL \x{4e2d}\x{306e} <code>&amp;</code> \x{6587}\x{5b57}\x{3082}\n    <code class=\"example\">&amp;amp;</code> \n    \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</em></p>\n\n    <p>\x{6587}\x{5b57} <code>&amp;</code> \x{306f}\x{53c2}\x{7167}\x{306e}\x{6700}\x{521d}\x{306e}1\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    </p>\n\n      <dl class=\"switch\">\n      <dt>\x{540d}\x{524d}\x{4ed8}\x{304d}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML / WebVTT)</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;<var>\x{5b9f}\x{4f53}\x{540d}</var>;</code></pre>\n          \x{306e}<var>\x{5b9f}\x{4f53}\x{540d}</var>\x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{540d}\x{524d}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      <dt>\x{6570}\x{5024}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML \x{306e}\x{307f})</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#<var>d</var>;</code></pre>\n          \x{306e} <var>d</var> \x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{5341}\x{9032}\x{8868}\x{73fe}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      <dt>\x{5341}\x{516d}\x{9032}\x{6570}\x{6587}\x{5b57}\x{53c2}\x{7167} (HTML \x{306e}\x{307f})</dt>\n          <dd><pre class=\"html example\">\n<code>&amp;#x<var>h</var>;</code></pre>\n          \x{306e} <var>h</var> \x{304c}\x{53c2}\x{7167}\x{3059}\x{308b}\x{6587}\x{5b57}\x{306e}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{5341}\x{516d}\x{9032}\x{8868}\x{73fe}\x{3068}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n      </dl>\n\n    <p>\x{30c7}\x{30fc}\x{30bf}\x{6587}\x{5b57}\x{3068}\x{3057}\x{3066}\x{306e} <code>&amp;</code> \x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001}\n    \x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\n    </p>\n      <pre class=\"html example\">\n<code>&amp;amp;</code></pre>"
                                 },
+                        "layer" => "tokenization",
                         "message" => {
-                                     "en" => "The <code>&amp;</code> character must\n  be escaped as <code class=\"html example\">&amp;amp;</code>.",
-                                     "ja" => "\x{6587}\x{5b57} <code>&amp;</code> \x{306f}\n  <code class=\"html example\">&amp;amp;</code>\n  \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                   }
+                                     "en" => "There is an unescaped <code>&amp;</code> character",
+                                     "ja" => "\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>&amp;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                   },
+                        "modules" => {
+                                     "Web::XML::Parser::tokenizer" => 1,
+                                     "Whatpm::WebVTT::Parser" => 1
+                                   },
+                        "parser_error_names" => {
+                                                "character-reference-0022" => 1,
+                                                "character-reference-0026" => 1,
+                                                "character-reference-0027" => 1,
+                                                "character-reference-003c" => 1,
+                                                "character-reference-003d" => 1,
+                                                "character-reference-0060" => 1,
+                                                "character-reference-allowed-char" => 1,
+                                                "character-reference-ws" => 1
+                                              },
+                        "parser_tests" => [
+                                          {
+                                            "index" => 6,
+                                            "input" => "<p x=A&=>",
+                                            "lang" => "XML"
+                                          }
+                                        ]
                       },
           "bare etago" => {
                           "default_level" => "m",
@@ -1660,15 +2249,23 @@ $WebHACC::_Errors = {
                                        "ja" => "<code>&lt;/</code> \x{306e}\x{5f8c}\x{306b}\x{30bf}\x{30b0}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                      },
                           "modules" => {
-                                       "Web::HTML::Parser::tokenizer" => 1
+                                       "Web::HTML::Parser::tokenizer" => 1,
+                                       "Web::XML::Parser::tokenizer" => 1
                                      },
                           "parser_error_names" => {
-                                                  "end-tag-open-else" => 1
+                                                  "end-tag-open-else" => 1,
+                                                  "end-tag-open-ws" => 1
                                                 },
                           "parser_tests" => [
                                             {
                                               "index" => 17,
-                                              "input" => "<!DOCTYPE HTML></!?>"
+                                              "input" => "<!DOCTYPE HTML></!?>",
+                                              "lang" => "HTML"
+                                            },
+                                            {
+                                              "index" => 15,
+                                              "input" => "<!DOCTYPE HTML></ >",
+                                              "lang" => "XML"
                                             }
                                           ]
                         },
@@ -1684,7 +2281,8 @@ $WebHACC::_Errors = {
                                       "ja" => "<code>&amp;#x</code> \x{306e}\x{5f8c}\x{306b}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{6570}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                     },
                          "modules" => {
-                                      "Web::HTML::Parser::tokenizer" => 1
+                                      "Web::HTML::Parser::tokenizer" => 1,
+                                      "Web::XML::Parser::tokenizer" => 1
                                     },
                          "parser_error_names" => {
                                                  "character-reference-before-hexadecimal-number-else" => 1
@@ -1692,11 +2290,13 @@ $WebHACC::_Errors = {
                          "parser_tests" => [
                                            {
                                              "index" => 18,
-                                             "input" => "<!DOCTYPE HTML>&#x"
+                                             "input" => "<!DOCTYPE HTML>&#x",
+                                             "lang" => "HTML"
                                            },
                                            {
                                              "index" => 18,
-                                             "input" => "<!DOCTYPE HTML>&#Xzza"
+                                             "input" => "<!DOCTYPE HTML>&#Xzza",
+                                             "lang" => "HTML"
                                            }
                                          ]
                        },
@@ -1712,7 +2312,8 @@ $WebHACC::_Errors = {
                                       "ja" => "<code>&amp;#</code> \x{306e}\x{5f8c}\x{306b}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{306e}\x{6570}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                     },
                          "modules" => {
-                                      "Web::HTML::Parser::tokenizer" => 1
+                                      "Web::HTML::Parser::tokenizer" => 1,
+                                      "Web::XML::Parser::tokenizer" => 1
                                     },
                          "parser_error_names" => {
                                                  "character-reference-number-else" => 1
@@ -1720,11 +2321,13 @@ $WebHACC::_Errors = {
                          "parser_tests" => [
                                            {
                                              "index" => 18,
-                                             "input" => "<!DOCTYPE HTML>a&#"
+                                             "input" => "<!DOCTYPE HTML>a&#",
+                                             "lang" => "HTML"
                                            },
                                            {
                                              "index" => 18,
-                                             "input" => "<!DOCTYPE HTML>a&#abx"
+                                             "input" => "<!DOCTYPE HTML>a&#abx",
+                                             "lang" => "HTML"
                                            }
                                          ]
                        },
@@ -1738,6 +2341,37 @@ $WebHACC::_Errors = {
                                       "ja" => "\x{6587}\x{5b57} <code>%</code> \x{306e}\x{5f8c}\x{306b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                     }
                        },
+          "bare pio" => {
+                        "default_level" => "m",
+                        "desc" => {
+                                  "en" => "<p>After the <code>&lt;?</code> string, there must be a processing instruction's\ntarget name.  To represent a string <code>&lt;?</code>, the <code>&lt;</code>\ncharacter must be escaped as <code>&amp;lt;</code>.</p>",
+                                  "ja" => "<p><code>&lt;?</code> \x{306e}\x{5f8c}\x{306b}\x{306f}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{6587}\x{5b57}\x{5217}\n<code>&lt;?</code> \x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f} <code>&lt;</code> \x{3092}\n<code>&amp;lt;</code> \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                },
+                        "layer" => "tokenization",
+                        "message" => {
+                                     "en" => "There is no processing instruction target",
+                                     "ja" => "\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                   },
+                        "modules" => {
+                                     "Web::XML::Parser::tokenizer" => 1
+                                   },
+                        "parser_error_names" => {
+                                                "pi-003f" => 1,
+                                                "pi-ws" => 1
+                                              },
+                        "parser_tests" => [
+                                          {
+                                            "index" => 5,
+                                            "input" => "<p>Aa<??>",
+                                            "lang" => "XML"
+                                          },
+                                          {
+                                            "index" => 5,
+                                            "input" => "<p>Aa<? ?>",
+                                            "lang" => "XML"
+                                          }
+                                        ]
+                      },
           "bare stago" => {
                           "default_level" => "m",
                           "desc" => {
@@ -1751,15 +2385,30 @@ $WebHACC::_Errors = {
                                      },
                           "modules" => {
                                        "Web::HTML::Parser::tokenizer" => 1,
+                                       "Web::XML::Parser::tokenizer" => 1,
                                        "Whatpm::WebVTT::Parser" => 1
                                      },
                           "parser_error_names" => {
-                                                  "tag-open-else" => 1
+                                                  "doctype-tag-open-else" => 1,
+                                                  "tag-open-003e" => 1,
+                                                  "tag-open-else" => 1,
+                                                  "tag-open-ws" => 1
                                                 },
                           "parser_tests" => [
                                             {
                                               "index" => 16,
-                                              "input" => "<!DOCTYPE HTML><\""
+                                              "input" => "<!DOCTYPE HTML><\"",
+                                              "lang" => "HTML"
+                                            },
+                                            {
+                                              "index" => 3,
+                                              "input" => "<p><></p>",
+                                              "lang" => "XML"
+                                            },
+                                            {
+                                              "index" => 12,
+                                              "input" => "<!DOCTYPE a[<b>]><a/>",
+                                              "lang" => "XML"
                                             }
                                           ]
                         },
@@ -1849,7 +2498,8 @@ $WebHACC::_Errors = {
                                           "ja" => "DOCTYPE \x{5185}\x{306b}\x{304a}\x{304b}\x{3057}\x{306a}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                         },
                              "modules" => {
-                                          "Web::HTML::Parser::tokenizer" => 1
+                                          "Web::HTML::Parser::tokenizer" => 1,
+                                          "Web::XML::Parser::tokenizer" => 1
                                         },
                              "parser_error_names" => {
                                                      "after-doctype-name-else" => 1,
@@ -1865,59 +2515,82 @@ $WebHACC::_Errors = {
                              "parser_tests" => [
                                                {
                                                  "index" => 15,
-                                                 "input" => "<!DOCTYPE html !>"
+                                                 "input" => "<!DOCTYPE html !>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 21,
-                                                 "input" => "<!DOCTYPE html PUBLIC!>"
+                                                 "input" => "<!DOCTYPE html PUBLIC!>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 25,
-                                                 "input" => "<!DOCTYPE html public \"a\"!>"
+                                                 "input" => "<!DOCTYPE html public \"a\"!>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 21,
-                                                 "input" => "<!DOCTYPE html SYSTEM?>"
+                                                 "input" => "<!DOCTYPE html SYSTEM?>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 24,
-                                                 "input" => "<!DOCTYPE html system \"\"\@p>"
+                                                 "input" => "<!DOCTYPE html system \"\"\@p>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 67,
-                                                 "input" => "<!DOCTYPE html PUBLIC \"abc\" \"http://www.w3.org/TR/html4/strict.dtd\"?>"
+                                                 "input" => "<!DOCTYPE html PUBLIC \"abc\" \"http://www.w3.org/TR/html4/strict.dtd\"?>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 22,
-                                                 "input" => "<!DOCTYPE html PUBLIC hoge>"
+                                                 "input" => "<!DOCTYPE html PUBLIC hoge>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 22,
-                                                 "input" => "<!DOCTYPE html SYSTEM hoge>"
+                                                 "input" => "<!DOCTYPE html SYSTEM hoge>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 28,
-                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\"hoge>"
+                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\"hoge>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 29,
-                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\" hoge>"
+                                                 "input" => "<!DOCTYPE html PUBLIC \"hoge\" hoge>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 9,
-                                                 "input" => "<!DOCTYPE!>"
+                                                 "input" => "<!DOCTYPE!>",
+                                                 "lang" => "HTML"
                                                }
                                              ]
                            },
           "bogus XML declaration" => {
+                                     "default_level" => "m",
                                      "desc" => {
-                                               "en" => "\n    <p>An XML declaration must only contain <code>version</code>,\n    <code>encoding</code>, and <code>standalone</code>\n    pseudo-attributes, in this order, in appropriate syntax.</p>\n\n    <p>A text declaration must only contain <code>version</code> and\n    <code>encoding</code> pseudo-attributes in this order, in\n    appropriate syntax.</p>\n  ",
-                                               "ja" => "\n    <p>XML \x{5ba3}\x{8a00}\x{306f}\x{64ec}\x{4f3c}\x{5c5e}\x{6027} <code>version</code>, <code>encoding</code>,\n    <code>standalone</code> \x{3092}\x{3053}\x{306e}\x{9806}\x{5e8f}\x{3067}\x{6b63}\x{3057}\x{3044}\x{69cb}\x{6587}\x{3067}\x{306e}\x{307f}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306f}\x{64ec}\x{4f3c}\x{5c5e}\x{6027} <code>version</code>, <code>encoding</code>\n    \x{3092}\x{3053}\x{306e}\x{9806}\x{5e8f}\x{3067}\x{6b63}\x{3057}\x{3044}\x{69cb}\x{6587}\x{3067}\x{306e}\x{307f}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                               "en" => "<p>The XML or text declaration is syntactically wrong.  It has\nstricter syntax than normal tags.</p>",
+                                               "ja" => "<p>XML \x{5ba3}\x{8a00}\x{3084}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{304c}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{901a}\x{5e38}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{69cb}\x{6587}\x{304c}\x{53b3}\x{5bc6}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>"
                                              },
+                                     "layer" => "tokenizer",
                                      "message" => {
-                                                  "en" => "There is a bogus string in the XML or text\n  declaration",
-                                                  "ja" => "XML \x{5ba3}\x{8a00}\x{304b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306e}\x{4e2d}\x{306b}\x{6b63}\x{3057}\x{304f}\x{306a}\x{3044}\x{6587}\x{5b57}\x{5217}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                }
+                                                  "en" => "The XML declaration is syntactically broken",
+                                                  "ja" => "\x{3053}\x{306e} XML \x{5ba3}\x{8a00}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::Parser::tokenizer" => 1
+                                                },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 20,
+                                                         "input" => "<?xml version=\"1.0\" foo=\"bar\"?><a/>",
+                                                         "lang" => "XML"
+                                                       }
+                                                     ]
                                    },
           "bogus comment" => {
                              "default_level" => "m",
@@ -1931,29 +2604,30 @@ $WebHACC::_Errors = {
                                           "ja" => "<code>&lt;!</code> \x{306e}\x{5f8c}\x{306b} <code>--</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                         },
                              "modules" => {
-                                          "Web::HTML::Parser::tokenizer" => 1
+                                          "Web::HTML::Parser::tokenizer" => 1,
+                                          "Web::XML::Parser::tokenizer" => 1
                                         },
                              "parser_error_names" => {
+                                                     "doctype-markup-declaration-open-else" => 1,
                                                      "markup-declaration-open-else" => 1
                                                    },
                              "parser_tests" => [
                                                {
                                                  "index" => 17,
-                                                 "input" => "<!DOCTYPE HTML><!HOGE>"
+                                                 "input" => "<!DOCTYPE HTML><!HOGE>",
+                                                 "lang" => "HTML"
                                                },
                                                {
                                                  "index" => 23,
-                                                 "input" => "<!DOCTYPE HTML><!DOCTYPO>"
+                                                 "input" => "<!DOCTYPE HTML><!DOCTYPO>",
+                                                 "lang" => "HTML"
+                                               },
+                                               {
+                                                 "index" => 14,
+                                                 "input" => "<!DOCTYPE x[<!z>]]>",
+                                                 "lang" => "XML"
                                                }
                                              ]
-                           },
-          "bogus end tag" => {
-                             "desc" => {
-                                       "en" => "\n    <p>There is a <code>&lt;</code> (<code>U+003C</code> \n    <code class=\"charname\">LESS-THAN SIGN</code>) character\n    immediately followed by a <code>/</code> (<code>U+005F</code>\n    <code>SOLIDUS</code>) character, which is not part\n    of any end tag, in the input stream.  The document\n    is non-conforming.</p>\n\n    <p>The <code>&lt;/</code> sequence not followed by a\n    tag name is parsed as an opening of bogus comment.</p>\n\n    <p>The <code>&lt;/</code> sequence as string data must\n    be escaped as:\n    <pre class=\"html example\">\n<code>&amp;lt;/</code></pre>\n    </p>\n  "
-                                     },
-                             "message" => {
-                                          "en" => "String <code>&lt;/</code> is not followed\n  by tag name."
-                                        }
                            },
           "boolean:invalid" => {
                                "desc" => {
@@ -2082,34 +2756,39 @@ $WebHACC::_Errors = {
                                             "en" => "<p>The character encoding declaration cannot contain any HTML\n    character reference.</p>",
                                             "ja" => "<p>\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{306f} HTML \x{306e}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3092}\x{542b}\x{3093}\x{3067}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                           },
-                                  "layer" => "tokenizer",
+                                  "layer" => "entity",
                                   "message" => {
                                                "en" => "The character encoding declaration contains a character reference",
                                                "ja" => "\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{306b}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                              },
                                   "modules" => {
-                                               "Web::HTML::Parser" => 1
+                                               "Web::HTML::Parser::tokenizer" => 1
                                              },
                                   "parser_tests" => [
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE HTML><meta charset=utf-&#x38;>"
+                                                      "input" => "<!DOCTYPE HTML><meta charset=utf-&#x38;>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&#46;8>"
+                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&#46;8>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&amp;8>"
+                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&amp;8>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&amp>"
+                                                      "input" => "<!DOCTYPE HTML><meta charset=utf&amp>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 45,
-                                                      "input" => "<!DOCTYPE HTML><meta http-equiv=content-type content=\"text/html;&#x20;charset=utf-8\">"
+                                                      "input" => "<!DOCTYPE HTML><meta http-equiv=content-type content=\"text/html;&#x20;charset=utf-8\">",
+                                                      "lang" => "HTML"
                                                     }
                                                   ]
                                 },
@@ -2284,6 +2963,31 @@ $WebHACC::_Errors = {
                                                             "ja" => "\x{64ec}\x{4f3c}\x{8981}\x{7d20}\x{3067}\x{9078}\x{629e}\x{5b50}\x{304c}\x{7d42}\x{308f}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                           }
                                              },
+          "condsect in internal subset" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>In the internal subset or a parameter entity referenced from the internal\nsubset, no marked section is allowed.</p>",
+                                                     "ja" => "<p>\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3084}\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3055}\x{308c}\x{305f}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{3067}\x{306f}\x{3001}\n\x{30de}\x{30fc}\x{30af}\x{533a}\x{9593}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                   },
+                                           "layer" => "tokenization",
+                                           "message" => {
+                                                        "en" => "There is a marked section in the internal subset",
+                                                        "ja" => "\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{306b}\x{30de}\x{30fc}\x{30af}\x{533a}\x{9593}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::Parser::tokenizer" => 1
+                                                      },
+                                           "parser_error_names" => {
+                                                                   "doctype-markup-declaration-open-005b" => 1
+                                                                 },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 12,
+                                                               "input" => "<!DOCTYPE x[<![INCLUDE[aa]]>]><x/>",
+                                                               "lang" => "XML"
+                                                             }
+                                                           ]
+                                         },
           "const type mismatch" => {
                                    "message" => {
                                                 "en" => "The type of the value,\n  <code><var>{value}</var></code>, is different from the type of the constant,\n  <code><var>{text}</var></code>."
@@ -2694,6 +3398,50 @@ $WebHACC::_Errors = {
                                                 "ja" => "\x{30d4}\x{30ea}\x{30aa}\x{30c9}\x{304c}\x{5c0f}\x{6570}\x{70b9}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                               }
                                  },
+          "default value not allowed" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>The default value can't be specified when the default type\nis <code>#IMPLIED</code> or <code>#REQUIRED</code>.</p>",
+                                                   "ja" => "<p>\x{65e2}\x{5b9a}\x{5024}\x{306f}\x{65e2}\x{5b9a}\x{578b}\x{304c} <code>#IMPLIED</code> \x{3084} <code>#REQUIRED</code>\n\x{306e}\x{6642}\x{306b}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                 },
+                                         "layer" => "tree-construction",
+                                         "message" => {
+                                                      "en" => "Default value is not allowed for the default type",
+                                                      "ja" => "\x{3053}\x{306e}\x{65e2}\x{5b9a}\x{578b}\x{3067}\x{306f}\x{65e2}\x{5b9a}\x{5024}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::XML::Parser::tree_constructor" => 1
+                                                    },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 29,
+                                                             "input" => "<!DOCTYPE a[\n  <!ATTLIST foo bar CDATA #IMPLIED \"a\">\n]><a/>",
+                                                             "lang" => "XML"
+                                                           }
+                                                         ]
+                                       },
+          "default value not provided" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>The default value must be specified unless the default type\nis <code>#IMPLIED</code> or <code>#REQUIRED</code>.</p>",
+                                                    "ja" => "<p>\x{65e2}\x{5b9a}\x{578b}\x{304c} <code>#IMPLIED</code> \x{3084} <code>#REQUIRED</code>\n\x{306e}\x{6642}\x{4ee5}\x{5916}\x{306f}\x{65e2}\x{5b9a}\x{5024}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "tree-construction",
+                                          "message" => {
+                                                       "en" => "Default value is not specified",
+                                                       "ja" => "\x{65e2}\x{5b9a}\x{5024}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tree_constructor" => 1
+                                                     },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 29,
+                                                              "input" => "<!DOCTYPE a[\n  <!ATTLIST foo bar CDATA #FIXED >\n]><a/>",
+                                                              "lang" => "XML"
+                                                            }
+                                                          ]
+                                        },
           "deprecated:attr" => {
                                "message" => {
                                             "en" => "This attribute is deprecated."
@@ -2744,16 +3492,20 @@ $WebHACC::_Errors = {
                                                 "ja" => "DOCTYPE \x{304c}\x{6587}\x{66f8}\x{306e}\x{5148}\x{982d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               },
                                    "modules" => {
-                                                "Web::HTML::Parser::tree_constructor" => 1
+                                                "Web::HTML::Parser::tree_constructor" => 1,
+                                                "Web::XML::Parser::tree_constructor" => 1
                                               },
                                    "parser_error_names" => {
                                                            "after-body-doctype" => 1,
                                                            "after-frameset-doctype" => 1,
                                                            "after-head-doctype" => 1,
+                                                           "after-root-element-doctype" => 1,
                                                            "before-head-doctype" => 1,
                                                            "before-html-doctype" => 1,
+                                                           "before-root-element-doctype" => 1,
                                                            "in-body-doctype" => 1,
                                                            "in-column-group-doctype" => 1,
+                                                           "in-element-doctype" => 1,
                                                            "in-foreign-content-doctype" => 1,
                                                            "in-frameset-doctype" => 1,
                                                            "in-head-doctype" => 1,
@@ -2764,56 +3516,69 @@ $WebHACC::_Errors = {
                                    "parser_tests" => [
                                                      {
                                                        "index" => 15,
-                                                       "input" => "<!DOCTYPE html><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE html><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 21,
-                                                       "input" => "<!DOCTYPE html><html><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE html><html><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 22,
-                                                       "input" => "<!DOCTYPE HTML></body><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML></body><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 36,
-                                                       "input" => "<!DOCTYPE HTML><frameset></frameset><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><frameset></frameset><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 22,
-                                                       "input" => "<!DOCTYPE HTML></head><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML></head><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 21,
-                                                       "input" => "<!DOCTYPE HTML><body><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><body><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 32,
-                                                       "input" => "<!DOCTYPE HTML><table><colgroup><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><table><colgroup><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 20,
-                                                       "input" => "<!DOCTYPE HTML><svg><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><svg><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 25,
-                                                       "input" => "<!DOCTYPE HTML><frameset><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><frameset><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 21,
-                                                       "input" => "<!DOCTYPE HTML><head><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><head><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 31,
                                                        "input" => "<!DOCTYPE HTML><head><noscript><!DOCTYPE HTML>",
+                                                       "lang" => "HTML",
                                                        "noscript" => 1
                                                      },
                                                      {
                                                        "index" => 23,
-                                                       "input" => "<!DOCTYPE HTML><select><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><select><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      },
                                                      {
                                                        "index" => 22,
-                                                       "input" => "<!DOCTYPE HTML><table><!DOCTYPE HTML>"
+                                                       "input" => "<!DOCTYPE HTML><table><!DOCTYPE HTML>",
+                                                       "lang" => "HTML"
                                                      }
                                                    ]
                                  },
@@ -2872,6 +3637,54 @@ $WebHACC::_Errors = {
                                                   "ja" => "\x{3053}\x{306e}\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{306f}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{306b}\x{5272}\x{308a}\x{5f53}\x{3066}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                 }
                                    },
+          "duplicate attlist decl" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>There should be at most one <code>ATTLIST</code> declaration\nfor the same tag name.</p>",
+                                                "ja" => "<p>\x{540c}\x{3058}\x{30bf}\x{30b0}\x{540d}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "tree-construction",
+                                      "message" => {
+                                                   "en" => "There is another <code>ATTLIST</code> declaration for the element",
+                                                   "ja" => "\x{540c}\x{3058}\x{8981}\x{7d20}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::XML::Parser::tree_constructor" => 1
+                                                 },
+                                      "parser_tests" => [
+                                                        {
+                                                          "index" => 29,
+                                                          "input" => "<!DOCTYPE a[\n  <!ATTLIST foo><!ATTLIST foo>\n]><a/>",
+                                                          "lang" => "XML",
+                                                          "level" => "w",
+                                                          "value" => "foo"
+                                                        }
+                                                      ]
+                                    },
+          "duplicate attrdef" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>There should be at most one attribute definition for\nsame element and attribute names.  Anything other than\nthe first definition is ignored.</p>",
+                                           "ja" => "<p>\x{540c}\x{3058}\x{8981}\x{7d20}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{540d}\x{306e}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6700}\x{521d}\x{306e}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{4ee5}\x{5916}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                         },
+                                 "layer" => "tree-construction",
+                                 "message" => {
+                                              "en" => "There is another attribute definition with same name",
+                                              "ja" => "\x{540c}\x{3058}\x{540d}\x{524d}\x{306e}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                            },
+                                 "modules" => {
+                                              "Web::XML::Parser::tree_constructor" => 1
+                                            },
+                                 "parser_tests" => [
+                                                   {
+                                                     "index" => 39,
+                                                     "input" => "<!DOCTYPE a[\n  <!ATTLIST a bb CDATA \"\" bb ID #IMPLIED>\n]><a/>",
+                                                     "lang" => "XML",
+                                                     "level" => "w",
+                                                     "value" => "bb"
+                                                   }
+                                                 ]
+                               },
           "duplicate attribute" => {
                                    "default_level" => "m",
                                    "desc" => {
@@ -2885,12 +3698,14 @@ $WebHACC::_Errors = {
                                               },
                                    "modules" => {
                                                 "Temma::Parser" => 1,
-                                                "Web::HTML::Parser::tokenizer" => 1
+                                                "Web::HTML::Parser::tokenizer" => 1,
+                                                "Web::XML::Parser::tokenizer" => 1
                                               },
                                    "parser_tests" => [
                                                      {
                                                        "index" => 30,
                                                        "input" => "<!DOCTYPE HTML><div class=foo class=bar>",
+                                                       "lang" => "HTML",
                                                        "text" => "class"
                                                      }
                                                    ]
@@ -2927,11 +3742,13 @@ $WebHACC::_Errors = {
                                                          {
                                                            "index" => 21,
                                                            "input" => "<!DOCTYPE HTML><body><body>",
+                                                           "lang" => "HTML",
                                                            "value" => "body"
                                                          },
                                                          {
                                                            "index" => 21,
                                                            "input" => "<!DOCTYPE HTML><body><html>",
+                                                           "lang" => "HTML",
                                                            "value" => "html"
                                                          }
                                                        ],
@@ -2985,6 +3802,60 @@ $WebHACC::_Errors = {
                                                        "ja" => "\x{6587}\x{66f8}\x{306e}\x{5b50}\x{8981}\x{7d20}\x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                      }
                                         },
+          "duplicate element decl" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>There must be at most one <code>ELEMENT</code> declaration\nfor the same tag name.</p>",
+                                                "ja" => "<p>\x{540c}\x{3058}\x{30bf}\x{30b0}\x{540d}\x{306e} <code>ELEMENT</code> \x{5ba3}\x{8a00}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "tree-construction",
+                                      "message" => {
+                                                   "en" => "There is another declaration for the element",
+                                                   "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306e}\x{5ba3}\x{8a00}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::XML::Parser::tree_constructor" => 1
+                                                 },
+                                      "parser_tests" => [
+                                                        {
+                                                          "index" => 34,
+                                                          "input" => "<!DOCTYPE a[\n<!ELEMENT foo EMPTY>\n<!ELEMENT foo ANY>\n]><a/>",
+                                                          "lang" => "XML",
+                                                          "value" => "foo"
+                                                        }
+                                                      ]
+                                    },
+          "duplicate entity decl" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>There should be at most one <code>ENTITY</code> declaration\nwith same type and name.  Anything other than the first declaration\nis ignored.</p>",
+                                               "ja" => "<p>\x{540c}\x{3058}\x{7a2e}\x{985e}\x{3068}\x{540d}\x{524d}\x{306e} <code>ENTITY</code> \x{5ba3}\x{8a00}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6700}\x{521d}\x{306e}\x{5ba3}\x{8a00}\x{4ee5}\x{5916}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                             },
+                                     "layer" => "tree-construction",
+                                     "message" => {
+                                                  "en" => "There is another <code>ENTITY</code> declaration with\nsame type and name",
+                                                  "ja" => "\x{540c}\x{3058}\x{7a2e}\x{985e}\x{3068}\x{540d}\x{524d}\x{306e} <code>ENTITY</code> \x{5ba3}\x{8a00}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::Parser::tree_constructor" => 1
+                                                },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 30,
+                                                         "input" => "<!DOCTYPE a[\n <!ENTITY foo \"\"><!ENTITY foo \"a\">\n]><a/>",
+                                                         "lang" => "XML",
+                                                         "level" => "w",
+                                                         "value" => "&foo;"
+                                                       },
+                                                       {
+                                                         "index" => 32,
+                                                         "input" => "<!DOCTYPE a[\n <!ENTITY % foo \"\"><!ENTITY % foo \"a\">\n]><a/>",
+                                                         "lang" => "XML",
+                                                         "level" => "w",
+                                                         "value" => "%foo;"
+                                                       }
+                                                     ]
+                                   },
           "duplicate form name" => {
                                    "desc" => {
                                              "en" => "\n    <p>The <code>name</code> attribute value of the <code>form</code>\n    element must be unique.</p>\n  ",
@@ -3030,6 +3901,29 @@ $WebHACC::_Errors = {
                                                    "ja" => "\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                  }
                                     },
+          "duplicate notation decl" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>There must be at most one <code>NOTATION</code> declaration\nfor the same name.</p>",
+                                                 "ja" => "<p>\x{540c}\x{3058}\x{540d}\x{524d}\x{306e} <code>NOTATION</code> \x{5ba3}\x{8a00}\x{306f}\x{9ad8}\x{3005}1\x{3064}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "tree-construction",
+                                       "message" => {
+                                                    "en" => "There is another <code>NOTATION</code> declaration with the same name",
+                                                    "ja" => "\x{540c}\x{3058}\x{540d}\x{524d}\x{306e} <code>NOTATION</code> \x{5ba3}\x{8a00}\x{304c}\x{4ed6}\x{306b}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::Parser::tree_constructor" => 1
+                                                  },
+                                       "parser_tests" => [
+                                                         {
+                                                           "index" => 41,
+                                                           "input" => "<!DOCTYPE a[\n  <!NOTATION foo SYSTEM \"x\"><!NOTATION foo SYSTEM \"a\">\n]><a/>",
+                                                           "lang" => "XML",
+                                                           "value" => "foo"
+                                                         }
+                                                       ]
+                                     },
           "duplicate oc namespace" => {
                                       "message" => {
                                                    "en" => "This oppotunistic caching namespace is already\n  specified."
@@ -3471,60 +4365,70 @@ $WebHACC::_Errors = {
                                                                                     {
                                                                                       "index" => 25,
                                                                                       "input" => "<!DOCTYPE HTML><dt><span><dt>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "dt"
                                                                                     },
                                                                                     {
                                                                                       "index" => 25,
                                                                                       "input" => "<!DOCTYPE HTML><dt><span><dd>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "dd"
                                                                                     },
                                                                                     {
                                                                                       "index" => 25,
                                                                                       "input" => "<!DOCTYPE HTML><li><span><li>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "li"
                                                                                     },
                                                                                     {
                                                                                       "index" => 31,
                                                                                       "input" => "<!DOCTYPE HTML><ruby><rp><span><rt>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "rt"
                                                                                     },
                                                                                     {
                                                                                       "index" => 31,
                                                                                       "input" => "<!DOCTYPE HTML><ruby><rt><span><rp>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "rp"
                                                                                     },
                                                                                     {
                                                                                       "index" => 37,
                                                                                       "input" => "<!DOCTYPE HTML><table><caption><span><caption>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "caption"
                                                                                     },
                                                                                     {
                                                                                       "index" => 37,
                                                                                       "input" => "<!DOCTYPE HTML><table><caption><span><tr>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "span",
                                                                                       "value" => "tr"
                                                                                     },
                                                                                     {
                                                                                       "index" => 20,
                                                                                       "input" => "<!DOCTYPE HTML><svg><p>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "svg",
                                                                                       "value" => "p"
                                                                                     },
                                                                                     {
                                                                                       "index" => 20,
                                                                                       "input" => "<!DOCTYPE HTML><svg><font face>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "svg",
                                                                                       "value" => "font"
                                                                                     },
                                                                                     {
                                                                                       "index" => 23,
                                                                                       "input" => "<!DOCTYPE HTML><select><input>",
+                                                                                      "lang" => "HTML",
                                                                                       "text" => "select",
                                                                                       "value" => "input"
                                                                                     }
@@ -3588,6 +4492,30 @@ $WebHACC::_Errors = {
                                            "ja" => "<code>alt</code> \x{5c5e}\x{6027}\x{5024}\x{304c}\x{7a7a}\x{3067}\x{3059}"
                                          }
                             },
+          "empty attlist decl" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>The <code>ATTLIST</code> declaration should contain\nat least one attribute definition.</p>",
+                                            "ja" => "<p><code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{3092}\x{6700}\x{4f4e}1\x{3064}\x{306f}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                          },
+                                  "layer" => "tree-construction",
+                                  "message" => {
+                                               "en" => "The <code>ATTLIST</code> declaration is empty",
+                                               "ja" => "\x{3053}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{7a7a}\x{3067}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::XML::Parser::tree_constructor" => 1
+                                             },
+                                  "parser_tests" => [
+                                                    {
+                                                      "index" => 12,
+                                                      "input" => "<!DOCTYPE a[<!ATTLIST fa>]><a/>",
+                                                      "lang" => "XML",
+                                                      "level" => "w",
+                                                      "value" => "fa"
+                                                    }
+                                                  ]
+                                },
           "empty attribute value" => {
                                      "desc" => {
                                                "en" => "\n    <p>The attribute value cannot be empty.  Otherwise the user\n    cannot figure what to do as the item is not described or\n    not rendered at all.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The <code>id</code> attribute</dt>\n\n    <dd>The unique identifier (ID) of the element cannot be empty.  If\n    the element has no identifier, the <code>id</code> attribute\n    should be omitted.</dd>\n\n    <dt>The <code>map</code> element, the <code>name</code>\n    attribute</dt>\n\n    <dd>The map name cannot be empty.</dd>\n\n    <dt>The <code>dirname</code> attribute</dt>\n\n    <dd>The field name cannot be empty.</dd>\n\n    </dl>\n  ",
@@ -3631,6 +4559,7 @@ $WebHACC::_Errors = {
                                         },
                              "modules" => {
                                           "Web::HTML::Parser::tokenizer" => 1,
+                                          "Web::XML::Parser::tokenizer" => 1,
                                           "Whatpm::WebVTT::Parser" => 1
                                         },
                              "parser_error_names" => {
@@ -3639,7 +4568,8 @@ $WebHACC::_Errors = {
                              "parser_tests" => [
                                                {
                                                  "index" => 20,
-                                                 "input" => "<!DOCTYPE HTML><p></>"
+                                                 "input" => "<!DOCTYPE HTML><p></>",
+                                                 "lang" => "HTML"
                                                }
                                              ]
                            },
@@ -3700,12 +4630,14 @@ $WebHACC::_Errors = {
                                               "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306b}\x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                             },
                                  "modules" => {
-                                              "Web::HTML::Parser::tokenizer" => 1
+                                              "Web::HTML::Parser::tokenizer" => 1,
+                                              "Web::XML::Parser::tokenizer" => 1
                                             },
                                  "parser_tests" => [
                                                    {
                                                      "index" => 32,
-                                                     "input" => "<!DOCTYPE HTML><div class=foo>aa</div class=foo>"
+                                                     "input" => "<!DOCTYPE HTML><div class=foo>aa</div class=foo>",
+                                                     "lang" => "HTML"
                                                    }
                                                  ]
                                },
@@ -3715,22 +4647,96 @@ $WebHACC::_Errors = {
                                              "en" => "<p>The referenced entity is not declared.</p>\n\n    <dl class=\"swtich\">\n      <dt>In HTML document\n\n      </dt><dd>In an HTML document, only limited set of character\n      references can be used.\n\n      </dd><dt>In XML document</dt>\n\n      <dd>In an XML document, most of entities must be declared in the\n      document type definition of the document.  Lack of entity\n      declaration is validity error, or sometimes well-formedness\n      error, depending on the standaloness of the document.</dd>\n\n      <dd>In an XML document, although entities <code>amp</code>,\n      <code>lt</code>, <code>gt</code>, <code>quot</code>, and\n      <code>apos</code> are predefined, therefore they can be used\n      even when they are not explicitly declared, they have to be\n      declared for interoperability, according to the XML\n      specification.</dd>\n\n      <dt>In WebVTT document</dt>\n\n      <dd>In a WebVTT document, only the following character\n      references are allowed: <code>&amp;amp;</code>,\n      <code>&amp;lt;</code>, <code>&amp;gt;</code>,\n      <code>&amp;lrm;</code>, <code>&amp;rlm;</code>, and\n      <code>&amp;nbsp;</code>.</dd>\n    </dl>\n\n<p>To represent an <code>&amp;</code> character, it must be escaped as\n<code>&amp;amp;</code>.</p>",
                                              "ja" => "<p>\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b9f}\x{4f53}\x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"swtich\">\n      <dt>HTML \x{6587}\x{66f8}\n\n      </dt><dd>HTML \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\x{9650}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n      </dd><dt>XML \x{6587}\x{66f8}</dt>\n\n      <dd>XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\x{307b}\x{3068}\x{3093}\x{3069}\x{306e}\x{5b9f}\x{4f53}\x{306f}\x{6587}\x{66f8}\x{306e}\x{6587}\x{66f8}\x{578b}\x{5b9a}\x{7fa9}\x{3067}\x{5236}\x{9650}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n      \x{5b9f}\x{4f53}\x{5ba3}\x{8a00}\x{304c}\x{7121}\x{3044}\x{306e}\x{306f}\x{59a5}\x{5f53}\x{6027}\x{5236}\x{7d04}\x{9055}\x{53cd}\x{3067}\x{3059}\x{3057}\x{3001}\n      \x{6587}\x{66f8}\x{306e}\x{5358}\x{72ec}\x{6027}\x{5982}\x{4f55}\x{306b}\x{3088}\x{3063}\x{3066}\x{306f}\x{6574}\x{5f62}\x{5f0f}\x{5236}\x{7d04}\x{9055}\x{53cd}\x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n\n      <dd>XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\x{5b9f}\x{4f53} <code>amp</code>,\n      <code>lt</code>, <code>gt</code>, <code>quot</code>, \n      <code>apos</code> \x{306f}\x{5b9a}\x{7fa9}\x{6e08}\x{307f}\x{3067}\x{3042}\x{308a}\x{3001}\x{660e}\x{793a}\x{7684}\x{306b}\x{5ba3}\x{8a00}\x{3059}\x{308b}\x{5fc5}\x{8981}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{3059}\x{304c}\x{3001}\n      XML \x{4ed5}\x{69d8}\x{306b}\x{3088}\x{308c}\x{3070}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{306b}\x{6562}\x{3048}\x{3066}\x{5ba3}\x{8a00}\x{3059}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</dd>\n\n      <dt>WebVTT \x{6587}\x{66f8}</dt>\n\n      <dd>WebVTT \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3048}\x{308b}\x{306e}\x{306f}\n      <code>&amp;amp;</code>,\n      <code>&amp;lt;</code>, <code>&amp;gt;</code>,\n      <code>&amp;lrm;</code>, <code>&amp;rlm;</code>,\n      <code>&amp;nbsp;</code> \x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</dd>\n    </dl>\n\n<p><code>&amp;</code> \x{3068}\x{3044}\x{3046}\x{6587}\x{5b57}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{3068}\x{304d}\x{306f}\x{3001}\n<code>&amp;amp;</code> \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                            },
-                                   "layer" => "tokenizer",
+                                   "layer" => "entity",
                                    "message" => {
                                                 "en" => "Entity <code><var>{value}</var></code> is not declared",
                                                 "ja" => "\x{5b9f}\x{4f53} <code><var>{value}</var></code> \x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                               },
                                    "modules" => {
-                                                "Web::HTML::Parser::tokenizer" => 1
+                                                "Web::HTML::Parser::tokenizer" => 1,
+                                                "Web::XML::Parser::tokenizer" => 1
                                               },
                                    "parser_tests" => [
                                                      {
                                                        "index" => 15,
                                                        "input" => "<!DOCTYPE HTML>&hoge;",
+                                                       "lang" => "HTML",
                                                        "value" => "&hoge;"
                                                      }
                                                    ]
                                  },
+          "entity:in EMPTY" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>An element whose type is declared as <code>EMPTY</code>\ncannot contain entity references.</p>",
+                                         "ja" => "<p><code>EMPTY</code> \x{3068}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{578b}\x{306e}\x{8981}\x{7d20}\x{306f}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{3092}\x{542b}\x{3080}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "entity",
+                               "message" => {
+                                            "en" => "An <code>EMPTY</code> element contains an entity reference",
+                                            "ja" => "<code>EMPTY</code> \x{8981}\x{7d20}\x{304c}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          }
+                             },
+          "entity:too deep" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>Level of entity reference nesting is too deep.\n</p><p>No more entity reference in this subtree is expanded for security reasons.</p>",
+                                         "ja" => "<p>\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306e}\x{5165}\x{308c}\x{5b50}\x{306e}\x{968e}\x{5c64}\x{304c}\x{6df1}\x{3059}\x{304e}\x{307e}\x{3059}\x{3002}\n</p><p>\x{3053}\x{306e}\x{90e8}\x{5206}\x{6728}\x{306e}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{5b89}\x{5168}\x{306e}\x{305f}\x{3081}\x{3053}\x{308c}\x{4ee5}\x{4e0a}\x{5c55}\x{958b}\x{3057}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "entity",
+                               "message" => {
+                                            "en" => "Entities are nesting too many times",
+                                            "ja" => "\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{6df1}\x{3059}\x{304e}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          }
+                             },
+          "entity:too many refs" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>There are too many entity references.\n</p><p>No more entity reference is expanded for security reasons.</p>",
+                                              "ja" => "<p>\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{591a}\x{3059}\x{304e}\x{307e}\x{3059}\x{3002}\n</p><p>\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{5b89}\x{5168}\x{306e}\x{305f}\x{3081}\x{3053}\x{308c}\x{4ee5}\x{4e0a}\x{5c55}\x{958b}\x{3057}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "entity",
+                                    "message" => {
+                                                 "en" => "There are too many entity references",
+                                                 "ja" => "\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{591a}\x{3059}\x{304e}\x{307e}\x{3059}"
+                                               },
+                                    "modules" => {
+                                                 "Web::XML::Parser::tokenizer" => 1
+                                               }
+                                  },
+          "entref in attr has element" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>None of tag, comment, processing instructions, declaration, or\nsection can be used in an entity referenced in an attribute value.</p>",
+                                                    "ja" => "<p>\x{5c5e}\x{6027}\x{5024}\x{3067}\x{53c2}\x{7167}\x{3059}\x{308b}\x{5b9f}\x{4f53}\x{3067}\x{306f}\x{30bf}\x{30b0}\x{3001}\x{6ce8}\x{91c8}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{3001}\x{5ba3}\x{8a00}\x{3001}\n\x{533a}\x{9593}\x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "entity",
+                                          "message" => {
+                                                       "en" => "There is a tag in an entity referenced in an attribute value",
+                                                       "ja" => "\x{5c5e}\x{6027}\x{5024}\x{3067}\x{53c2}\x{7167}\x{3055}\x{308c}\x{305f}\x{3044}\x{308b}\x{5b9f}\x{4f53}\x{306b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tokenizer" => 1
+                                                     },
+                                          "parser_error_names" => {
+                                                                  "attribute-value-in-entity-003c" => 1,
+                                                                  "default-attribute-value-in-entity-003c" => 1
+                                                                },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 43,
+                                                              "input" => "<!DOCTYPE a[\n<!ENTITY x \"<y></y>\">\n]><a b=\"&x;\"/>",
+                                                              "lang" => "XML",
+                                                              "value" => "&x;"
+                                                            }
+                                                          ]
+                                        },
           "enumerated:invalid" => {
                                   "desc" => {
                                             "en" => "\n    <p>The attribute only accepts limited set of values.  The\n    specified value is not one of them.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> element, the <code>http-equiv</code>\n    attribute</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> and\n      <code>Content-Script-Type</code> are not useful.  You can remove\n      the element entirely without breaking anything at all.</p>\n\n      <p><code>Keywords</code> is not allowed.  Maybe you intended the\n      <code>name</code> attribute rather than the\n      <code>http-equiv</code> attribute.</p>\n\n      <p>Instead of <code>meta</code> element with\n      <code>Expires</code>, <code>Pragma</code>, or\n      <code>Cache-Control</code>, use real HTTP headers.</p>\n\n      <p><code>X-UA-Compatible</code> is harmful.  Remove the element\n      entirely.</p>\n\n    </dd>\n\n    </dl>\n  ",
@@ -3778,15 +4784,53 @@ $WebHACC::_Errors = {
                                                 }
                                    },
           "external entref" => {
+                               "default_level" => "m",
                                "desc" => {
-                                         "en" => "\n    <p>The entity reference is a reference to an external entity.\n    Since the processors is configure not to expand external entities\n    (default) or since the processor can't fetch the external entity,\n    the entity reference cannot be expanded and is ignored.</p>\n  ",
-                                         "ja" => "\n    <p>\x{3053}\x{306e}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002} XML \x{51e6}\x{7406}\x{5668}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{5c55}\x{958b}\x{3057}\x{306a}\x{3044}\x{3088}\x{3046}\x{306b}\x{8a2d}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\n    (\x{65e2}\x{5b9a}\x{5024}) \x{304b}\x{3001}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{53d6}\x{5f97}\x{3067}\x{304d}\x{306a}\x{304b}\x{3063}\x{305f}\x{306e}\x{3067}\x{3001}\n    \x{3053}\x{306e}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{5c55}\x{958b}\x{3055}\x{308c}\x{305a}\x{3001}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                         "en" => "<p>XML parsers are not required to expand external entity references or\nthe <code>DOCTYPE</code> declaration's external subset.  Use of external\nentities is not interoperable.</p>",
+                                         "ja" => "<p>XML \x{69cb}\x{6587}\x{89e3}\x{6790}\x{5668}\x{306f}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{3084} <code>DOCTYPE</code> \n\x{5ba3}\x{8a00}\x{306e}\x{5916}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3092}\x{5c55}\x{958b}\x{3059}\x{308b}\x{7fa9}\x{52d9}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                        },
+                               "layer" => "entity",
                                "message" => {
-                                            "en" => "An external entity is referenced\n  but ignored",
-                                            "ja" => "\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{304c}\x{3001}\x{7121}\x{8996}\x{3057}\x{307e}\x{3059}"
-                                          }
+                                            "en" => "An external entity is referenced",
+                                            "ja" => "\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          },
+                               "parser_tests" => [
+                                                 {
+                                                   "index" => 85,
+                                                   "input" => "<?xml version=\"1.0\" standalone=\"yes\"?><!DOCTYPE a[\n  <!ENTITY ext SYSTEM \"ext\">\n]><a>&ext;</a>",
+                                                   "lang" => "XML",
+                                                   "level" => "i",
+                                                   "value" => "&ext;"
+                                                 }
+                                               ]
                              },
+          "external entref not expanded" => {
+                                            "default_level" => "m",
+                                            "desc" => {
+                                                      "en" => "<p>The external entity reference or the <code>DOCTYPE</code>\ndeclaration's external subset is not expanded as the parser\nis not configured to expand external entities or it can't\nretrieve the referenced file.  Note that XML parsers are not\nrequired to expand any external entity.  Use of external\nentities is not interoperable.</p>",
+                                                      "ja" => "<p>\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{3084} <code>DOCTYPE</code> \x{5ba3}\x{8a00}\x{306e}\x{5916}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{304c}\x{3001}\n\x{69cb}\x{6587}\x{89e3}\x{6790}\x{5668}\x{306e}\x{8a2d}\x{5b9a}\x{306e}\x{305f}\x{3081}\x{3001}\x{3042}\x{308b}\x{3044}\x{306f}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{3092}\x{53d6}\x{5f97}\x{3067}\x{304d}\x{306a}\x{304b}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\n\x{5c55}\x{958b}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}\x{3002}\x{306a}\x{304a} XML \x{69cb}\x{6587}\x{89e3}\x{6790}\x{5668}\x{306f}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3092}\x{5c55}\x{958b}\x{3059}\x{308b}\x{7fa9}\x{52d9}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304b}\x{3089}\x{3001}\n\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                            "layer" => "entity",
+                                            "message" => {
+                                                         "en" => "The external entity reference is not expanded",
+                                                         "ja" => "\x{3053}\x{306e}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{5c55}\x{958b}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093}\x{3067}\x{3057}\x{305f}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::XML::Parser::tokenizer" => 1
+                                                       },
+                                            "parser_tests" => [
+                                                              {
+                                                                "index" => 85,
+                                                                "input" => "<?xml version=\"1.0\" standalone=\"yes\"?><!DOCTYPE a[\n  <!ENTITY ext SYSTEM \"ext\">\n]><a>&ext;</a>",
+                                                                "lang" => "XML",
+                                                                "level" => "w",
+                                                                "value" => "&ext;"
+                                                              }
+                                                            ]
+                                          },
           "fallback-char-error" => {
                                    "message" => {
                                                 "en" => "Octet sequence <code><var>{octets}</var></code>\n  is not an allowed representation of the character\n  <code><var>{char}</var></code> \x{2014} character reference\n  <code><var>{char:hexref}</var></code> should be used instead."
@@ -3844,21 +4888,25 @@ $WebHACC::_Errors = {
                                                          {
                                                            "index" => 20,
                                                            "input" => "<!DOCTYPE HTML><svg xmlns=hoge>",
+                                                           "lang" => "HTML",
                                                            "value" => "hoge"
                                                          },
                                                          {
                                                            "index" => 21,
                                                            "input" => "<!DOCTYPE HTML><math xmlns=hoge>",
+                                                           "lang" => "HTML",
                                                            "value" => "hoge"
                                                          },
                                                          {
                                                            "index" => 26,
                                                            "input" => "<!DOCTYPE HTML><math><foo xmlns=hoge>",
+                                                           "lang" => "HTML",
                                                            "value" => "hoge"
                                                          },
                                                          {
                                                            "index" => 20,
                                                            "input" => "<!DOCTYPE HTML><svg xmlns:xlink=\"foo\">",
+                                                           "lang" => "HTML",
                                                            "value" => "foo"
                                                          }
                                                        ]
@@ -3978,7 +5026,8 @@ $WebHACC::_Errors = {
                      "parser_tests" => [
                                        {
                                          "index" => 21,
-                                         "input" => "<!DOCTYPE HTML><body><image>"
+                                         "input" => "<!DOCTYPE HTML><body><image>",
+                                         "lang" => "HTML"
                                        }
                                      ]
                    },
@@ -4132,31 +5181,38 @@ $WebHACC::_Errors = {
                        "parser_tests" => [
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><tr>"
+                                           "input" => "<!DOCTYPE HTML><body><tr>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><col>"
+                                           "input" => "<!DOCTYPE HTML><body><col>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><head>"
+                                           "input" => "<!DOCTYPE HTML><body><head>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><frame>"
+                                           "input" => "<!DOCTYPE HTML><body><frame>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><frameset>"
+                                           "input" => "<!DOCTYPE HTML><body><frameset>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><tbody>"
+                                           "input" => "<!DOCTYPE HTML><body><tbody>",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 21,
-                                           "input" => "<!DOCTYPE HTML><body><td>"
+                                           "input" => "<!DOCTYPE HTML><body><td>",
+                                           "lang" => "HTML"
                                          }
                                        ]
                      },
@@ -4172,10 +5228,13 @@ $WebHACC::_Errors = {
                                          "ja" => "\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306e}\x{672b}\x{5c3e}\x{3067} <code><var>{text}</var></code>\n\x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                        },
                             "modules" => {
-                                         "Web::HTML::Parser::tree_constructor" => 1
+                                         "Web::HTML::Parser::tree_constructor" => 1,
+                                         "Web::XML::Parser::tree_constructor" => 1
                                        },
                             "parser_error_names" => {
                                                     "in-body-eof" => 1,
+                                                    "in-element-eof" => 1,
+                                                    "in-element-eof-2" => 1,
                                                     "in-frameset-eof" => 1,
                                                     "in-template-eof" => 1,
                                                     "text-eof" => 1
@@ -4184,32 +5243,44 @@ $WebHACC::_Errors = {
                                               {
                                                 "index" => 21,
                                                 "input" => "<!DOCTYPE HTML><hoge>",
+                                                "lang" => "HTML",
                                                 "text" => "hoge"
                                               },
                                               {
                                                 "index" => 25,
                                                 "input" => "<!DOCTYPE HTML><frameset>",
+                                                "lang" => "HTML",
                                                 "text" => "frameset"
                                               },
                                               {
                                                 "index" => 25,
                                                 "input" => "<!DOCTYPE HTML><template>",
+                                                "lang" => "HTML",
                                                 "text" => "template"
                                               },
                                               {
                                                 "index" => 30,
                                                 "input" => "<!DOCTYPE HTML><template><foo>",
+                                                "lang" => "HTML",
                                                 "text" => "foo"
                                               },
                                               {
                                                 "index" => 20,
                                                 "input" => "<!DOCTYPE HTML><xmp>",
+                                                "lang" => "HTML",
                                                 "text" => "xmp"
                                               },
                                               {
                                                 "index" => 27,
                                                 "input" => "<!DOCTYPE HTML><plaintext>a",
+                                                "lang" => "HTML",
                                                 "text" => "plaintext"
+                                              },
+                                              {
+                                                "index" => 6,
+                                                "input" => "<p>xxx",
+                                                "lang" => "XML",
+                                                "text" => "p"
                                               }
                                             ],
                             "text" => [
@@ -4239,12 +5310,14 @@ $WebHACC::_Errors = {
                                               "context" => "caption",
                                               "index" => 0,
                                               "input" => "<tbody>",
+                                              "lang" => "HTML",
                                               "text" => "tbody"
                                             },
                                             {
                                               "context" => "caption",
                                               "index" => 0,
                                               "input" => "<col>",
+                                              "lang" => "HTML",
                                               "text" => "col"
                                             }
                                           ],
@@ -4296,17 +5369,20 @@ $WebHACC::_Errors = {
                                              {
                                                "context" => "colgroup",
                                                "index" => 0,
-                                               "input" => "<p>"
+                                               "input" => "<p>",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "context" => "colgroup",
                                                "index" => 0,
-                                               "input" => "</p>"
+                                               "input" => "</p>",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "context" => "colgroup",
                                                "index" => 0,
-                                               "input" => "h"
+                                               "input" => "h",
+                                               "lang" => "HTML"
                                              }
                                            ]
                          },
@@ -4331,17 +5407,20 @@ $WebHACC::_Errors = {
                                              {
                                                "context" => "frameset",
                                                "index" => 0,
-                                               "input" => "<p>"
+                                               "input" => "<p>",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "context" => "frameset",
                                                "index" => 0,
-                                               "input" => "</p>"
+                                               "input" => "</p>",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "context" => "frameset",
                                                "index" => 0,
-                                               "input" => "h"
+                                               "input" => "h",
+                                               "lang" => "HTML"
                                              }
                                            ]
                          },
@@ -4365,7 +5444,8 @@ $WebHACC::_Errors = {
                             "parser_tests" => [
                                               {
                                                 "index" => 21,
-                                                "input" => "<!DOCTYPE HTML><head><head>"
+                                                "input" => "<!DOCTYPE HTML><head><head>",
+                                                "lang" => "HTML"
                                               }
                                             ]
                           },
@@ -4390,6 +5470,7 @@ $WebHACC::_Errors = {
                                           {
                                             "index" => 19,
                                             "input" => "<!DOCTYPE HTML><h3><h5>",
+                                            "lang" => "HTML",
                                             "text" => "h3",
                                             "value" => "h5"
                                           }
@@ -4425,36 +5506,43 @@ $WebHACC::_Errors = {
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript><p>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript><hoge>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript>foo",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript><noscript></noscript>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript><head></noscript>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              },
                                              {
                                                "index" => 31,
                                                "input" => "<!DOCTYPE HTML><head><noscript><body>",
+                                               "lang" => "HTML",
                                                "noscript" => 1
                                              }
                                            ]
@@ -4479,11 +5567,13 @@ $WebHACC::_Errors = {
                          "parser_tests" => [
                                            {
                                              "index" => 23,
-                                             "input" => "<!DOCTYPE HTML><Select><foo>"
+                                             "input" => "<!DOCTYPE HTML><Select><foo>",
+                                             "lang" => "HTML"
                                            },
                                            {
                                              "index" => 23,
-                                             "input" => "<!DOCTYPE HTML><Select></foo>"
+                                             "input" => "<!DOCTYPE HTML><Select></foo>",
+                                             "lang" => "HTML"
                                            }
                                          ]
                        },
@@ -4508,6 +5598,7 @@ $WebHACC::_Errors = {
                                                             {
                                                               "index" => 30,
                                                               "input" => "<!DOCTYPE HTML><table><select></tbody>",
+                                                              "lang" => "HTML",
                                                               "value" => "tbody"
                                                             }
                                                           ],
@@ -4537,6 +5628,7 @@ $WebHACC::_Errors = {
                                                               {
                                                                 "index" => 30,
                                                                 "input" => "<!DOCTYPE HTML><table><select><tbody>",
+                                                                "lang" => "HTML",
                                                                 "value" => "tbody"
                                                               }
                                                             ],
@@ -4567,19 +5659,23 @@ $WebHACC::_Errors = {
                         "parser_tests" => [
                                           {
                                             "index" => 22,
-                                            "input" => "<!DOCTYPE HTML><table><p>"
+                                            "input" => "<!DOCTYPE HTML><table><p>",
+                                            "lang" => "HTML"
                                           },
                                           {
                                             "index" => 22,
-                                            "input" => "<!DOCTYPE HTML><table></gfoo>"
+                                            "input" => "<!DOCTYPE HTML><table></gfoo>",
+                                            "lang" => "HTML"
                                           },
                                           {
                                             "index" => 22,
-                                            "input" => "<!DOCTYPE HTML><table><form>"
+                                            "input" => "<!DOCTYPE HTML><table><form>",
+                                            "lang" => "HTML"
                                           },
                                           {
                                             "index" => 22,
-                                            "input" => "<!DOCTYPE HTML><table><input>"
+                                            "input" => "<!DOCTYPE HTML><table><input>",
+                                            "lang" => "HTML"
                                           }
                                         ]
                       },
@@ -4605,6 +5701,7 @@ $WebHACC::_Errors = {
                                                  "context" => "tbody",
                                                  "index" => 0,
                                                  "input" => "<tbody>",
+                                                 "lang" => "HTML",
                                                  "value" => "tbody"
                                                }
                                              ],
@@ -4635,12 +5732,14 @@ $WebHACC::_Errors = {
                                                 "context" => "tr",
                                                 "index" => 0,
                                                 "input" => "<tbody>",
+                                                "lang" => "HTML",
                                                 "value" => "tbody"
                                               },
                                               {
                                                 "context" => "template",
                                                 "index" => 9,
                                                 "input" => "<td></td><tbody>",
+                                                "lang" => "HTML",
                                                 "value" => "tbody"
                                               }
                                             ],
@@ -4670,11 +5769,13 @@ $WebHACC::_Errors = {
                               "parser_tests" => [
                                                 {
                                                   "index" => 22,
-                                                  "input" => "<!DOCTYPE HTML><table>abc"
+                                                  "input" => "<!DOCTYPE HTML><table>abc",
+                                                  "lang" => "HTML"
                                                 },
                                                 {
                                                   "index" => 25,
-                                                  "input" => "<!DOCTYPE HTML><table><p>abc"
+                                                  "input" => "<!DOCTYPE HTML><table><p>abc",
+                                                  "lang" => "HTML"
                                                 }
                                               ]
                             },
@@ -4731,33 +5832,38 @@ $WebHACC::_Errors = {
                                                      "en" => "<p>A character reference cannot be used to reference a control\ncharacter, surrogate code point, noncharacter code point, or\nnon-Unicode code point.</p>",
                                                      "ja" => "<p>\x{6587}\x{5b57}\x{53c2}\x{7167}\x{306f}\x{3001}\x{5236}\x{5fa1}\x{6587}\x{5b57}\x{3001}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3001}\x{975e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3001}\n\x{975e} Unicode \x{7b26}\x{53f7}\x{4f4d}\x{7f6e}\x{3092}\x{53c2}\x{7167}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                    },
-                                           "layer" => "tokenizer",
+                                           "layer" => "character-set",
                                            "message" => {
                                                         "en" => "Special code point <code><var>{text}</var></code> is referenced",
                                                         "ja" => "\x{7279}\x{6b8a}\x{306a}\x{7b26}\x{53f7}\x{4f4d}\x{7f6e} <code><var>{text}</var></code> \x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                       },
                                            "modules" => {
-                                                        "Web::HTML::Parser::tokenizer" => 1
+                                                        "Web::HTML::Parser::tokenizer" => 1,
+                                                        "Web::XML::Parser::tokenizer" => 1
                                                       },
                                            "parser_tests" => [
                                                              {
                                                                "index" => 15,
                                                                "input" => "<!DOCTYPE HTML>&#0;",
+                                                               "lang" => "HTML",
                                                                "text" => "U+0000"
                                                              },
                                                              {
                                                                "index" => 15,
                                                                "input" => "<!DOCTYPE HTML>&#x7F;",
+                                                               "lang" => "HTML",
                                                                "text" => "U+007F"
                                                              },
                                                              {
                                                                "index" => 15,
                                                                "input" => "<!DOCTYPE HTML>&#x10FFFF;",
+                                                               "lang" => "HTML",
                                                                "text" => "U+10FFFF"
                                                              },
                                                              {
                                                                "index" => 15,
                                                                "input" => "<!DOCTYPE HTML>&#x000000000000000700ffff;",
+                                                               "lang" => "HTML",
                                                                "text" => "U-0700FFFF"
                                                              }
                                                            ]
@@ -4868,6 +5974,32 @@ $WebHACC::_Errors = {
                                               "ja" => "JSON \x{5024}\x{306e}\x{5f8c}\x{306b}\x{304a}\x{304b}\x{3057}\x{306a}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                             }
                                },
+          "keyword-wrong-case" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>The keywords must be in uppercase in XML.</p>",
+                                            "ja" => "<p>XML \x{3067}\x{306f}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{306f}\x{5927}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "tokenization",
+                                  "message" => {
+                                               "en" => "The keyword is not in uppercase",
+                                               "ja" => "\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{5927}\x{6587}\x{5b57}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::XML::Parser::tokenizer" => 1
+                                             },
+                                  "parser_error_names" => {
+                                                          "keyword-wrong-case" => 1
+                                                        },
+                                  "parser_tests" => [
+                                                    {
+                                                      "index" => 18,
+                                                      "input" => "<!DOCTYPE hoge [<!ELEment foo EMPTY>]><a/>",
+                                                      "lang" => "XML",
+                                                      "value" => "ELEment"
+                                                    }
+                                                  ]
+                                },
           "lang selector not closed" => {
                                         "message" => {
                                                      "en" => "Argument list of the <code>:lang</code>\n  selector is not closed by a <code>)</code> character."
@@ -5537,7 +6669,8 @@ $WebHACC::_Errors = {
                               "parser_tests" => [
                                                 {
                                                   "index" => 0,
-                                                  "input" => "<!DOCTYPE HTML SYSTEM \"about:legacy-compat\">"
+                                                  "input" => "<!DOCTYPE HTML SYSTEM \"about:legacy-compat\">",
+                                                  "lang" => "HTML"
                                                 }
                                               ]
                             },
@@ -5619,6 +6752,39 @@ $WebHACC::_Errors = {
                                              "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                            }
                               },
+          "lt in attr value" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>The <code>&lt;</code> character is not allowed in an attribute\nvalue.  It must be escaped as <code>&amp;lt;</code>.</p>",
+                                          "ja" => "<p>\x{5c5e}\x{6027}\x{5024}\x{306b} <code>&lt;</code> \x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} <code>&amp;lt;</code>\n\x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenization",
+                                "message" => {
+                                             "en" => "There is <code>&lt;</code> in an attribute value",
+                                             "ja" => "\x{5c5e}\x{6027}\x{5024}\x{306b} <code>&lt;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tokenizer" => 1
+                                           },
+                                "parser_error_names" => {
+                                                        "attribute-value-double-quoted-003c" => 1,
+                                                        "attribute-value-single-quoted-003c" => 1,
+                                                        "default-attribute-value-double-quoted-003c" => 1,
+                                                        "default-attribute-value-single-quoted-003c" => 1
+                                                      },
+                                "parser_tests" => [
+                                                  {
+                                                    "index" => 7,
+                                                    "input" => "<p x=\"a<b\"/>",
+                                                    "lang" => "XML"
+                                                  },
+                                                  {
+                                                    "index" => 7,
+                                                    "input" => "<p x='a<b'/>",
+                                                    "lang" => "XML"
+                                                  }
+                                                ]
+                              },
           "max lt min" => {
                           "desc" => {
                                     "en" => "\n    <p>The value of the <code>max</code> attribute must be greater\n    than or equal to the value of the <code>min</code> attribute.</p>\n  ",
@@ -5629,6 +6795,86 @@ $WebHACC::_Errors = {
                                        "ja" => "<code>max</code> \x{306e}\x{5024}\x{304c} <code>min</code>\n  \x{306e}\x{5024}\x{3088}\x{308a}\x{3082}\x{5c0f}\x{3055}\x{3044}\x{3067}\x{3059}"
                                      }
                         },
+          "mdc in pe in md" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>The markup declaration cannot be closed within a parameter\nentity referenced from the markup declaration.</p>",
+                                         "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{3067}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{3092}\x{9589}\x{3058}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "tokenization",
+                               "message" => {
+                                            "en" => "There is a <code>&gt;</code> in a parameter entity",
+                                            "ja" => "\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{5185}\x{306b} <code>&gt;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          },
+                               "parser_error_names" => {
+                                                       "after-after-allowed-token-list-003e-md-fragment" => 1,
+                                                       "after-allowed-token-003e-md-fragment" => 1,
+                                                       "after-allowed-token-list-003e-md-fragment" => 1,
+                                                       "after-attlist-attribute-default-003e-md-fragment" => 1,
+                                                       "after-attlist-attribute-name-003e-md-fragment" => 1,
+                                                       "after-attlist-attribute-type-003e-md-fragment" => 1,
+                                                       "after-attlist-default-value-003e-md-fragment" => 1,
+                                                       "after-content-model-group-003e-md-fragment" => 1,
+                                                       "after-content-model-item-003e-md-fragment" => 1,
+                                                       "after-element-content-003e-md-fragment" => 1,
+                                                       "after-entity-name-003e-md-fragment" => 1,
+                                                       "after-entity-parameter-003e-md-fragment" => 1,
+                                                       "after-entity-public-identifier-003e-md-fragment" => 1,
+                                                       "after-entity-public-keyword-003e-md-fragment" => 1,
+                                                       "after-entity-system-identifier-003e-md-fragment" => 1,
+                                                       "after-entity-system-keyword-003e-md-fragment" => 1,
+                                                       "after-ignore-keyword-003e-md-fragment" => 1,
+                                                       "after-include-keyword-003e-md-fragment" => 1,
+                                                       "after-mss-003e-md-fragment" => 1,
+                                                       "after-ndata-keyword-003e-md-fragment" => 1,
+                                                       "after-notation-name-003e-md-fragment" => 1,
+                                                       "after-notation-public-identifier-003e-md-fragment" => 1,
+                                                       "after-notation-public-keyword-003e-md-fragment" => 1,
+                                                       "after-notation-system-identifier-003e-md-fragment" => 1,
+                                                       "after-notation-system-keyword-003e-md-fragment" => 1,
+                                                       "allowed-token-003e-md-fragment" => 1,
+                                                       "attlist-003e-md-fragment" => 1,
+                                                       "attlist-attribute-default-003e-md-fragment" => 1,
+                                                       "attlist-attribute-name-003e-md-fragment" => 1,
+                                                       "attlist-attribute-type-003e-md-fragment" => 1,
+                                                       "attlist-name-003e-md-fragment" => 1,
+                                                       "before-allowed-token-003e-md-fragment" => 1,
+                                                       "before-attlist-attribute-default-003e-md-fragment" => 1,
+                                                       "before-attlist-attribute-name-003e-md-fragment" => 1,
+                                                       "before-attlist-name-003e-md-fragment" => 1,
+                                                       "before-content-model-item-003e-md-fragment" => 1,
+                                                       "before-element-content-003e-md-fragment" => 1,
+                                                       "before-element-name-003e-md-fragment" => 1,
+                                                       "before-entity-name-003e-md-fragment" => 1,
+                                                       "before-entity-public-identifier-003e-md-fragment" => 1,
+                                                       "before-entity-system-identifier-003e-md-fragment" => 1,
+                                                       "before-ndata-identifier-003e-md-fragment" => 1,
+                                                       "before-ndata-keyword-003e-md-fragment" => 1,
+                                                       "before-notation-name-003e-md-fragment" => 1,
+                                                       "before-notation-public-identifier-003e-md-fragment" => 1,
+                                                       "before-notation-system-identifier-003e-md-fragment" => 1,
+                                                       "between-entity-public-and-system-identifiers-003e-md-fragment" => 1,
+                                                       "between-notation-public-and-system-identifiers-003e-md-fragment" => 1,
+                                                       "bogus-markup-declaration-003e-md-fragment" => 1,
+                                                       "bogus-status-keyword-003e-md-fragment" => 1,
+                                                       "content-model-element-003e-md-fragment" => 1,
+                                                       "element-003e-md-fragment" => 1,
+                                                       "element-content-keyword-003e-md-fragment" => 1,
+                                                       "element-name-003e-md-fragment" => 1,
+                                                       "entity-003e-md-fragment" => 1,
+                                                       "entity-name-003e-md-fragment" => 1,
+                                                       "entity-public-identifier-double-quoted-003e-md-fragment" => 1,
+                                                       "entity-public-identifier-single-quoted-003e-md-fragment" => 1,
+                                                       "ndata-identifier-003e-md-fragment" => 1,
+                                                       "notation-003e-md-fragment" => 1,
+                                                       "notation-name-003e-md-fragment" => 1,
+                                                       "notation-public-identifier-double-quoted-003e-md-fragment" => 1,
+                                                       "notation-public-identifier-single-quoted-003e-md-fragment" => 1
+                                                     }
+                             },
           "memoryname:syntax error" => {
                                        "desc" => {
                                                  "en" => "\n    <p>The value of the <code>memoryname</code> attribute must consist\n    of two non-empty substrings separated by the <code>-</code>\n    character.</p>\n  ",
@@ -5912,6 +7158,53 @@ $WebHACC::_Errors = {
                                             "en" => "The specified value has a syntax error as a\n  media query."
                                           }
                              },
+          "ms:no dso" => {
+                         "default_level" => "m",
+                         "desc" => {
+                                   "en" => "<p>A marked section must be opened by <code>&lt;![</code>,\nfollowed by a status keyword, followed by a <code>[</code>.</p>",
+                                   "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{533a}\x{9593}\x{306f} <code>&lt;![</code>\x{3001}\x{72b6}\x{614b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{3001} <code>[</code>\n\x{3067}\x{958b}\x{304b}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                 },
+                         "layer" => "tokenization",
+                         "message" => {
+                                      "en" => "The marked section is incompletly opened",
+                                      "ja" => "\x{30de}\x{30fc}\x{30af}\x{533a}\x{9593}\x{304c}\x{5b8c}\x{5168}\x{306b}\x{306f}\x{958b}\x{3044}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::XML::Parser::tokenizer" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "after-ignore-keyword-003c" => 1,
+                                                 "after-ignore-keyword-003e" => 1,
+                                                 "after-ignore-keyword-005d" => 1,
+                                                 "after-ignore-keyword-else" => 1,
+                                                 "after-include-keyword-003c" => 1,
+                                                 "after-include-keyword-003e" => 1,
+                                                 "after-include-keyword-005d" => 1,
+                                                 "after-include-keyword-else" => 1,
+                                                 "after-mss-else" => 1
+                                               }
+                       },
+          "ms:no status keyword" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>There must be a status keyword (<code>INCLUDE</code> or <code>IGNORE</code>)\nas the parameter to the marked section.</p>",
+                                              "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{533a}\x{9593}\x{306e}\x{5f15}\x{6570}\x{3068}\x{3057}\x{3066}\x{72b6}\x{614b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} (<code>INCLUDE</code> \x{304b}\n<code>IGNORE</code>) \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                            },
+                                    "layer" => "tokenization",
+                                    "message" => {
+                                                 "en" => "There is no status keyword",
+                                                 "ja" => "\x{72b6}\x{614b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::XML::Parser::tokenizer" => 1
+                                               },
+                                    "parser_error_names" => {
+                                                            "after-mss-003c" => 1,
+                                                            "after-mss-003e" => 1,
+                                                            "after-mss-005b" => 1,
+                                                            "after-mss-005d" => 1
+                                                          }
+                                  },
           "multilength:syntax error" => {
                                         "desc" => {
                                                   "en" => "\n    <p>The value must be a dimension value using one of these forms: a\n    non-negative integer, a non-negative percentage integer, a\n    non-negative integer followed by the <code>*</code> character, or\n    a <code>*</code> character.</p>\n  ",
@@ -5959,7 +7252,8 @@ $WebHACC::_Errors = {
                                   "ja" => "\x{305d}\x{306e}\x{5834}\x{3067}\x{8981}\x{7d20}\x{3092}\x{9589}\x{3058}\x{308b}\x{69cb}\x{6587} (<code>/&gt;</code>) \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                 },
                      "modules" => {
-                                  "Web::HTML::Parser::tokenizer" => 1
+                                  "Web::HTML::Parser::tokenizer" => 1,
+                                  "Web::XML::Parser::tokenizer" => 1
                                 },
                      "parser_error_names" => {
                                              "-start-tag-self-closing-flag" => 1
@@ -5968,17 +7262,20 @@ $WebHACC::_Errors = {
                                        {
                                          "index" => 15,
                                          "input" => "<!DOCTYPE HTML><p/>",
+                                         "lang" => "HTML",
                                          "text" => "p"
                                        },
                                        {
                                          "index" => 15,
                                          "input" => "<!DOCTYPE HTML><img/>",
+                                         "lang" => "HTML",
                                          "level" => "w",
                                          "text" => "img"
                                        },
                                        {
                                          "index" => 18,
                                          "input" => "<!DOCTYPE HTML><p></p/>",
+                                         "lang" => "HTML",
                                          "text" => "p"
                                        }
                                      ],
@@ -5999,7 +7296,8 @@ $WebHACC::_Errors = {
                                              "ja" => "\x{30bf}\x{30b0}\x{304c} <code>/</code> \x{306e}\x{5f8c} <code>&gt;</code> \x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                            },
                                 "modules" => {
-                                             "Web::HTML::Parser::tokenizer" => 1
+                                             "Web::HTML::Parser::tokenizer" => 1,
+                                             "Web::XML::Parser::tokenizer" => 1
                                            },
                                 "parser_error_names" => {
                                                         "self-closing-start-tag-else" => 1
@@ -6007,11 +7305,13 @@ $WebHACC::_Errors = {
                                 "parser_tests" => [
                                                   {
                                                     "index" => 19,
-                                                    "input" => "<!DOCTYPE HTML><p / >"
+                                                    "input" => "<!DOCTYPE HTML><p / >",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 18,
-                                                    "input" => "<!DOCTYPE HTML><p/hoge>"
+                                                    "input" => "<!DOCTYPE HTML><p/hoge>",
+                                                    "lang" => "HTML"
                                                   }
                                                 ]
                               },
@@ -6085,7 +7385,8 @@ $WebHACC::_Errors = {
                        "parser_tests" => [
                                          {
                                            "index" => 22,
-                                           "input" => "<!DOCTYPE HTML><table><td>"
+                                           "input" => "<!DOCTYPE HTML><table><td>",
+                                           "lang" => "HTML"
                                          }
                                        ]
                      },
@@ -6109,11 +7410,13 @@ $WebHACC::_Errors = {
                           "parser_tests" => [
                                             {
                                               "index" => 0,
-                                              "input" => "hoge"
+                                              "input" => "hoge",
+                                              "lang" => "HTML"
                                             },
                                             {
                                               "index" => 7,
-                                              "input" => "<!---->hoge"
+                                              "input" => "<!---->hoge",
+                                              "lang" => "HTML"
                                             }
                                           ]
                         },
@@ -6129,30 +7432,60 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              },
                                   "modules" => {
-                                               "Web::HTML::Parser::tokenizer" => 1
+                                               "Web::HTML::Parser::tokenizer" => 1,
+                                               "Web::XML::Parser::tokenizer" => 1
                                              },
                                   "parser_error_names" => {
+                                                          "after-doctype-public-identifier-003e" => 1,
+                                                          "after-doctype-public-identifier-005b" => 1,
                                                           "after-doctype-public-keyword-003e" => 1,
+                                                          "after-doctype-public-keyword-005b" => 1,
                                                           "after-doctype-system-keyword-003e" => 1,
+                                                          "after-doctype-system-keyword-005b" => 1,
+                                                          "after-entity-public-identifier-003e" => 1,
+                                                          "after-entity-public-identifier-else" => 1,
+                                                          "after-entity-public-keyword-003e" => 1,
+                                                          "after-entity-public-keyword-else" => 1,
+                                                          "after-entity-system-keyword-003e" => 1,
+                                                          "after-entity-system-keyword-else" => 1,
+                                                          "after-notation-public-keyword-003e" => 1,
+                                                          "after-notation-system-keyword-003e" => 1,
                                                           "before-doctype-public-identifier-003e" => 1,
-                                                          "before-doctype-system-identifier-003e" => 1
+                                                          "before-doctype-public-identifier-005b" => 1,
+                                                          "before-doctype-system-identifier-003e" => 1,
+                                                          "before-doctype-system-identifier-005b" => 1,
+                                                          "before-entity-public-identifier-003e" => 1,
+                                                          "before-entity-public-identifier-else" => 1,
+                                                          "before-entity-system-identifier-003e" => 1,
+                                                          "before-entity-system-identifier-else" => 1,
+                                                          "before-notation-public-identifier-003e" => 1,
+                                                          "before-notation-public-identifier-else" => 1,
+                                                          "before-notation-system-identifier-003e" => 1,
+                                                          "between-doctype-public-and-system-identifiers-003e" => 1,
+                                                          "between-doctype-public-and-system-identifiers-005b" => 1,
+                                                          "between-entity-public-and-system-identifiers-003e" => 1,
+                                                          "between-entity-public-and-system-identifiers-else" => 1
                                                         },
                                   "parser_tests" => [
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE html PUBLIC>"
+                                                      "input" => "<!DOCTYPE html PUBLIC>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 22,
-                                                      "input" => "<!DOCTYPE html PUBLIC >"
+                                                      "input" => "<!DOCTYPE html PUBLIC >",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 21,
-                                                      "input" => "<!DOCTYPE html system>"
+                                                      "input" => "<!DOCTYPE html system>",
+                                                      "lang" => "HTML"
                                                     },
                                                     {
                                                       "index" => 23,
-                                                      "input" => "<!DOCTYPE html system  >"
+                                                      "input" => "<!DOCTYPE html system  >",
+                                                      "lang" => "HTML"
                                                     }
                                                   ]
                                 },
@@ -6168,10 +7501,12 @@ $WebHACC::_Errors = {
                                             "ja" => "\x{6587}\x{66f8}\x{578b}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                           },
                                "modules" => {
-                                            "Web::HTML::Parser::tokenizer" => 1
+                                            "Web::HTML::Parser::tokenizer" => 1,
+                                            "Web::XML::Parser::tokenizer" => 1
                                           },
                                "parser_error_names" => {
-                                                       "before-doctype-name-003e" => 1
+                                                       "before-doctype-name-003e" => 1,
+                                                       "before-doctype-name-005b" => 1
                                                      }
                              },
           "no PUBLIC literal" => {
@@ -6180,14 +7515,39 @@ $WebHACC::_Errors = {
                                             }
                                },
           "no XML decl" => {
+                           "default_level" => "m",
                            "desc" => {
-                                     "en" => "\n    <p>There should be an XML declaration in an XML document.</p>\n\n    <p>There should be a text declaration in an XML external entity.</p>\n  ",
-                                     "ja" => "\n    <p>XML \x{6587}\x{66f8}\x{306b}\x{306f} XML \x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>XML \x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306b}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n  "
+                                     "en" => "<p>The document entity should contain an XML declaration.\nThe other parsed entities should contain a text declaration.</p>",
+                                     "ja" => "<p>\x{6587}\x{66f8}\x{5b9f}\x{4f53}\x{306b}\x{306f} XML \x{5ba3}\x{8a00}\x{3092}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n\x{305d}\x{306e}\x{4ed6}\x{306e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{306b}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{3092}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
                                    },
+                           "layer" => "tokenizer",
                            "message" => {
                                         "en" => "There is no XML declaration",
-                                        "ja" => "xML \x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                      }
+                                        "ja" => "XML \x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                      },
+                           "modules" => {
+                                        "Web::XML::Parser::tokenizer" => 1
+                                      },
+                           "parser_tests" => [
+                                             {
+                                               "index" => 0,
+                                               "input" => "<p/>",
+                                               "lang" => "XML",
+                                               "level" => "s"
+                                             },
+                                             {
+                                               "index" => 0,
+                                               "input" => "  <p/>",
+                                               "lang" => "XML",
+                                               "level" => "s"
+                                             },
+                                             {
+                                               "index" => 0,
+                                               "input" => "abc<p/>",
+                                               "lang" => "XML",
+                                               "level" => "s"
+                                             }
+                                           ]
                          },
           "no arguments in" => {
                                "message" => {
@@ -6199,6 +7559,45 @@ $WebHACC::_Errors = {
                                                 "en" => "No <code>(</code> character for an argument\n  list is found."
                                               }
                                  },
+          "no attr default" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>There must be the default type keyword (<code>#IMPLIED</code>,\n<code>#REQUIRED</code>, or <code>#FIXED</code>) or the default value\nafter the declared type.</p>",
+                                         "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{306e}\x{5f8c}\x{306b}\x{306f}\x{65e2}\x{5b9a}\x{578b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} (<code>#IMPLIED</code>,\n<code>#REQUIRED</code>, <code>#FIXED</code>) \x{304b}\x{65e2}\x{5b9a}\x{5024}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                       },
+                               "layer" => "tokenization",
+                               "message" => {
+                                            "en" => "There is no attribute default",
+                                            "ja" => "\x{5c5e}\x{6027}\x{306e}\x{65e2}\x{5b9a}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          },
+                               "parser_error_names" => {
+                                                       "after-after-allowed-token-list-003e" => 1,
+                                                       "after-allowed-token-list-003e" => 1,
+                                                       "after-attlist-attribute-type-003e" => 1,
+                                                       "attlist-attribute-type-003e" => 1,
+                                                       "before-attlist-attribute-default-0022" => 1,
+                                                       "before-attlist-attribute-default-0025" => 1,
+                                                       "before-attlist-attribute-default-0027" => 1,
+                                                       "before-attlist-attribute-default-003e" => 1,
+                                                       "before-attlist-attribute-default-eof" => 1,
+                                                       "before-attlist-attribute-default-ws" => 1
+                                                     },
+                               "parser_tests" => [
+                                                 {
+                                                   "index" => 33,
+                                                   "input" => "<!DOCTYPE a[<!ATTLIST a b CDATA # >]></a>",
+                                                   "lang" => "XML"
+                                                 },
+                                                 {
+                                                   "index" => 31,
+                                                   "input" => "<!DOCTYPE a[<!ATTLIST a b CDATA>]></a>",
+                                                   "lang" => "XML"
+                                                 }
+                                               ]
+                             },
           "no attr local name" => {
                                   "message" => {
                                                "en" => "Attribute local name is missing."
@@ -6219,10 +7618,81 @@ $WebHACC::_Errors = {
                                                         "en" => "Attribute namespace wildcard <code>*</code>\n  is not followed by a <code>|</code> character."
                                                       }
                                          },
+          "no attr type" => {
+                            "default_level" => "m",
+                            "desc" => {
+                                      "en" => "<p>There must be the attribute type (a declared type or a group of\nallowed tokens) after the attribute name.</p>",
+                                      "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{306e}\x{5f8c}\x{306b}\x{5c5e}\x{6027}\x{578b} (\x{5ba3}\x{8a00}\x{578b}\x{304b}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{5b57}\x{53e5}\x{306e}\x{7fa4}) \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                    },
+                            "layer" => "tokenization",
+                            "message" => {
+                                         "en" => "There is no attribute type",
+                                         "ja" => "\x{5c5e}\x{6027}\x{578b}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                       },
+                            "modules" => {
+                                         "Web::XML::Parser::tokenizer" => 1
+                                       },
+                            "parser_error_names" => {
+                                                    "after-attlist-attribute-name-003e" => 1,
+                                                    "attlist-attribute-name-003e" => 1
+                                                  },
+                            "parser_tests" => [
+                                              {
+                                                "index" => 29,
+                                                "input" => "<!DOCTYPE x[<!ATTLIST foo bar>]><x/>",
+                                                "lang" => "XML"
+                                              }
+                                            ]
+                          },
           "no attr value" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>There must be attribute value in XML.</p>",
+                                       "ja" => "<p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5fc5}\x{9808}\x{3067}\x{3059}\x{3002}</p>"
+                                     },
+                             "layer" => "tokenization",
                              "message" => {
-                                          "en" => "Attribute value is missing."
-                                        }
+                                          "en" => "There is no attribute value",
+                                          "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                        },
+                             "modules" => {
+                                          "Web::XML::Parser::tokenizer" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "after-attribute-name-002f" => 1,
+                                                     "after-attribute-name-003e" => 1,
+                                                     "after-attribute-name-else" => 1,
+                                                     "after-attribute-name-upper" => 1,
+                                                     "attribute-name-002f" => 1,
+                                                     "attribute-name-003e" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 6,
+                                                 "input" => "<p foo/>",
+                                                 "lang" => "XML"
+                                               },
+                                               {
+                                                 "index" => 6,
+                                                 "input" => "<p foo></p>",
+                                                 "lang" => "XML"
+                                               },
+                                               {
+                                                 "index" => 7,
+                                                 "input" => "<p foo x=\"\"/>",
+                                                 "lang" => "XML"
+                                               },
+                                               {
+                                                 "index" => 7,
+                                                 "input" => "<p foo />",
+                                                 "lang" => "XML"
+                                               },
+                                               {
+                                                 "index" => 7,
+                                                 "input" => "<p foo >",
+                                                 "lang" => "XML"
+                                               }
+                                             ]
                            },
           "no character encoding declaration" => {
                                                  "desc" => {
@@ -6284,6 +7754,93 @@ $WebHACC::_Errors = {
                                                    "en" => "Local name part of the type selector (or \n  <code>*</code> for the universal selector) is missing."
                                                  }
                                     },
+          "no md def" => {
+                         "default_level" => "m",
+                         "desc" => {
+                                   "en" => "<p>Markup declarations other than <code>ATTLIST</code> must contain\nparameters after the name:\n  </p><dl class=\"switch\">\n  <dt><code>ENTITY</code> declaration\n  </dt><dd>Either a system identifier and optional public identifier and notation name,\n  or an entity value.\n  </dd><dt><code>NOTATION</code> declaration\n  </dt><dd>Public and/or system identifiers.\n  </dd><dt><code>ELEMENT</code> declaration\n  </dt><dd>The content model.\n  </dd></dl>",
+                                   "ja" => "<p><code>ATTLIST</code> \x{4ee5}\x{5916}\x{306e}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306f}\x{540d}\x{524d}\x{306e}\x{5f8c}\x{306b}\x{5f15}\x{6570}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\n  </p><dl class=\"switch\">\n  <dt><code>ENTITY</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{3068}\x{7701}\x{7565}\x{53ef}\x{80fd}\x{306a}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{8a18}\x{6cd5}\x{540d}\x{304b}\x{3001}\x{5b9f}\x{4f53}\x{5024}\x{304b}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3002}\n  </dd><dt><code>NOTATION</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3068}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{4e00}\x{65b9}\x{307e}\x{305f}\x{306f}\x{4e21}\x{65b9}\x{3002}\n  </dd><dt><code>ELEMENT</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{3002}\n  </dd></dl>"
+                                 },
+                         "layer" => "tokenization",
+                         "message" => {
+                                      "en" => "The markup declaration has no parameter",
+                                      "ja" => "\x{3053}\x{306e}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306b}\x{306f}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::XML::Parser::tokenizer" => 1
+                                    },
+                         "parser_error_names" => {
+                                                 "after-entity-name-003e" => 1,
+                                                 "after-notation-name-003e" => 1,
+                                                 "before-element-content-0029" => 1,
+                                                 "before-element-content-002a" => 1,
+                                                 "before-element-content-002b" => 1,
+                                                 "before-element-content-002c" => 1,
+                                                 "before-element-content-003e" => 1,
+                                                 "before-element-content-003f" => 1,
+                                                 "before-element-content-007c" => 1,
+                                                 "element-name-003e" => 1,
+                                                 "entity-name-003e" => 1,
+                                                 "notation-name-003e" => 1
+                                               }
+                       },
+          "no md name" => {
+                          "default_level" => "m",
+                          "desc" => {
+                                    "en" => "<p>A markup declaration must contain a name as its first parameter.</p>",
+                                    "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306b}\x{306f}\x{540d}\x{524d}\x{3092}\x{6700}\x{521d}\x{306e}\x{5f15}\x{6570}\x{3068}\x{3057}\x{3066}\x{542b}\x{3081}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                  },
+                          "layer" => "tokenization",
+                          "message" => {
+                                       "en" => "The markup declaration has no name",
+                                       "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{540d}\x{524d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                     },
+                          "modules" => {
+                                       "Web::XML::Parser::tokenizer" => 1
+                                     },
+                          "parser_error_names" => {
+                                                  "attlist-003e" => 1,
+                                                  "before-attlist-name-003e" => 1,
+                                                  "before-element-name-003e" => 1,
+                                                  "before-entity-name-003e" => 1,
+                                                  "before-notation-name-003e" => 1,
+                                                  "element-003e" => 1,
+                                                  "entity-003e" => 1,
+                                                  "notation-003e" => 1
+                                                },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 21,
+                                              "input" => "<!DOCTYPE a[<!ATTLIST>]><a/>",
+                                              "lang" => "XML"
+                                            }
+                                          ]
+                        },
+          "no notation name" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>There must be a notation name after the <code>NDATA</code> keyword</p>",
+                                          "ja" => "<p>\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} <code>NDATA</code> \x{306e}\x{5f8c}\x{306b}\x{8a18}\x{6cd5}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenization",
+                                "message" => {
+                                             "en" => "There is no notation name",
+                                             "ja" => "\x{8a18}\x{6cd5}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tokenizer" => 1
+                                           },
+                                "parser_error_names" => {
+                                                        "after-ndata-keyword-003e" => 1,
+                                                        "before-ndata-identifier-003e" => 1
+                                                      },
+                                "parser_tests" => [
+                                                  {
+                                                    "index" => 43,
+                                                    "input" => "<!DOCTYPE x[<!ENTITY foo SYSTEM \"aa\" NDATA >]><x/>",
+                                                    "lang" => "XML"
+                                                  }
+                                                ]
+                              },
           "no placeholder label option" => {
                                            "desc" => {
                                                      "en" => "\n    <p>If the <code>select</code> element represents a pull-down list\n    box control and the <code>required</code> attribute is specified,\n    there must be the placeholder label option.  That is, the first\n    element child of the <code>select</code> element must be an\n    <code>option</code> element whose value is the empty string.</p>\n  ",
@@ -6336,28 +7893,156 @@ $WebHACC::_Errors = {
                                     "ja" => "\x{53c2}\x{7167}\x{306e}\x{672b}\x{5c3e}\x{306b} <code>;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                   },
                        "modules" => {
-                                    "Web::HTML::Parser::tokenizer" => 1
+                                    "Web::HTML::Parser::tokenizer" => 1,
+                                    "Web::XML::Parser::tokenizer" => 1
                                   },
                        "parser_error_names" => {
+                                               "character-reference-0025" => 1,
+                                               "character-reference-003e" => 1,
                                                "character-reference-decimal-number-else" => 1,
-                                               "character-reference-hexadecimal-number-else" => 1
+                                               "character-reference-hexadecimal-number-else" => 1,
+                                               "character-reference-name-0022" => 1,
+                                               "character-reference-name-0023" => 1,
+                                               "character-reference-name-0025" => 1,
+                                               "character-reference-name-0026" => 1,
+                                               "character-reference-name-0027" => 1,
+                                               "character-reference-name-003c" => 1,
+                                               "character-reference-name-003d" => 1,
+                                               "character-reference-name-003e" => 1,
+                                               "character-reference-name-0060" => 1,
+                                               "character-reference-name-allowed-char" => 1,
+                                               "character-reference-name-ws" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0022" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0023" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0025" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0026" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0027" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-003c" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-003d" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-003e" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-0060" => 1,
+                                               "entity-value-double-quoted-state-character-reference-name-ws" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0022" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0023" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0025" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0026" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0027" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-003c" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-003d" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-003e" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-0060" => 1,
+                                               "entity-value-in-entity-state-character-reference-name-ws" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0022" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0023" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0025" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0026" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0027" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-003c" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-003d" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-003e" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-0060" => 1,
+                                               "entity-value-single-quoted-state-character-reference-name-ws" => 1,
+                                               "parameter-entity-name-in-dtd-0022" => 1,
+                                               "parameter-entity-name-in-dtd-0023" => 1,
+                                               "parameter-entity-name-in-dtd-0025" => 1,
+                                               "parameter-entity-name-in-dtd-0026" => 1,
+                                               "parameter-entity-name-in-dtd-0027" => 1,
+                                               "parameter-entity-name-in-dtd-003c" => 1,
+                                               "parameter-entity-name-in-dtd-003d" => 1,
+                                               "parameter-entity-name-in-dtd-003e" => 1,
+                                               "parameter-entity-name-in-dtd-0060" => 1,
+                                               "parameter-entity-name-in-dtd-ws" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0022" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0023" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0025" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0026" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0027" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-003c" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-003d" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-003e" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-0060" => 1,
+                                               "parameter-entity-name-in-entity-value-double-quoted-ws" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0022" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0023" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0025" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0026" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0027" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-003c" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-003d" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-003e" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-0060" => 1,
+                                               "parameter-entity-name-in-entity-value-in-entity-ws" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0022" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0023" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0025" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0026" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0027" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-003c" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-003d" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-003e" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-0060" => 1,
+                                               "parameter-entity-name-in-entity-value-single-quoted-ws" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0022" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0023" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0025" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0026" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0027" => 1,
+                                               "parameter-entity-name-in-markup-declaration-003c" => 1,
+                                               "parameter-entity-name-in-markup-declaration-003d" => 1,
+                                               "parameter-entity-name-in-markup-declaration-003e" => 1,
+                                               "parameter-entity-name-in-markup-declaration-0060" => 1,
+                                               "parameter-entity-name-in-markup-declaration-ws" => 1,
+                                               "parameter-entity-name-in-status-keyword-0022" => 1,
+                                               "parameter-entity-name-in-status-keyword-0023" => 1,
+                                               "parameter-entity-name-in-status-keyword-0025" => 1,
+                                               "parameter-entity-name-in-status-keyword-0026" => 1,
+                                               "parameter-entity-name-in-status-keyword-0027" => 1,
+                                               "parameter-entity-name-in-status-keyword-003c" => 1,
+                                               "parameter-entity-name-in-status-keyword-003d" => 1,
+                                               "parameter-entity-name-in-status-keyword-003e" => 1,
+                                               "parameter-entity-name-in-status-keyword-0060" => 1,
+                                               "parameter-entity-name-in-status-keyword-ws" => 1
                                              },
                        "parser_tests" => [
                                          {
                                            "index" => 20,
-                                           "input" => "<!DOCTYPE HTML>&#125abc;"
+                                           "input" => "<!DOCTYPE HTML>&#125abc;",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 22,
-                                           "input" => "<!DOCTYPE HTML>&#x125azabc;"
+                                           "input" => "<!DOCTYPE HTML>&#x125azabc;",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 19,
-                                           "input" => "<!DOCTYPE HTML>&amp**"
+                                           "input" => "<!DOCTYPE HTML>&amp**",
+                                           "lang" => "HTML"
                                          },
                                          {
                                            "index" => 28,
-                                           "input" => "<!DOCTYPE HTML><a href=\"&amp=aa\">"
+                                           "input" => "<!DOCTYPE HTML><a href=\"&amp=aa\">",
+                                           "lang" => "HTML"
+                                         },
+                                         {
+                                           "index" => 13,
+                                           "input" => "<p x=\"aa&copy=\"/>",
+                                           "lang" => "XML"
+                                         },
+                                         {
+                                           "index" => 13,
+                                           "input" => "<p x=\"aa&copy%\"/>",
+                                           "lang" => "XML"
+                                         },
+                                         {
+                                           "index" => 13,
+                                           "input" => "<p x=\"aa&copy<\"/>",
+                                           "lang" => "XML"
+                                         },
+                                         {
+                                           "index" => 23,
+                                           "input" => "<!DOCTYPE x [<!ENTITY %#>]><x/>",
+                                           "lang" => "XML"
                                          }
                                        ]
                      },
@@ -6451,6 +8136,61 @@ $WebHACC::_Errors = {
                                                  "ja" => "\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{8981}\x{7d20}\x{304c}\x{898b}\x{3064}\x{304b}\x{3089}\x{306a}\x{3044}\x{304b}\x{3001}\n  <code>object</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                }
                                   },
+          "no root element" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>There must be the root element's start tag in an XML document.</p>",
+                                         "ja" => "<p>XML \x{6587}\x{66f8}\x{306b}\x{306f}\x{6839}\x{8981}\x{7d20}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                       },
+                               "layer" => "tree-construction",
+                               "message" => {
+                                            "en" => "There is no root element",
+                                            "ja" => "\x{6839}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tree_constructor" => 1
+                                          },
+                               "parser_error_names" => {
+                                                       "before-root-element-eof" => 1
+                                                     },
+                               "parser_tests" => [
+                                                 {
+                                                   "index" => 0,
+                                                   "input" => "",
+                                                   "lang" => "XML"
+                                                 },
+                                                 {
+                                                   "index" => 0,
+                                                   "input" => "",
+                                                   "lang" => "XML"
+                                                 }
+                                               ]
+                             },
+          "no s after target" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>There must be a white space character between the target and data of\na processing instruction.</p>",
+                                           "ja" => "<p>\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3068}\x{30c7}\x{30fc}\x{30bf}\x{306e}\x{9593}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                         },
+                                 "layer" => "tokenization",
+                                 "message" => {
+                                              "en" => "There is no space between the processing instruction's target and data",
+                                              "ja" => "\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3068}\x{30c7}\x{30fc}\x{30bf}\x{306e}\x{9593}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            },
+                                 "modules" => {
+                                              "Web::XML::Parser::tokenizer" => 1
+                                            },
+                                 "parser_error_names" => {
+                                                         "pi-target-question-else" => 1
+                                                       },
+                                 "parser_tests" => [
+                                                   {
+                                                     "index" => 6,
+                                                     "input" => "<?hoge??>",
+                                                     "lang" => "XML"
+                                                   }
+                                                 ]
+                               },
           "no sequence gt" => {
                               "message" => {
                                            "en" => "A <code>sequence&lt;&gt;</code> type is not\n  terminated by a <code>&gt;</code> character."
@@ -6502,7 +8242,8 @@ $WebHACC::_Errors = {
                                                       "ja" => "<p>\x{5c5e}\x{6027}\x{306e}\x{9593}\x{3084}\x{6700}\x{521d}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304c}1\x{3064}\x{4ee5}\x{4e0a}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+000C</code> \x{3092} XML \x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{6587}\x{5b57} <code>U+0085</code> \x{3084}\x{6587}\x{5b57} <code>U+202B</code>\n    \x{3092} HTML \x{3084} XML 1.0 \x{306e}\x{6587}\x{66f8}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{524d}\x{306e}\x{7a7a}\x{767d}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                     },
                                          "modules" => {
-                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                      "Web::HTML::Parser::tokenizer" => 1,
+                                                      "Web::XML::Parser::tokenizer" => 1
                                                     },
                                          "parser_error_names" => {
                                                                  "after-attribute-value-quoted-else" => 1
@@ -6510,7 +8251,13 @@ $WebHACC::_Errors = {
                                          "parser_tests" => [
                                                            {
                                                              "index" => 24,
-                                                             "input" => "<!DOCTYPE html><p foo=\"\"bar=\"\">"
+                                                             "input" => "<!DOCTYPE html><p foo=\"\"bar=\"\">",
+                                                             "lang" => "HTML"
+                                                           },
+                                                           {
+                                                             "index" => 19,
+                                                             "input" => "<?xml version=\"1.0\"encoding=\"utf-8\"?><a/>",
+                                                             "lang" => "XML"
                                                            }
                                                          ]
                                        },
@@ -6518,7 +8265,7 @@ $WebHACC::_Errors = {
                                        "default_level" => "m",
                                        "desc" => {
                                                  "en" => "<p>There must be one or more white space characters between the\nkeyword <code>PUBLIC</code> or <code>SYSTEM</code> and the quoted\nstring, and between two quoted strings.</p>",
-                                                 "ja" => "<p>\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9} <code>PUBLIC</code> \x{3084} <code>SYSTEM</code>\n\x{3068}\x{305d}\x{306e}\x{5f8c}\x{306e}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306e}\x{9593}\x{3084}\x{3001}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}2\x{3064}\x{306e}\x{9593}\x{306b}\x{306f}\x{3001}\n1\x{3064}\x{4ee5}\x{4e0a}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                                 "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{5f15}\x{6570}\x{3067}\x{3042}\x{308b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{3084}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{3001}\x{7fa4}\x{306e}\x{9593}\x{306f}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{7a7a}\n\x{767d}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                                },
                                        "layer" => "tokenization",
                                        "message" => {
@@ -6526,7 +8273,8 @@ $WebHACC::_Errors = {
                                                     "ja" => "\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306e}\x{524d}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                   },
                                        "modules" => {
-                                                    "Web::HTML::Parser::tokenizer" => 1
+                                                    "Web::HTML::Parser::tokenizer" => 1,
+                                                    "Web::XML::Parser::tokenizer" => 1
                                                   },
                                        "parser_error_names" => {
                                                                "after-doctype-public-identifier-0022" => 1,
@@ -6539,27 +8287,108 @@ $WebHACC::_Errors = {
                                        "parser_tests" => [
                                                          {
                                                            "index" => 21,
-                                                           "input" => "<!DOCTYPE html PUBLIC\"abc\">"
+                                                           "input" => "<!DOCTYPE html PUBLIC\"abc\">",
+                                                           "lang" => "HTML"
                                                          },
                                                          {
                                                            "index" => 21,
-                                                           "input" => "<!DOCTYPE html SYSTEM\"\">"
+                                                           "input" => "<!DOCTYPE html SYSTEM\"\">",
+                                                           "lang" => "HTML"
                                                          },
                                                          {
                                                            "index" => 24,
-                                                           "input" => "<!DOCTYPE html PUBLIC \"\"\"\">"
+                                                           "input" => "<!DOCTYPE html PUBLIC \"\"\"\">",
+                                                           "lang" => "HTML"
                                                          },
                                                          {
                                                            "index" => 21,
-                                                           "input" => "<!DOCTYPE html PUBLIC'abc'>"
+                                                           "input" => "<!DOCTYPE html PUBLIC'abc'>",
+                                                           "lang" => "HTML"
                                                          },
                                                          {
                                                            "index" => 21,
-                                                           "input" => "<!DOCTYPE html SYSTEM''>"
+                                                           "input" => "<!DOCTYPE html SYSTEM''>",
+                                                           "lang" => "HTML"
                                                          },
                                                          {
                                                            "index" => 27,
-                                                           "input" => "<!DOCTYPE html PUBLIC \"abc\"'http'>"
+                                                           "input" => "<!DOCTYPE html PUBLIC \"abc\"'http'>",
+                                                           "lang" => "HTML"
+                                                         }
+                                                       ]
+                                     },
+          "no space between params" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>There must be one or more white space characters between markup\ndeclaration parameters such as keywords, literals, and groups.</p>",
+                                                 "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{5f15}\x{6570}\x{3067}\x{3042}\x{308b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{3084}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{5217}\x{3001}\x{7fa4}\x{306e}\x{9593}\x{306f}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{7a7a}\x{767d}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                               },
+                                       "layer" => "tokenization",
+                                       "message" => {
+                                                    "en" => "There is no space between markup declaration parameters",
+                                                    "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{5f15}\x{6570}\x{306e}\x{9593}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::Parser::tokenizer" => 1
+                                                  },
+                                       "parser_error_names" => {
+                                                               "after-allowed-token-list-else" => 1,
+                                                               "after-attlist-default-value-else" => 1,
+                                                               "after-entity-public-identifier-0022" => 1,
+                                                               "after-entity-public-identifier-0027" => 1,
+                                                               "after-entity-public-keyword-0022" => 1,
+                                                               "after-entity-public-keyword-0027" => 1,
+                                                               "after-entity-system-identifier-else" => 1,
+                                                               "after-entity-system-keyword-0022" => 1,
+                                                               "after-entity-system-keyword-0027" => 1,
+                                                               "after-ndata-keyword-else" => 1,
+                                                               "after-notation-public-identifier-0022" => 1,
+                                                               "after-notation-public-identifier-0027" => 1,
+                                                               "after-notation-public-keyword-0022" => 1,
+                                                               "after-notation-public-keyword-0027" => 1,
+                                                               "after-notation-public-keyword-else" => 1,
+                                                               "after-notation-system-keyword-0022" => 1,
+                                                               "after-notation-system-keyword-0027" => 1,
+                                                               "after-notation-system-keyword-else" => 1,
+                                                               "attlist-attribute-default-0022" => 1,
+                                                               "attlist-attribute-default-0027" => 1,
+                                                               "attlist-attribute-name-0028" => 1,
+                                                               "attlist-attribute-type-0022" => 1,
+                                                               "attlist-attribute-type-0023" => 1,
+                                                               "attlist-attribute-type-0027" => 1,
+                                                               "attlist-attribute-type-0028" => 1,
+                                                               "attlist-else" => 1,
+                                                               "element-else" => 1,
+                                                               "element-name-0028" => 1,
+                                                               "entity-else" => 1,
+                                                               "entity-name-0022" => 1,
+                                                               "entity-name-0027" => 1,
+                                                               "notation-else" => 1,
+                                                               "parameter-entity-declaration-or-reference-0022" => 1,
+                                                               "parameter-entity-declaration-or-reference-0025" => 1,
+                                                               "parameter-entity-declaration-or-reference-0026" => 1,
+                                                               "parameter-entity-declaration-or-reference-0027" => 1,
+                                                               "parameter-entity-declaration-or-reference-003c" => 1,
+                                                               "parameter-entity-declaration-or-reference-003d" => 1,
+                                                               "parameter-entity-declaration-or-reference-003e" => 1,
+                                                               "parameter-entity-declaration-or-reference-0060" => 1,
+                                                               "parameter-entity-declaration-or-reference-ws" => 1
+                                                             },
+                                       "parser_tests" => [
+                                                         {
+                                                           "index" => 30,
+                                                           "input" => "<!DOCTYPE x [<!ATTLIST a b (c)\"d\">]><x/>",
+                                                           "lang" => "XML"
+                                                         },
+                                                         {
+                                                           "index" => 22,
+                                                           "input" => "<!DOCTYPE x [<!ENTITY%=>]><x/>",
+                                                           "lang" => "XML"
+                                                         },
+                                                         {
+                                                           "index" => 22,
+                                                           "input" => "<!DOCTYPE x [<!ENTITY%<>]><x/>",
+                                                           "lang" => "XML"
                                                          }
                                                        ]
                                      },
@@ -6691,7 +8520,8 @@ $WebHACC::_Errors = {
                                                                "ja" => "\x{3053}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{524d}\x{3067} <code><var>{text}</var></code> \x{8981}\x{7d20}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                                              },
                                                   "modules" => {
-                                                               "Web::HTML::Parser::tree_constructor" => 1
+                                                               "Web::HTML::Parser::tree_constructor" => 1,
+                                                               "Web::XML::Parser::tree_constructor" => 1
                                                              },
                                                   "parser_error_names" => {
                                                                           "-steps-close-a-p-element" => 1,
@@ -6709,6 +8539,7 @@ $WebHACC::_Errors = {
                                                                           "in-caption-end-caption-2" => 1,
                                                                           "in-caption-end-table-2" => 1,
                                                                           "in-cell-end-td-th-2" => 1,
+                                                                          "in-element-end-else-2" => 1,
                                                                           "in-foreign-content-end-else" => 1,
                                                                           "in-foreign-content-end-script" => 1,
                                                                           "in-head-end-template-2" => 1
@@ -6717,110 +8548,135 @@ $WebHACC::_Errors = {
                                                                     {
                                                                       "index" => 26,
                                                                       "input" => "<!DOCTYPE HTML><div><span></div>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "div"
                                                                     },
                                                                     {
                                                                       "index" => 30,
                                                                       "input" => "<!DOCTYPE HTML><marquee><span></marquee>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "marquee"
                                                                     },
                                                                     {
                                                                       "index" => 26,
                                                                       "input" => "<!DOCTYPE HTML><body><div></body>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "div",
                                                                       "value" => "body"
                                                                     },
                                                                     {
                                                                       "index" => 31,
                                                                       "input" => "<!DOCTYPE HTML><body><dt><span></dt>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "dt"
                                                                     },
                                                                     {
                                                                       "index" => 31,
                                                                       "input" => "<!DOCTYPE HTML><body><h3><span></h3>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "h3"
                                                                     },
                                                                     {
                                                                       "index" => 33,
                                                                       "input" => "<!DOCTYPE HTML><body><form><span></form>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "form"
                                                                     },
                                                                     {
                                                                       "index" => 43,
                                                                       "input" => "<!DOCTYPE HTML><body><template><form><span></form></template>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "form"
                                                                     },
                                                                     {
                                                                       "index" => 20,
                                                                       "input" => "<!DOCTYPE HTML><div></html>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "div",
                                                                       "value" => "html"
                                                                     },
                                                                     {
                                                                       "index" => 33,
                                                                       "input" => "<!DOCTYPE HTML><body><hoge><span></hoge>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "hoge"
                                                                     },
                                                                     {
                                                                       "index" => 25,
                                                                       "input" => "<!DOCTYPE HTML><li><span></li>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "li"
                                                                     },
                                                                     {
                                                                       "index" => 37,
                                                                       "input" => "<!DOCTYPE HTML><table><caption><span></caption>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "caption"
                                                                     },
                                                                     {
                                                                       "index" => 37,
                                                                       "input" => "<!DOCTYPE HTML><table><caption><span></table>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "table"
                                                                     },
                                                                     {
                                                                       "index" => 36,
                                                                       "input" => "<!DOCTYPE HTML><table><tr><td><span></td>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "td"
                                                                     },
                                                                     {
                                                                       "index" => 26,
                                                                       "input" => "<!DOCTYPE HTML><svg><g><h></g>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "h",
                                                                       "value" => "g"
                                                                     },
                                                                     {
                                                                       "index" => 31,
                                                                       "input" => "<!DOCTYPE HTML><svg><script><h></script>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "h",
                                                                       "value" => "script"
                                                                     },
                                                                     {
                                                                       "index" => 37,
                                                                       "input" => "<!DOCTYPE HTML><template><meta><hoge></template>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "hoge",
                                                                       "value" => "template"
                                                                     },
                                                                     {
                                                                       "index" => 24,
                                                                       "input" => "<!DOCTYPE HTML><p><span><p>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "p"
                                                                     },
                                                                     {
                                                                       "index" => 36,
                                                                       "input" => "<!DOCTYPE HTML><table><tr><td><span><td>",
+                                                                      "lang" => "HTML",
                                                                       "text" => "span",
                                                                       "value" => "td"
+                                                                    },
+                                                                    {
+                                                                      "index" => 6,
+                                                                      "input" => "<p><q></p>",
+                                                                      "lang" => "XML",
+                                                                      "text" => "q",
+                                                                      "value" => "p"
                                                                     }
                                                                   ],
                                                   "text" => [
@@ -6896,31 +8752,38 @@ $WebHACC::_Errors = {
                                 "parser_tests" => [
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML PUBLIC \"hoge\">"
+                                                    "input" => "<!DOCTYPE HTML PUBLIC \"hoge\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML PUBLIC \"hoge\" \"fuga\">"
+                                                    "input" => "<!DOCTYPE HTML PUBLIC \"hoge\" \"fuga\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"fa\">"
+                                                    "input" => "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"fa\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML SYSTEM \"hoge\">"
+                                                    "input" => "<!DOCTYPE HTML SYSTEM \"hoge\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML SYSTEM \"http://www.w3.org/TR/html4/strict.dtd\">"
+                                                    "input" => "<!DOCTYPE HTML SYSTEM \"http://www.w3.org/TR/html4/strict.dtd\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
+                                                    "input" => "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">",
+                                                    "lang" => "HTML"
                                                   },
                                                   {
                                                     "index" => 0,
-                                                    "input" => "<!DOCTYPE HTML system \"\">"
+                                                    "input" => "<!DOCTYPE HTML system \"\">",
+                                                    "lang" => "HTML"
                                                   }
                                                 ]
                               },
@@ -6941,7 +8804,8 @@ $WebHACC::_Errors = {
                                           "parser_tests" => [
                                                             {
                                                               "index" => 0,
-                                                              "input" => "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">"
+                                                              "input" => "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">",
+                                                              "lang" => "HTML"
                                                             }
                                                           ]
                                         },
@@ -7067,7 +8931,8 @@ $WebHACC::_Errors = {
                                        "ja" => "\x{30bf}\x{30b0}\x{3084}\x{5ba3}\x{8a00}\x{306e}\x{9014}\x{4e2d}\x{3067}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{304c}\x{9014}\x{5207}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                      },
                           "modules" => {
-                                       "Web::HTML::Parser::tokenizer" => 1
+                                       "Web::HTML::Parser::tokenizer" => 1,
+                                       "Web::XML::Parser::tokenizer" => 1
                                      },
                           "parser_error_names" => {
                                                   "EOF" => 1
@@ -7085,10 +8950,12 @@ $WebHACC::_Errors = {
                                         "ja" => "<code>NULL</code> \x{6587}\x{5b57}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}"
                                       },
                            "modules" => {
-                                        "Web::HTML::Parser::tree_constructor" => 1
+                                        "Web::HTML::Parser::tree_constructor" => 1,
+                                        "Web::XML::Parser::tree_constructor" => 1
                                       },
                            "parser_error_names" => {
                                                    "in-body-null" => 1,
+                                                   "in-element-null" => 1,
                                                    "in-foreign-content-null" => 1,
                                                    "in-select-null" => 1,
                                                    "in-table-text-null" => 1
@@ -7096,19 +8963,23 @@ $WebHACC::_Errors = {
                            "parser_tests" => [
                                              {
                                                "index" => 21,
-                                               "input" => "<!DOCTYPE HTML><body>\0"
+                                               "input" => "<!DOCTYPE HTML><body>\0",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "index" => 26,
-                                               "input" => "<!DOCTYPE HTML><body><svg>\0"
+                                               "input" => "<!DOCTYPE HTML><body><svg>\0",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "index" => 23,
-                                               "input" => "<!DOCTYPE HTML><select>\0"
+                                               "input" => "<!DOCTYPE HTML><select>\0",
+                                               "lang" => "HTML"
                                              },
                                              {
                                                "index" => 22,
-                                               "input" => "<!DOCTYPE HTML><table>\0"
+                                               "input" => "<!DOCTYPE HTML><table>\0",
+                                               "lang" => "HTML"
                                              }
                                            ]
                          },
@@ -7124,7 +8995,8 @@ $WebHACC::_Errors = {
                                                   "ja" => "\x{6ce8}\x{91c8}\x{304c} <code>&gt;</code> \x{306b}\x{3088}\x{3063}\x{3066}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                                 },
                                      "modules" => {
-                                                  "Web::HTML::Parser::tokenizer" => 1
+                                                  "Web::HTML::Parser::tokenizer" => 1,
+                                                  "Web::XML::Parser::tokenizer" => 1
                                                 },
                                      "parser_error_names" => {
                                                              "comment-start-003e" => 1,
@@ -7133,11 +9005,13 @@ $WebHACC::_Errors = {
                                      "parser_tests" => [
                                                        {
                                                          "index" => 19,
-                                                         "input" => "<!DOCTYPE HTML><!-->"
+                                                         "input" => "<!DOCTYPE HTML><!-->",
+                                                         "lang" => "HTML"
                                                        },
                                                        {
                                                          "index" => 20,
-                                                         "input" => "<!DOCTYPE HTML><!--->"
+                                                         "input" => "<!DOCTYPE HTML><!--->",
+                                                         "lang" => "HTML"
                                                        }
                                                      ]
                                    },
@@ -7153,7 +9027,8 @@ $WebHACC::_Errors = {
                                                       "ja" => "\x{6ce8}\x{91c8}\x{304c} <code>--</code> \x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{307e}\x{3059}"
                                                     },
                                          "modules" => {
-                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                      "Web::HTML::Parser::tokenizer" => 1,
+                                                      "Web::XML::Parser::tokenizer" => 1
                                                     },
                                          "parser_error_names" => {
                                                                  "comment-end-0021" => 1,
@@ -7163,15 +9038,18 @@ $WebHACC::_Errors = {
                                          "parser_tests" => [
                                                            {
                                                              "index" => 22,
-                                                             "input" => "<!DOCTYPE HTML><!--a--!>"
+                                                             "input" => "<!DOCTYPE HTML><!--a--!>",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 22,
-                                                             "input" => "<!DOCTYPE HTML><!--a--->"
+                                                             "input" => "<!DOCTYPE HTML><!--a--->",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 22,
-                                                             "input" => "<!DOCTYPE HTML><!--a--b-->"
+                                                             "input" => "<!DOCTYPE HTML><!--a--b-->",
+                                                             "lang" => "HTML"
                                                            }
                                                          ]
                                        },
@@ -7201,31 +9079,37 @@ $WebHACC::_Errors = {
                                                              {
                                                                "index" => 18,
                                                                "input" => "<!DOCTYPE HTML><a><a>",
+                                                               "lang" => "HTML",
                                                                "value" => "a"
                                                              },
                                                              {
                                                                "index" => 21,
                                                                "input" => "<!DOCTYPE HTML><form><form>",
+                                                               "lang" => "HTML",
                                                                "value" => "form"
                                                              },
                                                              {
                                                                "index" => 23,
                                                                "input" => "<!DOCTYPE HTML><button><button>",
+                                                               "lang" => "HTML",
                                                                "value" => "button"
                                                              },
                                                              {
                                                                "index" => 21,
                                                                "input" => "<!DOCTYPE HTML><nobr><nobr>",
+                                                               "lang" => "HTML",
                                                                "value" => "nobr"
                                                              },
                                                              {
                                                                "index" => 23,
                                                                "input" => "<!DOCTYPE HTML><select><select>",
+                                                               "lang" => "HTML",
                                                                "value" => "select"
                                                              },
                                                              {
                                                                "index" => 22,
                                                                "input" => "<!DOCTYPE HTML><table><table>",
+                                                               "lang" => "HTML",
                                                                "value" => "table"
                                                              }
                                                            ],
@@ -7246,38 +9130,49 @@ $WebHACC::_Errors = {
                                                       "ja" => "\x{5ba3}\x{8a00}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{308b}\x{524d}\x{306b}\x{9589}\x{3058}\x{5f15}\x{7528}\x{7b26}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                     },
                                          "modules" => {
-                                                      "Web::HTML::Parser::tokenizer" => 1
+                                                      "Web::HTML::Parser::tokenizer" => 1,
+                                                      "Web::XML::Parser::tokenizer" => 1
                                                     },
                                          "parser_error_names" => {
                                                                  "doctype-public-identifier-double-quoted-003e" => 1,
                                                                  "doctype-public-identifier-single-quoted-003e" => 1,
                                                                  "doctype-system-identifier-double-quoted-003e" => 1,
-                                                                 "doctype-system-identifier-single-quoted-003e" => 1
+                                                                 "doctype-system-identifier-single-quoted-003e" => 1,
+                                                                 "entity-public-identifier-double-quoted-003e" => 1,
+                                                                 "entity-public-identifier-single-quoted-003e" => 1,
+                                                                 "notation-public-identifier-double-quoted-003e" => 1,
+                                                                 "notation-public-identifier-single-quoted-003e" => 1
                                                                },
                                          "parser_tests" => [
                                                            {
                                                              "index" => 23,
-                                                             "input" => "<!DOCTYPE HTML PUBLIC \">\">"
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \">\">",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 23,
-                                                             "input" => "<!DOCTYPE HTML SYSTEM \">\">"
+                                                             "input" => "<!DOCTYPE HTML SYSTEM \">\">",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 26,
-                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" \">\">"
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" \">\">",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 23,
-                                                             "input" => "<!DOCTYPE HTML PUBLIC '>'>"
+                                                             "input" => "<!DOCTYPE HTML PUBLIC '>'>",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 23,
-                                                             "input" => "<!DOCTYPE HTML SYSTEM '>'>"
+                                                             "input" => "<!DOCTYPE HTML SYSTEM '>'>",
+                                                             "lang" => "HTML"
                                                            },
                                                            {
                                                              "index" => 26,
-                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" '>'>"
+                                                             "input" => "<!DOCTYPE HTML PUBLIC \"\" '>'>",
+                                                             "lang" => "HTML"
                                                            }
                                                          ]
                                        },
@@ -7293,7 +9188,8 @@ $WebHACC::_Errors = {
                                                 "ja" => "<code>=</code> \x{306e}\x{524d}\x{306b}\x{5c5e}\x{6027}\x{540d}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               },
                                    "modules" => {
-                                                "Web::HTML::Parser::tokenizer" => 1
+                                                "Web::HTML::Parser::tokenizer" => 1,
+                                                "Web::XML::Parser::tokenizer" => 1
                                               },
                                    "parser_error_names" => {
                                                            "before-attribute-name-003d" => 1
@@ -7301,7 +9197,8 @@ $WebHACC::_Errors = {
                                    "parser_tests" => [
                                                      {
                                                        "index" => 18,
-                                                       "input" => "<!DOCTYPE html><p =foo>"
+                                                       "input" => "<!DOCTYPE html><p =foo>",
+                                                       "lang" => "HTML"
                                                      }
                                                    ]
                                  },
@@ -7315,16 +9212,16 @@ $WebHACC::_Errors = {
                                             "ja" => "\x{3053}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                           }
                              },
-          "period:not 1<=2" => {
-                               "desc" => {
-                                         "en" => "\n    <p>The start date of the period string must be less than or equal\n    to the end date.</p>\n  ",
-                                         "ja" => "\n    <p>\x{671f}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{958b}\x{59cb}\x{65e5}\x{6642}\x{306f}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{5024}\x{3067}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                       },
-                               "message" => {
-                                            "en" => "The start date is greater than the end date",
-                                            "ja" => "\x{958b}\x{59cb}\x{65e5}\x{6642}\x{304c}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{304f}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                          }
-                             },
+          "period:not 1&lt;=2" => {
+                                  "desc" => {
+                                            "en" => "\n    <p>The start date of the period string must be less than or equal\n    to the end date.</p>\n  ",
+                                            "ja" => "\n    <p>\x{671f}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{958b}\x{59cb}\x{65e5}\x{6642}\x{306f}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{5024}\x{3067}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          },
+                                  "message" => {
+                                               "en" => "The start date is greater than the end date",
+                                               "ja" => "\x{958b}\x{59cb}\x{65e5}\x{6642}\x{304c}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{304f}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             }
+                                },
           "pi in pe in decl" => {
                                 "desc" => {
                                           "en" => "\n    <p>Processing instructions are not allowed in an external\n    parameter entity referenced within a markup declaration (outside\n    of literals).</p>\n  ",
@@ -7355,11 +9252,13 @@ $WebHACC::_Errors = {
                    "parser_tests" => [
                                      {
                                        "index" => 1,
-                                       "input" => "<?xml version=\"1.0\"?><!DOCTYPE HTML>"
+                                       "input" => "<?xml version=\"1.0\"?><!DOCTYPE HTML>",
+                                       "lang" => "HTML"
                                      },
                                      {
                                        "index" => 16,
-                                       "input" => "<!DOCTYPE HTML><?php print (\"Hello!\")?>"
+                                       "input" => "<!DOCTYPE HTML><?php print (\"Hello!\")?>",
+                                       "lang" => "HTML"
                                      }
                                    ]
                  },
@@ -7466,14 +9365,33 @@ $WebHACC::_Errors = {
                                                  }
                                     },
           "ref outside of root element" => {
+                                           "default_level" => "m",
                                            "desc" => {
-                                                     "en" => "\n    <p>General entity references are only allowed in attribute values\n    and in element contents.  It cannot be used outside of the root\n    element's start and end tags.</p>\n  ",
-                                                     "ja" => "\n    <p>\x{4e00}\x{822c}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{3001}\x{5c5e}\x{6027}\x{5024}\x{3084}\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{306e}\x{4e2d}\x{3067}\x{306e}\x{307f}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}\n    \x{6839}\x{8981}\x{7d20}\x{306e}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3068}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5916}\x{5074}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                     "en" => "<p>Character or entity reference must be included in an element or\nan attribute value.</p>",
+                                                     "ja" => "<p>\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3084}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306f}\x{8981}\x{7d20}\x{3084}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{4e2d}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                    },
+                                           "layer" => "entity",
                                            "message" => {
-                                                        "en" => "An general entity reference is used outside\n  of the root element",
-                                                        "ja" => "\x{6839}\x{8981}\x{7d20}\x{5916}\x{3067}\x{4e00}\x{822c}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                      }
+                                                        "en" => "There is a reference outside of the root element",
+                                                        "ja" => "\x{6839}\x{8981}\x{7d20}\x{306e}\x{5916}\x{306b}\x{53c2}\x{7167}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::Parser::tokenizer" => 1
+                                                      },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 0,
+                                                               "input" => "&amp;",
+                                                               "lang" => "XML",
+                                                               "value" => "&amp;"
+                                                             },
+                                                             {
+                                                               "index" => 4,
+                                                               "input" => "<a/>&hoge;",
+                                                               "lang" => "XML",
+                                                               "value" => "&hoge;"
+                                                             }
+                                                           ]
                                          },
           "referenced attr not defined" => {
                                            "message" => {
@@ -7623,16 +9541,16 @@ $WebHACC::_Errors = {
                                                       "ja" => "\x{5916}\x{90e8}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{8aac}\x{660e}\x{304c}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                     }
                                        },
-          "script:nested <script>" => {
-                                      "desc" => {
-                                                "en" => "The <code>script</code> element contains\n  a <code>script</code> start tag as text",
-                                                "ja" => "<code>script</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\n  <code>script</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                              },
-                                      "message" => {
-                                                   "en" => "\n    <p>The <code>script</code> element cannot contain the\n    string <code>&lt;script</code> followed by a space character,\n    <code>/</code>, or <code>&gt;</code> as text.</p>\n  ",
-                                                   "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066} <code>&lt;script</code>\n    \x{306e}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304b} <code>/</code> \x{304b} <code>&gt;</code> \x{304c}\x{7d9a}\x{304f}\x{6587}\x{5b57}\x{5217}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                 }
-                                    },
+          "script:nested &lt;script>" => {
+                                         "desc" => {
+                                                   "en" => "The <code>script</code> element contains\n  a <code>script</code> start tag as text",
+                                                   "ja" => "<code>script</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\n  <code>script</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                 },
+                                         "message" => {
+                                                      "en" => "\n    <p>The <code>script</code> element cannot contain the\n    string <code>&lt;script</code> followed by a space character,\n    <code>/</code>, or <code>&gt;</code> as text.</p>\n  ",
+                                                      "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066} <code>&lt;script</code>\n    \x{306e}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304b} <code>/</code> \x{304b} <code>&gt;</code> \x{304c}\x{7d9a}\x{304f}\x{6587}\x{5b57}\x{5217}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    }
+                                       },
           "second node element" => {
                                    "desc" => {
                                              "en" => "\n    <p>In this context, there can be only an RDF/XML node element.</p>\n  ",
@@ -7644,14 +9562,29 @@ $WebHACC::_Errors = {
                                               }
                                  },
           "second root element" => {
+                                   "default_level" => "m",
                                    "desc" => {
-                                             "en" => "\n    <p>There must be only one child element in the document.  There\n    cannot be any start or end tag after the end tag of the root\n    element.</p>\n  ",
-                                             "ja" => "\n    <p>\x{6587}\x{66f8}\x{306e}\x{5b50}\x{8981}\x{7d20}\x{306f}1\x{3064}\x{3060}\x{3051}\x{3057}\x{304b}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{6839}\x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{3084}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                             "en" => "<p>There must be only one root element.  No start tag is allowed\nafter the end tag of the root element.</p>",
+                                             "ja" => "<p>\x{6839}\x{8981}\x{7d20}\x{306f}1\x{3064}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}\x{6839}\x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                            },
+                                   "layer" => "tree-construction",
                                    "message" => {
-                                                "en" => "There is a start tag after the end tag\n  of the root element",
-                                                "ja" => "\x{6839}\x{8981}\x{7d20}\x{306e}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306e}\x{5f8c}\x{306b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                              }
+                                                "en" => "There is an element after the root element",
+                                                "ja" => "\x{6839}\x{8981}\x{7d20}\x{306e}\x{5f8c}\x{306b}\x{5225}\x{306e}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::XML::Parser::tree_constructor" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "after-root-element-start-else" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 4,
+                                                       "input" => "<p/><p>",
+                                                       "lang" => "XML"
+                                                     }
+                                                   ]
                                  },
           "selectors:id:empty" => {
                                   "desc" => {
@@ -7918,14 +9851,33 @@ $WebHACC::_Errors = {
                                             }
                                },
           "stop processing" => {
+                               "default_level" => "m",
                                "desc" => {
-                                         "en" => "\n    <p>As there is an error in DTD, or an external entity can't be\n    retrieved, processing of markup declarations has been stopped.</p>\n  ",
-                                         "ja" => "\n    <p>DTD \x{4e2d}\x{306b}\x{8aa4}\x{308a}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\x{3042}\x{308b}\x{3044}\x{306f}\x{53d6}\x{5f97}\x{3067}\x{304d}\x{306a}\x{3044}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\n    \x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{306f}\x{505c}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n  "
+                                         "en" => "<p>Since there is a reference whose entity cannot be read and\nprocessed, further processing of markup declarations in the DTD is\nsuppressed.</p>",
+                                         "ja" => "<p>\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5b9f}\x{4f53}\x{3092}\x{8aad}\x{3093}\x{3067}\x{51e6}\x{7406}\x{3067}\x{304d}\x{306a}\x{304b}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\x{4ee5}\x{5f8c}\x{306e} DTD\n\x{4e2d}\x{306e}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{306f}\x{884c}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                        },
+                               "layer" => "entity",
                                "message" => {
-                                            "en" => "Processing of markup declarations has been\n  stopped",
-                                            "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{304c}\x{505c}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
-                                          }
+                                            "en" => "Processing of markup declarations is suppressed due to unread\nentity reference",
+                                            "ja" => "\x{8aad}\x{3081}\x{306a}\x{3044}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{3092}\x{505c}\x{6b62}\x{3057}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          },
+                               "parser_tests" => [
+                                                 {
+                                                   "index" => 45,
+                                                   "input" => "<!DOCTYPE hoge[\n  <!ENTITY % x SYSTEM \"f\">\n  %x;\n  <!ENTITY hoge \"\">\n]><hoge/>",
+                                                   "lang" => "XML",
+                                                   "level" => "i"
+                                                 },
+                                                 {
+                                                   "index" => 18,
+                                                   "input" => "<!DOCTYPE hoge[\n  %x;\n  <!ENTITY hoge \"\">\n]><hoge/>",
+                                                   "lang" => "XML",
+                                                   "level" => "i"
+                                                 }
+                                               ]
                              },
           "stray end tag" => {
                              "default_level" => "m",
@@ -7939,13 +9891,17 @@ $WebHACC::_Errors = {
                                           "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/<var>{value}</var>&gt;</code>\n\x{306b}\x{5bfe}\x{5fdc}\x{3059}\x{308b}\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                         },
                              "modules" => {
-                                          "Web::HTML::Parser::tree_constructor" => 1
+                                          "Web::HTML::Parser::tree_constructor" => 1,
+                                          "Web::XML::Parser::tree_constructor" => 1
                                         },
                              "parser_error_names" => {
                                                      "after-body-end-html" => 1,
                                                      "after-head-end-else" => 1,
+                                                     "after-root-element-end-else" => 1,
+                                                     "before-doctype-end-else" => 1,
                                                      "before-head-end-else" => 1,
                                                      "before-html-end-else" => 1,
+                                                     "before-root-element-end-else" => 1,
                                                      "in-body-end-a3bbcd5f4hhlmmnopssu" => 1,
                                                      "in-body-end-applet-marquee-object" => 1,
                                                      "in-body-end-body" => 1,
@@ -7964,6 +9920,8 @@ $WebHACC::_Errors = {
                                                      "in-cell-end-td-th" => 1,
                                                      "in-column-group-end-col" => 1,
                                                      "in-column-group-end-colgroup" => 1,
+                                                     "in-element-end-else" => 1,
+                                                     "in-element-end-else-3" => 1,
                                                      "in-frameset-end-frameset" => 1,
                                                      "in-head-end-else" => 1,
                                                      "in-head-end-template" => 1,
@@ -7986,280 +9944,338 @@ $WebHACC::_Errors = {
                                                {
                                                  "index" => 15,
                                                  "input" => "<!DOCTYPE html></hoge>",
+                                                 "lang" => "HTML",
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE html><html></hoge>",
+                                                 "lang" => "HTML",
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "index" => 22,
                                                  "input" => "<!DOCTYPE html></head></hoge>",
+                                                 "lang" => "HTML",
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "context" => "html",
                                                  "index" => 22,
                                                  "input" => "<!DOCTYPE html></body></html>",
+                                                 "lang" => "HTML",
                                                  "value" => "html"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></div>",
+                                                 "lang" => "HTML",
                                                  "value" => "div"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></object>",
+                                                 "lang" => "HTML",
                                                  "value" => "object"
                                                },
                                                {
                                                  "context" => "body",
                                                  "index" => 0,
                                                  "input" => "</body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></dt>",
+                                                 "lang" => "HTML",
                                                  "value" => "dt"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></form>",
+                                                 "lang" => "HTML",
                                                  "value" => "form"
                                                },
                                                {
                                                  "index" => 35,
                                                  "input" => "<!DOCTYPE HTML><body><template><br></form>",
+                                                 "lang" => "HTML",
                                                  "value" => "form"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></h4>",
+                                                 "lang" => "HTML",
                                                  "value" => "h4"
                                                },
                                                {
                                                  "context" => "body",
                                                  "index" => 0,
                                                  "input" => "</html>",
+                                                 "lang" => "HTML",
                                                  "value" => "html"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></hoge>",
+                                                 "lang" => "HTML",
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><body></li>",
+                                                 "lang" => "HTML",
                                                  "value" => "li"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></html>",
+                                                 "lang" => "HTML",
                                                  "value" => "html"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></thead>",
+                                                 "lang" => "HTML",
                                                  "value" => "thead"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></tbody>",
+                                                 "lang" => "HTML",
                                                  "value" => "tbody"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></tfoot>",
+                                                 "lang" => "HTML",
                                                  "value" => "tfoot"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><table><caption></col>",
+                                                 "lang" => "HTML",
                                                  "value" => "col"
                                                },
                                                {
                                                  "context" => "caption",
                                                  "index" => 0,
                                                  "input" => "</caption>",
+                                                 "lang" => "HTML",
                                                  "value" => "caption"
                                                },
                                                {
                                                  "context" => "caption",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></col>",
+                                                 "lang" => "HTML",
                                                  "value" => "col"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></html>",
+                                                 "lang" => "HTML",
                                                  "value" => "html"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></colgroup>",
+                                                 "lang" => "HTML",
                                                  "value" => "colgroup"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></caption>",
+                                                 "lang" => "HTML",
                                                  "value" => "caption"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></thead>",
+                                                 "lang" => "HTML",
                                                  "value" => "thead"
                                                },
                                                {
                                                  "context" => "tr",
                                                  "index" => 4,
                                                  "input" => "<td></tbody>",
+                                                 "lang" => "HTML",
                                                  "value" => "tbody"
                                                },
                                                {
                                                  "context" => "td",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><td></th>",
+                                                 "lang" => "HTML",
                                                  "value" => "th"
                                                },
                                                {
                                                  "index" => 30,
                                                  "input" => "<!DOCTYPE HTML><table><tr><th></td>",
+                                                 "lang" => "HTML",
                                                  "value" => "td"
                                                },
                                                {
                                                  "index" => 32,
                                                  "input" => "<!DOCTYPE HTML><table><colgroup></col>",
+                                                 "lang" => "HTML",
                                                  "value" => "col"
                                                },
                                                {
                                                  "context" => "colgroup",
                                                  "index" => 0,
                                                  "input" => "</colgroup>",
+                                                 "lang" => "HTML",
                                                  "value" => "colgroup"
                                                },
                                                {
                                                  "context" => "frameset",
                                                  "index" => 0,
                                                  "input" => "</frameset>",
+                                                 "lang" => "HTML",
                                                  "value" => "frameset"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><head></hoge>",
+                                                 "lang" => "HTML",
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "index" => 21,
                                                  "input" => "<!DOCTYPE HTML><head></template>",
+                                                 "lang" => "HTML",
                                                  "value" => "template"
                                                },
                                                {
                                                  "index" => 31,
                                                  "input" => "<!DOCTYPE HTML><head><noscript></hoge>",
+                                                 "lang" => "HTML",
                                                  "noscript" => 1,
                                                  "value" => "hoge"
                                                },
                                                {
                                                  "index" => 26,
                                                  "input" => "<!DOCTYPE HTML><table><tr></body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "context" => "tr",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "context" => "tr",
                                                  "index" => 0,
                                                  "input" => "</tbody>",
+                                                 "lang" => "HTML",
                                                  "value" => "tbody"
                                                },
                                                {
                                                  "context" => "tbody",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "context" => "tr",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "context" => "select",
                                                  "index" => 0,
                                                  "input" => "</select>",
+                                                 "lang" => "HTML",
                                                  "value" => "select"
                                                },
                                                {
                                                  "index" => 23,
                                                  "input" => "<!DOCTYPE HTML><select></option>",
+                                                 "lang" => "HTML",
                                                  "value" => "option"
                                                },
                                                {
                                                  "index" => 23,
                                                  "input" => "<!DOCTYPE HTML><select></optgroup>",
+                                                 "lang" => "HTML",
                                                  "value" => "optgroup"
                                                },
                                                {
                                                  "index" => 29,
                                                  "input" => "<!DOCTYPE HTML><table><tbody></body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "context" => "tbody",
                                                  "index" => 0,
                                                  "input" => "</thead>",
+                                                 "lang" => "HTML",
                                                  "value" => "thead"
                                                },
                                                {
                                                  "index" => 22,
                                                  "input" => "<!DOCTYPE HTML><table></body>",
+                                                 "lang" => "HTML",
                                                  "value" => "body"
                                                },
                                                {
                                                  "context" => "table",
                                                  "index" => 0,
                                                  "input" => "</table>",
+                                                 "lang" => "HTML",
                                                  "value" => "table"
                                                },
                                                {
                                                  "index" => 25,
                                                  "input" => "<!DOCTYPE HTML><template></fpopo>",
+                                                 "lang" => "HTML",
                                                  "value" => "fpopo"
                                                },
                                                {
                                                  "context" => "template",
                                                  "index" => 6,
                                                  "input" => "<link></template>",
+                                                 "lang" => "HTML",
                                                  "value" => "template"
+                                               },
+                                               {
+                                                 "index" => 3,
+                                                 "input" => "<p></pq></p>",
+                                                 "lang" => "XML",
+                                                 "value" => "pq"
                                                }
                                              ],
                              "value" => [
@@ -8267,6 +10283,159 @@ $WebHACC::_Errors = {
                                         "tag name"
                                       ]
                            },
+          "string after PUBLIC literal" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>The public identifier cannot be followed by parameters other than\nthe system identifier in a <code>NOTATION</code> declaration.</p>",
+                                                     "ja" => "<p><code>NOTATION</code> \x{5ba3}\x{8a00}\x{3067}\x{306f}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{5f8c}\x{306b}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{4ee5}\x{5916}\x{306e}\x{5f15}\x{6570}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                   },
+                                           "layer" => "tokenization",
+                                           "message" => {
+                                                        "en" => "There is an unknown parameter after the public identifier",
+                                                        "ja" => "\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{5f8c}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::Parser::tokenizer" => 1
+                                                      },
+                                           "parser_error_names" => {
+                                                                   "after-notation-public-identifier-else" => 1,
+                                                                   "between-notation-public-and-system-identifiers-else" => 1
+                                                                 },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 35,
+                                                               "input" => "<!DOCTYPE a[<!NOTATION a PUBLIC \"b\"a]><a/>",
+                                                               "lang" => "XML"
+                                                             }
+                                                           ]
+                                         },
+          "string after SYSTEM literal" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>The system identifier cannot be followed by another parameter\nin a <code>NOTATION</code> declaration.</p>",
+                                                     "ja" => "<p><code>NOTATION</code> \x{5ba3}\x{8a00}\x{3067}\x{306f}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{5f8c}\x{306b}\x{4ed6}\x{306e}\x{5f15}\x{6570}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                   },
+                                           "layer" => "tokenization",
+                                           "message" => {
+                                                        "en" => "There is an unknown parameter after the system identifier",
+                                                        "ja" => "\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{5f8c}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::XML::Parser::tokenizer" => 1
+                                                      },
+                                           "parser_error_names" => {
+                                                                   "after-notation-system-identifier-else" => 1,
+                                                                   "before-ndata-keyword-else" => 1
+                                                                 },
+                                           "parser_tests" => [
+                                                             {
+                                                               "index" => 35,
+                                                               "input" => "<!DOCTYPE a[<!NOTATION a SYSTEM \"b\"a]><a/>",
+                                                               "lang" => "XML"
+                                                             }
+                                                           ]
+                                         },
+          "string after internal subset" => {
+                                            "default_level" => "m",
+                                            "desc" => {
+                                                      "en" => "<p>Only the <code>&gt;</code> character is allowed after the internal subset.</p>",
+                                                      "ja" => "<p>\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{306e}\x{5f8c}\x{306b}\x{306f} <code>&gt;</code> \x{3057}\x{304b}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                    },
+                                            "layer" => "tokenization",
+                                            "message" => {
+                                                         "en" => "There is an unknown parameter after the internal subset",
+                                                         "ja" => "\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{306e}\x{5f8c}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::XML::Parser::tokenizer" => 1
+                                                       },
+                                            "parser_error_names" => {
+                                                                    "after-doctype-internal-subset-else" => 1
+                                                                  },
+                                            "parser_tests" => [
+                                                              {
+                                                                "index" => 13,
+                                                                "input" => "<!DOCTYPE x[]x><x/>",
+                                                                "lang" => "XML"
+                                                              }
+                                                            ]
+                                          },
+          "string after md def" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>The markup declaration cannot contain an unknown parameter.</p>",
+                                             "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                           },
+                                   "layer" => "tokenization",
+                                   "message" => {
+                                                "en" => "There is an unknown parameter in the markup declaration",
+                                                "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::XML::Parser::tokenizer" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "after-content-model-item-007c" => 1,
+                                                           "after-element-content-else" => 1,
+                                                           "after-entity-parameter-else" => 1,
+                                                           "after-ignore-keyword-003c-md-fragment" => 1,
+                                                           "after-ignore-keyword-005b-md-fragment" => 1,
+                                                           "after-ignore-keyword-005d-md-fragment" => 1,
+                                                           "after-include-keyword-003c-md-fragment" => 1,
+                                                           "after-include-keyword-005b-md-fragment" => 1,
+                                                           "after-include-keyword-005d-md-fragment" => 1,
+                                                           "after-mss-003c-md-fragment" => 1,
+                                                           "after-mss-005b-md-fragment" => 1,
+                                                           "after-mss-005d-md-fragment" => 1,
+                                                           "before-notation-system-identifier-else" => 1,
+                                                           "bogus-status-keyword-0025-md-fragment" => 1,
+                                                           "bogus-status-keyword-003c-md-fragment" => 1,
+                                                           "bogus-status-keyword-005b-md-fragment" => 1,
+                                                           "bogus-status-keyword-005d-md-fragment" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 30,
+                                                       "input" => "<!DOCTYPE x[<!ELEMENT foo ANY bar>]><x/>",
+                                                       "lang" => "XML"
+                                                     }
+                                                   ]
+                                 },
+          "string in internal subset" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>Nothing ohter than declarations, comments, and processing\ninstructions can be used in the internal subset.  In external\nsubset, sections are also allowed.</p>",
+                                                   "ja" => "<p>\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3067}\x{306f}\x{5ba3}\x{8a00}\x{3001}\x{6ce8}\x{91c8}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5916}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3067}\x{306f}\x{533a}\x{9593}\x{3082}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>"
+                                                 },
+                                         "layer" => "tokenizer",
+                                         "message" => {
+                                                      "en" => "There is an unexpected string in DTD",
+                                                      "ja" => "DTD \x{4e2d}\x{306b}\x{4e88}\x{671f}\x{305b}\x{306c}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::XML::Parser::tokenizer" => 1,
+                                                      "Web::XML::Parser::tree_constructor" => 1
+                                                    },
+                                         "parser_error_names" => {
+                                                                 "after-doctype-internal-subset-003e-fragment" => 1,
+                                                                 "after-dtd-msc-005d" => 1,
+                                                                 "after-dtd-msc-else" => 1,
+                                                                 "dtd-else" => 1,
+                                                                 "in-subset-char" => 1
+                                                               },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 13,
+                                                             "input" => "<!DOCTYPE a[\n]]>\n]><a/>",
+                                                             "lang" => "XML"
+                                                           },
+                                                           {
+                                                             "index" => 13,
+                                                             "input" => "<!DOCTYPE a[ a]><a/>",
+                                                             "lang" => "XML"
+                                                           }
+                                                         ]
+                                       },
           "syntax error:iri3987" => {
                                     "message" => {
                                                  "en" => "The specified value is syntactically not an\n  IRI."
@@ -8308,6 +10477,32 @@ $WebHACC::_Errors = {
                                                         "en" => "This <code>rowspan</code> attribute\n  results in creating a table row that does not contain\n  any cell anchored to it."
                                                       }
                                          },
+          "tag in pe in markup declaration" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>A parameter entity referenced from a markup declaration can't contain a tag,\ncomment, declaration, section, or processing instruction.</p>",
+                                                         "ja" => "<p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306b}\x{306f}\x{30bf}\x{30b0}\x{3001}\x{6ce8}\x{91c8}\x{3001}\x{5ba3}\x{8a00}\x{3001}\x{533a}\x{9593}\x{3001}\n\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "tokenization",
+                                               "message" => {
+                                                            "en" => "There is a tag in a parameter entity referenced in a markup declaration",
+                                                            "ja" => "\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306b}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::Parser::tokenizer" => 1
+                                                          },
+                                               "parser_error_names" => {
+                                                                       "text-declaration-in-markup-declaration-0000" => 1,
+                                                                       "text-declaration-in-markup-declaration-0000-" => 1,
+                                                                       "text-declaration-in-markup-declaration-0021" => 1,
+                                                                       "text-declaration-in-markup-declaration-0025" => 1,
+                                                                       "text-declaration-in-markup-declaration-0026" => 1,
+                                                                       "text-declaration-in-markup-declaration-0026-" => 1,
+                                                                       "text-declaration-in-markup-declaration-003c" => 1,
+                                                                       "text-declaration-in-markup-declaration-003e-" => 1,
+                                                                       "text-declaration-in-markup-declaration-eof-" => 1
+                                                                     }
+                                             },
           "tag not closed" => {
                               "default_level" => "m",
                               "desc" => {
@@ -8320,7 +10515,8 @@ $WebHACC::_Errors = {
                                            "ja" => "\x{30bf}\x{30b0}\x{304c}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                          },
                               "modules" => {
-                                           "Web::HTML::Parser::tokenizer" => 1
+                                           "Web::HTML::Parser::tokenizer" => 1,
+                                           "Web::XML::Parser::tokenizer" => 1
                                          },
                               "parser_error_names" => {
                                                       "after-attribute-name-003c" => 1,
@@ -8332,23 +10528,28 @@ $WebHACC::_Errors = {
                               "parser_tests" => [
                                                 {
                                                   "index" => 22,
-                                                  "input" => "<!DOCTYPE html><p foo <bar>"
+                                                  "input" => "<!DOCTYPE html><p foo <bar>",
+                                                  "lang" => "HTML"
                                                 },
                                                 {
                                                   "index" => 21,
-                                                  "input" => "<!DOCTYPE html><p foo<bar>"
+                                                  "input" => "<!DOCTYPE html><p foo<bar>",
+                                                  "lang" => "HTML"
                                                 },
                                                 {
                                                   "index" => 18,
-                                                  "input" => "<!DOCTYPE html><p <bar>"
+                                                  "input" => "<!DOCTYPE html><p <bar>",
+                                                  "lang" => "HTML"
                                                 },
                                                 {
                                                   "index" => 22,
-                                                  "input" => "<!DOCTYPE HTML><p foo=<bar>"
+                                                  "input" => "<!DOCTYPE HTML><p foo=<bar>",
+                                                  "lang" => "HTML"
                                                 },
                                                 {
                                                   "index" => 23,
-                                                  "input" => "<!DOCTYPE HTML><p foo=a<bar>"
+                                                  "input" => "<!DOCTYPE HTML><p foo=a<bar>",
+                                                  "lang" => "HTML"
                                                 }
                                               ]
                             },
@@ -8627,14 +10828,46 @@ $WebHACC::_Errors = {
                                                 }
                                    },
           "text outside of root element" => {
+                                            "default_level" => "m",
                                             "desc" => {
-                                                      "en" => "\n    <p>Non-space characters must be in the root element.</p>\n  ",
-                                                      "ja" => "\n    <p>\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{6839}\x{8981}\x{7d20}\x{5916}\x{3067}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      "en" => "<p>Characters other than white spaces must be included in an\nelement or an attribute value.</p>",
+                                                      "ja" => "<p>\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{8981}\x{7d20}\x{3084}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{4e2d}\x{3067}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                     },
+                                            "layer" => "tree-construction",
                                             "message" => {
-                                                         "en" => "There is a non-space character outside\n  of the root element",
-                                                         "ja" => "\x{6839}\x{8981}\x{7d20}\x{306e}\x{5916}\x{5074}\x{306b}\x{7a7a}\x{767d}\x{3067}\x{306a}\x{3044}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                                       }
+                                                         "en" => "There is a character outside of the root element",
+                                                         "ja" => "\x{6839}\x{8981}\x{7d20}\x{306e}\x{5916}\x{306b}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::XML::Parser::tree_constructor" => 1
+                                                       },
+                                            "parser_error_names" => {
+                                                                    "after-root-element-char" => 1,
+                                                                    "before-doctype-char" => 1,
+                                                                    "before-root-element-char" => 1
+                                                                  },
+                                            "parser_tests" => [
+                                                              {
+                                                                "index" => 0,
+                                                                "input" => "a<p/>",
+                                                                "lang" => "XML"
+                                                              },
+                                                              {
+                                                                "index" => 12,
+                                                                "input" => "<!DOCTYPE p>a<p/>",
+                                                                "lang" => "XML"
+                                                              },
+                                                              {
+                                                                "index" => 9,
+                                                                "input" => "<!---->  x<a/>",
+                                                                "lang" => "XML"
+                                                              },
+                                                              {
+                                                                "index" => 4,
+                                                                "input" => "<a/>b",
+                                                                "lang" => "XML"
+                                                              }
+                                                            ]
                                           },
           "text:bad char" => {
                              "desc" => {
@@ -8691,9 +10924,43 @@ $WebHACC::_Errors = {
                                          "ja" => "<code>--&gt;</code> \x{304c}\x{898b}\x{3064}\x{304b}\x{308a}\x{307e}\x{305b}\x{3093}"
                                        }
                           },
+          "unclosed cmgroup" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>Content model groups must be closed by <code>)</code>.</p>",
+                                          "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{306f} <code>)</code> \x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenizer",
+                                "message" => {
+                                             "en" => "There is an unclosed content model group",
+                                             "ja" => "\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{304c}\x{62ec}\x{5f27}\x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tokenizer" => 1
+                                           },
+                                "parser_error_names" => {
+                                                        "after-content-model-item-003e" => 1,
+                                                        "before-content-model-item-003e" => 1
+                                                      }
+                              },
           "unclosed comment" => {
                                 "message" => {
                                              "en" => "Comment is not closed by a string\n  <code>--&gt;</code>."
+                                           }
+                              },
+          "unclosed literal" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>The quoted string must be closed by matching quotation mark.</p>",
+                                          "ja" => "<p>\x{5f15}\x{7528}\x{7b26}\x{3067}\x{59cb}\x{307e}\x{3063}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306f}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenizer",
+                                "message" => {
+                                             "en" => "There is an unclosed literal",
+                                             "ja" => "\x{5f15}\x{7528}\x{7b26}\x{306e}\x{5f8c}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tokenizer" => 1
                                            }
                               },
           "unclosed tag" => {
@@ -8744,6 +11011,52 @@ $WebHACC::_Errors = {
                                               "attr" => 1
                                             }
                                },
+          "unknown declared type" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>The declared type must be one of allowed keywords.</p>",
+                                               "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "tree-construction",
+                                     "message" => {
+                                                  "en" => "An unknown declared type keyword is specified",
+                                                  "ja" => "\x{672a}\x{77e5}\x{306e}\x{5ba3}\x{8a00}\x{578b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::Parser::tree_constructor" => 1
+                                                },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 29,
+                                                         "input" => "<!DOCTYPE a[\n  <!ATTLIST  f  abc hoge \"\">\n]><a/>",
+                                                         "lang" => "XML",
+                                                         "value" => "hoge"
+                                                       }
+                                                     ]
+                                   },
+          "unknown default type" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>The default type must be one of allowed keywords.</p>",
+                                              "ja" => "<p>\x{65e2}\x{5b9a}\x{578b}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "tree-construction",
+                                    "message" => {
+                                                 "en" => "An unknown default type keyword is specified",
+                                                 "ja" => "\x{672a}\x{77e5}\x{306e}\x{65e2}\x{5b9a}\x{578b}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                               },
+                                    "modules" => {
+                                                 "Web::XML::Parser::tree_constructor" => 1
+                                               },
+                                    "parser_tests" => [
+                                                      {
+                                                        "index" => 29,
+                                                        "input" => "<!DOCTYPE a[\n  <!ATTLIST  f  abc hoge #hog>\n]><a/>",
+                                                        "lang" => "XML",
+                                                        "value" => "hog"
+                                                      }
+                                                    ]
+                                  },
           "unknown element" => {
                                "desc" => {
                                          "en" => "\n    <p>The conformance checker does not support the validation of the\n    element (yet).</p>\n\n    <p>The conformance checker skips the validation of the element.\n    Whether it is conforming or not is unknown.</p>\n  ",
@@ -8817,15 +11130,68 @@ $WebHACC::_Errors = {
                                               "ja" => "\x{8981}\x{7d20} <code><var>{text}</var></code> \n  \x{306f}\x{958b}\x{3044}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
                                             }
                                },
+          "unmatched mgc" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>There must be <code>(</code> before <code>)</code> in the\nsame entity.</p>",
+                                       "ja" => "\x{540c}\x{3058}\x{5b9f}\x{4f53}\x{3067} <code>(</code> \x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3044}\x{3068} <code>)</code> \n\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                     },
+                             "layer" => "tokenizer",
+                             "message" => {
+                                          "en" => "There is an unmatched <code>)</code>",
+                                          "ja" => "\x{5bfe}\x{5fdc}\x{3057}\x{306a}\x{3044} <code>)</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                        },
+                             "modules" => {
+                                          "Web::XML::Parser::tokenizer" => 1
+                                        }
+                           },
+          "unmatched mse" => {
+                             "default_level" => "m",
+                             "desc" => {
+                                       "en" => "<p>In XML, the <code>&gt;</code> character in <code>]]&gt;</code> must be\nescaped as <code>&amp;gt;</code> unless it is closing a <code>CDATA</code>\nsection.</p>",
+                                       "ja" => "<p>XML \x{3067}\x{306f} <code>]]&gt;</code> \x{306e} <code>&gt;</code> \x{306f} <code>CDATA</code>\n\x{533a}\x{9593}\x{3092}\x{9589}\x{3058}\x{308b}\x{5834}\x{5408}\x{3092}\x{9664}\x{304d} <code>&amp;gt;</code> \x{3068}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{3057}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                     },
+                             "layer" => "tokenization",
+                             "message" => {
+                                          "en" => "There is an unmatched <code>]]&gt;</code>",
+                                          "ja" => "\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{306a}\x{3044} <code>]]&gt;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                        },
+                             "modules" => {
+                                          "Web::XML::Parser::tokenizer" => 1
+                                        },
+                             "parser_error_names" => {
+                                                     "after-msc-003e" => 1
+                                                   },
+                             "parser_tests" => [
+                                               {
+                                                 "index" => 3,
+                                                 "input" => "<p>]]></p>",
+                                                 "lang" => "XML"
+                                               }
+                                             ]
+                           },
           "unparsed entity" => {
+                               "default_level" => "m",
                                "desc" => {
-                                         "en" => "\n    <p>An unparsed entity cannot be referenced by an entity\n    reference.</p>\n  ",
-                                         "ja" => "\n    <p>\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{3092}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304b}\x{3089}\x{53c2}\x{7167}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                         "en" => "<p>An unparsed entity cannot be referenced.</p>",
+                                         "ja" => "<p>\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{306f}\x{53c2}\x{7167}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                        },
+                               "layer" => "entity",
                                "message" => {
-                                            "en" => "An unparsed entity is referenced by\n  an entity reference",
-                                            "ja" => "\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{3092}\x{53c2}\x{7167}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                          }
+                                            "en" => "An unparsed entity is referenced",
+                                            "ja" => "\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::Parser::tokenizer" => 1
+                                          },
+                               "parser_tests" => [
+                                                 {
+                                                   "index" => 54,
+                                                   "input" => "<!DOCTYPE a[\n  <!ENTITY xy SYSTEM \"x\" NDATA foo>\n]><p>&xy;</p>",
+                                                   "lang" => "XML",
+                                                   "value" => "&xy;"
+                                                 }
+                                               ]
                              },
           "unqualified attr" => {
                                 "desc" => {
@@ -8853,6 +11219,69 @@ $WebHACC::_Errors = {
                                                  "attr" => 1
                                                }
                                   },
+          "unquoted attr value" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>In XML, the attribute value must be quoted by <code>\"</code>\nor <code>'</code>.</p>",
+                                             "ja" => "<p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f} <code>\"</code> \x{304b} <code>'</code> \x{3067}\x{62ec}\x{3089}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                           },
+                                   "layer" => "tokenization",
+                                   "message" => {
+                                                "en" => "The attribute value is not quoted",
+                                                "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::XML::Parser::tokenizer" => 1
+                                              },
+                                   "parser_error_names" => {
+                                                           "after-after-allowed-token-list-else" => 1,
+                                                           "after-attlist-attribute-type-else" => 1,
+                                                           "before-attribute-value-0026" => 1,
+                                                           "before-attribute-value-else" => 1
+                                                         },
+                                   "parser_tests" => [
+                                                     {
+                                                       "index" => 5,
+                                                       "input" => "<a b=c/>",
+                                                       "lang" => "XML"
+                                                     },
+                                                     {
+                                                       "index" => 5,
+                                                       "input" => "<a b=&copy;/>",
+                                                       "lang" => "XML"
+                                                     },
+                                                     {
+                                                       "index" => 32,
+                                                       "input" => "<!DOCTYPE a[<!ATTLIST a b CDATA foo>]><a/>",
+                                                       "lang" => "XML"
+                                                     }
+                                                   ]
+                                 },
+          "uppercase hcro" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>In XML, the <code>x</code> character in <code>&amp;#<mark>x</mark><code>\nintroducing a hexadecimal character reference must be in\nlowercase.</code></code></p>",
+                                        "ja" => "<p>XML \x{3067}\x{306f}\x{5341}\x{516d}\x{9032}\x{6570}\x{6587}\x{5b57}\x{53c2}\x{7167}\x{306e}\x{6700}\x{521d}\x{306e} <code>&amp;#<mark>x</mark></code>\n\x{306e} <code>x</code> \x{306f}\x{5c0f}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                      },
+                              "layer" => "tokenization",
+                              "message" => {
+                                           "en" => "The <code>x</code> character in the reference is in uppercase",
+                                           "ja" => "\x{6587}\x{5b57}\x{53c2}\x{7167}\x{306e} <code>x</code> \x{304c}\x{5927}\x{6587}\x{5b57}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                         },
+                              "modules" => {
+                                           "Web::XML::Parser::tokenizer" => 1
+                                         },
+                              "parser_error_names" => {
+                                                      "character-reference-number-0058" => 1
+                                                    },
+                              "parser_tests" => [
+                                                {
+                                                  "index" => 5,
+                                                  "input" => "<a>&#X21;</a>",
+                                                  "lang" => "XML"
+                                                }
+                                              ]
+                            },
           "url:empty" => {
                          "desc" => {
                                    "en" => "\n    <p>The value must be a URL but the empty string is not allowed.</p>\n    <p>Although the empty string is itself a valid relative URL,\n    it is not allowed here.</p>\n  ",
@@ -8943,26 +11372,26 @@ $WebHACC::_Errors = {
                                                     "ja" => "\x{6ce8}\x{91c8}\x{3092}\x{7a7a}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                   }
                                      },
-          "webvtt:end time < start time" => {
-                                            "desc" => {
-                                                      "en" => "\n    <p>The end time of the cue must be greater than or equal to\n    the start time of the cue.</p>\n  ",
-                                                      "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{306f}\x{958b}\x{59cb}\x{6642}\x{523b}\x{4ee5}\x{4e0a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                    },
-                                            "message" => {
-                                                         "en" => "End time cannot be less than\n  start time.",
-                                                         "ja" => "\x{7d42}\x{4e86}\x{6642}\x{523b}\x{304c}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{306b}\x{306a}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                       }
-                                          },
-          "webvtt:end time < timestamp" => {
-                                           "desc" => {
-                                                     "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    less than the end time of the cue.</p>\n  ",
-                                                     "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{6642}\x{523b}\x{306f}\x{3001}\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                   },
-                                           "message" => {
-                                                        "en" => "Timestamp must be less than end time.",
-                                                        "ja" => "\x{6642}\x{523b}\x{306f}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                      }
-                                         },
+          "webvtt:end time &lt; start time" => {
+                                               "desc" => {
+                                                         "en" => "\n    <p>The end time of the cue must be greater than or equal to\n    the start time of the cue.</p>\n  ",
+                                                         "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{306f}\x{958b}\x{59cb}\x{6642}\x{523b}\x{4ee5}\x{4e0a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                       },
+                                               "message" => {
+                                                            "en" => "End time cannot be less than\n  start time.",
+                                                            "ja" => "\x{7d42}\x{4e86}\x{6642}\x{523b}\x{304c}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{306b}\x{306a}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                          }
+                                             },
+          "webvtt:end time &lt; timestamp" => {
+                                              "desc" => {
+                                                        "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    less than the end time of the cue.</p>\n  ",
+                                                        "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{6642}\x{523b}\x{306f}\x{3001}\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
+                                              "message" => {
+                                                           "en" => "Timestamp must be less than end time.",
+                                                           "ja" => "\x{6642}\x{523b}\x{306f}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                         }
+                                            },
           "webvtt:headers" => {
                               "desc" => {
                                         "en" => "\n    <p>In WebVTT, header's syntax and semantics is not defined\n    at the time of writing.</p>\n    <p>To specify the identifier for the first cue, you have\n    to insert a blank line between the <code>WEBVTT</code> signature line\n    and the identifier.</p>\n  ",
@@ -9045,8 +11474,8 @@ $WebHACC::_Errors = {
                             },
           "webvtt:no timings" => {
                                  "desc" => {
-                                           "en" => "\n    <p>No timings line is found in the cue.  Start and\n    end times must be specified in the format \n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var>&amp;nbsp;--&gt;&amp;nbsp;<var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>.</p>\n    <p>Cue text cannot contain two concecutive newlines (or\n    a blank line).</p>\n  ",
-                                           "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{30bf}\x{30a4}\x{30df}\x{30f3}\x{30b0}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{884c}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{958b}\x{59cb}\x{3068}\x{7d42}\x{4e86}\x{306e}\x{6642}\x{523b}\x{3092}\x{3001}\n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var>&amp;nbsp;--&gt;&amp;nbsp;<var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{90e8}\x{5206}\x{306b}2\x{3064}\x{306e}\x{9023}\x{7d9a}\x{3059}\x{308b}\x{6539}\x{884c} (\x{3042}\x{308b}\x{3044}\x{306f}\x{7a7a}\x{884c})\n    \x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                           "en" => "\n    <p>No timings line is found in the cue.  Start and\n    end times must be specified in the format \n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var>&nbsp;--&gt;&nbsp;<var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>.</p>\n    <p>Cue text cannot contain two concecutive newlines (or\n    a blank line).</p>\n  ",
+                                           "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{30bf}\x{30a4}\x{30df}\x{30f3}\x{30b0}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{884c}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{958b}\x{59cb}\x{3068}\x{7d42}\x{4e86}\x{306e}\x{6642}\x{523b}\x{3092}\x{3001}\n    <code><var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var>&nbsp;--&gt;&nbsp;<var>hh</var>:<var>mm</var>:<var>ss</var>.<var>fff</var></code>\n    \x{3068}\x{3044}\x{3046}\x{5f62}\x{5f0f}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{90e8}\x{5206}\x{306b}2\x{3064}\x{306e}\x{9023}\x{7d9a}\x{3059}\x{308b}\x{6539}\x{884c} (\x{3042}\x{308b}\x{3044}\x{306f}\x{7a7a}\x{884c})\n    \x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
                                          },
                                  "message" => {
                                               "en" => "No timings line is found.",
@@ -9133,16 +11562,16 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{3044} WebVTT \n  \x{30ad}\x{30e5}\x{30fc}\x{6587}\x{7ae0}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
                                              }
                                 },
-          "webvtt:timestamp < min time" => {
-                                           "desc" => {
-                                                     "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    greater than the start time of the cue\n    and any preceding timestamp tag in the cue text.</p>\n  ",
-                                                     "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{308b}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{306f}\x{3001}\n    \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3084}\x{3001}\x{540c}\x{3058}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{305d}\x{308c}\x{4ee5}\x{524d}\x{306e}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{306e}\x{6642}\x{523b}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                   },
-                                           "message" => {
-                                                        "en" => "Timestamp must be greater than\n  previous timestamps.",
-                                                        "ja" => "\x{6642}\x{523b}\x{306f}\x{3001}\x{3053}\x{3053}\x{307e}\x{3067}\x{306e}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                      }
-                                         },
+          "webvtt:timestamp &lt; min time" => {
+                                              "desc" => {
+                                                        "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    greater than the start time of the cue\n    and any preceding timestamp tag in the cue text.</p>\n  ",
+                                                        "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{308b}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{306f}\x{3001}\n    \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3084}\x{3001}\x{540c}\x{3058}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{305d}\x{308c}\x{4ee5}\x{524d}\x{306e}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{306e}\x{6642}\x{523b}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
+                                              "message" => {
+                                                           "en" => "Timestamp must be greater than\n  previous timestamps.",
+                                                           "ja" => "\x{6642}\x{523b}\x{306f}\x{3001}\x{3053}\x{3053}\x{307e}\x{3067}\x{306e}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                         }
+                                            },
           "webvtt:timestamp:hour" => {
                                      "desc" => {
                                                "en" => "\n    <p>The hour component in the WebVTT timestamp must have \n    two or more digits.  If the value is less than 10,\n    it must be zero-padded.</p>\n  ",
@@ -9247,46 +11676,517 @@ $WebHACC::_Errors = {
                                                  "en" => "Extended attribute <code><var>{text}</var></code>\n  is not applicable to this kind of object."
                                                }
                                   },
+          "xml:CDATA section not allowed by cm" => {
+                                                   "default_level" => "m",
+                                                   "desc" => {
+                                                             "en" => "<p>An element whose type is declared with the <code>EMPTY</code> keyword\nor an element content (i.e. a content model group with no <code>#PCDATA</code>\nkeyword) cannot contain <code>CDATA</code> sections.</p>",
+                                                             "ja" => "<p><code>EMPTY</code> \x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{307e}\x{305f}\x{306f}\x{8981}\x{7d20}\x{5185}\x{5bb9} (<code>#PCDATA</code>\n\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{7121}\x{3057}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}) \x{3092}\x{6307}\x{5b9a}\x{3057}\x{3066}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{578b}\x{306e}\x{8981}\x{7d20}\x{3067}\x{306f}\x{3001}\n<code>CDATA</code> \x{533a}\x{9593}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                           },
+                                                   "layer" => "dtd",
+                                                   "message" => {
+                                                                "en" => "An <code>EMPTY</code> or element-content element contains a <code>CDATA</code>\nsection",
+                                                                "ja" => "<code>EMPTY</code> \x{307e}\x{305f}\x{306f}\x{8981}\x{7d20}\x{5185}\x{5bb9}\x{3092}\x{6301}\x{3064}\x{8981}\x{7d20}\x{304c} <code>CDATA</code>\n\x{533a}\x{9593}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{307e}\x{3059}"
+                                                              },
+                                                   "modules" => {
+                                                                "Web::XML::Parser::tokenizer" => 1
+                                                              }
+                                                 },
+          "xml:dtd:attlist element declared" => {
+                                                "default_level" => "m",
+                                                "desc" => {
+                                                          "en" => "<p>The element used by the <code>ATTLIST</code> declaration\nshould be declared by an <code>ELEMENT</code> declaration.</p>",
+                                                          "ja" => "<p><code>ATTLIST</code> \x{5ba3}\x{8a00}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306f} <code>ELEMENT</code>\n\x{5ba3}\x{8a00}\x{3067}\x{5ba3}\x{8a00}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                        },
+                                                "layer" => "dtd",
+                                                "message" => {
+                                                             "en" => "The element is not declared",
+                                                             "ja" => "\x{8981}\x{7d20}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::DTDValidator" => 1
+                                                           }
+                                              },
           "xml:dtd:attlist ignored" => {
+                                       "default_level" => "m",
                                        "desc" => {
-                                                 "en" => "\n    <p>Since there was a parameter entity reference whose entity is\n    not read, processing of attribute definition list declarations are\n    stopped.  This attribute definition list declaration is\n    ignored.</p>\n  ",
-                                                 "ja" => "\n    <p>\x{8aad}\x{3093}\x{3067}\x{3044}\x{306a}\x{3044}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{4e26}\x{3073}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{306f}\x{505c}\x{6b62}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{3053}\x{306e}\x{5c5e}\x{6027}\x{5b9a}\x{7fa9}\x{4e26}\x{3073}\x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n  "
+                                                 "en" => "<p><code>ATTLIST</code> declarations are ignored if there is\nan unread entity reference before the declaration.</p>",
+                                                 "ja" => "<code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{305d}\x{306e}\x{524d}\x{306b}\x{8aad}\x{3093}\x{3067}\x{3044}\x{306a}\x{3044}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{308b}\x{3068}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
                                                },
+                                       "layer" => "tree-construction",
                                        "message" => {
-                                                    "en" => "The <code>ATTLIST</code> declaration is\n  ignored as there was unread parameter entity",
-                                                    "ja" => "\x{672a}\x{8aad}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3053}\x{306e}\n  <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                                    "en" => "The <code>ATTLIST</code> declaration is ignored",
+                                                    "ja" => "\x{3053}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::Parser::tree_constructor" => 1
+                                                  },
+                                       "parser_tests" => [
+                                                         {
+                                                           "index" => 21,
+                                                           "input" => "<!DOCTYPE a[\n%foo;\n  <!ATTLIST hoge>\n]><a/>",
+                                                           "lang" => "XML",
+                                                           "level" => "w"
+                                                         }
+                                                       ]
+                                     },
+          "xml:dtd:cm:bad element separator" => {
+                                                "default_level" => "m",
+                                                "desc" => {},
+                                                "layer" => "dtd",
+                                                "message" => {
+                                                             "en" => "Different connectors <code><var>{text}</var></code> and\n<code><var>{value}</var></code> are used within a group",
+                                                             "ja" => "\x{540c}\x{3058}\x{7fa4}\x{3067} <code><var>{text}</var></code> \x{3068}\n<code><var>{value}</var></code> \x{306e}\x{7570}\x{306a}\x{308b}\x{63a5}\x{7d9a}\x{5b50}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::Parser::tree_constructor" => 1
+                                                           }
+                                              },
+          "xml:dtd:cm:bad mixed repetition" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>The repetition operator of a mixed content must be <code>*</code>.\nIt can be omitted only when the only content is <code>#PCDATA</code>.\nOperators <code>+</code> and <code>?</code> are not allowed.</p>",
+                                                         "ja" => "<p>\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{53cd}\x{5fa9}\x{6f14}\x{7b97}\x{5b50}\x{3068}\x{3057}\x{3066} <code>*</code> \x{3092}\x{4f7f}\x{308f}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{7701}\x{7565}\x{3067}\x{304d}\x{308b}\x{306e}\x{306f} <code>#PCDATA</code> \x{306e}\x{307f}\x{3092}\x{542b}\x{3093}\x{3067}\x{3044}\x{308b}\x{6642}\x{3067}\x{3059}\x{3002}\n<code>+</code> \x{3068} <code>?</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "dtd",
+                                               "message" => {
+                                                            "en" => "The repetition operator is not <code>*</code>",
+                                                            "ja" => "\x{53cd}\x{5fa9}\x{6f14}\x{7b97}\x{5b50}\x{304c} <code>*</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::Parser::tree_constructor" => 1
+                                                          }
+                                             },
+          "xml:dtd:cm:bad mixed separator" => {
+                                              "default_level" => "m",
+                                              "desc" => {
+                                                        "en" => "<p>The connector in a mixed content must be <code>|</code>.  It can't be\n<code>,</code>.</p>",
+                                                        "ja" => "<p>\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{306e}\x{63a5}\x{7d9a}\x{5b50}\x{306f} <code>|</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002} <code>,</code>\n\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                      },
+                                              "layer" => "dtd",
+                                              "message" => {
+                                                           "en" => "The connector is not <code>|</code>",
+                                                           "ja" => "\x{63a5}\x{7d9a}\x{5b50}\x{304c} <code>|</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                         },
+                                              "modules" => {
+                                                           "Web::XML::Parser::tree_constructor" => 1
+                                                         }
+                                            },
+          "xml:dtd:cm:element not declared" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>The content model contains an element type that is not declared.</p>",
+                                                         "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306b}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{8981}\x{7d20}\x{578b}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>"
+                                                       },
+                                               "layer" => "dtd",
+                                               "message" => {
+                                                            "en" => "The element type is not declared",
+                                                            "ja" => "\x{8981}\x{7d20}\x{578b}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::DTDValidator" => 1
+                                                          }
+                                             },
+          "xml:dtd:cm:empty entity" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>Parameter entities referenced within a content model group should\nnot be empty.</p>",
+                                                 "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{3067}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306f}\x{7a7a}\x{3067}\x{3042}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "entity",
+                                       "message" => {
+                                                    "en" => "The parameter entity is empty",
+                                                    "ja" => "\x{3053}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306f}\x{7a7a}\x{3067}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::XML::Parser::tokenizer" => 1
                                                   }
                                      },
-          "xml:dtd:entity ignored" => {
-                                      "desc" => {
-                                                "en" => "\n    <p>Since there was a parameter entity reference whose entity is\n    not read, processing of entity declarations are stopped.  This\n    entity declaration is ignored.</p>\n  ",
-                                                "ja" => "\n    <p>\x{8aad}\x{3093}\x{3067}\x{3044}\x{306a}\x{3044}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3001}\x{5b9f}\x{4f53}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{306f}\x{505c}\x{6b62}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n    \x{3053}\x{306e}\x{5b9f}\x{4f53}\x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n  "
+          "xml:dtd:cm:entity begins with connector" => {
+                                                       "default_level" => "m",
+                                                       "desc" => {
+                                                                 "en" => "<p>The first non-space string in parameter entities referenced within\na content model group should not be a connector (<code>|</code> or <code>,</code>).</p>",
+                                                                 "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{5185}\x{3067}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306e}\x{6700}\x{521d}\x{306e}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{3001}\n\x{63a5}\x{7d9a}\x{5b50} (<code>|</code> \x{3084} <code>,</code>) \x{3068}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                               },
+                                                       "layer" => "entity",
+                                                       "message" => {
+                                                                    "en" => "The first non-space string in the parameter entity is a connector",
+                                                                    "ja" => "\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306e}\x{6700}\x{521d}\x{306e}\x{7a7a}\x{767d}\x{3067}\x{306a}\x{3044}\x{6587}\x{5b57}\x{5217}\x{304c}\x{63a5}\x{7d9a}\x{5b50}\x{3067}\x{3059}"
+                                                                  },
+                                                       "modules" => {
+                                                                    "Web::XML::Parser::tokenizer" => 1
+                                                                  }
+                                                     },
+          "xml:dtd:cm:entity ends with connector" => {
+                                                     "default_level" => "m",
+                                                     "desc" => {
+                                                               "en" => "<p>The last non-space string in parameter entities referenced within\na content model group should not be a connector (<code>|</code> or <code>,</code>).</p>",
+                                                               "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{5185}\x{3067}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306e}\x{6700}\x{5f8c}\x{306e}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{3001}\n\x{63a5}\x{7d9a}\x{5b50} (<code>|</code> \x{3084} <code>,</code>) \x{3068}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                             },
+                                                     "layer" => "entity",
+                                                     "message" => {
+                                                                  "en" => "The last non-space string in the parameter entity is a connector",
+                                                                  "ja" => "\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306e}\x{6700}\x{5f8c}\x{306e}\x{7a7a}\x{767d}\x{3067}\x{306a}\x{3044}\x{6587}\x{5b57}\x{5217}\x{304c}\x{63a5}\x{7d9a}\x{5b50}\x{3067}\x{3059}"
+                                                                },
+                                                     "modules" => {
+                                                                  "Web::XML::Parser::tokenizer" => 1
+                                                                }
+                                                   },
+          "xml:dtd:cm:mixed element with repetition" => {
+                                                        "default_level" => "m",
+                                                        "desc" => {
+                                                                  "en" => "<p>In a mixed content, repetition operators are not allowed.</p>",
+                                                                  "ja" => "<p>\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{53cd}\x{5fa9}\x{6f14}\x{7b97}\x{5b50}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                                },
+                                                        "layer" => "dtd",
+                                                        "message" => {
+                                                                     "en" => "A repetition operator is specified within a mixed content",
+                                                                     "ja" => "\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{3067}\x{53cd}\x{5fa9}\x{6f14}\x{7b97}\x{5b50}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                   },
+                                                        "modules" => {
+                                                                     "Web::XML::Parser::tree_constructor" => 1
+                                                                   }
+                                                      },
+          "xml:dtd:cm:nested mixed group" => {
+                                             "default_level" => "m",
+                                             "desc" => {
+                                                       "en" => "<p>A mixed content cannot contain nested groups.</p>",
+                                                       "ja" => "<p>\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{306b}\x{5165}\x{308c}\x{5b50}\x{306b}\x{7fa4}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                     },
+                                             "layer" => "dtd",
+                                             "message" => {
+                                                          "en" => "There is a nested group in a mixed content",
+                                                          "ja" => "\x{6df7}\x{5408}\x{5185}\x{5bb9}\x{306b}\x{5165}\x{308c}\x{5b50}\x{306e}\x{7fa4}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                        },
+                                             "modules" => {
+                                                          "Web::XML::Parser::tree_constructor" => 1
+                                                        }
+                                           },
+          "xml:dtd:duplicate nmtoken in element" => {
+                                                    "default_level" => "m",
+                                                    "desc" => {
+                                                              "en" => "<p>Allowed tokens should not contain token allowed for another\nattribute of the same element type.</p>",
+                                                              "ja" => "<p>\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{5b57}\x{53e5}\x{306b}\x{306f}\x{540c}\x{3058}\x{8981}\x{7d20}\x{578b}\x{306e}\x{4ed6}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{5b57}\x{53e5}\x{3092}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                            },
+                                                    "layer" => "dtd",
+                                                    "message" => {
+                                                                 "en" => "The token is also used by another attribute",
+                                                                 "ja" => "\x{3053}\x{306e}\x{5b57}\x{53e5}\x{306f}\x{4ed6}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{65e2}\x{306b}\x{5229}\x{7528}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                               },
+                                                    "modules" => {
+                                                                 "Web::XML::DTDValidator" => 1
+                                                               }
+                                                  },
+          "xml:dtd:element:no content model" => {
+                                                "default_level" => "m",
+                                                "desc" => {
+                                                          "en" => "<p>To be valid, an element must be declared with its content model.</p>",
+                                                          "ja" => "<p>\x{59a5}\x{5f53}\x{3067}\x{3042}\x{308b}\x{305f}\x{3081}\x{306b}\x{306f}\x{8981}\x{7d20}\x{306f}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{3068}\x{5171}\x{306b}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>"
+                                                        },
+                                                "layer" => "dtd",
+                                                "message" => {
+                                                             "en" => "The element has no content model",
+                                                             "ja" => "\x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                           },
+                                                "modules" => {
+                                                             "Web::XML::DTDValidator" => 1
+                                                           }
                                               },
+          "xml:dtd:entity ignored" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>An <code>ENTITY</code> declaration is ignored if there\nis an unread entity reference before the declaration.</p>",
+                                                "ja" => "<p><code>ENTITY</code> \x{5ba3}\x{8a00}\x{306f}\x{3001}\x{305d}\x{306e}\x{524d}\x{306b}\x{8aad}\x{3093}\x{3067}\x{3044}\x{306a}\x{3044}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{304c}\x{3042}\x{308b}\x{3068}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                              },
+                                      "layer" => "tree-construction",
                                       "message" => {
-                                                   "en" => "The <code>ENTITY</code> declaration is\n  ignored as there was unread parameter entity",
-                                                   "ja" => "\x{672a}\x{8aad}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{304c}\x{3042}\x{3063}\x{305f}\x{305f}\x{3081}\x{3053}\x{306e}\n  <code>ENTITY</code> \x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
-                                                 }
+                                                   "en" => "The <code>ENTITY</code> declaration is ignored",
+                                                   "ja" => "\x{3053}\x{306e} <code>ENTITY</code> \x{5ba3}\x{8a00}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::XML::Parser::tree_constructor" => 1
+                                                 },
+                                      "parser_tests" => [
+                                                        {
+                                                          "index" => 24,
+                                                          "input" => "<!DOCTYPE a [\n  %foo;\n  <!ENTITY hoge \"\">\n]><a/>",
+                                                          "lang" => "XML",
+                                                          "level" => "w"
+                                                        }
+                                                      ]
                                     },
+          "xml:dtd:entity value:unparsed entref" => {
+                                                    "default_level" => "m",
+                                                    "desc" => {
+                                                              "en" => "<p>An unparsed entity cannot be referenced.</p>",
+                                                              "ja" => "<p>\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{306f}\x{53c2}\x{7167}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                            },
+                                                    "layer" => "entity",
+                                                    "message" => {
+                                                                 "en" => "An unparsed entity is referenced",
+                                                                 "ja" => "\x{975e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{304c}\x{53c2}\x{7167}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                               },
+                                                    "modules" => {
+                                                                 "Web::XML::Parser::tokenizer" => 1
+                                                               },
+                                                    "parser_tests" => [
+                                                                      {
+                                                                        "index" => 66,
+                                                                        "input" => "<!DOCTYPE a[\n  <!ENTITY xy SYSTEM \"x\" NDATA foo>\n  <!ENTITY bar \"a&xy;a\">\n]><p></p>",
+                                                                        "lang" => "XML",
+                                                                        "level" => "w",
+                                                                        "value" => "&xy;"
+                                                                      }
+                                                                    ]
+                                                  },
           "xml:dtd:ext decl" => {
+                                "default_level" => "m",
                                 "desc" => {
-                                          "en" => "\n    <p>A markup declaration appears in an external entity or in a\n    parameter entity (i.e. is an external markup declaration).</p>\n\n    <p>As processing of external markup declarations is not required\n    to XML processors, the document might be misinterpreted depending\n    on how XML processor is implemented or configured.</p>\n  ",
-                                          "ja" => "\n    <p>\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{304b}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}\n    (\x{3064}\x{307e}\x{308a}\x{5916}\x{90e8}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{3067}\x{3059})\x{3002}</p>\n\n    <p>\x{5916}\x{90e8}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306e}\x{51e6}\x{7406}\x{306f}\x{3059}\x{3079}\x{3066}\x{306e} XML \x{51e6}\x{7406}\x{5668}\x{306b}\x{7fa9}\x{52d9}\x{4ed8}\x{3051}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{308f}\x{3051}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304b}\x{3089}\x{3001}\n    XML \x{51e6}\x{7406}\x{5668}\x{304c}\x{3069}\x{3046}\x{5b9f}\x{88c5}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{304b}\x{3001}\x{8a2d}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{304b}\x{306b}\x{3088}\x{3063}\x{3066}\x{6587}\x{66f8}\x{306e}\x{89e3}\x{91c8}\x{304c}\x{7570}\x{306a}\x{3063}\x{3066}\x{304f}\x{308b}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                          "en" => "<p>Markup declarations in external entities are not interoperable.</p>",
+                                          "ja" => "<p>\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306b}\x{3042}\x{308b}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                         },
+                                "layer" => "tree-construction",
                                 "message" => {
-                                             "en" => "An external markup declaration is found",
-                                             "ja" => "\x{5916}\x{90e8}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                             "en" => "There is a markup declaration in an external entity",
+                                             "ja" => "\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306b}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::Parser::tree_constructor" => 1
                                            }
                               },
+          "xml:dtd:id non-ID" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>For compatibility with DOM, the <code>id</code> attribute should\nhave the declared type <code>ID</code>.</p>",
+                                           "ja" => "<p>DOM \x{3068}\x{306e}\x{4e92}\x{63db}\x{6027}\x{306e}\x{305f}\x{3081}\x{3001} <code>id</code> \x{5c5e}\x{6027}\x{306e}\x{5ba3}\x{8a00}\x{578b}\x{306f}\n<code>ID</code> \x{3068}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                         },
+                                 "layer" => "dtd",
+                                 "message" => {
+                                              "en" => "The <code>id</code> attribute has a declared type other than <code>ID</code>",
+                                              "ja" => "<code>id</code> \x{5c5e}\x{6027}\x{306e}\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>ID</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            },
+                                 "modules" => {
+                                              "Web::XML::DTDValidator" => 1
+                                            }
+                               },
+          "xml:dtd:no group delimiter" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>There must be a delimiter (<code>|</code> or <code>,</code>) between group\nitems.  There cannot be a space within an allowed token or element name.\nNothing but <code>&gt;</code> is allowed after the outermost content model group.</p>",
+                                                    "ja" => "<p>\x{7fa4}\x{306e}\x{9805}\x{76ee}\x{306e}\x{9593}\x{306b}\x{306f}\x{533a}\x{5207}\x{5b50} (<code>|</code> \x{304b} <code>,</code>) \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\n\x{8a8d}\x{3081}\x{3089}\x{308c}\x{308b}\x{5b57}\x{53e5}\x{3084}\x{8981}\x{7d20}\x{540d}\x{306e}\x{4e2d}\x{306b}\x{306f}\x{7a7a}\x{767d}\x{3092}\x{5165}\x{308c}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6700}\x{5916}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{306e}\x{5f8c}\x{306b}\x{306f} <code>&gt;</code> \x{3057}\x{304b}\x{66f8}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "tokenization",
+                                          "message" => {
+                                                       "en" => "There is an unexpected character after a group item",
+                                                       "ja" => "\x{7fa4}\x{306e}\x{9805}\x{76ee}\x{306e}\x{5f8c}\x{306b}\x{4e88}\x{671f}\x{305b}\x{306c}\x{6587}\x{5b57}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::Parser::tokenizer" => 1
+                                                     },
+                                          "parser_error_names" => {
+                                                                  "after-allowed-token-003e" => 1,
+                                                                  "after-allowed-token-else" => 1,
+                                                                  "after-content-model-group-0028" => 1,
+                                                                  "after-content-model-group-else" => 1,
+                                                                  "after-content-model-item-0028" => 1,
+                                                                  "after-content-model-item-0029" => 1,
+                                                                  "after-content-model-item-002a" => 1,
+                                                                  "after-content-model-item-002b" => 1,
+                                                                  "after-content-model-item-003f" => 1,
+                                                                  "after-content-model-item-else" => 1,
+                                                                  "allowed-token-003e" => 1,
+                                                                  "content-model-element-0028" => 1
+                                                                },
+                                          "parser_tests" => [
+                                                            {
+                                                              "index" => 30,
+                                                              "input" => "<!DOCTYPE a[<!ATTLIST a b (ab cd) \"X\">]><a/>",
+                                                              "lang" => "XML"
+                                                            },
+                                                            {
+                                                              "index" => 30,
+                                                              "input" => "<!DOCTYPE a[<!ATTLIST a b (ab >]><a/>",
+                                                              "lang" => "XML"
+                                                            },
+                                                            {
+                                                              "index" => 29,
+                                                              "input" => "<!DOCTYPE a[<!ATTLIST a b (ab>]><a/>",
+                                                              "lang" => "XML"
+                                                            }
+                                                          ]
+                                        },
+          "xml:dtd:no group item" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>There must be an item after <code>(</code>, <code>|</code>, or <code>,</code>.</p>",
+                                               "ja" => "<p><code>(</code>, <code>|</code>, <code>,</code> \x{306e}\x{5f8c}\x{306b}\x{9805}\x{76ee}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                             },
+                                     "layer" => "tokenization",
+                                     "message" => {
+                                                  "en" => "No group item is specified",
+                                                  "ja" => "\x{7fa4}\x{306b}\x{9805}\x{76ee}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                     "modules" => {
+                                                  "Web::XML::Parser::tokenizer" => 1
+                                                },
+                                     "parser_error_names" => {
+                                                             "before-allowed-token-0029" => 1,
+                                                             "before-allowed-token-003e" => 1,
+                                                             "before-allowed-token-007c" => 1,
+                                                             "before-content-model-item-0029" => 1,
+                                                             "before-content-model-item-002a" => 1,
+                                                             "before-content-model-item-002b" => 1,
+                                                             "before-content-model-item-002c" => 1,
+                                                             "before-content-model-item-003f" => 1,
+                                                             "before-content-model-item-007c" => 1
+                                                           },
+                                     "parser_tests" => [
+                                                       {
+                                                         "index" => 28,
+                                                         "input" => "<!DOCTYPE a[<!ATTLIST x y ( ) \"x\">]><a/>",
+                                                         "lang" => "XML"
+                                                       },
+                                                       {
+                                                         "index" => 28,
+                                                         "input" => "<!DOCTYPE a[<!ATTLIST x y ( >]><a/>",
+                                                         "lang" => "XML"
+                                                       },
+                                                       {
+                                                         "index" => 28,
+                                                         "input" => "<!DOCTYPE a[<!ATTLIST x y ( ) \"x\">]><a/>",
+                                                         "lang" => "XML"
+                                                       },
+                                                       {
+                                                         "index" => 28,
+                                                         "input" => "<!DOCTYPE a[<!ATTLIST x y ( |a) \"y\">]><a/>",
+                                                         "lang" => "XML"
+                                                       }
+                                                     ]
+                                   },
+          "xml:dtd:non-id ID" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>For compatibility with DOM, the <code>ID</code>-typed attribute\nshould have the name <code>id</code>.</p>",
+                                           "ja" => "<p>DOM \x{3068}\x{306e}\x{4e92}\x{63db}\x{6027}\x{306e}\x{305f}\x{3081}\x{3001} <code>ID</code> \x{578b}\x{306e}\x{5c5e}\x{6027}\x{306e}\x{540d}\x{524d}\x{306f}\n<code>id</code> \x{3068}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                         },
+                                 "layer" => "dtd",
+                                 "message" => {
+                                              "en" => "The <code>ID</code> attribute has name other than <code>id</code>",
+                                              "ja" => "<code>ID</code> \x{5c5e}\x{6027}\x{306e}\x{540d}\x{524d}\x{304c} <code>id</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                            },
+                                 "modules" => {
+                                              "Web::XML::DTDValidator" => 1
+                                            }
+                               },
+          "xml:dtd:param entity with ndata" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>The notation name cannot be specified in a parameter entity declaration.</p>",
+                                                         "ja" => "<p>\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{5ba3}\x{8a00}\x{306b}\x{306f}\x{8a18}\x{6cd5}\x{540d}\x{3092}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "entity",
+                                               "message" => {
+                                                            "en" => "The notation name is specified for a parameter entity",
+                                                            "ja" => "\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306b}\x{8a18}\x{6cd5}\x{540d}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::Parser::tree_constructor" => 1
+                                                          },
+                                               "parser_tests" => [
+                                                                 {
+                                                                   "index" => 12,
+                                                                   "input" => "<!DOCTYPE a[<!ENTITY % foo SYSTEM \"bar\" NDATA x>]><a/>",
+                                                                   "lang" => "XML",
+                                                                   "value" => "%foo;"
+                                                                 }
+                                                               ]
+                                             },
           "xml:dtd:pi" => {
+                          "default_level" => "m",
                           "desc" => {
-                                    "en" => "\n    <p>A processing instruction is used in DTD.</p>\n\n    <p>If a processing instruction appears in an external entity or in\n    a parameter entity, it might not be included depending on how the\n    XML processor is implemented or configured.</p>\n\n    <p>Processing instructions in DTD might not be result in the DOM\n    tree such that applications might not be able to access them.</p>\n  ",
-                                    "ja" => "\n    <p>\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{304c} DTD \x{4e2d}\x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3084}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{3067}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{308b}\x{5834}\x{5408}\x{3001} XML\n    \x{51e6}\x{7406}\x{5668}\x{306e}\x{5b9f}\x{88c5}\x{3084}\x{8a2d}\x{5b9a}\x{6b21}\x{7b2c}\x{3067}\x{53d6}\x{308a}\x{8fbc}\x{307e}\x{308c}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>DTD \x{5185}\x{306e}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306f} DOM \x{6728}\x{306b}\x{73fe}\x{308c}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{304b}\x{3089}\x{3001}\n    \x{30a2}\x{30d7}\x{30ea}\x{30b1}\x{30fc}\x{30b7}\x{30e7}\x{30f3}\x{304c}\x{30a2}\x{30af}\x{30bb}\x{30b9}\x{3067}\x{304d}\x{306a}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                    "en" => "<p>Processing instructions in DTD are not interoperable.</p>",
+                                    "ja" => "<p>DTD \x{5185}\x{306e}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                   },
+                          "layer" => "tree-construction",
                           "message" => {
-                                       "en" => "A processing instruction is used in DTD",
+                                       "en" => "There is a processing instruction in DTD",
                                        "ja" => "DTD \x{4e2d}\x{306b}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                     }
+                                     },
+                          "modules" => {
+                                       "Web::XML::Parser::tree_constructor" => 1
+                                     },
+                          "parser_tests" => [
+                                            {
+                                              "index" => 15,
+                                              "input" => "<!DOCTYPE foo [<?hoge?>]><foo/>",
+                                              "lang" => "XML",
+                                              "level" => "w"
+                                            }
+                                          ]
                         },
+          "xml:dtd:string after name" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>Markup declarations other than <code>ATTLIST</code> must contain\nparameters after the name:\n  </p><dl class=\"switch\">\n  <dt><code>ENTITY</code> declaration\n  </dt><dd>Either a system identifier and optional public identifier and notation name,\n  or an entity value.\n  </dd><dt><code>NOTATION</code> declaration\n  </dt><dd>Public and/or system identifiers.\n  </dd><dt><code>ELEMENT</code> declaration\n  </dt><dd>The content model.\n  </dd></dl>",
+                                                   "ja" => "<p><code>ATTLIST</code> \x{4ee5}\x{5916}\x{306e}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{5ba3}\x{8a00}\x{306f}\x{540d}\x{524d}\x{306e}\x{5f8c}\x{306b}\x{5f15}\x{6570}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\n  </p><dl class=\"switch\">\n  <dt><code>ENTITY</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{3068}\x{7701}\x{7565}\x{53ef}\x{80fd}\x{306a}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{8a18}\x{6cd5}\x{540d}\x{304b}\x{3001}\x{5b9f}\x{4f53}\x{5024}\x{304b}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3002}\n  </dd><dt><code>NOTATION</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3068}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{306e}\x{4e00}\x{65b9}\x{307e}\x{305f}\x{306f}\x{4e21}\x{65b9}\x{3002}\n  </dd><dt><code>ELEMENT</code> \x{5ba3}\x{8a00}\n  </dt><dd>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{3002}\n  </dd></dl>"
+                                                 },
+                                         "layer" => "tokenization",
+                                         "message" => {
+                                                      "en" => "There is an unknown parameter after the name",
+                                                      "ja" => "\x{540d}\x{524d}\x{306e}\x{5f8c}\x{306b}\x{672a}\x{77e5}\x{306e}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::XML::Parser::tokenizer" => 1
+                                                    },
+                                         "parser_error_names" => {
+                                                                 "after-entity-name-else" => 1,
+                                                                 "after-notation-name-else" => 1
+                                                               },
+                                         "parser_tests" => [
+                                                           {
+                                                             "index" => 27,
+                                                             "input" => "<!DOCTYPE x[<!NOTATION foo bar>]><x/>",
+                                                             "lang" => "XML"
+                                                           }
+                                                         ]
+                                       },
+          "xml:dtd:unknown content keyword" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>The content model keyword in an <code>ELEMENT</code> declaration\nmust be <code>EMPTY</code> or <code>ANY</code>.</p>",
+                                                         "ja" => "<p><code>ELEMENT</code> \x{5ba3}\x{8a00}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306e}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{306f}\n<code>EMPTY</code> \x{304b} <code>ANY</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "tree-construction",
+                                               "message" => {
+                                                            "en" => "An unknown content model keyword is specified",
+                                                            "ja" => "\x{672a}\x{77e5}\x{306e}\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{306e}\x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::Parser::tree_constructor" => 1
+                                                          },
+                                               "parser_tests" => [
+                                                                 {
+                                                                   "index" => 12,
+                                                                   "input" => "<!DOCTYPE a[<!ELEMENT a foo>]><a/>",
+                                                                   "lang" => "XML",
+                                                                   "value" => "foo"
+                                                                 }
+                                                               ]
+                                             },
+          "xml:empty element tag:non-EMPTY" => {
+                                               "default_level" => "m",
+                                               "desc" => {
+                                                         "en" => "<p>An element that is not declared with the <code>EMPTY</code> keyword\nshould not use the empty-element tag syntax (i.e. <code>/&gt;</code>).</p>",
+                                                         "ja" => "<p><code>EMPTY</code> \x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{7121}\x{3057}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{8981}\x{7d20}\x{30bf}\x{30b0}\x{69cb}\x{6587}\n(<code>/&gt;</code>) \x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                       },
+                                               "layer" => "dtd",
+                                               "message" => {
+                                                            "en" => "A non-<code>EMPTY</code> element is using the empty-element tag syntax",
+                                                            "ja" => "<code>EMPTY</code> \x{3067}\x{306a}\x{3044}\x{8981}\x{7d20}\x{304c}\x{7a7a}\x{8981}\x{7d20}\x{30bf}\x{30b0}\x{69cb}\x{6587}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::XML::Parser::tokenizer" => 1
+                                                          }
+                                             },
           "xml:lang ne lang" => {
                                 "desc" => {
                                           "en" => "\n    <p>The value of the <code>lang</code> attribute in no namespace\n    and the value of the <code>lang</code> attribute in the XML\n    namespace or the value of the <code>xml:lang</code> attribute in\n    no namespace must be equivalent.</p>\n\n    <p>Note that you can omit the <code>xml:lang</code> attribute.</p>\n  ",
@@ -9306,6 +12206,171 @@ $WebHACC::_Errors = {
                                                  "attr" => 1
                                                }
                                   },
+          "xml:name syntax" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>XML element, attribute, entity, and notation names, as well as\nprocessing instruction target and <code>ID</code>s, must be an\nXML <code>Name</code>.  It must be a string of one or more XML\nname characters.  Its first character must be an XML name start\ncharacter.</p>",
+                                         "ja" => "<p>XML \x{306e}\x{8981}\x{7d20}\x{3001}\x{5c5e}\x{6027}\x{3001}\x{5b9f}\x{4f53}\x{3001}\x{8a18}\x{6cd5}\x{306e}\x{540d}\x{524d}\x{3084}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3001}\n<code>ID</code> \x{306f} XML <code>Name</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\nXML \x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{307f}\x{3067}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3001}\n\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} XML \x{540d}\x{524d}\x{958b}\x{59cb}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                       },
+                               "layer" => "tokenizer",
+                               "message" => {
+                                            "en" => "This is not an XML <code>Name</code>",
+                                            "ja" => "XML <code>Name</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                          },
+                               "modules" => {
+                                            "Web::XML::DTDValidator" => 1
+                                          }
+                             },
+          "xml:names syntax" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>Attribute values whose type is <code>IDREFS</code> or <code>ENTITIES</code>\nmust be one or more XML <code>Name</code>s separated by\na U+0020 <code class=\"charname\">SPACE</code> character.\nThe list cannot be empty.</p>",
+                                          "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>IDREFS</code> \x{3084} <code>ENTITIES</code>\n\x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{3001} U+0020 <code class=\"charname\">SPACE</code>\n\x{533a}\x{5207}\x{308a}\x{306e}1\x{3064}\x{4ee5}\x{4e0a}\x{306e} XML <code>Name</code> \x{306e}\x{30ea}\x{30b9}\x{30c8}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{7a7a}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "dtd",
+                                "message" => {
+                                             "en" => "This is not a space-separated list of XML <code>Name</code>s",
+                                             "ja" => "XML <code>Name</code> \x{306e}\x{7a7a}\x{767d}\x{533a}\x{5207}\x{308a}\x{306e}\x{30ea}\x{30b9}\x{30c8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::DTDValidator" => 1
+                                           }
+                              },
+          "xml:ncname syntax" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>XML entity and notation names, as well as\nprocessing instruction target and <code>ID</code>s, must\nnot contain a <code>:</code> character.</p>",
+                                           "ja" => "<p>XML \x{306e}\x{5b9f}\x{4f53}\x{3084}\x{8a18}\x{6cd5}\x{306e}\x{540d}\x{524d}\x{3084}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3001}\n<code>ID</code> \x{306f} <code>:</code> \x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                         },
+                                 "layer" => "tokenizer",
+                                 "message" => {
+                                              "en" => "The <code>:</code> is not allowed",
+                                              "ja" => "<code>:</code> \x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
+                                            },
+                                 "modules" => {
+                                              "Web::XML::DTDValidator" => 1
+                                            }
+                               },
+          "xml:nmtoken syntax" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>The value of an attribute whose type is <code>NMTOKEN</code>\ncan only contain XML name characters.  It cannot be the empty string.</p>",
+                                            "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>NMTOKEN</code> \x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f} XML \x{540d}\x{524d}\x{6587}\x{5b57}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5c5e}\x{6027}\x{5024}\x{306f}\x{7a7a}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "dtd",
+                                  "message" => {
+                                               "en" => "The value is not a string of name characters",
+                                               "ja" => "\x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::XML::DTDValidator" => 1
+                                             }
+                                },
+          "xml:nmtokens syntax" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>The value of an attribute whose type is <code>NMTOKENS</code> must be\na list of one or more substrings that only contain XML name characters,\nseparated by a U+0020 <code class=\"charname\">SPACE</code> character.\nIt cannot be the empty string.</p>",
+                                             "ja" => "<p>\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>NMTOKENS</code> \x{306e}\x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\x{3001}1\x{3064}\x{4ee5}\x{4e0a}\x{306e} XML \n\x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{307f}\x{306e}\x{6587}\x{5b57}\x{5217}\x{306e} U+0020 <code class=\"charname\">SPACE</code>\n\x{6587}\x{5b57}\x{306e}\x{30ea}\x{30b9}\x{30c8}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5c5e}\x{6027}\x{5024}\x{306f}\x{7a7a}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                           },
+                                   "layer" => "dtd",
+                                   "message" => {
+                                                "en" => "The value is not a list of one or more strings of name characters",
+                                                "ja" => "\x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{6587}\x{5b57}\x{5217}\x{306e}\x{30ea}\x{30b9}\x{30c8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::XML::DTDValidator" => 1
+                                              }
+                                 },
+          "xml:pi:target not declared" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>The target of the processing instruction can be declared by\na <code>NOTATION</code> declaration whose name is the target.</p>",
+                                                    "ja" => "<p>\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{306f}\x{3001}\x{540d}\x{524d}\x{304c}\x{5bfe}\x{8c61}\x{3068}\x{540c}\x{3058} <code>NOTATION</code>\n\x{5ba3}\x{8a00}\x{306b}\x{3088}\x{308a}\x{5ba3}\x{8a00}\x{3059}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>"
+                                                  },
+                                          "layer" => "dtd",
+                                          "message" => {
+                                                       "en" => "The target is not declared",
+                                                       "ja" => "\x{5bfe}\x{8c61}\x{304c}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::XML::DTDValidator" => 1
+                                                     }
+                                        },
+          "xml:pubid:bad char" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>A public identifier can contain only limited set of characters.</p>",
+                                            "ja" => "<p>\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{306b}\x{306f}\x{9650}\x{3089}\x{308c}\x{305f}\x{6587}\x{5b57}\x{3057}\x{304b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "entity",
+                                  "message" => {
+                                               "en" => "The public identifier contains an invalid character",
+                                               "ja" => "\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{306b}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{306a}\x{3044}\x{6587}\x{5b57}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::XML::Parser::checker" => 1
+                                             }
+                                },
+          "xml:pubid:not normalized" => {
+                                        "default_level" => "m",
+                                        "desc" => {
+                                                  "en" => "<p>Leading, trailing, or consecutive spaces, as well as newline\ncharacters, are expected to be normalized by parser.  However, this is not\nan interoperable behavior.</p>",
+                                                  "ja" => "<p>\x{5148}\x{982d}\x{3001}\x{672b}\x{5c3e}\x{3001}\x{9023}\x{7d9a}\x{306e}\x{7a7a}\x{767d}\x{3084}\x{6539}\x{884c}\x{306f}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{5668}\x{306b}\x{3088}\x{308a}\x{6b63}\x{898f}\x{5316}\x{3055}\x{308c}\x{308b}\x{3053}\x{3068}\x{304c}\x{671f}\x{5f85}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n\x{3057}\x{304b}\x{3057}\x{3053}\x{308c}\x{306f}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{304c}\x{9ad8}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                },
+                                        "layer" => "entity",
+                                        "message" => {
+                                                     "en" => "The public identifier contains non-normalized spaces",
+                                                     "ja" => "\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{306b}\x{6b63}\x{898f}\x{5316}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{7a7a}\x{767d}\x{304c}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                   },
+                                        "modules" => {
+                                                     "Web::XML::Parser::checker" => 1
+                                                   }
+                                      },
+          "xml:qname syntax" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>XML element and attribute names must be an XML <code>QName</code>, i.e.\na local name or a prefix followed by <code>:</code> and a local name.\n</p><p>A prefix or local name must be a string of one or more XML\nname characters.  Their first character must be an XML name start\ncharacter.  They cannot contain a <code>:</code> character.</p>",
+                                          "ja" => "<p>XML \x{306e}\x{8981}\x{7d20}\x{3084}\x{5c5e}\x{6027}\x{306e}\x{540d}\x{524d}\x{306f} XML <code>QName</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{3059}\x{306a}\x{308f}\x{3061}\x{3001}\x{5c40}\x{6240}\x{540d}\x{304b}\x{3001}\x{63a5}\x{982d}\x{8f9e}\x{3068} <code>:</code> \x{3068}\x{5c40}\x{6240}\x{540d}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n</p><p>\x{63a5}\x{982d}\x{8f9e}\x{3084}\x{5c40}\x{6240}\x{540d}\x{306f}\x{3001}XML \x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{307f}\x{3067}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3001}\n\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} XML \x{540d}\x{524d}\x{958b}\x{59cb}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{307e}\x{305f} <code>:</code>\n\x{3092}\x{542b}\x{3081}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "tokenizer",
+                                "message" => {
+                                             "en" => "This is not an XML <code>QName</code>",
+                                             "ja" => "XML <code>QName</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::XML::DTDValidator" => 1
+                                           }
+                              },
+          "xml:space:bad type" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>The declared type of the <code>xml:space</code> attribute\nmust be <code>(default | preserve)</code>, <code>(default)</code>,\nor <code>(preserve)</code>.</p>",
+                                            "ja" => "<p><code>xml:space</code> \x{5c5e}\x{6027}\x{306e}\x{5ba3}\x{8a00}\x{578b}\x{306f}\n<code>(default | preserve)</code>, <code>(default)</code>,\n<code>(preserve)</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "dtd",
+                                  "message" => {
+                                               "en" => "The declared type of <code>xml:space</code> attribute is\nnot <code>(default|preserve)</code>",
+                                               "ja" => "<code>xml:space</code> \x{5c5e}\x{6027}\x{306e}\x{5ba3}\x{8a00}\x{578b}\x{304c} <code>(default|preserve)</code>\n\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::XML::DTDValidator" => 1
+                                             }
+                                },
+          "xml:start tag:EMPTY" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>An element that is declared with the <code>EMPTY</code> keyword\nshould use the empty-element tag syntax (i.e. <code>/&gt;</code>).</p>",
+                                             "ja" => "<p><code>EMPTY</code> \x{30ad}\x{30fc}\x{30ef}\x{30fc}\x{30c9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{8981}\x{7d20}\x{30bf}\x{30b0}\x{69cb}\x{6587}\n(<code>/&gt;</code>) \x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                           },
+                                   "layer" => "dtd",
+                                   "message" => {
+                                                "en" => "An <code>EMPTY</code> element does not use the empty-element tag syntax",
+                                                "ja" => "<code>EMPTY</code> \x{8981}\x{7d20}\x{304c}\x{7a7a}\x{8981}\x{7d20}\x{30bf}\x{30b0}\x{69cb}\x{6587}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::XML::Parser::tokenizer" => 1
+                                              }
+                                 },
           "xmlns:* empty" => {
                              "desc" => {
                                        "en" => "\n    <p>The namespace prefix cannot be undeclared.  In other word, the\n    attribute value in the XMLNS namespace cannot be the empty string\n    unless the local name is <code>xmlns</code>.</p>\n  ",
