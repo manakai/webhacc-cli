@@ -1,4 +1,4 @@
-Net::SSLeay~1.67
+Net::SSLeay~1.68
 Capture::Tiny~0.27
 Pod::Usage~1.64
 Pod::Text~3.18
