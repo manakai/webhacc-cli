@@ -1216,8 +1216,8 @@ $WebHACC::_Errors = {
                                   },
                           "layer" => "tree-construction",
                           "message" => {
-                                       "en" => "There is a start-tag <code>&lt;<var>{text}</var>&gt;</code> after the\n<code>&lt;/head&gt;</code> end tag",
-                                       "ja" => "\x{958b}\x{59cb}\x{30bf}\x{30b0} <code>&lt;<var>{text}</var>&gt;</code> \x{304c}\x{7d42}\x{4e86}\x{30bf}\x{30b0}\n<code>&lt;/head&gt;</code> \x{3088}\x{308a}\x{5f8c}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                       "en" => "There is a start-tag after the <code>&lt;/head&gt;</code> end tag",
+                                       "ja" => "\x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{7d42}\x{4e86}\x{30bf}\x{30b0} <code>&lt;/head&gt;</code> \x{3088}\x{308a}\x{5f8c}\x{306b}\x{3042}\x{308a}\x{307e}\x{3059}"
                                      },
                           "modules" => {
                                        "Web::HTML::Parser::tree_constructor" => 1
