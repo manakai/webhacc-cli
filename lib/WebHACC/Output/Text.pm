@@ -105,7 +105,7 @@ sub _string ($$) {
 sub _print_by_lc ($$$$) {
   my ($self, $body, $line, $column) = @_;
 
-    if ($column < 5 and $line > 1) {
+    if ($column < 10 and $line > 1) {
       $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', ($line - 1) . ':'),
                         $body->[$line - 1]);
@@ -118,15 +118,15 @@ sub _print_by_lc ($$$$) {
     } else {
       no warnings 'substr';
       my $start = 0;
-      $start = $column - 30 if $start < $column - 30;
+      $start = $column - 60 if $start < $column - 60;
       $self->print (sprintf "  %s %s%s%s\n",
           $self->_c ('line_number', $line . ':'),
           (substr $body->[$line], $start, $column - 1 - $start),
           $self->_c ('mark', (substr $body->[$line], $column - 1, 1)),
-          (substr $body->[$line], $column - 1 + 1, 30) // '');
+          (substr $body->[$line], $column - 1 + 1, 60) // '');
       $self->print ('  ' . (' ' x (length $line)) . '  ' . (' ' x ($column - 1 - $start)) . "^\n"); # XXX CJK width
     }
-    if ($column + 5 > length $body->[$line]) {
+    if ($column + 10 > length $body->[$line]) {
       $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', ($line + 1) . ':'),
                         $body->[$line + 1]);
