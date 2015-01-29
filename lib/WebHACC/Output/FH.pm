@@ -49,6 +49,8 @@ sub handle ($) {
          my ($hdl, $fatal, $msg) = @_;
          AE::log error => $msg;
          $hdl->destroy;
+         $self->{cv}->end if $self;
+         undef $self;
        });
 } # handle
 
