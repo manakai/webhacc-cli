@@ -114,6 +114,7 @@ sub _print_by_lc ($$$$) {
       $self->print (sprintf "  %s %s\n",
                         $self->_c ('line_number', $line . ':'),
                         $body->[$line]);
+      $self->print ('  ' . (' ' x (length $line)) . '  ' . "^\n"); # XXX CJK width
     } else {
       no warnings 'substr';
       my $start = 0;
@@ -123,6 +124,7 @@ sub _print_by_lc ($$$$) {
           (substr $body->[$line], $start, $column - 1 - $start),
           $self->_c ('mark', (substr $body->[$line], $column - 1, 1)),
           (substr $body->[$line], $column - 1 + 1, 30) // '');
+      $self->print ('  ' . (' ' x (length $line)) . '  ' . (' ' x ($column - 1 - $start)) . "^\n"); # XXX CJK width
     }
     if ($column + 5 > length $body->[$line]) {
       $self->print (sprintf "  %s %s\n",
