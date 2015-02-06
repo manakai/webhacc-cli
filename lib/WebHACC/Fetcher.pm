@@ -18,6 +18,10 @@ sub new_from_f ($$) {
   return bless {f => $_[1]}, $_[0];
 } # new_from_f
 
+sub new_from_string_ref ($$) {
+  return bless {ref => $_[1]}, $_[0];
+} # new_from_string_ref
+
 sub content_type ($;$) {
   if (@_ > 1) {
     $_[0]->{content_type} = $_[1];
@@ -123,6 +127,16 @@ sub _fh (%) {
        });
 } # _fh
 
+sub _ref (%) {
+  my %args = @_;
+  AE::postpone {
+    $args{onheaders}->({Status => 200, Reason => 'OK', URL => $args{url},
+                        'content-type' => $args{content_type} // 'text/html'});
+    $args{onbodychunk}->(${$args{ref}});
+    $args{ondone}->(1);
+  };
+} # _ref
+
 sub start ($) {
   my $self = $_[0];
   if (defined $self->{url}) {
@@ -166,6 +180,15 @@ sub start ($) {
 
     _fh
         fh => $fh,
+        url => $url,
+        content_type => $self->content_type,
+        onheaders => $self->onheaders,
+        onbodychunk => $self->onbodychunk,
+        ondone => $self->ondone;
+  } elsif ($self->{ref}) {
+    my $url = 'about:blank';
+    _ref
+        ref => $self->{ref},
         url => $url,
         content_type => $self->content_type,
         onheaders => $self->onheaders,
