@@ -1,6 +1,6 @@
 Net::SSLeay~1.68
 Capture::Tiny~0.28
-Pod::Usage~1.66
+Pod::Usage~1.67
 Pod::Text~3.18
 JE~0.066
 Test::NoWarnings~1.04
