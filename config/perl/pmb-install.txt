@@ -26,7 +26,7 @@ File::Spec~3.47
 Regexp::Parser~0.21
 Unicode::Normalize~1.18
 Algorithm::Diff~1.1903
-Path::Tiny~0.061
+Path::Tiny~0.065
 Test::Tester~0.114
 Time::HiRes~1.9726
 Exporter~5.70
