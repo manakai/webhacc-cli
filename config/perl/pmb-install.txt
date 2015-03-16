@@ -30,4 +30,4 @@ Path::Tiny~0.065
 Test::Tester~0.114
 Time::HiRes~1.9726
 Exporter~5.70
-Carp~1.3301
+Carp~1.35
