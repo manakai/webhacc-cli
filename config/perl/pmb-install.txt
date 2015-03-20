@@ -9,7 +9,7 @@ Test::Builder~1.001014
 AnyEvent::Util
 Getopt::Long~2.45
 AnyEvent~7.08
-parent~0.231
+parent~0.232
 Term::ANSIColor~4.03
 Exporter::Lite~0.06
 Data::Dumper~2.154
@@ -30,4 +30,4 @@ Path::Tiny~0.065
 Test::Tester~0.114
 Time::HiRes~1.9726
 Exporter~5.70
-Carp~1.35
+Carp~1.36
