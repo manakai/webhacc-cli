@@ -21,7 +21,7 @@ Test::Differences~0.63
 Path::Class~0.35
 common::sense~3.73
 Unicode::Stringprep~1.105
-Scalar::Util~1.41
+Scalar::Util~1.42
 File::Spec~3.47
 Regexp::Parser~0.21
 Unicode::Normalize~1.18
