@@ -19,7 +19,7 @@ Text::Diff~1.41
 Test::More~1.001014
 Test::Differences~0.63
 Path::Class~0.35
-common::sense~3.73
+common::sense~3.74
 Unicode::Stringprep~1.105
 Scalar::Util~1.42
 File::Spec~3.47
