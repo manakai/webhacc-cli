@@ -16,7 +16,7 @@ Data::Dumper~2.154
 Canary::Stability~2006
 AnyEvent::HTTP~2.22
 Date::Parse~2.30
-Text::Diff~1.41
+Text::Diff~1.42
 Test::More~1.001014
 Test::Differences~0.63
 Path::Class~0.35
