@@ -1,4 +1,4 @@
-perl
-perldoc
-prove
-webhacc=perl bin/webhacc.pl
+@perl
+@perldoc
+@prove
+@webhacc=perl bin/webhacc.pl
