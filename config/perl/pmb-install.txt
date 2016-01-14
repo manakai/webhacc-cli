@@ -11,7 +11,7 @@ Getopt::Long~2.48
 AnyEvent~7.11
 parent~0.234
 Term::ANSIColor~4.04
-Exporter::Lite~0.07
+Exporter::Lite~0.08
 Data::Dumper~2.154
 Canary::Stability~2006
 AnyEvent::HTTP~2.22
@@ -23,7 +23,7 @@ Path::Class~0.35
 common::sense~3.74
 Unicode::Stringprep~1.105
 Scalar::Util~1.42
-File::Spec~3.60
+File::Spec~3.62
 Regexp::Parser~0.21
 Unicode::Normalize~1.25
 Algorithm::Diff~1.1903
