@@ -1,14 +1,14 @@
 Net::SSLeay~1.72
 Capture::Tiny~0.30
 Pod::Usage~1.68
-Pod::Text~4.05
+Pod::Text~4.06
 JE~0.066
 Test::NoWarnings~1.04
 Encode~2.80
 Test::Builder~1.001014
 AnyEvent::Util
 Getopt::Long~2.48
-AnyEvent~7.11
+AnyEvent~7.12
 parent~0.234
 Term::ANSIColor~4.04
 Exporter::Lite~0.08
