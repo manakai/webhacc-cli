@@ -994,7 +994,7 @@ $WebHACC::_Errors = {
                                                                  "en" => "<p>In an XML document with <code>standalone=\"yes\"</code>,\nelement attributes must not be affected by <code>ATTLIST</code>\ndeclarations in an external entity.</p>",
                                                                  "ja" => "<p><code>standalone=\"yes\"</code> \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f} XML \x{6587}\x{66f8}\x{3067}\x{306f}\x{3001}\n\x{8981}\x{7d20}\x{306e}\x{5c5e}\x{6027}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{3067}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{305f} <code>ATTLIST</code>\n\x{5ba3}\x{8a00}\x{306e}\x{5f71}\x{97ff}\x{3092}\x{53d7}\x{3051}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                                },
-                                                       "layer" => "dtd-augmentation",
+                                                       "layer" => "dtd",
                                                        "message" => {
                                                                     "en" => "Attributes are affected by an external <code>ATTLIST</code> declaration",
                                                                     "ja" => "\x{5c5e}\x{6027}\x{304c}\x{5916}\x{90e8}\x{5b9f}\x{4f53}\x{306e} <code>ATTLIST</code> \x{5ba3}\x{8a00}\x{306e}\x{5f71}\x{97ff}\x{3092}\x{53d7}\x{3051}\x{307e}\x{3059}"
@@ -1121,7 +1121,7 @@ $WebHACC::_Errors = {
                                                      "en" => "<p>The <code>standalone</code> pseudo-attribute value must be\n<code>yes</code> or <code>no</code>.</p>",
                                                      "ja" => "<p><code>standalone</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{5024}\x{306f} <code>yes</code> \x{304b}\n<code>no</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                    },
-                                           "layer" => "tokenizer",
+                                           "layer" => "tokenization",
                                            "message" => {
                                                         "en" => "The <code>standalone</code> value is neither <code>yes</code> nor\n<code>no</code>",
                                                         "ja" => "<code>standalone</code> \x{5c5e}\x{6027}\x{5024}\x{304c} <code>yes</code> \x{3067}\x{3082} <code>no</code>\n\x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -1820,8 +1820,8 @@ $WebHACC::_Errors = {
                                                "ja" => "\n    <p>\x{591a}\x{304f}\x{306e}\x{5834}\x{5408} <code>img</code> \x{8981}\x{7d20}\x{306b}\x{306f}\x{4ee3}\x{66ff}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>\x{753b}\x{50cf}\x{304c}\x{4e3b}\x{305f}\x{308b}\x{5185}\x{5bb9}\x{3067}\x{3042}\x{3063}\x{3066}\x{3001}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{5834}\x{5408}</dt>\n\n    <dd><code>img</code> \x{8981}\x{7d20}\x{3092} <code>figcaption</code> \x{5b50}\x{8981}\x{7d20}\x{3092}\x{6301}\x{3064}\n    <code>figure</code> \x{8981}\x{7d20}\x{306b}\x{5165}\x{308c}\x{308b}\x{304b}\x{3001} <code>img</code> \n    \x{8981}\x{7d20}\x{306e} <code>title</code> \x{5c5e}\x{6027}\x{306b}\x{753b}\x{50cf}\x{306e}\x{8aac}\x{660e}\x{3092}\x{5165}\x{308c}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>\x{753b}\x{50cf}\x{304c}\x{4f55}\x{3067}\x{3042}\x{308b}\x{304b}\x{30de}\x{30fc}\x{30af}\x{4ed8}\x{3051}\x{751f}\x{6210}\x{5668}\x{304c}\x{77e5}\x{3089}\x{306a}\x{3044}\x{5834}\x{5408}\n    (WYSIWYG \x{30a8}\x{30c7}\x{30a3}\x{30bf}\x{30fc}\x{3084} <abbr title=\"\x{30e6}\x{30fc}\x{30b6}\x{30fc}\x{751f}\x{6210}\x{30b3}\x{30f3}\x{30c6}\x{30f3}\x{30c4}\">UGC</abbr> \x{30a2}\x{30d7}\x{30ea}\x{30b1}\x{30fc}\x{30b7}\x{30e7}\x{30f3}\x{3067}\x{5229}\x{7528}\x{8005}\x{304c}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{304b}\x{3063}\x{305f}\x{5834}\x{5408}\x{306a}\x{3069})</dt>\n\n    <dd><code>img</code> \x{8981}\x{7d20}\x{306e}\n    <code>generator-unable-to-provide-required-alt</code>\n    \x{5c5e}\x{6027}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{8a2d}\x{5b9a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>\x{79c1}\x{7684}\x{306a}\x{6587}\x{66f8}\x{3067}\x{3042}\x{3063}\x{3066}\x{8aad}\x{3080}\x{4eba}\x{304c}\x{753b}\x{50cf}\x{3092}\x{8868}\x{793a}\x{3067}\x{304d}\x{308b}\x{3068}\x{308f}\x{304b}\x{3063}\x{3066}\x{3044}\x{308b}\x{5834}\x{5408}</dt>\n\n    <dd>\x{3053}\x{306e}\x{30a8}\x{30e9}\x{30fc}\x{306f}\x{7121}\x{8996}\x{3057}\x{3066}\x{69cb}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>\x{753b}\x{50cf}\x{304c}\x{5468}\x{308a}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{306e}\x{5185}\x{5bb9}\x{3092}\x{7e70}\x{308a}\x{8fd4}\x{3057}\x{3066}\x{3044}\x{308b}\x{3060}\x{3051}\x{306e}\x{5834}\x{5408}</dt>\n    <dt>\x{753b}\x{50cf}\x{304c}\x{7d14}\x{7c8b}\x{306b}\x{88c5}\x{98fe}\x{76ee}\x{7684}\x{306e}\x{5834}\x{5408}</dt>\n\n    <dd><code>img</code> \x{8981}\x{7d20}\x{306e} <code>alt</code> \n    \x{5c5e}\x{6027}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{8a2d}\x{5b9a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306e}\x{5834}\x{5408}</dt>\n\n    <dd><code>img</code> \x{8981}\x{7d20}\x{306e} <code>alt</code> \x{5c5e}\x{6027}\x{306b}\x{4ee3}\x{66ff}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3092}\x{8a2d}\x{5b9a}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>\n  "
                                              },
                                      "message" => {
-                                                  "en" => "No alternative text (e.g. <code>alt</code>\n  attribute) is specified",
-                                                  "ja" => "\x{4ee3}\x{66ff}\x{30c6}\x{30ad}\x{30b9}\x{30c8} (<code>alt</code> \x{5c5e}\x{6027}\x{306a}\x{3069})\n  \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  "en" => "There is no alternative text for the image",
+                                                  "ja" => "\x{753b}\x{50cf}\x{306e}\x{4ee3}\x{66ff}\x{6587}\x{304c}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                 }
                                    },
           "attribute missing:aria-label*" => {
@@ -1863,7 +1863,7 @@ $WebHACC::_Errors = {
                                                     "en" => "<p>There must be the <code>encoding</code> pseudo-attribute in\na text declaration.</p>",
                                                     "ja" => "<p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{306b}\x{306f} <code>encoding</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                                   },
-                                          "layer" => "tokenizer",
+                                          "layer" => "tokenization",
                                           "message" => {
                                                        "en" => "There is no <code>encoding</code> attribute",
                                                        "ja" => "<code>encoding</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -1918,7 +1918,7 @@ $WebHACC::_Errors = {
                                                    "en" => "<p>There must be the <code>version</code> pseudo-attribute in\nan XML declaration.</p>",
                                                    "ja" => "<p>XML \x{5ba3}\x{8a00}\x{306b}\x{306f} <code>version</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                                  },
-                                         "layer" => "tokenizer",
+                                         "layer" => "tokenization",
                                          "message" => {
                                                       "en" => "There is no <code>version</code> attribute",
                                                       "ja" => "<code>version</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -1989,7 +1989,7 @@ $WebHACC::_Errors = {
                                                           "en" => "<p>The <code>standalone</code> pseudo-attribute is not allowed\nin a text declaration.</p>",
                                                           "ja" => "<p>\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{3067}\x{306f} <code>standalone</code> \x{64ec}\x{4f3c}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                         },
-                                                "layer" => "tokenizer",
+                                                "layer" => "tokenization",
                                                 "message" => {
                                                              "en" => "There is a <code>standalone</code> attribute",
                                                              "ja" => "<code>standalone</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
@@ -2576,7 +2576,7 @@ $WebHACC::_Errors = {
                                                "en" => "<p>The XML or text declaration is syntactically wrong.  It has\nstricter syntax than normal tags.</p>",
                                                "ja" => "<p>XML \x{5ba3}\x{8a00}\x{3084}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{304c}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{901a}\x{5e38}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{69cb}\x{6587}\x{304c}\x{53b3}\x{5bc6}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}</p>"
                                              },
-                                     "layer" => "tokenizer",
+                                     "layer" => "tokenization",
                                      "message" => {
                                                   "en" => "The XML declaration is syntactically broken",
                                                   "ja" => "\x{3053}\x{306e} XML \x{5ba3}\x{8a00}\x{306f}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -3355,7 +3355,7 @@ $WebHACC::_Errors = {
                                              },
                                      "message" => {
                                                   "en" => "The value is not a global date and time string",
-                                                  "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  "ja" => "\x{5927}\x{57df}\x{65e5}\x{6642}\x{6587}\x{5b57}\x{5217}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                 }
                                    },
           "datetime:tz:bad case" => {
@@ -3691,7 +3691,7 @@ $WebHACC::_Errors = {
                                              "en" => "<p>There are more than one attributes with the same name in a tag.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>img</code> element, the <code>motion</code>\n    attribute</dt>\n\n    <dd>This attribute is obsolete.  Use animation GIF instead.</dd>\n\n    </dl>",
                                              "ja" => "<p>\x{540c}\x{3058}\x{540d}\x{524d}\x{306e}\x{5c5e}\x{6027}\x{3092}\x{8907}\x{6570}\x{500b}\x{540c}\x{3058}\x{30bf}\x{30b0}\x{306b}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>img</code> \x{8981}\x{7d20} <code>motion</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4ee3}\x{308f}\x{308a}\x{306b}\x{30a2}\x{30cb}\x{30e1}\x{30fc}\x{30b7}\x{30e7}\x{30f3} GIF\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    </dl>"
                                            },
-                                   "layer" => "tokenizer",
+                                   "layer" => "tokenization",
                                    "message" => {
                                                 "en" => "There are multiple <code><var>{text}</var></code> attributes",
                                                 "ja" => "\x{5c5e}\x{6027} <code><var>{text}</var></code> \x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}"
@@ -4624,7 +4624,7 @@ $WebHACC::_Errors = {
                                            "en" => "<p>An end tag cannot have attributes.</p>",
                                            "ja" => "<p>\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306b}\x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                          },
-                                 "layer" => "tokenizer",
+                                 "layer" => "tokenization",
                                  "message" => {
                                               "en" => "An attribute is specified for an end tag",
                                               "ja" => "\x{7d42}\x{4e86}\x{30bf}\x{30b0}\x{306b}\x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
@@ -6898,11 +6898,11 @@ $WebHACC::_Errors = {
                                             },
           "metadata:discontinued" => {
                                      "desc" => {
-                                               "en" => "\n    <p>The metadata name (the <code>name</code>\n    attribute value) is obsolete or rejected.  It cannot be used.</p>\n  ",
-                                               "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30e1}\x{30bf}\x{30c7}\x{30fc}\x{30bf}\x{540d} (<code>name</code> \x{5c5e}\x{6027}\x{5024})\n    \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{304b}\x{3001}\x{5374}\x{4e0b}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                               "en" => "\n    <p>The metadata name (the <code>name</code>\n    attribute value) is obsolete or rejected.  It cannot be used.</p>\n\n    <dl class=\"switch\">\n    <dt><code>&lt;meta name=msapplication-navbutton-color&gt;</code></dt>\n    <dt><code>&lt;meta name=apple-mobile-web-app-status-bar-style&gt;</code></dt>\n    <dd>Use <code>&lt;meta name=theme-color&gt;</code> instead.</dd>\n    </dl>\n  ",
+                                               "ja" => "\n    <p>\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30e1}\x{30bf}\x{30c7}\x{30fc}\x{30bf}\x{540d} (<code>name</code> \x{5c5e}\x{6027}\x{5024})\n    \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{304b}\x{3001}\x{5374}\x{4e0b}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n    <dt><code>&lt;meta name=msapplication-navbutton-color&gt;</code></dt>\n    <dt><code>&lt;meta name=apple-mobile-web-app-status-bar-style&gt;</code></dt>\n    <dd>\x{304b}\x{308f}\x{308a}\x{306b} <code>&lt;meta name=theme-color&gt;</code> \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n    </dl>\n  "
                                              },
                                      "message" => {
-                                                  "en" => "\x{30e1}\x{30bf}\x{30c7}\x{30fc}\x{30bf}\n  <code><var>{value}</var></code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                                  "en" => "\x{30e1}\x{30bf}\x{30c7}\x{30fc}\x{30bf}\n  <code><var>{text}</var></code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
                                                 }
                                    },
           "metadata:duplicate" => {
@@ -7548,7 +7548,7 @@ $WebHACC::_Errors = {
                                      "en" => "<p>The document entity should contain an XML declaration.\nThe other parsed entities should contain a text declaration.</p>",
                                      "ja" => "<p>\x{6587}\x{66f8}\x{5b9f}\x{4f53}\x{306b}\x{306f} XML \x{5ba3}\x{8a00}\x{3092}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n\x{305d}\x{306e}\x{4ed6}\x{306e}\x{89e3}\x{6790}\x{5bfe}\x{8c61}\x{5b9f}\x{4f53}\x{306b}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{5ba3}\x{8a00}\x{3092}\x{542b}\x{3081}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
                                    },
-                           "layer" => "tokenizer",
+                           "layer" => "tokenization",
                            "message" => {
                                         "en" => "There is no XML declaration",
                                         "ja" => "XML \x{5ba3}\x{8a00}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -7915,7 +7915,7 @@ $WebHACC::_Errors = {
                                  "en" => "<p>A character or entity reference must be terminated by a\n<code>;</code> character.</p>",
                                  "ja" => "<p>\x{6587}\x{5b57}\x{53c2}\x{7167}\x{3084}\x{5b9f}\x{4f53}\x{53c2}\x{7167}\x{306e}\x{672b}\x{5c3e}\x{306b}\x{306f} <code>;</code> \x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
                                },
-                       "layer" => "tokenizer",
+                       "layer" => "tokenization",
                        "message" => {
                                     "en" => "There is no <code>;</code> at the end of a reference",
                                     "ja" => "\x{53c2}\x{7167}\x{306e}\x{672b}\x{5c3e}\x{306b} <code>;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -9521,45 +9521,239 @@ $WebHACC::_Errors = {
                                              }
                                 },
           "script language" => {
+                               "default_level" => "s",
                                "desc" => {
-                                         "en" => "\n    <p>The <code>language</code> attribute of the <code>script</code>\n    element is obsolete.  Use the <code>type</code> attribute instead.</p>\n    <p>If the script language is JavaScrpt, you can omit them.</p>\n  ",
-                                         "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>language</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{304b}\x{308f}\x{308a}\x{306b} <code>type</code> \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n    <p>\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} JavaScript \x{306e}\x{6642}\x{306f}\x{3069}\x{3061}\x{3089}\x{3082}\x{7701}\x{7565}\x{3067}\x{304d}\x{307e}\x{3059}\x{3002}</p>\n  "
+                                         "en" => "<p>The <code>language</code> attribute of the <code>script</code>\nelement is obsolete.  Use the <code>type</code> attribute instead.</p>\n<p>If the script language is JavaScript, no additional\nattribute is necessary.</p>",
+                                         "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>language</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n\x{304b}\x{308f}\x{308a}\x{306b} <code>type</code> \x{5c5e}\x{6027}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n<p>\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} JavaScript \x{306e}\x{6642}\x{306f}\x{3001}\x{4f55}\x{3082}\x{5c5e}\x{6027}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{304f}\x{3066}\x{69cb}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                        },
+                               "layer" => "content-model",
                                "message" => {
-                                            "en" => "The <code>language</code> attribute is\n  obsolete",
+                                            "en" => "The <code>language</code> attribute is obsolete",
                                             "ja" => "<code>language</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                          },
+                               "modules" => {
+                                            "Web::HTML::Validator" => 1
+                                          },
+                               "targets" => {
+                                            "attr" => 1
                                           }
                              },
           "script language:ne type" => {
+                                       "default_level" => "m",
                                        "desc" => {
-                                                 "en" => "\n    <p>The script language specified by the <code>language</code> attribute\n    is different from the one specified by the <code>type</code> attribute.</p>\n    <p>Use the <code>type</code> attribute only.  The <code>language</code>\n    attribute is obsolete.</p>\n  ",
-                                                 "ja" => "\n    <p><code>language</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} \n    <code>type</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p><code>type</code> \x{5c5e}\x{6027}\x{3060}\x{3051}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002} <code>language</code>\n    \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>\n  "
+                                                 "en" => "<p>The script language specified by the <code>language</code> attribute\n    is different from the one specified by the <code>type</code> attribute.</p>\n    <p>Use the <code>type</code> attribute only.  The <code>language</code>\n    attribute is obsolete.</p>",
+                                                 "ja" => "<p><code>language</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} \n    <code>type</code> \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}\x{3002}</p>\n    <p><code>type</code> \x{5c5e}\x{6027}\x{3060}\x{3051}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002} <code>language</code>\n    \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>"
                                                },
+                                       "layer" => "content-model",
                                        "message" => {
-                                                    "en" => "The script language is different from the\n  language in the <code>type</code> attribute",
-                                                    "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} <code>type</code>\n  \x{5c5e}\x{6027}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}"
+                                                    "en" => "The script language is different from the\nlanguage in the <code>type</code> attribute",
+                                                    "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c} <code>type</code> \x{5c5e}\x{6027}\x{3068}\x{7570}\x{306a}\x{308a}\x{307e}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Validator" => 1
                                                   }
                                      },
           "script language:not js" => {
+                                      "default_level" => "m",
                                       "desc" => {
-                                                "en" => "\n    <p>The <code>language</code> attribute value must be \n    <code>javascript</code>.</p>\n  ",
-                                                "ja" => "\n    <p><code>language</code> \x{5c5e}\x{6027}\x{5024}\x{306f} <code>javascript</code>\n    \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                "en" => "<p>The <code>language</code> attribute value must be\n<code>javascript</code>.</p>",
+                                                "ja" => "<p><code>language</code> \x{5c5e}\x{6027}\x{5024}\x{306f} <code>javascript</code>\n\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                               },
+                                      "layer" => "microsyntax",
                                       "message" => {
-                                                   "en" => "The script language must be\n  <code>javascript</code>",
-                                                   "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{306f} <code>javascript</code>\n  \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
+                                                   "en" => "The script language must be <code>javascript</code>",
+                                                   "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{306f} <code>javascript</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
                                                  }
                                     },
-          "script:external data block" => {
+          "script type:bad params" => {
+                                      "default_level" => "w",
+                                      "desc" => {
+                                                "en" => "<p>Although parameters can be specified to the MIME type in the\n<code>type</code> attribute of the <code>script</code> element in\ntheory, at the time of writing, there is no known JavaScript MIME type\nwhich accepts parameters.  If there is a parameter, it is not\nrecognized as an executable script.\n\n</p><p>Parameters <code>e4x</code> and <code>version</code> are obsolete.\nThey are not allowed.</p>",
+                                                "ja" => "<p>\x{7406}\x{8ad6}\x{4e0a}\x{306f} <code>script</code> \x{8981}\x{7d20}\x{306e} <code>type</code> \x{5c5e}\x{6027}\x{306b}\nMIME \x{578b}\x{306e}\x{5f15}\x{6570}\x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3053}\x{3068}\x{3082}\x{3067}\x{304d}\x{307e}\x{3059}\x{304c}\x{3001}\x{73fe}\x{5728} JavaScript MIME \n\x{578b}\x{3067}\x{5f15}\x{6570}\x{304c}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{308b}\x{3082}\x{306e}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308b}\x{3068}\x{3001}\n\x{5b9f}\x{884c}\x{53ef}\x{80fd}\x{306a}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3068}\x{306f}\x{8a8d}\x{8b58}\x{3055}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{5f15}\x{6570} <code>e4x</code> \x{3084}\x{5f15}\x{6570} <code>version</code>\n\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "microsyntax",
+                                      "message" => {
+                                                   "en" => "There is a MIME type parameter",
+                                                   "ja" => "MIME \x{578b}\x{306b}\x{5f15}\x{6570}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
+                                                 }
+                                    },
+          "script type:bad spaces" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>For a module script, the <code>type</code> attribute value of a\n<code>script</code> element must be <code>module</code>.  No white\nspace characters are allowed before or after the type.</p>",
+                                                "ja" => "<p>\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e} <code>script</code> \x{8981}\x{7d20}\x{306e} <code>type</code>\n\x{5c5e}\x{6027}\x{5024}\x{306f} <code>module</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{7a7a}\x{767d}\x{3092}\x{5165}\x{308c}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                              },
+                                      "layer" => "microsyntax",
+                                      "message" => {
+                                                   "en" => "There is a space character in the attribute value",
+                                                   "ja" => "\x{5c5e}\x{6027}\x{5024}\x{306b}\x{7a7a}\x{767d}\x{304c}\x{6df7}\x{3056}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
+                                                 }
+                                    },
+          "script type:classic" => {
+                                   "default_level" => "s",
+                                   "desc" => {
+                                             "en" => "<p>The <code>type</code> attribute of the <code>script</code> element\nwhich contains a classic script (in other word, the <code>type</code>\nattribute whose value is a JavaScript MIME type) should omitted as it\nis the default.</p>",
+                                             "ja" => "<p>\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e} <code>script</code> \x{8981}\x{7d20}\x{306e} <code>type</code>\n\x{5c5e}\x{6027} (\x{5024}\x{304c} JavaScript MIME \x{578b}\x{306e} <code>type</code> \x{5c5e}\x{6027}) \x{306f}\x{3001}\n\x{7701}\x{7565}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002} <code>type</code> \x{8981}\x{7d20}\x{306e}\x{65e2}\x{5b9a}\x{5024}\x{306f}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306a}\x{306e}\x{3067}\x{3001}\n\x{5197}\x{9577}\x{3067}\x{3059}\x{3002}</p>"
+                                           },
+                                   "layer" => "content-model",
+                                   "message" => {
+                                                "en" => "There is a redundant <code>type</code> attribute",
+                                                "ja" => "\x{5197}\x{9577}\x{306a} <code>type</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Validator" => 1
+                                              },
+                                   "targets" => {
+                                                "attr" => 1
+                                              }
+                                 },
+          "script type:empty" => {
+                                 "default_level" => "m",
+                                 "desc" => {
+                                           "en" => "<p>The <code>type</code> attribute (and the <code>language</code>\nattribute) must specify the type of the script.  It can't be empty.</p>",
+                                           "ja" => "<p><code>type</code> \x{5c5e}\x{6027} (\x{3084} <code>language</code> \x{5c5e}\x{6027})\n\x{306e}\x{5024}\x{306f}\x{3001}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{578b}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5c5e}\x{6027}\x{5024}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                         },
+                                 "layer" => "microsyntax",
+                                 "message" => {
+                                              "en" => "The attribute value is empty",
+                                              "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{7a7a}\x{3067}\x{3059}"
+                                            },
+                                 "modules" => {
+                                              "Web::HTML::Validator" => 1
+                                            }
+                               },
+          "script type:scripting lang" => {
+                                          "default_level" => "w",
                                           "desc" => {
-                                                    "en" => "\n    <p>If the <code>script</code> element is used to embed the data\n    block, the <code>src</code> attribute cannot be used.  If the\n    <code>src</code> attribute is specified, the <code>type</code>\n    attribute identifies a scripting language.</p>\n  ",
-                                                    "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{3092}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e}\x{57cb}\x{3081}\x{8fbc}\x{307f}\x{306b}\x{4f7f}\x{3046}\x{6642}\x{306b}\x{306f}\n    <code>src</code> \x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002} <code>src</code>\n    \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{6642}\x{306b}\x{306f} <code>type</code>\n    \x{5c5e}\x{6027}\x{306f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{306e} MIME \x{578b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    "en" => "<p>The <code>type</code> attribute (or the <code>language</code>\nattribute) specifies a scripting language, which was historically used\nto implement actions on the Web page.  However, no scripting language\nother than JavaScript can be executed on the Web these days.  The\n<code>script</code> element with obsolete scripting language is simply\nignored.</p>",
+                                                    "ja" => "<p><code>type</code> \x{5c5e}\x{6027} (\x{3084} <code>language</code> \x{5c5e}\x{6027}) \x{304c}\x{3001}\x{304b}\x{3064}\x{3066} \nWeb \x{30da}\x{30fc}\x{30b8}\x{4e0a}\x{306e}\x{52d5}\x{4f5c}\x{3092}\x{8a18}\x{8ff0}\x{3059}\x{308b}\x{305f}\x{3081}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3092}\x{8868}\x{3057}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\n\x{73fe}\x{5728}\x{3067}\x{306f} Web \x{4e0a}\x{3067}\x{5b9f}\x{884c}\x{3067}\x{304d}\x{308b}\x{306e}\x{306f} JavaScript \x{3060}\x{3051}\x{3067}\x{3059}\x{3002}\n\x{304b}\x{3064}\x{3066}\x{306e}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{305f} <code>script</code>\n\x{8981}\x{7d20}\x{306f}\x{3001}\x{5358}\x{306b}\x{7121}\x{8996}\x{3055}\x{308c}\x{308b}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
                                                   },
+                                          "layer" => "feature",
                                           "message" => {
-                                                       "en" => "The <code>script</code> element with the\n  <code>src</code> attribute is used for a non-scripting language",
-                                                       "ja" => "<code>src</code> \x{5c5e}\x{6027}\x{306e}\x{3042}\x{308b}\n  <code>script</code> \x{8981}\x{7d20}\x{304c}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{4ee5}\x{5916}\x{306b}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                       "en" => "An obsolete scripting language is specified",
+                                                       "ja" => "\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::HTML::Validator" => 1
                                                      }
                                         },
+          "script:ignored async" => {
+                                    "default_level" => "w",
+                                    "desc" => {
+                                              "en" => "<p>The <code>async</code> attribute of the <code>script</code> element\nis effective only when the element defines a module script, or when\nthe element defines a classic script and has a <code>src</code>\nattribute.</p>",
+                                              "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>defer</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3068}\x{3001}\n\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                            },
+                                    "layer" => "content-model",
+                                    "message" => {
+                                                 "en" => "The <code>async</code> attribute has no effect",
+                                                 "ja" => "\x{3053}\x{306e} <code>async</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               },
+                                    "targets" => {
+                                                 "attr" => 1
+                                               }
+                                  },
+          "script:ignored charset" => {
+                                      "default_level" => "w",
+                                      "desc" => {
+                                                "en" => "<p>The <code>charset</code> attribute of the <code>script</code>\nelement is effective only when the element defines a classic script\nand has a <code>src</code> attribute.</p>",
+                                                "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>charset</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code>\n\x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                              },
+                                      "layer" => "content-model",
+                                      "message" => {
+                                                   "en" => "The <code>charset</code> attribute has no effect",
+                                                   "ja" => "\x{3053}\x{306e} <code>charset</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
+                                                 },
+                                      "targets" => {
+                                                   "attr" => 1
+                                                 }
+                                    },
+          "script:ignored crossorigin" => {
+                                          "default_level" => "w",
+                                          "desc" => {
+                                                    "en" => "<p>The <code>crossorigin</code> attribute of the <code>script</code> element\nis effective only when the element defines a module script, or when\nthe element defines a classic script and has a <code>src</code>\nattribute.</p>",
+                                                    "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>crossorigin</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3068}\x{3001}\n\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                                  },
+                                          "layer" => "content-model",
+                                          "message" => {
+                                                       "en" => "The <code>crossorigin</code> attribute has no effect",
+                                                       "ja" => "\x{3053}\x{306e} <code>crossorigin</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::HTML::Validator" => 1
+                                                     },
+                                          "targets" => {
+                                                       "attr" => 1
+                                                     }
+                                        },
+          "script:ignored defer" => {
+                                    "default_level" => "w",
+                                    "desc" => {
+                                              "en" => "<p>The <code>defer</code> attribute of the <code>script</code>\nelement is effective only when the element defines a classic script,\nhas a <code>src</code> attribute, and does not have any\n<code>async</code> attribute.</p>",
+                                              "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>defer</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code>\n\x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{3001} <code>async</code> \x{5c5e}\x{6027}\x{304c}\x{306a}\x{3044}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                            },
+                                    "layer" => "content-model",
+                                    "message" => {
+                                                 "en" => "The <code>defer</code> attribute has no effect",
+                                                 "ja" => "\x{3053}\x{306e} <code>defer</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               },
+                                    "targets" => {
+                                                 "attr" => 1
+                                               }
+                                  },
+          "script:ignored nonce" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>The <code>nonce</code> attribute of the <code>script</code> element\nis effective only when the element defines a module script or a\nclassic script.  It can't be used when the element defines a data\nblock.</p>",
+                                              "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>nonce</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{304b}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}\n\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e} <code>script</code> \x{8981}\x{7d20}\x{306b}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "content-model",
+                                    "message" => {
+                                                 "en" => "The <code>nonce</code> attribute has no effect",
+                                                 "ja" => "\x{3053}\x{306e} <code>nonce</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               },
+                                    "targets" => {
+                                                 "attr" => 1
+                                               }
+                                  },
+          "script:ignored src" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>The <code>src</code> attribute of the <code>script</code> element\nis effective only when the element defines a module script or a\nclassic script.  It can't be used when the element defines a data\nblock.</p>",
+                                            "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>src</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{304b}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}\n\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e} <code>script</code> \x{8981}\x{7d20}\x{306b}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "content-model",
+                                  "message" => {
+                                               "en" => "The <code>src</code> attribute has no effect",
+                                               "ja" => "\x{3053}\x{306e} <code>src</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             },
+                                  "targets" => {
+                                               "attr" => 1
+                                             }
+                                },
           "script:inline doc:invalid" => {
                                          "desc" => {
                                                    "en" => "\n    <p>If the <code>script</code> element has the <code>src</code>\n    attribute, the content of the element is the inline documentation\n    for the external script.  It must be zero or more JavaScript\n    comments and/or spaces.</p>\n  ",
@@ -10436,7 +10630,7 @@ $WebHACC::_Errors = {
                                                    "en" => "<p>Nothing ohter than declarations, comments, and processing\ninstructions can be used in the internal subset.  In external\nsubset, sections are also allowed.</p>",
                                                    "ja" => "<p>\x{5185}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3067}\x{306f}\x{5ba3}\x{8a00}\x{3001}\x{6ce8}\x{91c8}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{3057}\x{304b}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5916}\x{90e8}\x{90e8}\x{5206}\x{96c6}\x{5408}\x{3067}\x{306f}\x{533a}\x{9593}\x{3082}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>"
                                                  },
-                                         "layer" => "tokenizer",
+                                         "layer" => "tokenization",
                                          "message" => {
                                                       "en" => "There is an unexpected string in DTD",
                                                       "ja" => "DTD \x{4e2d}\x{306b}\x{4e88}\x{671f}\x{305b}\x{306c}\x{6587}\x{5b57}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
@@ -10959,7 +11153,7 @@ $WebHACC::_Errors = {
                                           "en" => "<p>Content model groups must be closed by <code>)</code>.</p>",
                                           "ja" => "<p>\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{306f} <code>)</code> \x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                         },
-                                "layer" => "tokenizer",
+                                "layer" => "tokenization",
                                 "message" => {
                                              "en" => "There is an unclosed content model group",
                                              "ja" => "\x{5185}\x{5bb9}\x{30e2}\x{30c7}\x{30eb}\x{7fa4}\x{304c}\x{62ec}\x{5f27}\x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
@@ -10983,7 +11177,7 @@ $WebHACC::_Errors = {
                                           "en" => "<p>The quoted string must be closed by matching quotation mark.</p>",
                                           "ja" => "<p>\x{5f15}\x{7528}\x{7b26}\x{3067}\x{59cb}\x{307e}\x{3063}\x{305f}\x{6587}\x{5b57}\x{5217}\x{306f}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{9589}\x{3058}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                         },
-                                "layer" => "tokenizer",
+                                "layer" => "tokenization",
                                 "message" => {
                                              "en" => "There is an unclosed literal",
                                              "ja" => "\x{5f15}\x{7528}\x{7b26}\x{306e}\x{5f8c}\x{5f15}\x{7528}\x{7b26}\x{3067}\x{9589}\x{3058}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
@@ -11146,13 +11340,18 @@ $WebHACC::_Errors = {
                                            }
                               },
           "unknown script lang" => {
+                                   "default_level" => "u",
                                    "desc" => {
-                                             "en" => "\n    <p>Conformance checking of the scripting language or data blocj\n    specified by the <code>type</code> attribute of the\n    <code>script</code> element is not supported.</p>\n\n    <p>Whether the content is conforming or not is\n    <em>unknown</em>.</p>\n  ",
-                                             "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>type</code>\n    \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3001}\x{3042}\x{305f}\x{306f}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    \n    <p>\x{5185}\x{5bb9}\x{304c}\x{9069}\x{5408}\x{3057}\x{3066}\x{3044}\x{308b}\x{304b}\x{3069}\x{3046}\x{304b}\x{306f}<em>\x{4e0d}\x{660e}</em>\x{3067}\x{3059}\x{3002}</p>\n  "
+                                             "en" => "<p>Conformance checking of the scripting language or data blocj\n    specified by the <code>type</code> attribute of the\n    <code>script</code> element is not supported.</p>\n\n    <p>Whether the content is conforming or not is\n    <em>unknown</em>.</p>",
+                                             "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>type</code>\n    \x{5c5e}\x{6027}\x{3067}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{3001}\x{3042}\x{305f}\x{306f}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e}\x{9069}\x{5408}\x{6027}\x{691c}\x{67fb}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n    \n    <p>\x{5185}\x{5bb9}\x{304c}\x{9069}\x{5408}\x{3057}\x{3066}\x{3044}\x{308b}\x{304b}\x{3069}\x{3046}\x{304b}\x{306f}<em>\x{4e0d}\x{660e}</em>\x{3067}\x{3059}\x{3002}</p>"
                                            },
+                                   "layer" => "feature",
                                    "message" => {
-                                                "en" => "Validation of the scripting language or\n  data block <code><var>{value}</var></code> is not\n  supported",
-                                                "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{307e}\x{305f}\x{306f}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\n  <code><var>{value}</var></code>  \x{306e}\x{59a5}\x{5f53}\x{6027}\x{691c}\x{8a3c}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                                "en" => "Validation of the scripting language or\ndata block <code><var>{value}</var></code> is not supported",
+                                                "ja" => "\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{8a00}\x{8a9e}\x{307e}\x{305f}\x{306f}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\n<code><var>{value}</var></code>  \x{306e}\x{59a5}\x{5f53}\x{6027}\x{691c}\x{8a3c}\x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Validator" => 1
                                               }
                                  },
           "unknown style lang" => {
@@ -11186,7 +11385,7 @@ $WebHACC::_Errors = {
                                        "en" => "<p>There must be <code>(</code> before <code>)</code> in the\nsame entity.</p>",
                                        "ja" => "\x{540c}\x{3058}\x{5b9f}\x{4f53}\x{3067} <code>(</code> \x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3044}\x{3068} <code>)</code> \n\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}"
                                      },
-                             "layer" => "tokenizer",
+                             "layer" => "tokenization",
                              "message" => {
                                           "en" => "There is an unmatched <code>)</code>",
                                           "ja" => "\x{5bfe}\x{5fdc}\x{3057}\x{306a}\x{3044} <code>)</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
@@ -12262,7 +12461,7 @@ $WebHACC::_Errors = {
                                          "en" => "<p>XML element, attribute, entity, and notation names, as well as\nprocessing instruction target and <code>ID</code>s, must be an\nXML <code>Name</code>.  It must be a string of one or more XML\nname characters.  Its first character must be an XML name start\ncharacter.</p>",
                                          "ja" => "<p>XML \x{306e}\x{8981}\x{7d20}\x{3001}\x{5c5e}\x{6027}\x{3001}\x{5b9f}\x{4f53}\x{3001}\x{8a18}\x{6cd5}\x{306e}\x{540d}\x{524d}\x{3084}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3001}\n<code>ID</code> \x{306f} XML <code>Name</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\nXML \x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{307f}\x{3067}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3001}\n\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} XML \x{540d}\x{524d}\x{958b}\x{59cb}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                        },
-                               "layer" => "tokenizer",
+                               "layer" => "tokenization",
                                "message" => {
                                             "en" => "This is not an XML <code>Name</code>",
                                             "ja" => "XML <code>Name</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
@@ -12292,7 +12491,7 @@ $WebHACC::_Errors = {
                                            "en" => "<p>XML entity and notation names, as well as\nprocessing instruction target and <code>ID</code>s, must\nnot contain a <code>:</code> character.</p>",
                                            "ja" => "<p>XML \x{306e}\x{5b9f}\x{4f53}\x{3084}\x{8a18}\x{6cd5}\x{306e}\x{540d}\x{524d}\x{3084}\x{3001}\x{51e6}\x{7406}\x{6307}\x{4ee4}\x{306e}\x{5bfe}\x{8c61}\x{540d}\x{3001}\n<code>ID</code> \x{306f} <code>:</code> \x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{304c}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                          },
-                                 "layer" => "tokenizer",
+                                 "layer" => "tokenization",
                                  "message" => {
                                               "en" => "The <code>:</code> is not allowed",
                                               "ja" => "<code>:</code> \x{3092}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
@@ -12382,7 +12581,7 @@ $WebHACC::_Errors = {
                                           "en" => "<p>XML element and attribute names must be an XML <code>QName</code>, i.e.\na local name or a prefix followed by <code>:</code> and a local name.\n</p><p>A prefix or local name must be a string of one or more XML\nname characters.  Their first character must be an XML name start\ncharacter.  They cannot contain a <code>:</code> character.</p>",
                                           "ja" => "<p>XML \x{306e}\x{8981}\x{7d20}\x{3084}\x{5c5e}\x{6027}\x{306e}\x{540d}\x{524d}\x{306f} XML <code>QName</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{3059}\x{306a}\x{308f}\x{3061}\x{3001}\x{5c40}\x{6240}\x{540d}\x{304b}\x{3001}\x{63a5}\x{982d}\x{8f9e}\x{3068} <code>:</code> \x{3068}\x{5c40}\x{6240}\x{540d}\x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n</p><p>\x{63a5}\x{982d}\x{8f9e}\x{3084}\x{5c40}\x{6240}\x{540d}\x{306f}\x{3001}XML \x{540d}\x{524d}\x{6587}\x{5b57}\x{306e}\x{307f}\x{3067}\x{69cb}\x{6210}\x{3055}\x{308c}\x{308b}1\x{6587}\x{5b57}\x{4ee5}\x{4e0a}\x{306e}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3001}\n\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} XML \x{540d}\x{524d}\x{958b}\x{59cb}\x{6587}\x{5b57}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{307e}\x{305f} <code>:</code>\n\x{3092}\x{542b}\x{3081}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                         },
-                                "layer" => "tokenizer",
+                                "layer" => "tokenization",
                                 "message" => {
                                              "en" => "This is not an XML <code>QName</code>",
                                              "ja" => "XML <code>QName</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"

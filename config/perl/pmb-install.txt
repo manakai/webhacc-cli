@@ -1,5 +1,5 @@
 Net::SSLeay~1.72
-Capture::Tiny~0.30
+Capture::Tiny~0.36
 Pod::Usage~1.68
 Pod::Text~4.06
 JE~0.066
@@ -17,9 +17,9 @@ Canary::Stability~2006
 AnyEvent::HTTP~2.22
 Date::Parse~2.30
 Test::More~1.001014
-Text::Diff~1.43
+Text::Diff~1.44
 Test::Differences~0.64
-Path::Class~0.35
+Path::Class~0.36
 common::sense~3.74
 Unicode::Stringprep~1.105
 Scalar::Util~1.43
