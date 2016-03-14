@@ -14,7 +14,7 @@ Term::ANSIColor~4.04
 Exporter::Lite~0.08
 Data::Dumper~2.154
 AnyEvent::HTTP~2.22
-Canary::Stability~2006
+Canary::Stability~2011
 Date::Parse~2.30
 Test::More~1.001014
 Text::Diff~1.44
@@ -28,7 +28,7 @@ Unicode::Normalize~1.25
 Algorithm::Diff~1.1903
 Path::Tiny~0.084
 Test::Tester~0.114
-Time::HiRes~1.9728
+Time::HiRes~1.9731
 Exporter~5.72
 Carp~1.38
 JSON~2.90

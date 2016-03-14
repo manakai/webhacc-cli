@@ -4,16 +4,6 @@ $WebHACC::_Errors = {
                                                               "en" => "<code><var>{text}</var></code> matches\n  the empty string too many times."
                                                             }
                                                },
-          "&lt;option label value> not empty" => {
-                                                 "desc" => {
-                                                           "en" => "\n    <p>The content of the <code>option</code> element with both\n    <code>label</code> and <code>value</code> attributes must be\n    empty.  No child elements or non-space characters are allowed.</p>\n  ",
-                                                           "ja" => "\n    <p><code>option</code> \x{8981}\x{7d20}\x{306b} <code>label</code> \x{5c5e}\x{6027}\x{3068}\n    <code>value</code> \x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5b50}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                         },
-                                                 "message" => {
-                                                              "en" => "The element is not empty",
-                                                              "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                                            }
-                                               },
           "(?p{}) is deprecated -- use (??{})" => {
                                                   "desc" => {
                                                             "en" => "\n    <p><code>(?p{})</code> is obsolete.  It was deprecated in\n    Perl 5.8 and is <em>no longer supported</em> in Perl 5.10.</p>\n\n    <p>You can use <code>(??{<var>...</var>})</code> instead.</p>\n  "
@@ -72,6 +62,16 @@ $WebHACC::_Errors = {
                                       }
                                     ]
                   },
+          "<option label value> not empty" => {
+                                              "desc" => {
+                                                        "en" => "\n    <p>The content of the <code>option</code> element with both\n    <code>label</code> and <code>value</code> attributes must be\n    empty.  No child elements or non-space characters are allowed.</p>\n  ",
+                                                        "ja" => "\n    <p><code>option</code> \x{8981}\x{7d20}\x{306b} <code>label</code> \x{5c5e}\x{6027}\x{3068}\n    <code>value</code> \x{5c5e}\x{6027}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{5b50}\x{8981}\x{7d20}\x{3084}\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      },
+                                              "message" => {
+                                                           "en" => "The element is not empty",
+                                                           "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{7a7a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                         }
+                                            },
           "AAA:formatting element not current" => {
                                                   "default_level" => "m",
                                                   "desc" => {
@@ -9241,16 +9241,16 @@ $WebHACC::_Errors = {
                                             "ja" => "\x{3053}\x{306e}\x{5f15}\x{6570}\x{5b9f}\x{4f53}\x{306f}\x{5ba3}\x{8a00}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
                                           }
                              },
-          "period:not 1&lt;=2" => {
-                                  "desc" => {
-                                            "en" => "\n    <p>The start date of the period string must be less than or equal\n    to the end date.</p>\n  ",
-                                            "ja" => "\n    <p>\x{671f}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{958b}\x{59cb}\x{65e5}\x{6642}\x{306f}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{5024}\x{3067}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                          },
-                                  "message" => {
-                                               "en" => "The start date is greater than the end date",
-                                               "ja" => "\x{958b}\x{59cb}\x{65e5}\x{6642}\x{304c}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{304f}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                             }
-                                },
+          "period:not 1<=2" => {
+                               "desc" => {
+                                         "en" => "\n    <p>The start date of the period string must be less than or equal\n    to the end date.</p>\n  ",
+                                         "ja" => "\n    <p>\x{671f}\x{9593}\x{6587}\x{5b57}\x{5217}\x{306e}\x{958b}\x{59cb}\x{65e5}\x{6642}\x{306f}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{306a}\x{5024}\x{3067}\x{3042}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                       },
+                               "message" => {
+                                            "en" => "The start date is greater than the end date",
+                                            "ja" => "\x{958b}\x{59cb}\x{65e5}\x{6642}\x{304c}\x{7d42}\x{4e86}\x{65e5}\x{6642}\x{3088}\x{308a}\x{5927}\x{304d}\x{304f}\x{306a}\x{3063}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          }
+                             },
           "pi in pe in decl" => {
                                 "desc" => {
                                           "en" => "\n    <p>Processing instructions are not allowed in an external\n    parameter entity referenced within a markup declaration (outside\n    of literals).</p>\n  ",
@@ -9764,16 +9764,16 @@ $WebHACC::_Errors = {
                                                       "ja" => "\x{5916}\x{90e8}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{8aac}\x{660e}\x{304c}\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                     }
                                        },
-          "script:nested &lt;script>" => {
-                                         "desc" => {
-                                                   "en" => "The <code>script</code> element contains\n  a <code>script</code> start tag as text",
-                                                   "ja" => "<code>script</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\n  <code>script</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                 },
-                                         "message" => {
-                                                      "en" => "\n    <p>The <code>script</code> element cannot contain the\n    string <code>&lt;script</code> followed by a space character,\n    <code>/</code>, or <code>&gt;</code> as text.</p>\n  ",
-                                                      "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066} <code>&lt;script</code>\n    \x{306e}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304b} <code>/</code> \x{304b} <code>&gt;</code> \x{304c}\x{7d9a}\x{304f}\x{6587}\x{5b57}\x{5217}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                    }
-                                       },
+          "script:nested <script>" => {
+                                      "desc" => {
+                                                "en" => "The <code>script</code> element contains\n  a <code>script</code> start tag as text",
+                                                "ja" => "<code>script</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\n  <code>script</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066}\x{542b}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              },
+                                      "message" => {
+                                                   "en" => "\n    <p>The <code>script</code> element cannot contain the\n    string <code>&lt;script</code> followed by a space character,\n    <code>/</code>, or <code>&gt;</code> as text.</p>\n  ",
+                                                   "ja" => "\n    <p><code>script</code> \x{8981}\x{7d20}\x{306f}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{3068}\x{3057}\x{3066} <code>&lt;script</code>\n    \x{306e}\x{5f8c}\x{306b}\x{7a7a}\x{767d}\x{6587}\x{5b57}\x{304b} <code>/</code> \x{304b} <code>&gt;</code> \x{304c}\x{7d9a}\x{304f}\x{6587}\x{5b57}\x{5217}\x{3092}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                 }
+                                    },
           "second node element" => {
                                    "desc" => {
                                              "en" => "\n    <p>In this context, there can be only an RDF/XML node element.</p>\n  ",
@@ -11621,26 +11621,26 @@ $WebHACC::_Errors = {
                                                     "ja" => "\x{6ce8}\x{91c8}\x{3092}\x{7a7a}\x{306b}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                   }
                                      },
-          "webvtt:end time &lt; start time" => {
-                                               "desc" => {
-                                                         "en" => "\n    <p>The end time of the cue must be greater than or equal to\n    the start time of the cue.</p>\n  ",
-                                                         "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{306f}\x{958b}\x{59cb}\x{6642}\x{523b}\x{4ee5}\x{4e0a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                       },
-                                               "message" => {
-                                                            "en" => "End time cannot be less than\n  start time.",
-                                                            "ja" => "\x{7d42}\x{4e86}\x{6642}\x{523b}\x{304c}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{306b}\x{306a}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                          }
-                                             },
-          "webvtt:end time &lt; timestamp" => {
-                                              "desc" => {
-                                                        "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    less than the end time of the cue.</p>\n  ",
-                                                        "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{6642}\x{523b}\x{306f}\x{3001}\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                      },
-                                              "message" => {
-                                                           "en" => "Timestamp must be less than end time.",
-                                                           "ja" => "\x{6642}\x{523b}\x{306f}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                         }
-                                            },
+          "webvtt:end time < start time" => {
+                                            "desc" => {
+                                                      "en" => "\n    <p>The end time of the cue must be greater than or equal to\n    the start time of the cue.</p>\n  ",
+                                                      "ja" => "\n    <p>\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{306f}\x{958b}\x{59cb}\x{6642}\x{523b}\x{4ee5}\x{4e0a}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                    },
+                                            "message" => {
+                                                         "en" => "End time cannot be less than\n  start time.",
+                                                         "ja" => "\x{7d42}\x{4e86}\x{6642}\x{523b}\x{304c}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{306b}\x{306a}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                       }
+                                          },
+          "webvtt:end time < timestamp" => {
+                                           "desc" => {
+                                                     "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    less than the end time of the cue.</p>\n  ",
+                                                     "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{6642}\x{523b}\x{306f}\x{3001}\x{30ad}\x{30e5}\x{30fc}\x{306e}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                           "message" => {
+                                                        "en" => "Timestamp must be less than end time.",
+                                                        "ja" => "\x{6642}\x{523b}\x{306f}\x{7d42}\x{4e86}\x{6642}\x{523b}\x{3088}\x{308a}\x{524d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                      }
+                                         },
           "webvtt:headers" => {
                               "desc" => {
                                         "en" => "\n    <p>In WebVTT, header's syntax and semantics is not defined\n    at the time of writing.</p>\n    <p>To specify the identifier for the first cue, you have\n    to insert a blank line between the <code>WEBVTT</code> signature line\n    and the identifier.</p>\n  ",
@@ -11811,16 +11811,16 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{69cb}\x{6587}\x{7684}\x{306b}\x{6b63}\x{3057}\x{3044} WebVTT \n  \x{30ad}\x{30e5}\x{30fc}\x{6587}\x{7ae0}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
                                              }
                                 },
-          "webvtt:timestamp &lt; min time" => {
-                                              "desc" => {
-                                                        "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    greater than the start time of the cue\n    and any preceding timestamp tag in the cue text.</p>\n  ",
-                                                        "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{308b}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{306f}\x{3001}\n    \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3084}\x{3001}\x{540c}\x{3058}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{305d}\x{308c}\x{4ee5}\x{524d}\x{306e}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{306e}\x{6642}\x{523b}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                      },
-                                              "message" => {
-                                                           "en" => "Timestamp must be greater than\n  previous timestamps.",
-                                                           "ja" => "\x{6642}\x{523b}\x{306f}\x{3001}\x{3053}\x{3053}\x{307e}\x{3067}\x{306e}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
-                                                         }
-                                            },
+          "webvtt:timestamp < min time" => {
+                                           "desc" => {
+                                                     "en" => "\n    <p>The timestamp tag in the WebVTT cue text must be\n    greater than the start time of the cue\n    and any preceding timestamp tag in the cue text.</p>\n  ",
+                                                     "ja" => "\n    <p>WebVTT \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{6587}\x{7ae0}\x{306e}\x{4e2d}\x{306b}\x{3042}\x{308b}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{306f}\x{3001}\n    \x{30ad}\x{30e5}\x{30fc}\x{306e}\x{958b}\x{59cb}\x{6642}\x{523b}\x{3084}\x{3001}\x{540c}\x{3058}\x{6587}\x{7ae0}\x{4e2d}\x{306e}\x{305d}\x{308c}\x{4ee5}\x{524d}\x{306e}\x{6642}\x{523b}\x{306e}\x{30bf}\x{30b0}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{306e}\x{6642}\x{523b}\x{306b}\x{306a}\x{3063}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                   },
+                                           "message" => {
+                                                        "en" => "Timestamp must be greater than\n  previous timestamps.",
+                                                        "ja" => "\x{6642}\x{523b}\x{306f}\x{3001}\x{3053}\x{3053}\x{307e}\x{3067}\x{306e}\x{6642}\x{523b}\x{3088}\x{308a}\x{3082}\x{5f8c}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}"
+                                                      }
+                                         },
           "webvtt:timestamp:hour" => {
                                      "desc" => {
                                                "en" => "\n    <p>The hour component in the WebVTT timestamp must have \n    two or more digits.  If the value is less than 10,\n    it must be zero-padded.</p>\n  ",
