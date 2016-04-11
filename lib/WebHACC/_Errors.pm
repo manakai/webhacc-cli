@@ -1760,38 +1760,6 @@ $WebHACC::_Errors = {
                                                     "en" => "Extended attribute <code><var>{text}</var></code>\n  is specified for an attribute whose type is not an interface."
                                                   }
                                      },
-          "attr:no =" => {
-                         "default_level" => "m",
-                         "desc" => {
-                                   "en" => "<p>There must be a <code>=</code> character between an attribute name\nand an attribute value.  Characters <code>\"</code> and <code>'</code>\ncannot be used as part of an attribute name or an unquoted attribute\nvalue.</p>",
-                                   "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b}\x{306f}\x{6587}\x{5b57} <code>=</code> \n\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{307e}\x{305f}\x{3001}\x{6587}\x{5b57} <code>\"</code> \x{3084}\x{6587}\x{5b57} <code>'</code>\n\x{3092}\x{5c5e}\x{6027}\x{540d}\x{3084}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
-                                 },
-                         "layer" => "tokenization",
-                         "message" => {
-                                      "en" => "No <code>=</code> between attribute name and value",
-                                      "ja" => "\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b} <code>=</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                    },
-                         "modules" => {
-                                      "Web::HTML::Parser::tokenizer" => 1,
-                                      "Web::XML::Parser::tokenizer" => 1
-                                    },
-                         "parser_error_names" => {
-                                                 "after-attribute-name-0022" => 1,
-                                                 "after-attribute-name-0027" => 1
-                                               },
-                         "parser_tests" => [
-                                           {
-                                             "index" => 24,
-                                             "input" => "<!DOCTYPE html><foo bar \"></foo>",
-                                             "lang" => "HTML"
-                                           },
-                                           {
-                                             "index" => 24,
-                                             "input" => "<!DOCTYPE html><foo bar '></foo>",
-                                             "lang" => "HTML"
-                                           }
-                                         ]
-                       },
           "attr:obsolete" => {
                              "desc" => {
                                        "en" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{306e}\x{3067}\x{3082}\x{3046}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>align</code>, <code>alink</code>,\n    <code>allowtransparency</code>, <code>background</code>,\n    <code>bgcolor</code>, <code>border</code>,\n    <code>cellpadding</code>, <code>cellspacing</code>,\n    <code>compact</code>, <code>frameborder</code>,\n    <code>hspace</code>, <code>link</code>, <code>nowrap</code>,\n    <code>text</code>, <code>valign</code>, <code>vlink</code>,\n    <code>vspace</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{3066}\x{304a}\x{308a}\x{3001}\x{6587}\x{66f8}\x{4e2d}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002} CSS \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt>HTML <code>prefix</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt>HTML <code>head</code> \x{8981}\x{7d20} <code>profile</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>profile</code> \x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\x{3053}\x{308c}\x{306f}\x{6700}\x{65e9}\x{4e0d}\x{8981}\x{3067}\x{3059}\x{3002}</dd>\n\n    <dt>HTML <code>a</code> \x{8981}\x{7d20}\x{3001} <code>link</code> \x{8981}\x{7d20}\n    <code>rev</code> \x{5c5e}\x{6027}</dt>\n\n    <dd><code>rev</code> \x{5c5e}\x{6027}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n    <code>rel</code> \x{5c5e}\x{6027}\x{3068}\x{9069}\x{5f53}\x{306a}\x{30ea}\x{30f3}\x{30af}\x{578b}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}\x{4f8b}\x{3048}\x{3070}\x{3001}\n    <code>rev=made</code> \x{3067}\x{306f}\x{306a}\x{304f} <code>rel=author</code>\n    \x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</dd>\n\n    <dt><code>xmlns:<var>*</var></code> \x{5c5e}\x{6027}<!-- in no namespace --></dt>\n\n    <dd>HTML \x{3067}\x{306f}\x{540d}\x{524d}\x{7a7a}\x{9593}\x{5c5e}\x{6027}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n    \x{52b9}\x{679c}\x{306f}\x{306a}\x{3044}\x{306e}\x{3067}\x{524a}\x{9664}\x{3057}\x{3066}\x{554f}\x{984c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</dd>\n\n    <dt><code>embed</code> \x{8981}\x{7d20}</dt>\n\n    <dd><code>align</code>, <code>border</code>, <code>hspace</code>,\n    <code>vspace</code> \x{5404}\x{5c5e}\x{6027}\x{306f}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{30b7}\x{30fc}\x{30c8}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}\n    <code>name</code> \x{5c5e}\x{6027}\x{306f}\n    <code>id</code> \x{5c5e}\x{6027}\x{306b}\x{7f6e}\x{304d}\x{63db}\x{3048}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</dd>\n\n    </dl>\n  "
@@ -7675,8 +7643,8 @@ $WebHACC::_Errors = {
           "no attr value" => {
                              "default_level" => "m",
                              "desc" => {
-                                       "en" => "<p>There must be attribute value in XML.</p>",
-                                       "ja" => "<p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5fc5}\x{9808}\x{3067}\x{3059}\x{3002}</p>"
+                                       "en" => "<p>There must be a <code>=</code> character between an attribute name\nand an attribute value.  Characters <code>\"</code> and <code>'</code>\ncannot be used as part of an attribute name or an unquoted attribute\nvalue.\n</p><p>There must be attribute value in XML.</p>",
+                                       "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b}\x{306f}\x{6587}\x{5b57} <code>=</code> \n\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{307e}\x{305f}\x{3001}\x{6587}\x{5b57} <code>\"</code> \x{3084}\x{6587}\x{5b57} <code>'</code>\n\x{3092}\x{5c5e}\x{6027}\x{540d}\x{3084}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n</p><p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5fc5}\x{9808}\x{3067}\x{3059}\x{3002}</p>"
                                      },
                              "layer" => "tokenization",
                              "message" => {
@@ -7719,6 +7687,16 @@ $WebHACC::_Errors = {
                                                  "index" => 7,
                                                  "input" => "<p foo >",
                                                  "lang" => "XML"
+                                               },
+                                               {
+                                                 "index" => 24,
+                                                 "input" => "<!DOCTYPE html><foo bar \"></foo>",
+                                                 "lang" => "HTML"
+                                               },
+                                               {
+                                                 "index" => 24,
+                                                 "input" => "<!DOCTYPE html><foo bar '></foo>",
+                                                 "lang" => "HTML"
                                                }
                                              ]
                            },
