@@ -2038,8 +2038,8 @@ $WebHACC::_Errors = {
           "bad attribute name" => {
                                   "default_level" => "m",
                                   "desc" => {
-                                            "en" => "<p>An attribute name cannot contain a <code>\"</code> or <code>'</code>\ncharacter, as it is used as a quotation mark of an attribute value.</p>",
-                                            "ja" => "<p><code>\"</code> \x{3084} <code>'</code> \x{306f}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{5f15}\x{7528}\x{7b26}\x{3068}\x{3057}\x{3066}\x{4f7f}\x{308f}\x{308c}\x{308b}\x{306e}\x{3067}\x{3001}\n\x{5c5e}\x{6027}\x{540d}\x{306b}\x{542b}\x{3081}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            "en" => "<p>There must be a <code>=</code> character between an attribute name\nand an attribute value.  Characters <code>\"</code> and <code>'</code>\ncannot be used as part of an attribute name or an unquoted attribute\nvalue.</p>",
+                                            "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b}\x{306f}\x{6587}\x{5b57} <code>=</code> \n\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{307e}\x{305f}\x{3001}\x{6587}\x{5b57} <code>\"</code> \x{3084}\x{6587}\x{5b57} <code>'</code>\n\x{3092}\x{5c5e}\x{6027}\x{540d}\x{3084}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                           },
                                   "layer" => "tokenization",
                                   "message" => {
@@ -2065,6 +2065,16 @@ $WebHACC::_Errors = {
                                                     {
                                                       "index" => 21,
                                                       "input" => "<!DOCTYPE html><p foo'aa>",
+                                                      "lang" => "HTML"
+                                                    },
+                                                    {
+                                                      "index" => 24,
+                                                      "input" => "<!DOCTYPE html><foo bar \"></foo>",
+                                                      "lang" => "HTML"
+                                                    },
+                                                    {
+                                                      "index" => 24,
+                                                      "input" => "<!DOCTYPE html><foo bar '></foo>",
                                                       "lang" => "HTML"
                                                     }
                                                   ]
@@ -7643,8 +7653,8 @@ $WebHACC::_Errors = {
           "no attr value" => {
                              "default_level" => "m",
                              "desc" => {
-                                       "en" => "<p>There must be a <code>=</code> character between an attribute name\nand an attribute value.  Characters <code>\"</code> and <code>'</code>\ncannot be used as part of an attribute name or an unquoted attribute\nvalue.\n</p><p>There must be attribute value in XML.</p>",
-                                       "ja" => "<p>\x{5c5e}\x{6027}\x{540d}\x{3068}\x{5c5e}\x{6027}\x{5024}\x{306e}\x{9593}\x{306b}\x{306f}\x{6587}\x{5b57} <code>=</code> \n\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}\x{307e}\x{305f}\x{3001}\x{6587}\x{5b57} <code>\"</code> \x{3084}\x{6587}\x{5b57} <code>'</code>\n\x{3092}\x{5c5e}\x{6027}\x{540d}\x{3084}\x{62ec}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{5c5e}\x{6027}\x{5024}\x{306b}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}\n</p><p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5fc5}\x{9808}\x{3067}\x{3059}\x{3002}</p>"
+                                       "en" => "<p>There must be attribute value in XML.</p>",
+                                       "ja" => "<p>XML \x{3067}\x{306f}\x{5c5e}\x{6027}\x{5024}\x{306f}\x{5fc5}\x{9808}\x{3067}\x{3059}\x{3002}</p>"
                                      },
                              "layer" => "tokenization",
                              "message" => {
@@ -7687,16 +7697,6 @@ $WebHACC::_Errors = {
                                                  "index" => 7,
                                                  "input" => "<p foo >",
                                                  "lang" => "XML"
-                                               },
-                                               {
-                                                 "index" => 24,
-                                                 "input" => "<!DOCTYPE html><foo bar \"></foo>",
-                                                 "lang" => "HTML"
-                                               },
-                                               {
-                                                 "index" => 24,
-                                                 "input" => "<!DOCTYPE html><foo bar '></foo>",
-                                                 "lang" => "HTML"
                                                }
                                              ]
                            },
