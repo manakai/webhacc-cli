@@ -5855,24 +5855,6 @@ $WebHACC::_Errors = {
                                                 "en" => "The input stream is broken."
                                               }
                                  },
-          "isindex" => {
-                       "default_level" => "m",
-                       "desc" => {
-                                 "en" => "<p>The <code>isindex</code> element is obsolete.  Use the\n<code>form</code> element instead.</p>",
-                                 "ja" => "<p><code>isindex</code> \x{8981}\x{7d20}\x{306f}\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}\n<code>form</code> \x{8981}\x{7d20}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>"
-                               },
-                       "layer" => "tree-construction",
-                       "message" => {
-                                    "en" => "There is a start tag <code>&lt;isindex&gt;</code>",
-                                    "ja" => "<code>&lt;isindex&gt;</code> \x{958b}\x{59cb}\x{30bf}\x{30b0}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                  },
-                       "modules" => {
-                                    "Web::HTML::Parser::tree_constructor" => 1
-                                  },
-                       "parser_error_names" => {
-                                               "in-body-start-isindex" => 1
-                                             }
-                     },
           "js:parse error" => {
                               "desc" => {
                                         "en" => "\n    <p>An error is detected during the parsing of the JavaScript code\n    fragment.</p>\n  ",
