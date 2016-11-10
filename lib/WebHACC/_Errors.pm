@@ -2782,8 +2782,8 @@ $WebHACC::_Errors = {
                       },
           "charset label detected" => {
                                       "desc" => {
-                                                "en" => "\n    <p>While parsing a document using a character encoding, the parser\n    detects a character encoding declaration which declares another\n    character encoding.  To interpret the document as intended, the\n    parser reprocesses the document again.</p>\n\n    <p>This is not itself an error.  However, it implies that there is\n    something wrong with the character encoding of the document.</p>\n\n    <p>You should always <strong>use the UTF-8 encoding</strong>.</p>\n\n    <p>If this message is reported even when the document is encoded\n    in UTF-8, add the following HTML fragment in the <code>head</code>\n    element of the document:</p>\n\n    <pre class=\"code\">\n<code>&lt;meta charset=utf-8&gt;</code></pre>\n  ",
-                                                "ja" => "\n    <p>\x{6587}\x{66f8}\x{3092}\x{3042}\x{308b}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{3067}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{3057}\x{3066}\x{3044}\x{308b}\x{9014}\x{4e2d}\x{3067}\x{3001}\n    \x{5225}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{305f}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{304c}\x{898b}\x{3064}\x{304b}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{6587}\x{66f8}\x{3092}\x{60f3}\x{5b9a}\x{901a}\x{308a}\x{306b}\x{89e3}\x{91c8}\x{3059}\x{308b}\x{305f}\x{3081}\x{306b}\x{3082}\x{3046}\x{4e00}\x{5ea6}\x{6700}\x{521d}\x{304b}\x{3089}\x{51e6}\x{7406}\x{3057}\x{306a}\x{304a}\x{3057}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{3053}\x{308c}\x{81ea}\x{4f53}\x{306f}\x{30a8}\x{30e9}\x{30fc}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{6587}\x{66f8}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{304c}\x{4f55}\x{304b}\x{304a}\x{304b}\x{3057}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{539f}\x{5247}\x{3068}\x{3057}\x{3066}\x{5e38}\x{306b} <strong>UTF-8 \x{3067}\x{7b26}\x{53f7}\x{5316}\x{3059}\x{308b}</strong>\x{306e}\x{304c}\x{57fa}\x{672c}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>UTF-8 \x{3067}\x{7b26}\x{53f7}\x{5316}\x{3057}\x{3066}\x{3044}\x{3066}\x{3082}\x{3053}\x{306e}\x{30e1}\x{30c3}\x{30bb}\x{30fc}\x{30b8}\x{304c}\x{8868}\x{793a}\x{3055}\x{308c}\x{308b}\x{5834}\x{5408}\x{306b}\x{306f}\x{3001}\n    \x{6587}\x{66f8}\x{306e} <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{6b21}\x{306e}\x{30bf}\x{30b0}\x{3092}\x{8ffd}\x{52a0}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n\n    <pre class=\"code\">\n<code>&lt;meta charset=utf-8&gt;</code></pre>\n  "
+                                                "en" => "\n    <p>While parsing a document using a character encoding, the parser\n    detects a character encoding declaration which declares another\n    character encoding.  To interpret the document as intended, the\n    parser reprocesses the document again.</p>\n\n    <p>This is not itself an error.  However, it implies that there is\n    something wrong with the character encoding of the document.</p>\n\n    <p>You should always <strong>use the UTF-8 encoding</strong>.</p>\n\n    <p>If this message is reported even when the document is encoded\n    in UTF-8, add the following HTML fragment in the <code>head</code>\n    element of the document:</p>\n\n    <pre class=\"code\"><code>&lt;meta charset=utf-8&gt;</code></pre>\n  ",
+                                                "ja" => "\n    <p>\x{6587}\x{66f8}\x{3092}\x{3042}\x{308b}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{3067}\x{69cb}\x{6587}\x{89e3}\x{6790}\x{3057}\x{3066}\x{3044}\x{308b}\x{9014}\x{4e2d}\x{3067}\x{3001}\n    \x{5225}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{305f}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{304c}\x{898b}\x{3064}\x{304b}\x{308a}\x{307e}\x{3057}\x{305f}\x{3002}\n    \x{6587}\x{66f8}\x{3092}\x{60f3}\x{5b9a}\x{901a}\x{308a}\x{306b}\x{89e3}\x{91c8}\x{3059}\x{308b}\x{305f}\x{3081}\x{306b}\x{3082}\x{3046}\x{4e00}\x{5ea6}\x{6700}\x{521d}\x{304b}\x{3089}\x{51e6}\x{7406}\x{3057}\x{306a}\x{304a}\x{3057}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{3053}\x{308c}\x{81ea}\x{4f53}\x{306f}\x{30a8}\x{30e9}\x{30fc}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{304c}\x{3001}\n    \x{6587}\x{66f8}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{304c}\x{4f55}\x{304b}\x{304a}\x{304b}\x{3057}\x{3044}\x{304b}\x{3082}\x{3057}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <p>\x{539f}\x{5247}\x{3068}\x{3057}\x{3066}\x{5e38}\x{306b} <strong>UTF-8 \x{3067}\x{7b26}\x{53f7}\x{5316}\x{3059}\x{308b}</strong>\x{306e}\x{304c}\x{57fa}\x{672c}\x{3067}\x{3059}\x{3002}</p>\n\n    <p>UTF-8 \x{3067}\x{7b26}\x{53f7}\x{5316}\x{3057}\x{3066}\x{3044}\x{3066}\x{3082}\x{3053}\x{306e}\x{30e1}\x{30c3}\x{30bb}\x{30fc}\x{30b8}\x{304c}\x{8868}\x{793a}\x{3055}\x{308c}\x{308b}\x{5834}\x{5408}\x{306b}\x{306f}\x{3001}\n    \x{6587}\x{66f8}\x{306e} <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{6b21}\x{306e}\x{30bf}\x{30b0}\x{3092}\x{8ffd}\x{52a0}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n\n    <pre class=\"code\"><code>&lt;meta charset=utf-8&gt;</code></pre>\n  "
                                               },
                                       "message" => {
                                                    "en" => "\x{6587}\x{66f8}\x{3092} <code><var>{text}</var></code>\n  \x{3067}\x{7b26}\x{53f7}\x{5316}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\x{3068}\x{3057}\x{3066}\x{51e6}\x{7406}\x{3057}\x{3066}\x{3044}\x{305f}\x{3068}\x{3053}\x{308d}\x{3001}\n  <code><var>{value}</var></code> \x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{5ba3}\x{8a00}\x{304c}\x{898b}\x{3064}\x{304b}\x{308a}\x{307e}\x{3057}\x{305f}"
@@ -2986,6 +2986,21 @@ $WebHACC::_Errors = {
                                          "ja" => "\x{5236}\x{5fa1}\x{6587}\x{5b57}\n  <code><var>{text}</var></code> \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
                                        }
                           },
+          "control name:isindex" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>For historical reason, the control name, i.e. the <code>name</code>\nattribute value, must not be <code>isindex</code>.</p>",
+                                              "ja" => "<p>\x{6b74}\x{53f2}\x{7684}\x{7406}\x{7531}\x{306b}\x{3088}\x{308a}\x{3001}\x{5236}\x{5fa1}\x{5b50}\x{540d} (<code>name</code> \x{5c5e}\x{6027}\x{5024}) \x{306f}\n<code>isindex</code> \x{3067}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "microsyntax",
+                                    "message" => {
+                                                 "en" => "The control name is <code>isindex</code>",
+                                                 "ja" => "\x{5236}\x{5fa1}\x{5b50}\x{540d}\x{304c} <code>isindex</code> \x{3067}\x{3059}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               }
+                                  },
           "coords:number lt 6" => {
                                   "desc" => {
                                             "en" => "\n    <p>If the <code>shape</code> attribute is <code>polygon</code>,\n    there must be more than 5 integers in the <code>coords</code> attribute,\n    separated by the <code>,</code> character.</p>\n  ",
@@ -3917,6 +3932,21 @@ $WebHACC::_Errors = {
                                              "en" => "The specified value is already used as an\n  ID."
                                            }
                               },
+          "duplicate slot name" => {
+                                   "default_level" => "w",
+                                   "desc" => {
+                                             "en" => "<p>The slot name (i.e. the <code>name</code> attribute value of a\n<code>slot</code> element, if any, or the empty string), has to be\nunique, otherwise the slot is ignored.</p>",
+                                             "ja" => "<p>\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{540d} (<code>slot</code> \x{8981}\x{7d20}\x{306e} <code>name</code>\n\x{5c5e}\x{6027}\x{5024}\x{304b}\x{3001}\x{306a}\x{3051}\x{308c}\x{3070}\x{7a7a}\x{6587}\x{5b57}\x{5217}) \x{306f}\x{3001}\n\x{4ed6}\x{306e}\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{306e}\x{540d}\x{524d}\x{3068}\x{9055}\x{3063}\x{3066}\x{3044}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{91cd}\x{8907}\x{3057}\x{305f}\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{306f}\x{3001}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                           },
+                                   "layer" => "feature",
+                                   "message" => {
+                                                "en" => "The slot name is also assigned to another slot",
+                                                "ja" => "\x{3053}\x{306e}\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{540d}\x{306f}\x{4ed6}\x{306e}\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{3067}\x{3082}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Validator" => 1
+                                              }
+                                 },
           "duplicate token" => {
                                "desc" => {
                                          "en" => "\n    <p>The value can contain multiple space-separated tokens, but a\n    token cannot be used more than once.</p>\n  ",
@@ -4172,16 +4202,6 @@ $WebHACC::_Errors = {
                                                      "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                                    }
                                       },
-          "element not allowed:flow style" => {
-                                              "desc" => {
-                                                        "en" => "\n    <p>The HTML <code>style</code> element is flow content, but can\n    only be used before any other flow content.</p>\n\n    <p>If the <code>style</code> element is intended for the entire\n    document, rather than for a particular element, it must be\n    contained in the <code>head</code> element.</p>\n  ",
-                                                        "ja" => "\n    <p>HTML <code>style</code> \x{8981}\x{7d20}\x{306f}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3067}\x{3059}\x{304c}\x{3001}\n    \x{4ed6}\x{306e}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{3088}\x{308a}\x{524d}\x{3067}\x{3060}\x{3051}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}</p>\n\n    <p>\x{3053}\x{306e} <code>style</code> \x{304c}\x{7279}\x{5b9a}\x{306e}\x{8981}\x{7d20}\x{3060}\x{3051}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001}\n    \x{6587}\x{66f8}\x{5168}\x{4f53}\x{306b}\x{5bfe}\x{3057}\x{3066}\x{9069}\x{7528}\x{3055}\x{308c}\x{308b}\x{3079}\x{304d}\x{3082}\x{306e}\x{306a}\x{3089}\x{3001}\n    <code>head</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{5165}\x{308c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                                      },
-                                              "message" => {
-                                                           "en" => "There is a <code>style</code> element after\n  other flow content",
-                                                           "ja" => "\x{4ed6}\x{306e}\x{30d5}\x{30ed}\x{30fc}\x{5185}\x{5bb9}\x{306e}\x{5f8c}\x{306b} <code>style</code> \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                                         }
-                                            },
           "element not allowed:head noscript" => {
                                                  "desc" => {
                                                            "en" => "\n    <p>The <code>noscript</code> element, used within the\n    <code>head</code> element, can only contain <code>link</code>,\n    <code>style</code>, and <code>meta</code> elements.  No other\n    elements are allowed.</p>\n  ",
@@ -4717,8 +4737,8 @@ $WebHACC::_Errors = {
                                         },
           "enumerated:invalid" => {
                                   "desc" => {
-                                            "en" => "\n    <p>The attribute only accepts limited set of values.  The\n    specified value is not one of them.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> element, the <code>http-equiv</code>\n    attribute</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> and\n      <code>Content-Script-Type</code> are not useful.  You can remove\n      the element entirely without breaking anything at all.</p>\n\n      <p><code>Keywords</code> is not allowed.  Maybe you intended the\n      <code>name</code> attribute rather than the\n      <code>http-equiv</code> attribute.</p>\n\n      <p>Instead of <code>meta</code> element with\n      <code>Expires</code>, <code>Pragma</code>, or\n      <code>Cache-Control</code>, use real HTTP headers.</p>\n\n      <p><code>X-UA-Compatible</code> is harmful.  Remove the element\n      entirely.</p>\n\n    </dd>\n\n    </dl>\n  ",
-                                            "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306b}\x{4f7f}\x{3048}\x{308b}\x{5024}\x{306f}\x{9650}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> \x{8981}\x{7d20} <code>http-equiv</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> \x{3068}\n      <code>Content-Script-Type</code> \x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n      \x{8981}\x{7d20}\x{3092}\x{524a}\x{9664}\x{3057}\x{3066}\x{3057}\x{307e}\x{3063}\x{3066}\x{3082}\x{5f71}\x{97ff}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n      <p><code>Keywords</code> \x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n      <code>http-equiv</code> \x{5c5e}\x{6027}\x{3067}\x{306f}\x{306a}\x{304f}\n      <code>name</code> \x{5c5e}\x{6027}\x{306e}\x{3064}\x{3082}\x{308a}\x{3067}\x{306f}\x{306a}\x{3044}\x{3067}\x{3057}\x{3087}\x{3046}\x{304b}\x{3002}</p>\n\n      <p><code>Expires</code>, <code>Pragma</code>,\n      <code>Cache-Control</code> \x{306f} HTTP \x{30d8}\x{30c3}\x{30c0}\x{30fc}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n\n      <p><code>X-UA-Compatible</code> \x{306f}\x{6709}\x{5bb3}\x{3067}\x{3059}\x{3002}\x{8981}\x{7d20}\x{3054}\x{3068}\x{524a}\x{9664}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n\n    </dd>\n\n    </dl>\n  "
+                                            "en" => "\n    <p>The attribute only accepts limited set of values.  The\n    specified value is not one of them.</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> element, the <code>http-equiv</code>\n    attribute</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> and\n      <code>Content-Script-Type</code> are not useful.  You can remove\n      the element entirely without breaking anything at all.</p>\n\n      <p><code>Keywords</code> is not allowed.  Maybe you intended the\n      <code>name</code> attribute rather than the\n      <code>http-equiv</code> attribute.</p>\n\n      <p>Instead of <code>meta</code> element with\n      <code>Expires</code>, <code>Pragma</code>, or\n      <code>Cache-Control</code>, use real HTTP headers.</p>\n\n      <p><code>X-UA-Compatible</code> is harmful.  Remove the element\n      entirely.</p>\n\n    </dd>\n\n    <dt>HTML <code>ol</code> element, the <code>type</code> attribute</dt>\n    <dt>HTML <code>link</code> element, the <code>as</code> attribute</dt>\n    <dd>Attribute values are case-sensitive.</dd>\n\n    </dl>\n  ",
+                                            "ja" => "\n    <p>\x{3053}\x{306e}\x{5c5e}\x{6027}\x{306b}\x{4f7f}\x{3048}\x{308b}\x{5024}\x{306f}\x{9650}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}\x{3002}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{305f}\x{5024}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n    <dl class=\"switch\">\n\n    <dt>HTML <code>meta</code> \x{8981}\x{7d20} <code>http-equiv</code> \x{5c5e}\x{6027}</dt>\n\n    <dd>\n\n      <p><code>Content-Style-Type</code> \x{3068}\n      <code>Content-Script-Type</code> \x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n      \x{8981}\x{7d20}\x{3092}\x{524a}\x{9664}\x{3057}\x{3066}\x{3057}\x{307e}\x{3063}\x{3066}\x{3082}\x{5f71}\x{97ff}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n\n      <p><code>Keywords</code> \x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}\n      <code>http-equiv</code> \x{5c5e}\x{6027}\x{3067}\x{306f}\x{306a}\x{304f}\n      <code>name</code> \x{5c5e}\x{6027}\x{306e}\x{3064}\x{3082}\x{308a}\x{3067}\x{306f}\x{306a}\x{3044}\x{3067}\x{3057}\x{3087}\x{3046}\x{304b}\x{3002}</p>\n\n      <p><code>Expires</code>, <code>Pragma</code>,\n      <code>Cache-Control</code> \x{306f} HTTP \x{30d8}\x{30c3}\x{30c0}\x{30fc}\x{3067}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>\n\n      <p><code>X-UA-Compatible</code> \x{306f}\x{6709}\x{5bb3}\x{3067}\x{3059}\x{3002}\x{8981}\x{7d20}\x{3054}\x{3068}\x{524a}\x{9664}\x{3057}\x{3066}\x{304f}\x{3060}\x{3055}\x{3044}\x{3002}</p>\n\n    </dd>\n\n    <dt>HTML <code>ol</code> \x{8981}\x{7d20} <code>type</code> \x{5c5e}\x{6027}</dt>\n    <dt>HTML <code>link</code> \x{8981}\x{7d20} <code>as</code> \x{5c5e}\x{6027}</dt>\n    <dd>\x{5c5e}\x{6027}\x{5024}\x{306e}\x{5927}\x{6587}\x{5b57}\x{3068}\x{5c0f}\x{6587}\x{5b57}\x{306f}\x{533a}\x{5225}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</dd>\n\n    </dl>\n  "
                                           },
                                   "message" => {
                                                "en" => "The attribute value is not allowed",
@@ -4727,7 +4747,7 @@ $WebHACC::_Errors = {
                                 },
           "enumerated:invalid:http-equiv:content-type" => {
                                                           "desc" => {
-                                                                    "en" => "\n    <p>Old long character encoding declaration syntax\n    <code class=\"html bad example\">&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=<var>charset-name</var>\"&gt;</code>\n    is in use.  The document is non\x{2010}conforming.</p>\n\n    <p>The new character encoding declaration syntax is:\n      <pre class=\"html example\">\n<code>&lt;meta charset=\"<var>charset-name</var>\"&gt;</code></pre>\n    </p>\n  "
+                                                                    "en" => "\n    <p>Old long character encoding declaration syntax\n    <code class=\"html bad example\">&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=<var>charset-name</var>\"&gt;</code>\n    is in use.  The document is non\x{2010}conforming.</p>\n\n    <p>The new character encoding declaration syntax is:\n      <pre class=\"html example\"><code>&lt;meta charset=\"<var>charset-name</var>\"&gt;</code></pre>\n    </p>\n  "
                                                                   },
                                                           "message" => {
                                                                        "en" => "Character encoding declaration syntax\n  <code class=\"html bad example\">&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=<var>charset-name</var>\"&gt;</code>\n  is obsolete."
@@ -4934,16 +4954,6 @@ $WebHACC::_Errors = {
                                                  "ja" => "\x{5024}\x{306f} <code>#</code> \x{3067}\x{59cb}\x{307e}\x{308b}\x{753b}\x{50cf}\x{30de}\x{30c3}\x{30d7}\x{540d}\x{3067}\x{306a}\x{3044}\x{3068}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
                                                }
                                   },
-          "hashref:wrong case" => {
-                                  "desc" => {
-                                            "en" => "\n    <p>The image map name in the <code>usemap</code> attribute must be\n    case-sensitively equal to the <code>name</code> attribute value of\n    the <code>map</code> element.</p>\n  ",
-                                            "ja" => "\n    <p><code>usemap</code> \x{5c5e}\x{6027}\x{306e}\x{753b}\x{50cf}\x{30de}\x{30c3}\x{30d7}\x{540d}\x{306f}\x{3001} <code>map</code>\n    \x{8981}\x{7d20}\x{306e} <code>name</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{3068}\x{5927}\x{6587}\x{5b57}\x{30fb}\x{5c0f}\x{6587}\x{5b57}\x{306e}\x{9055}\x{3044}\x{3082}\x{542b}\x{3081}\x{3066}\x{4e00}\x{81f4}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                          },
-                                  "message" => {
-                                               "en" => "The value does not match to the map name exactly",
-                                               "ja" => "\x{5024}\x{3068}\x{753b}\x{50cf}\x{30de}\x{30c3}\x{30d7}\x{540d}\x{304c}\x{6b63}\x{78ba}\x{306b}\x{4e00}\x{81f4}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
-                                             }
-                                },
           "help not available" => {
                                   "desc" => {
                                             "en" => "\n    <p>No more information is available for this topic.</p>\n  ",
@@ -5855,6 +5865,21 @@ $WebHACC::_Errors = {
                                                 "en" => "The input stream is broken."
                                               }
                                  },
+          "is:not custom element name" => {
+                                          "default_level" => "w",
+                                          "desc" => {
+                                                    "en" => "<p>The <code>is</code> attribute value of the element is not a valid\ncustom element name.  The value has to be a valid custom element\nnames, otherwise it is ignored.\n\n</p><p>A valid custom element name is a string with following\nrestrictions:\n\n  </p><ul>\n\n  <li>Its first character must be one of ASCII lowercase letters\n  <code>a</code>-<code>z</code>.\n\n  </li><li>It can't contain ASCII uppercase letters\n  <code>A</code>-<code>Z</code>.\n\n  </li><li>It must contain a <code>-</code> character.\n\n  </li><li>No character that is not a <a href=\"https://chars.suikawiki.org/set/%24html%3APCENChar\"><code>PCENChar</code></a>\n  can be used.\n\n  </li><li>It can't be one of following reserved names:\n<code>annotation-xml</code>,\n<code>color-profile</code>,\n<code>font-face</code>,\n<code>font-face-src</code>,\n<code>font-face-uri</code>,\n<code>font-face-format</code>,\n<code>font-face-name</code>, and\n<code>missing-glyph</code>.\n\n  </li></ul>",
+                                                    "ja" => "<p>\x{8981}\x{7d20}\x{306e} <code>is</code> \x{5c5e}\x{6027}\x{5024}\x{304c}\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5c5e}\x{6027}\x{5024}\x{304c}\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}\n\n</p><p>\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{306f}\x{3001}\x{6b21}\x{306e}\x{6761}\x{4ef6}\x{3092}\x{6e80}\x{305f}\x{3059}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3059}\x{3002}\n\n  </p><ul>\n\n  <li>\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} ASCII \x{5c0f}\x{6587}\x{5b57}\n  <code>a</code>-<code>z</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>ASCII \x{5927}\x{6587}\x{5b57} <code>A</code>-<code>Z</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>\x{6587}\x{5b57} <code>-</code> \x{3092}\x{542b}\x{307e}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li><a href=\"https://chars.suikawiki.org/set/%24html%3APCENChar\"><code>PCENChar</code></a>\n  \x{3067}\x{306a}\x{3044}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>\x{6b21}\x{306e}\x{540d}\x{524d}\x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{3066}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n<code>annotation-xml</code>,\n<code>color-profile</code>,\n<code>font-face</code>,\n<code>font-face-src</code>,\n<code>font-face-uri</code>,\n<code>font-face-format</code>,\n<code>font-face-name</code>,\n<code>missing-glyph</code>\x{3002}\n\n  </li></ul>"
+                                                  },
+                                          "layer" => "microsyntax",
+                                          "message" => {
+                                                       "en" => "The custom element name is not valid",
+                                                       "ja" => "\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{304c}\x{59a5}\x{5f53}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::HTML::Validator" => 1
+                                                     }
+                                        },
           "js:parse error" => {
                               "desc" => {
                                         "en" => "\n    <p>An error is detected during the parsing of the JavaScript code\n    fragment.</p>\n  ",
@@ -6645,6 +6670,21 @@ $WebHACC::_Errors = {
                                                 "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{5927}\x{304d}\x{3055}\x{306e}\x{5024}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                               }
                                  },
+          "light slot" => {
+                          "default_level" => "w",
+                          "desc" => {
+                                    "en" => "<p>The <code>slot</code> element not in the shadow tree has no effect.</p>",
+                                    "ja" => "<p>\x{5f71}\x{6728}\x{4ee5}\x{5916}\x{306e} <code>slot</code> \x{8981}\x{7d20}\x{306f}\x{52b9}\x{679c}\x{3092}\x{6301}\x{3061}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                  },
+                          "layer" => "feature",
+                          "message" => {
+                                       "en" => "The slot is used in a light tree",
+                                       "ja" => "\x{5149}\x{6728}\x{4e2d}\x{306b}\x{30b9}\x{30ed}\x{30c3}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Validator" => 1
+                                     }
+                        },
           "link type:bad context" => {
                                      "desc" => {
                                                "en" => "\n    <p>The specified link type cannot be used for the element.</p>\n\n    <dl class=\"switch\">\n\n    <dt>The link type <code>stylesheet</code></dt>\n\n    <dd>This link type can only be used with the <code>link</code>\n    element.</dd>\n\n    <dt>The link type <code>bookmark</code></dt>\n\n    <dd>This link type can only be used with <code>a</code> or\n    <code>area</code> element.</dd>\n\n    </dl>\n  ",
@@ -6683,6 +6723,51 @@ $WebHACC::_Errors = {
                                                "en" => "The link type is not accepted yet"
                                              }
                                 },
+          "link:as:not preload" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>When the <code>as</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>preload</code>.  Otherwise the <code>as</code>\nattribute is ignored.</p>",
+                                             "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>as</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>as</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                           },
+                                   "layer" => "content-model",
+                                   "message" => {
+                                                "en" => "The <code>as</code> attribute is specified to a <code>link</code>\nelement with no <code>preload</code> link type",
+                                                "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>as</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Validator" => 1
+                                              }
+                                 },
+          "link:not body-ok" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>Most <code>link</code> elements must be children of\nthe <code>head</code> element of the document.  Exceptions\nare microdata <code>link</code> elements (i.e. <code>link</code>\nelements with <code>itemprop</code> attributes) and\n<code>link</code> elements whose <code>rel</code> attribute\nhas one of \"body-ok\" link types such as <code>stylesheet</code>.</p>",
+                                          "ja" => "<p>\x{307b}\x{3068}\x{3093}\x{3069}\x{306e} <code>link</code> \x{8981}\x{7d20}\x{306f}\x{3001}\x{6587}\x{66f8}\x{306e} <code>head</code>\n\x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{4f8b}\x{5916}\x{306f}\x{3001}\x{30de}\x{30a4}\x{30af}\x{30ed}\x{30c7}\x{30fc}\x{30bf}\x{306e}\n<code>link</code> \x{8981}\x{7d20} (<code>itemprop</code> \x{5c5e}\x{6027}\x{306e}\x{3042}\x{308b}\n<code>link</code> \x{8981}\x{7d20}) \x{3068}\x{3001} <code>rel</code>\n\x{5c5e}\x{6027}\x{306b} <code>body</code> \x{5185}\x{3067}\x{3082}\x{4f7f}\x{3048}\x{308b}\x{30ea}\x{30f3}\x{30af}\x{578b}\n(<code>stylesheet</code> \x{306a}\x{3069}) \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{308b}\n<code>link</code> \x{8981}\x{7d20}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                        },
+                                "layer" => "content-model",
+                                "message" => {
+                                             "en" => "A <code>link</code> element is not a child of the <code>head</code> element",
+                                             "ja" => "<code>link</code> \x{8981}\x{7d20}\x{304c} <code>head</code> \x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::HTML::Validator" => 1
+                                           }
+                              },
+          "link:sizes:not icon" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>When the <code>sizes</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>icon</code>.  Otherwise the <code>sizes</code>\nattribute is ignored.</p>",
+                                             "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>sizes</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                           },
+                                   "layer" => "content-model",
+                                   "message" => {
+                                                "en" => "The <code>sizes</code> attribute is specified to a <code>link</code>\nelement with no <code>icon</code> link type",
+                                                "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::HTML::Validator" => 1
+                                              }
+                                 },
           "litype:invalid" => {
                               "desc" => {
                                         "en" => "\n    <p>The value of the <code>type</code> attribute of the\n    <code>li</code> element must be one of following values:\n    <code>1</code>, <code>A</code>, <code>a</code>, <code>I</code>,\n    <code>i</code>, <code>circle</code>, <code>square</code>, or\n    <code>disc</code>.</p>\n  ",
@@ -8008,11 +8093,6 @@ $WebHACC::_Errors = {
                                            "lang" => "HTML"
                                          },
                                          {
-                                           "index" => 28,
-                                           "input" => "<!DOCTYPE HTML><a href=\"&amp=aa\">",
-                                           "lang" => "HTML"
-                                         },
-                                         {
                                            "index" => 13,
                                            "input" => "<p x=\"aa&copy=\"/>",
                                            "lang" => "XML"
@@ -8423,7 +8503,7 @@ $WebHACC::_Errors = {
                              },
           "non ascii superset" => {
                                   "desc" => {
-                                            "en" => "\n    <p>The document is not labeled with character encoding name\n    in lower\x{2010}level protocol, e.g. in <abbr>HTTP</abbr>, and\n    the document is not begin with <abbr>BOM</abbr>.  In addition,\n    the character encoding of the document is not a superset of\n    <abbr>ASCII</abbr>.  The document is non\x{2010}conforming.</p>\n\n    <p>Unless there is a <abbr>BOM</abbr>, the character encoding\n    for the document must be specified in e.g. <abbr>HTTP</abbr>\x{2010}level,\n    as:</p>\n    <pre class=\"http example\">\n<code>Content-Type: text/html; charset=<var>charset-name</var></code></pre>\n\n    <p>Existence of <abbr>HTML</abbr> character encoding declaration, i.e.\n    <code class=\"html example\">&lt;meta charset=\"<var>charset-name</var>\"&gt;</code>,\n    does not allow to omit <code>charset</code> parameter\n    for <abbr>HTML</abbr> document encoded in non\x{2010}<abbr>ASCII</abbr>\n    compatible encoding.</p>\n\n    <p>Character encodings <code>Shift_JIS</code>, <code>Windows-31J</code>,\n    and <code>ISO-2022-JP</code> are <em>not</em> a superset of\n    <abbr>ASCII</abbr> for the purpose of <abbr>HTML</abbr> conformance.</p>\n  "
+                                            "en" => "\n    <p>The document is not labeled with character encoding name\n    in lower\x{2010}level protocol, e.g. in <abbr>HTTP</abbr>, and\n    the document is not begin with <abbr>BOM</abbr>.  In addition,\n    the character encoding of the document is not a superset of\n    <abbr>ASCII</abbr>.  The document is non\x{2010}conforming.</p>\n\n    <p>Unless there is a <abbr>BOM</abbr>, the character encoding\n    for the document must be specified in e.g. <abbr>HTTP</abbr>\x{2010}level,\n    as:</p>\n    <pre class=\"http example\"><code>Content-Type: text/html; charset=<var>charset-name</var></code></pre>\n\n    <p>Existence of <abbr>HTML</abbr> character encoding declaration, i.e.\n    <code class=\"html example\">&lt;meta charset=\"<var>charset-name</var>\"&gt;</code>,\n    does not allow to omit <code>charset</code> parameter\n    for <abbr>HTML</abbr> document encoded in non\x{2010}<abbr>ASCII</abbr>\n    compatible encoding.</p>\n\n    <p>Character encodings <code>Shift_JIS</code>, <code>Windows-31J</code>,\n    and <code>ISO-2022-JP</code> are <em>not</em> a superset of\n    <abbr>ASCII</abbr> for the purpose of <abbr>HTML</abbr> conformance.</p>\n  "
                                           },
                                   "message" => {
                                                "en" => "No character encoding metadata is found\n  in lower\x{2010}level protocol nor is there <abbr>BOM</abbr>, while\n  character encoding <code><var>{text}</var></code>\n  is not a superset of <abbr>ASCII</abbr>."
@@ -8677,6 +8757,21 @@ $WebHACC::_Errors = {
                                                              "tag name"
                                                            ]
                                                 },
+          "not custom element name" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>The local name of the element is not a valid custom element name.\nThe local name must be one of standard element names or valid custom\nelement names.\n\n</p><p>A valid custom element name is a string with following\nrestrictions:\n\n  </p><ul>\n\n  <li>Its first character must be one of ASCII lowercase letters\n  <code>a</code>-<code>z</code>.\n\n  </li><li>It can't contain ASCII uppercase letters\n  <code>A</code>-<code>Z</code>.\n\n  </li><li>It must contain a <code>-</code> character.\n\n  </li><li>No character that is not a <a href=\"https://chars.suikawiki.org/set/%24html%3APCENChar\"><code>PCENChar</code></a>\n  can be used.\n\n  </li><li>It can't be one of following reserved names:\n<code>annotation-xml</code>,\n<code>color-profile</code>,\n<code>font-face</code>,\n<code>font-face-src</code>,\n<code>font-face-uri</code>,\n<code>font-face-format</code>,\n<code>font-face-name</code>, and\n<code>missing-glyph</code>.\n\n  </li></ul>",
+                                                 "ja" => "<p>\x{8981}\x{7d20}\x{306e}\x{5c40}\x{6240}\x{540d}\x{304c}\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{5c40}\x{6240}\x{540d}\x{306f}\x{6a19}\x{6e96}\x{306e}\x{8981}\x{7d20}\x{540d}\x{304b}\x{3001}\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n</p><p>\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{306f}\x{3001}\x{6b21}\x{306e}\x{6761}\x{4ef6}\x{3092}\x{6e80}\x{305f}\x{3059}\x{6587}\x{5b57}\x{5217}\x{3067}\x{3059}\x{3002}\n\n  </p><ul>\n\n  <li>\x{6700}\x{521d}\x{306e}\x{6587}\x{5b57}\x{306f} ASCII \x{5c0f}\x{6587}\x{5b57}\n  <code>a</code>-<code>z</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>ASCII \x{5927}\x{6587}\x{5b57} <code>A</code>-<code>Z</code> \x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>\x{6587}\x{5b57} <code>-</code> \x{3092}\x{542b}\x{307e}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li><a href=\"https://chars.suikawiki.org/set/%24html%3APCENChar\"><code>PCENChar</code></a>\n  \x{3067}\x{306a}\x{3044}\x{6587}\x{5b57}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}\x{3002}\n\n  </li><li>\x{6b21}\x{306e}\x{540d}\x{524d}\x{306f}\x{4e88}\x{7d04}\x{3055}\x{308c}\x{3066}\x{3044}\x{3066}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}:\n<code>annotation-xml</code>,\n<code>color-profile</code>,\n<code>font-face</code>,\n<code>font-face-src</code>,\n<code>font-face-uri</code>,\n<code>font-face-format</code>,\n<code>font-face-name</code>,\n<code>missing-glyph</code>\x{3002}\n\n  </li></ul>"
+                                               },
+                                       "layer" => "microsyntax",
+                                       "message" => {
+                                                    "en" => "The element name is not a valid custom element name",
+                                                    "ja" => "\x{8981}\x{7d20}\x{540d}\x{304c}\x{59a5}\x{5f53}\x{306a}\x{30ab}\x{30b9}\x{30bf}\x{30e0}\x{8981}\x{7d20}\x{540d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Validator" => 1
+                                                  }
+                                     },
           "not encoding label" => {
                                   "desc" => {
                                             "en" => "\n    <p>The value is not a label of the character encoding.</p>\n    <p>It might be a name of the encoding that is not used on the Web,\n    or might be simply an authoring error.</p>\n  ",
@@ -8888,16 +8983,6 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{3053}\x{306e}\x{7279}\x{6027}\x{306f}\x{65e2}\x{306b}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
                                              }
                                 },
-          "oltype:invalid" => {
-                              "desc" => {
-                                        "en" => "\n    <p>The value of the <code>type</code> attribute of the\n    <code>ol</code> element must be one of following values:\n    <code>1</code>, <code>A</code>, <code>a</code>, <code>I</code>, or\n    <code>i</code>.</p>\n  ",
-                                        "ja" => "\n    <p><code>ol</code> \x{8981}\x{7d20}\x{306e} <code>type</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{306f}\n    <code>1</code>, <code>A</code>, <code>a</code>, <code>I</code>,\n    <code>i</code> \x{306e}\x{3044}\x{305a}\x{308c}\x{304b}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                      },
-                              "message" => {
-                                           "en" => "The list item type is invalid",
-                                           "ja" => "\x{30ea}\x{30b9}\x{30c8}\x{9805}\x{76ee}\x{578b}\x{304c}\x{6b63}\x{3057}\x{304f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                         }
-                            },
           "parse type other" => {
                                 "desc" => {
                                           "en" => "\n    <p>The <code>rdf:parseType</code> attribute value must be\n    <code>Literal</code>, <code>Resource</code>, or\n    <code>Collection</code>.</p>\n  ",
@@ -9022,22 +9107,14 @@ $WebHACC::_Errors = {
                                          "parser_error_names" => {
                                                                  "comment-end-0021" => 1,
                                                                  "comment-end-002d" => 1,
-                                                                 "comment-end-else" => 1
+                                                                 "comment-end-bang-003e" => 1,
+                                                                 "comment-end-else" => 1,
+                                                                 "comment-less-than-sign-bang-dash-dash-else" => 1
                                                                },
                                          "parser_tests" => [
                                                            {
-                                                             "index" => 22,
+                                                             "index" => 23,
                                                              "input" => "<!DOCTYPE HTML><!--a--!>",
-                                                             "lang" => "HTML"
-                                                           },
-                                                           {
-                                                             "index" => 22,
-                                                             "input" => "<!DOCTYPE HTML><!--a--->",
-                                                             "lang" => "HTML"
-                                                           },
-                                                           {
-                                                             "index" => 22,
-                                                             "input" => "<!DOCTYPE HTML><!--a--b-->",
                                                              "lang" => "HTML"
                                                            }
                                                          ]
@@ -9907,6 +9984,24 @@ $WebHACC::_Errors = {
                                                "ja" => "\x{3053}\x{306e}\x{5024}\x{306f}\x{6b63}\x{3057}\x{3044}\x{30b5}\x{30a4}\x{30ba}\x{306e}\x{6307}\x{5b9a}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              }
                                 },
+          "slot:parent not host" => {
+                                    "default_level" => "w",
+                                    "desc" => {
+                                              "en" => "<p>The <code>slot</code> attribute has no effect unless the parent\nnode is a shadow host.</p>",
+                                              "ja" => "<p><code>slot</code> \x{5c5e}\x{6027}\x{306f}\x{3001}\x{89aa}\x{7bc0}\x{70b9}\x{304c}\x{5f71}\x{30db}\x{30b9}\x{30c8}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{52b9}\x{679c}\x{3092}\x{6301}\x{3061}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "feature",
+                                    "message" => {
+                                                 "en" => "The parent is not a shadow host",
+                                                 "ja" => "\x{89aa}\x{304c}\x{5f71}\x{30db}\x{30b9}\x{30c8}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               },
+                                    "targets" => {
+                                                 "attr" => 1
+                                               }
+                                  },
           "sniffing:chardet" => {
                                 "message" => {
                                              "en" => "Character encoding of this document is sniffed\n  as <code><var>{text}</var></code> (Sniffed because no explicit specification\n  for the character encoding of this document is found in the transfer\n  procotol headers)."
@@ -10647,6 +10742,21 @@ $WebHACC::_Errors = {
                                                  "en" => "The specified value is syntactically not a\n  URI."
                                                }
                                   },
+          "tabindex:indexed" => {
+                                "default_level" => "s",
+                                "desc" => {
+                                          "en" => "<p>The <code>tabindex</code> attribute value can be any non-negative\ninteger.  However, use of value other than <code>0</code>\n(is focusable) or <code>-1</code> (not focusable) is not easy.\nSuch values should not be used unless you completely understand\ntheir implications.</p>",
+                                          "ja" => "<p><code>tabindex</code> \x{5c5e}\x{6027}\x{5024}\x{306f}\x{975e}\x{8ca0}\x{6574}\x{6570}\x{3067}\x{3059}\x{3002}\x{3057}\x{304b}\x{3057}\n<code>0</code> (\x{30d5}\x{30a9}\x{30fc}\x{30ab}\x{30b9}\x{53ef}\x{80fd}) \x{3068} <code>-1</code> (\x{30d5}\x{30a9}\x{30fc}\x{30ab}\x{30b9}\x{4e0d}\x{80fd})\n\x{4ee5}\x{5916}\x{306e}\x{5024}\x{3092}\x{4f7f}\x{3046}\x{306e}\x{306f}\x{7c21}\x{5358}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{4f55}\x{3092}\x{8868}\x{3057}\x{3066}\x{3044}\x{308b}\x{304b}\x{7406}\x{89e3}\x{3057}\x{3066}\x{3044}\x{308b}\x{81ea}\x{4fe1}\x{304c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001}\x{4ed6}\x{306e}\x{5024}\x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "feature",
+                                "message" => {
+                                             "en" => "The <code>tabindex</code> value is not <code>-1</code> or <code>0</code>",
+                                             "ja" => "<code>tabindex</code> \x{5024}\x{304c} <code>-1</code> \x{3067}\x{3082} <code>0</code> \x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                           },
+                                "modules" => {
+                                             "Web::HTML::Validator" => 1
+                                           }
+                              },
           "table:no cell in last row" => {
                                          "message" => {
                                                       "en" => "The table has no cell (<code>td</code> or\n  <code>th</code>) in the last row."
@@ -10654,7 +10764,7 @@ $WebHACC::_Errors = {
                                        },
           "table:rowspan extends table" => {
                                            "desc" => {
-                                                     "en" => "\n    <p>The <code>rowspan</code> attribute value of the cell\n    is so specified that it extends a table in the row axis.\n    However, the extended row does not contain any cell by itself.\n    The document is non-conforming.</p>\n\n    <p>For example, the table below is non-conforming:\n      <pre class=\"html bad example\">\n<code>&lt;table&gt;\n&lt;tbody&gt;\n&lt;tr&gt;&lt;td rowspan=2&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n    ... since the second row contains only\n    a cell that spans between first and second rows.</p>\n  "
+                                                     "en" => "\n    <p>The <code>rowspan</code> attribute value of the cell\n    is so specified that it extends a table in the row axis.\n    However, the extended row does not contain any cell by itself.\n    The document is non-conforming.</p>\n\n    <p>For example, the table below is non-conforming:\n      <pre class=\"html bad example\"><code>&lt;table&gt;\n&lt;tbody&gt;\n&lt;tr&gt;&lt;td rowspan=2&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n    ... since the second row contains only\n    a cell that spans between first and second rows.</p>\n  "
                                                    },
                                            "message" => {
                                                         "en" => "This <code>rowspan</code> attribute\n  results in creating a table row that does not contain\n  any cell anchored to it."
@@ -10682,6 +10792,7 @@ $WebHACC::_Errors = {
                                                                        "text-declaration-in-markup-declaration-0026" => 1,
                                                                        "text-declaration-in-markup-declaration-0026-" => 1,
                                                                        "text-declaration-in-markup-declaration-003c" => 1,
+                                                                       "text-declaration-in-markup-declaration-003c-" => 1,
                                                                        "text-declaration-in-markup-declaration-003e-" => 1,
                                                                        "text-declaration-in-markup-declaration-eof-" => 1
                                                                      }
