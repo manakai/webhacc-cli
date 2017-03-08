@@ -1,7 +1,7 @@
 Algorithm::Diff~1.1903
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
-AnyEvent::Util
+AnyEvent::Socket
 Canary::Stability~2012
 Capture::Tiny~0.46
 Carp~1.38
@@ -22,8 +22,8 @@ Pod::Usage~1.69
 Regexp::Parser~0.21
 Scalar::Util~1.47
 Term::ANSIColor~4.06
-Test::Builder~1.302078
 Test::Differences~0.64
+Test::More~1.302078
 Text::Diff~1.44
 Time::HiRes~1.9741
 common::sense~3.74
