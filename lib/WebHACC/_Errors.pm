@@ -2459,6 +2459,21 @@ $WebHACC::_Errors = {
                                             "en" => "No identifier is specified in an extended \n  attribute assignment."
                                           }
                              },
+          "big5:hkscs" => {
+                          "default_level" => "w",
+                          "desc" => {
+                                    "en" => "<p>The HKSCS extended part of the Big5 encoding is not fully\ninteroperable.</p>",
+                                    "ja" => "<p>Big5 \x{7b26}\x{53f7}\x{5316}\x{306e} HKSCS \x{62e1}\x{5f35}\x{90e8}\x{5206}\x{306f}\x{5341}\x{5206}\x{76f8}\x{4e92}\x{904b}\x{7528}\x{53ef}\x{80fd}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                  },
+                          "layer" => "charencoding",
+                          "message" => {
+                                       "en" => "An HKSCS extended code is used",
+                                       "ja" => "HKSCS \x{62e1}\x{5f35}\x{7b26}\x{53f7}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                     },
+                          "modules" => {
+                                       "Web::Encoding::Decoder" => 1
+                                     }
+                        },
           "block not closed" => {
                                 "message" => {
                                              "en" => "Block is not closed before the end of\n  file."
@@ -2607,6 +2622,21 @@ $WebHACC::_Errors = {
                                                }
                                              ]
                            },
+          "bom" => {
+                   "default_level" => "s",
+                   "desc" => {
+                             "en" => "<p>There is a BOM (byte order mark).  It should not be used as it can\ncause interoperability and security problems.</p>",
+                             "ja" => "<p>BOM (\x{30d0}\x{30a4}\x{30c8}\x{9806}\x{30de}\x{30fc}\x{30af}) \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}\n\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{3084}\x{30bb}\x{30ad}\x{30e5}\x{30ea}\x{30c6}\x{30a3}\x{30fc}\x{306e}\x{554f}\x{984c}\x{306e}\x{5143}\x{3067}\x{3059}\x{304b}\x{3089}\x{3001}\n\x{7701}\x{304f}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                           },
+                   "layer" => "charencoding",
+                   "message" => {
+                                "en" => "There is a BOM",
+                                "ja" => "BOM \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                              },
+                   "modules" => {
+                                "Web::Encoding::Decoder" => 1
+                              }
+                 },
           "boolean:invalid" => {
                                "desc" => {
                                          "en" => "\n    <p>It is a boolean attribute.  If the value is true, the attribute\n    value must be either the empty value or same as the attribute\n    name.  If the value is false, the attribute must be omitted.</p>\n    <p>Values such as <code>true</code>, <code>false</code>,\n    <code>yes</code>, and <code>on</code> are not allowed.</p>\n  ",
@@ -4616,6 +4646,36 @@ $WebHACC::_Errors = {
                                                            "ja" => "\x{5c5e}\x{6027}\x{5024}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}"
                                                          }
                                             },
+          "encoding:replacement" => {
+                                    "default_level" => "m",
+                                    "desc" => {
+                                              "en" => "<p>There are some historical encodings that have not been used on the\nWeb and have security concerns.  To protect the user, the files in\nthose encodings are discarded.</p>",
+                                              "ja" => "<p>\x{6b74}\x{53f2}\x{7684}\x{306a}\x{7b26}\x{53f7}\x{5316}\x{306e}\x{4e2d}\x{306b}\x{306f}\x{3001} Web \x{3067}\x{306f}\x{9577}\x{3089}\x{304f}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{53cd}\x{9762}\x{3001}\n\x{30bb}\x{30ad}\x{30e5}\x{30ea}\x{30c6}\x{30a3}\x{30fc}\x{4e0a}\x{306e}\x{61f8}\x{5ff5}\x{306e}\x{3042}\x{308b}\x{3082}\x{306e}\x{3082}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}\x{5229}\x{7528}\x{8005}\x{3092}\x{4fdd}\x{8b77}\x{3059}\x{308b}\x{305f}\x{3081}\x{3001}\n\x{305d}\x{3046}\x{3057}\x{305f}\x{7b26}\x{53f7}\x{5316}\x{3092}\x{4f7f}\x{3063}\x{305f}\x{30d5}\x{30a1}\x{30a4}\x{30eb}\x{306f}\x{958b}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "charencoding",
+                                    "message" => {
+                                                 "en" => "An obsolete encoding is used",
+                                                 "ja" => "\x{5ec3}\x{6b62}\x{3055}\x{308c}\x{305f}\x{7b26}\x{53f7}\x{5316}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                               },
+                                    "modules" => {
+                                                 "Web::Encoding::Decoder" => 1
+                                               }
+                                  },
+          "encoding:unassigned" => {
+                                   "default_level" => "m",
+                                   "desc" => {
+                                             "en" => "<p>Some byte sequences are left unassigned in several encodings.  For\ninteroperability, they must not be used.</p>",
+                                             "ja" => "<p>\x{7b26}\x{53f7}\x{5316}\x{306b}\x{3088}\x{3063}\x{3066}\x{306f}\x{5272}\x{5f53}\x{306e}\x{306a}\x{3044}\x{30d0}\x{30a4}\x{30c8}\x{5217}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}\n\x{76f8}\x{4e92}\x{904b}\x{7528}\x{6027}\x{306e}\x{305f}\x{3081}\x{3001}\x{305d}\x{3046}\x{3057}\x{305f}\x{30d0}\x{30a4}\x{30c8}\x{5217}\x{3092}\x{4f7f}\x{3063}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                           },
+                                   "layer" => "charencoding",
+                                   "message" => {
+                                                "en" => "There is an unassigned byte",
+                                                "ja" => "\x{672a}\x{5272}\x{5f53}\x{306e}\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                              },
+                                   "modules" => {
+                                                "Web::Encoding::Decoder" => 1
+                                              }
+                                 },
           "end tag attribute" => {
                                  "default_level" => "m",
                                  "desc" => {
@@ -5880,6 +5940,36 @@ $WebHACC::_Errors = {
                                                        "Web::HTML::Validator" => 1
                                                      }
                                         },
+          "iso2022jp:jis78" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>Though an escape sequence designating JIS C 6226-1978 (<code class=\"charname\">ESC</code> 2/4 4/0), which has been obsoleted, is\nallowed in an ISO-2022-JP string, it is interpreted as per the revised\ndefinition, which is in fact incompatible with the original\ndefinition.</p>",
+                                         "ja" => "<p>\x{53e4}\x{3044}\x{898f}\x{683c}\x{3067}\x{3042}\x{308b} JIS C 6226-1978 \x{3092}\x{6307}\x{793a}\x{3059}\x{308b}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{30b7}\x{30fc}\x{30b1}\x{30f3}\x{30b9} (<code class=\"charname\">ESC</code> 2/4 4/0) \x{3092} ISO-2022-JP \n\x{6587}\x{5b57}\x{5217}\x{3067}\x{4f7f}\x{3046}\x{3053}\x{3068}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{306f}\x{3044}\x{307e}\x{3059}\x{304c}\x{3001}\x{5143}\x{306e}\x{5b9a}\x{7fa9}\x{3067}\x{306f}\x{306a}\x{304f}\x{3001}\n\x{672c}\x{6765}\x{975e}\x{4e92}\x{63db}\x{306a}\x{6539}\x{8a02}\x{7248}\x{306e}\x{5b9a}\x{7fa9}\x{306b}\x{5f93}\x{3044}\x{89e3}\x{91c8}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                       },
+                               "layer" => "charencoding",
+                               "message" => {
+                                            "en" => "JIS C 6226-1978 is used",
+                                            "ja" => "JIS C 6226-1978 \x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::Encoding::Decoder" => 1
+                                          }
+                             },
+          "iso2022jp:lone escape" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>In an ISO-2022-JP string, only escape sequences\n<code class=\"charname\">ESC</code> 2/4 4/0,\n<code class=\"charname\">ESC</code> 2/4 4/2,\n<code class=\"charname\">ESC</code> 2/8 4/2,\n<code class=\"charname\">ESC</code> 2/8 4/9, and\n<code class=\"charname\">ESC</code> 2/8 4/10\nare allowed.</p>",
+                                               "ja" => "<p>ISO-2022-JP \x{6587}\x{5b57}\x{5217}\x{3067}\x{4f7f}\x{3048}\x{308b}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{30b7}\x{30fc}\x{30b1}\x{30f3}\x{30b9}\x{306f}\n<code class=\"charname\">ESC</code> 2/4 4/0,\n<code class=\"charname\">ESC</code> 2/4 4/2,\n<code class=\"charname\">ESC</code> 2/8 4/2,\n<code class=\"charname\">ESC</code> 2/8 4/9,\n<code class=\"charname\">ESC</code> 2/8 4/10\n\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                             },
+                                     "layer" => "charencoding",
+                                     "message" => {
+                                                  "en" => "There is a broken escape sequence",
+                                                  "ja" => "\x{58ca}\x{308c}\x{305f}\x{30a8}\x{30b9}\x{30b1}\x{30fc}\x{30d7}\x{30b7}\x{30fc}\x{30b1}\x{30f3}\x{30b9}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                },
+                                     "modules" => {
+                                                  "Web::Encoding::Decoder" => 1
+                                                }
+                                   },
           "js:parse error" => {
                               "desc" => {
                                         "en" => "\n    <p>An error is detected during the parsing of the JavaScript code\n    fragment.</p>\n  ",
@@ -7278,6 +7368,21 @@ $WebHACC::_Errors = {
                                                             "after-mss-005d" => 1
                                                           }
                                   },
+          "multibyte:lone lead byte" => {
+                                        "default_level" => "m",
+                                        "desc" => {
+                                                  "en" => "<p>In a multibyte encoding, a lead byte, which introduces a multibyte\ncode, must be immediately followed by a trail byte.</p>",
+                                                  "ja" => "<p>\x{591a}\x{30d0}\x{30a4}\x{30c8}\x{7b26}\x{53f7}\x{5316}\x{3067}\x{306f}\x{3001}\x{591a}\x{30d0}\x{30a4}\x{30c8}\x{7b26}\x{53f7}\x{306e}\x{5148}\x{982d}\x{306e}\x{30d0}\x{30a4}\x{30c8}\x{306e}\x{76f4}\x{5f8c}\x{306b}\x{306f}\x{7b2c}2\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{6765}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                },
+                                        "layer" => "charencoding",
+                                        "message" => {
+                                                     "en" => "There is a lead byte not immediately followed by a trail byte",
+                                                     "ja" => "\x{7b2c}1\x{30d0}\x{30a4}\x{30c8}\x{306e}\x{76f4}\x{5f8c}\x{306b}\x{7b2c}2\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                   },
+                                        "modules" => {
+                                                     "Web::Encoding::Decoder" => 1
+                                                   }
+                                      },
           "multilength:syntax error" => {
                                         "desc" => {
                                                   "en" => "\n    <p>The value must be a dimension value using one of these forms: a\n    non-negative integer, a non-negative percentage integer, a\n    non-negative integer followed by the <code>*</code> character, or\n    a <code>*</code> character.</p>\n  ",
@@ -11612,6 +11717,66 @@ $WebHACC::_Errors = {
                                       "ja" => "URL \x{3092}\x{7a7a}\x{306b}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}"
                                     }
                        },
+          "utf-16:lone byte" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>In a UTF-16 string, anything other than code units, i.e. pairs of\ntwo bytes, are allowed.  The number of the bytes in the string cannot\nbe odd.</p>",
+                                          "ja" => "<p>UTF-16 \x{6587}\x{5b57}\x{5217}\x{4e2d}\x{306b}\x{306f}\x{7b26}\x{53f7}\x{5358}\x{4f4d} (2\x{3064}\x{306e}\x{30d0}\x{30a4}\x{30c8}\x{306e}\x{7d44}) \x{3057}\x{304b}\x{5165}\x{308c}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{6587}\x{5b57}\x{5217}\x{4e2d}\x{306e}\x{30d0}\x{30a4}\x{30c8}\x{306e}\x{6570}\x{306f}\x{5947}\x{6570}\x{306b}\x{306f}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                        },
+                                "layer" => "charencoding",
+                                "message" => {
+                                             "en" => "There is a garbage byte at the end of the string",
+                                             "ja" => "\x{6587}\x{5b57}\x{5217}\x{306e}\x{672b}\x{5c3e}\x{306b}\x{4f59}\x{8a08}\x{306a}\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                           },
+                                "modules" => {
+                                             "Web::Encoding::Decoder" => 1
+                                           }
+                              },
+          "utf-16:lone high surrogate" => {
+                                          "default_level" => "m",
+                                          "desc" => {
+                                                    "en" => "<p>In a UTF-16 string, a high surrogate code unit must be immediately\nfollowed by a low surrogate code unit.</p>",
+                                                    "ja" => "<p>UTF-16 \x{6587}\x{5b57}\x{5217}\x{4e2d}\x{3067}\x{9ad8}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{5358}\x{4f4d}\x{306e}\x{76f4}\x{5f8c}\x{306b}\x{306f}\x{4f4e}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{5358}\x{4f4d}\x{304c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                  },
+                                          "layer" => "charencoding",
+                                          "message" => {
+                                                       "en" => "There is a high surrogate not immediately (<var>{text}</var>) followed by a low surrogate",
+                                                       "ja" => "\x{76f4}\x{5f8c}\x{306b}\x{4f4e}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{304c}\x{306a}\x{3044}\x{9ad8}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8} (<var>{text}</var>) \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                     },
+                                          "modules" => {
+                                                       "Web::Encoding::Decoder" => 1
+                                                     }
+                                        },
+          "utf-16:lone low surrogate" => {
+                                         "default_level" => "m",
+                                         "desc" => {
+                                                   "en" => "<p>In a UTF-16 string, a low surrogate code unit must immediately\nfollow a high surrogate code unit.</p>",
+                                                   "ja" => "<p>UTF-16 \x{6587}\x{5b57}\x{5217}\x{4e2d}\x{3067}\x{4f4e}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{5358}\x{4f4d}\x{306e}\x{76f4}\x{524d}\x{306b}\x{306f}\x{9ad8}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{7b26}\x{53f7}\x{5358}\x{4f4d}\x{304c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                                 },
+                                         "layer" => "charencoding",
+                                         "message" => {
+                                                      "en" => "There is a low surrogate (<var>{text}</var>) not immediately following a high surrogate",
+                                                      "ja" => "\x{76f4}\x{524d}\x{306b}\x{9ad8}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8}\x{304c}\x{306a}\x{3044}\x{4f4e}\x{30b5}\x{30ed}\x{30b2}\x{30fc}\x{30c8} (<var>{text}</var>) \x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                    },
+                                         "modules" => {
+                                                      "Web::Encoding::Decoder" => 1
+                                                    }
+                                       },
+          "utf8:bad bytes" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>There is a byte that is not allowed in UTF-8.</p>",
+                                        "ja" => "<p>UTF-8 \x{3067}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{73fe}\x{308c}\x{307e}\x{3057}\x{305f}\x{3002}</p>"
+                                      },
+                              "layer" => "charencoding",
+                              "message" => {
+                                           "en" => "There is a byte that is not allowed in UTF-8",
+                                           "ja" => "UTF-8 \x{3067}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044}\x{30d0}\x{30a4}\x{30c8}\x{304c}\x{73fe}\x{308c}\x{307e}\x{3057}\x{305f}"
+                                         },
+                              "modules" => {
+                                           "Web::Encoding::Decoder" => 1
+                                         }
+                            },
           "value gt max" => {
                             "desc" => {
                                       "en" => "\n    <p>The value of the <code>value</code> attribute must be less\n    than or equal to the value of the <code>max</code> attribute.</p>\n  ",
