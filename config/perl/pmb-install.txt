@@ -1,11 +1,12 @@
 Algorithm::Diff~1.1903
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
-AnyEvent::Socket
+AnyEvent::Util
 Canary::Stability~2012
 Capture::Tiny~0.46
 Carp~1.38
 Data::Dumper~2.161
+Date::Parse~2.30
 Digest::SHA~5.98
 Encode~2.93
 Exporter::Lite~0.08
@@ -13,7 +14,7 @@ Getopt::Long~2.5
 JE~0.066
 JSON~2.94
 MIME::Base64~3.15
-Net::SSLeay~1.81
+Net::SSLeay~1.82
 Path::Class~0.37
 Path::Tiny~0.104
 Pod::Text~4.09
@@ -25,5 +26,4 @@ Test::Differences~0.64
 Test::More~1.302106
 Text::Diff~1.45
 Time::HiRes~1.9746
-Time::Zone~2.24
 common::sense~3.74
