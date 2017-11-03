@@ -8851,28 +8851,6 @@ $WebHACC::_Errors = {
                                                   }
                                                 ]
                               },
-          "obsolete permitted DOCTYPE" => {
-                                          "default_level" => "s",
-                                          "desc" => {
-                                                    "en" => "<p>The DOCTYPE has one of public identifiers of HTML4/XHTML1 age,\nwhich is no longer necessary.  You can simply write\n<code>&lt;!DOCTYPE HTML&gt;</code>.</p>",
-                                                    "ja" => "<p>DOCTYPE \x{306b} HTML4/XHTML1 \x{6642}\x{4ee3}\x{306e}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{304c}\x{3001}\n\x{3053}\x{308c}\x{306f}\x{3082}\x{3046}\x{5fc5}\x{8981}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{5358}\x{7d14}\x{306b}\n<code>&lt;!DOCTYPE HTML&gt;</code> \x{3068}\x{66f8}\x{304f}\x{3060}\x{3051}\x{3067}\x{5341}\x{5206}\x{3067}\x{3059}\x{3002}</p>"
-                                                  },
-                                          "layer" => "tree-construction",
-                                          "message" => {
-                                                       "en" => "The DOCTYPE has public and/or system identifiers",
-                                                       "ja" => "DOCTYPE \x{306b}\x{516c}\x{958b}\x{8b58}\x{5225}\x{5b50}\x{3084}\x{30b7}\x{30b9}\x{30c6}\x{30e0}\x{8b58}\x{5225}\x{5b50}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
-                                                     },
-                                          "modules" => {
-                                                       "Web::HTML::Parser::tokenizer" => 1
-                                                     },
-                                          "parser_tests" => [
-                                                            {
-                                                              "index" => 0,
-                                                              "input" => "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">",
-                                                              "lang" => "HTML"
-                                                            }
-                                                          ]
-                                        },
           "ogp:bad property" => {
                                 "desc" => {
                                           "en" => "\n    <p>The <code>property</code> attribute value must be one of OGP\n    property names.</p>\n  ",
