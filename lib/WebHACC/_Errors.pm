@@ -1476,6 +1476,156 @@ $WebHACC::_Errors = {
                                                         "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306b}\x{3064}\x{3044}\x{3066}\x{5f79}\x{5272}\n  <code><var>{text}</var></code> \x{306e}\x{8981}\x{7d20}\x{304c}\x{8907}\x{6570}\x{3042}\x{308a}\x{307e}\x{3059}"
                                                       }
                                          },
+          "aria:not preferred markup:css" => {
+                                             "default_level" => "w",
+                                             "desc" => {
+                                                       "en" => "<p>The <code>role</code> attribute should only be\nused when it cannot be represented by CSS properties.</p>",
+                                                       "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001} CSS\n\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                     },
+                                             "layer" => "content-model",
+                                             "message" => {
+                                                          "en" => "Use of CSS is preferred",
+                                                          "ja" => "CSS \x{3092}\x{4f7f}\x{3046}\x{306e}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                        },
+                                             "modules" => {
+                                                          "Web::HTML::Validator" => 1
+                                                        }
+                                           },
+          "aria:not preferred markup:html-attr" => {
+                                                   "default_level" => "w",
+                                                   "desc" => {
+                                                             "en" => "<p>The ARIA attribute should only be used when its semantics\ncannot be represented by native HTML attributes.</p>",
+                                                             "ja" => "<p>ARIA \x{5c5e}\x{6027}\x{306f}\x{3001}\x{305d}\x{306e}\x{610f}\x{5473}\x{3092} HTML \x{306e}\x{672c}\x{6765}\x{306e}\x{5c5e}\x{6027}\x{3067}\x{8868}\x{305b}\x{306a}\x{3044}\x{6642}\x{3060}\x{3051}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                           },
+                                                   "layer" => "content-model",
+                                                   "message" => {
+                                                                "en" => "The <code><var>{text}</var></code> attribute is preferred",
+                                                                "ja" => "<code><var>{text}</var></code> \x{5c5e}\x{6027}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                              },
+                                                   "modules" => {
+                                                                "Web::HTML::Validator" => 1
+                                                              }
+                                                 },
+          "aria:not preferred markup:html-element" => {
+                                                      "default_level" => "w",
+                                                      "desc" => {
+                                                                "en" => "<p>The <code>role</code> attribute should only be used when it cannot be\nrepresented by an HTML element with similar semantics.</p>",
+                                                                "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001}\x{540c}\x{3058}\x{3088}\x{3046}\x{306a}\x{610f}\x{5473}\x{306e} HTML\n\x{8981}\x{7d20}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                              },
+                                                      "layer" => "content-model",
+                                                      "message" => {
+                                                                   "en" => "The <code><var>{text}</var></code> element is preferred",
+                                                                   "ja" => "<code><var>{text}</var></code> \x{8981}\x{7d20}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                                 },
+                                                      "modules" => {
+                                                                   "Web::HTML::Validator" => 1
+                                                                 }
+                                                    },
+          "aria:not preferred markup:input" => {
+                                               "default_level" => "w",
+                                               "desc" => {
+                                                         "en" => "<p>The <code>role</code> attribute should only be\n    used when it cannot be represented by an HTML <code>input</code>\n    element with similar semantics.</p>",
+                                                         "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001}\x{540c}\x{3058}\x{3088}\x{3046}\x{306a}\x{610f}\x{5473}\x{306e} HTML\n    <code>input</code> \x{8981}\x{7d20}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                       },
+                                               "layer" => "content-model",
+                                               "message" => {
+                                                            "en" => "The <code>&lt;input type=<var>{text}</var>&gt;</code> element is preferred",
+                                                            "ja" => "<code>&lt;input type=<var>{text}</var>&gt;</code> \x{8981}\x{7d20}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::HTML::Validator" => 1
+                                                          }
+                                             },
+          "aria:not preferred markup:math" => {
+                                              "default_level" => "w",
+                                              "desc" => {
+                                                        "en" => "<p>The <code>role</code> attribute should only be\n    used when it cannot be represented by a MathML\n    <code>math</code> element.</p>",
+                                                        "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001} MathML <code>math</code>\n    \x{8981}\x{7d20}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                      },
+                                              "layer" => "content-model",
+                                              "message" => {
+                                                           "en" => "The <code>math</code> element is preferred",
+                                                           "ja" => "<code>math</code> \x{8981}\x{7d20}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                         },
+                                              "modules" => {
+                                                           "Web::HTML::Validator" => 1
+                                                         }
+                                            },
+          "aria:not preferred markup:omit" => {
+                                              "default_level" => "w",
+                                              "desc" => {
+                                                        "en" => "<p>Certain kinds of ARIA attributes are redundant with native \nHTML or SVG elements.  It should be omitted.</p>",
+                                                        "ja" => "<p>\x{3044}\x{304f}\x{3064}\x{304b}\x{306e} ARIA \x{306e}\x{5c5e}\x{6027}\x{306f}\x{672c}\x{6765}\x{306e} HTML \x{3084} SVG\n\x{306e}\x{8981}\x{7d20}\x{3068}\x{5197}\x{9577}\x{3067}\x{3059}\x{3002}\x{7701}\x{7565}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                      },
+                                              "layer" => "content-model",
+                                              "message" => {
+                                                           "en" => "This is redundant",
+                                                           "ja" => "\x{3053}\x{308c}\x{306f}\x{5197}\x{9577}\x{3067}\x{3059}"
+                                                         },
+                                              "modules" => {
+                                                           "Web::HTML::Validator" => 1
+                                                         }
+                                            },
+          "aria:not preferred markup:role" => {
+                                              "default_level" => "w",
+                                              "desc" => {
+                                                        "en" => "<p>The <code>presentation</code> role is historical;\nthe <code>none</code> role should be used.</p>",
+                                                        "ja" => "<p>\x{5f79}\x{5272} <code>presentation</code> \x{306f}\x{53e4}\x{3044}\x{3082}\x{306e}\x{3067}\x{3059}\x{3002}\n\x{5f79}\x{5272} <code>none</code> \x{3092}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                      },
+                                              "layer" => "content-model",
+                                              "message" => {
+                                                           "en" => "The role <code><var>{text}</var></code> is preferred",
+                                                           "ja" => "\x{5f79}\x{5272} <code><var>{text}</var></code> \x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                         },
+                                              "modules" => {
+                                                           "Web::HTML::Validator" => 1
+                                                         }
+                                            },
+          "aria:not preferred markup:textbox" => {
+                                                 "default_level" => "w",
+                                                 "desc" => {
+                                                           "en" => "<p>The <code>role</code> attribute should only be\n    used when it cannot be represented by an HTML\n    <code>&lt;input type=text&gt;</code> or <code>textarea</code> element.</p>",
+                                                           "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001} HTML\n    <code>&lt;input type=text&gt;</code> \x{8981}\x{7d20}\x{3084} <code>textarea</code>\n    \x{8981}\x{7d20}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                         },
+                                                 "layer" => "content-model",
+                                                 "message" => {
+                                                              "en" => "The <code>&lt;input type=text&gt;</code> or <code>textarea</code>\nelement is preferred",
+                                                              "ja" => "<code>&lt;input type=text&gt;</code> \x{3084} <code>textarea</code>\n\x{8981}\x{7d20}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                            },
+                                                 "modules" => {
+                                                              "Web::HTML::Validator" => 1
+                                                            }
+                                               },
+          "aria:not preferred markup:th" => {
+                                            "default_level" => "w",
+                                            "desc" => {
+                                                      "en" => "<p>The <code>role</code> attribute should only be\n    used when it cannot be represented by an HTML <code>th</code>\n    element with a <code>scope</code> attribute.</p>",
+                                                      "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001} HTML\n    <code>th</code> \x{8981}\x{7d20}\x{3068} <code>scope</code> \n    \x{5c5e}\x{6027}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                    },
+                                            "layer" => "content-model",
+                                            "message" => {
+                                                         "en" => "The <code>&lt;th <var>{text}</var>&gt;</code> element is preferred",
+                                                         "ja" => "<code>&lt;th scope=<var>{text}</var>&gt;</code> \x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::HTML::Validator" => 1
+                                                       }
+                                          },
+          "aria:not preferred markup:title" => {
+                                               "default_level" => "w",
+                                               "desc" => {
+                                                         "en" => "<p>The <code>role</code> attribute should only be\n    used when it cannot be represented by an HTML <code>title</code>\n    attribute or an SVG <code>title</code> element.</p>",
+                                                         "ja" => "<p><code>role</code> \x{5c5e}\x{6027}\x{306f}\x{3001} HTML\n    <code>title</code> \x{5c5e}\x{6027}\x{3084} SVG <code>title</code>\n    \x{8981}\x{7d20}\x{3067}\x{8868}\x{73fe}\x{3067}\x{304d}\x{306a}\x{3044}\x{6642}\x{306b}\x{9650}\x{3063}\x{3066}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002}</p>"
+                                                       },
+                                               "layer" => "content-model",
+                                               "message" => {
+                                                            "en" => "The <code>title</code> attribute is preferred",
+                                                            "ja" => "<code>title</code> \x{5c5e}\x{6027}\x{306e}\x{65b9}\x{304c}\x{9069}\x{5207}\x{3067}\x{3059}"
+                                                          },
+                                               "modules" => {
+                                                            "Web::HTML::Validator" => 1
+                                                          }
+                                             },
           "aria:owns" => {
                          "desc" => {
                                    "en" => "\n    <p>The <code>aria-owns</code> attribute should be only used when\n    it is difficult to represent the widget using DOM hierarchy.</p>\n  ",
@@ -2650,6 +2800,21 @@ $WebHACC::_Errors = {
                                                            "ja" => "\x{7a7a}\x{767d}\x{4ee5}\x{5916}\x{306e}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{306f}\x{4f7f}\x{3048}\x{307e}\x{305b}\x{3093}"
                                                          }
                                             },
+          "character not allowed:dl" => {
+                                        "default_level" => "m",
+                                        "desc" => {
+                                                  "en" => "<p>In a <code>dl</code> element, only <code>dt</code>,\n<code>dd</code>, <code>div</code>, <code>script</code>, and\n<code>template</code> elements are allowed.\n\n</p><p>In a <code>div</code> element that is a child of a <code>dl</code>\nelement, only <code>dt</code>, <code>dd</code>, <code>script</code>,\nand <code>template</code> elements are allowed.\n\n</p><p>Any text data in the list must be placed within a <code>dt</code>\nor <code>dd</code> element.</p>",
+                                                  "ja" => "<p><code>dl</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{3001} <code>dt</code>,\n<code>dd</code>, <code>div</code>, <code>script</code>,\n<code>template</code> \x{306e}\x{5404}\x{8981}\x{7d20}\x{3060}\x{3051}\x{304c}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}\n\n</p><p><code>dl</code> \x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{306e} <code>div</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{3001}\n<code>dt</code>, <code>dd</code>, <code>script</code>,\n<code>template</code> \x{306e}\x{5404}\x{8981}\x{7d20}\x{3060}\x{3051}\x{304c}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}\n\n</p><p>\x{30ea}\x{30b9}\x{30c8}\x{5185}\x{306b}\x{6587}\x{5b57}\x{30c7}\x{30fc}\x{30bf}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>dt</code> \x{8981}\x{7d20}\x{304b} <code>dd</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\x{5165}\x{308c}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>"
+                                                },
+                                        "layer" => "content-model",
+                                        "message" => {
+                                                     "en" => "There is a text in a <code>dl</code> element",
+                                                     "ja" => "<code>dl</code> \x{8981}\x{7d20}\x{5185}\x{306b}\x{30c6}\x{30ad}\x{30b9}\x{30c8}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                   },
+                                        "modules" => {
+                                                     "Web::HTML::Validator" => 1
+                                                   }
+                                      },
           "character not allowed:empty" => {
                                            "desc" => {
                                                      "en" => "\n    <p>The content model of the parent element is empty such that text\n    other than inter-element white space is not allowed.</p>\n\n    <p>In an Atom <code>content</code> element with a <code>src</code>\n    attribute, no character is allowed.</p>\n  ",
@@ -3408,6 +3573,66 @@ $WebHACC::_Errors = {
                                                           "en" => "Character encoding <code><var>{text}</var></code>\n  is not allowed for <abbr>HTML</abbr> document."
                                                         }
                                            },
+          "dl:div:mixed" => {
+                            "default_level" => "m",
+                            "desc" => {
+                                      "en" => "<p>In a <code>dl</code> element, all list items must be included\neither directly by <code>dt</code> and <code>dd</code> element\nchildren or indirectly by <code>div</code> element children.  They\ncannot be mixed.</p>",
+                                      "ja" => "<p><code>dl</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{3001}\x{3059}\x{3079}\x{3066}\x{306e}\x{9805}\x{76ee}\x{3092}\n<code>dt</code> \x{8981}\x{7d20}\x{3068} <code>dd</code> \x{8981}\x{7d20}\x{3067}\x{76f4}\x{63a5}\x{8a18}\x{8ff0}\x{3059}\x{308b}\x{304b}\x{3001}\n<code>div</code> \x{8981}\x{7d20}\x{3067}\x{9593}\x{63a5}\x{7684}\x{306b}\x{542b}\x{3081}\x{308b}\x{304b}\x{306e}\x{3069}\x{3061}\x{3089}\x{304b}\x{3068}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n2\x{3064}\x{306e}\x{65b9}\x{6cd5}\x{3092}\x{6df7}\x{5408}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                    },
+                            "layer" => "content-model",
+                            "message" => {
+                                         "en" => "There are <code>div</code> and non-<code>div</code> children",
+                                         "ja" => "<code>div</code> \x{8981}\x{7d20}\x{3068}\x{305d}\x{3046}\x{3067}\x{306a}\x{3044}\x{8981}\x{7d20}\x{306e}\x{4e21}\x{65b9}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                       },
+                            "modules" => {
+                                         "Web::HTML::Validator" => 1
+                                       }
+                          },
+          "dl:div:second dt" => {
+                                "default_level" => "m",
+                                "desc" => {
+                                          "en" => "<p>In a <code>div</code> element, there must be only one set of name\n(<code>dt</code>) and value (<code>dd</code>) pair.  To represent\nmultiple name/value groups, use multiple <code>div</code> elements.</p>",
+                                          "ja" => "<p>1\x{3064}\x{306e} <code>div</code> \x{8981}\x{7d20}\x{306b}\x{306f}1\x{7d44}\x{306e}\n\x{540d}\x{524d} (<code>dt</code>) \x{3068}\x{5024} (<code>dd</code>) \x{306e}\x{7d44}\x{3057}\x{304b}\x{542b}\x{3081}\x{3089}\x{308c}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{8907}\x{6570}\x{306e}\x{540d}\x{524d}\x{3068}\x{5024}\x{306e}\x{7d44}\x{3092}\x{8868}\x{3057}\x{305f}\x{3044}\x{6642}\x{306f}\x{3001}\n\x{8907}\x{6570}\x{306e} <code>div</code> \x{8981}\x{7d20}\x{306b}\x{5206}\x{3051}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>"
+                                        },
+                                "layer" => "content-model",
+                                "message" => {
+                                             "en" => "There are multiple <code>dt</code> element groups",
+                                             "ja" => "<code>dt</code> \x{8981}\x{7d20}\x{304c}\x{8907}\x{6570}\x{7d44}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                           },
+                                "modules" => {
+                                             "Web::HTML::Validator" => 1
+                                           }
+                              },
+          "dl:last dd missing" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>A <code>dt</code> element must be followed by one or more\n<code>dd</code> element.</p>",
+                                            "ja" => "<p><code>dt</code> \x{8981}\x{7d20}\x{306e}\x{5f8c}\x{306b}\x{306f}1\x{3064}\x{4ee5}\x{4e0a}\x{306e} <code>dd</code>\n\x{8981}\x{7d20}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                          },
+                                  "layer" => "content-model",
+                                  "message" => {
+                                               "en" => "There is no <code>dd</code> element at the last of this element",
+                                               "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306e}\x{672b}\x{5c3e}\x{306b} <code>dd</code> \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             }
+                                },
+          "dl:no div" => {
+                         "default_level" => "m",
+                         "desc" => {
+                                   "en" => "<p>In a <code>dl</code> element, all list items must be included\neither directly by <code>dt</code> and <code>dd</code> element\nchildren or indirectly by <code>div</code> element children.  They\ncannot be mixed.</p>",
+                                   "ja" => "<p><code>dl</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{306f}\x{3001}\x{3059}\x{3079}\x{3066}\x{306e}\x{9805}\x{76ee}\x{3092}\n<code>dt</code> \x{8981}\x{7d20}\x{3068} <code>dd</code> \x{8981}\x{7d20}\x{3067}\x{76f4}\x{63a5}\x{8a18}\x{8ff0}\x{3059}\x{308b}\x{304b}\x{3001}\n<code>div</code> \x{8981}\x{7d20}\x{3067}\x{9593}\x{63a5}\x{7684}\x{306b}\x{542b}\x{3081}\x{308b}\x{304b}\x{306e}\x{3069}\x{3061}\x{3089}\x{304b}\x{3068}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\n2\x{3064}\x{306e}\x{65b9}\x{6cd5}\x{3092}\x{6df7}\x{5408}\x{3059}\x{308b}\x{3053}\x{3068}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                 },
+                         "layer" => "content-model",
+                         "message" => {
+                                      "en" => "There is no <code>div</code> element wrapper",
+                                      "ja" => "<code>div</code> \x{8981}\x{7d20}\x{3067}\x{5305}\x{307e}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}"
+                                    },
+                         "modules" => {
+                                      "Web::HTML::Validator" => 1
+                                    }
+                       },
           "doctype after element" => {
                                      "desc" => {
                                                "en" => "\n    <p>The document type node must appear before the document\n    element.</p>\n  ",
@@ -4093,6 +4318,21 @@ $WebHACC::_Errors = {
                                                                "en" => "In a <code>details</code> or <code>fieldset</code>\n  element, only at the beginning of the element a <code>legend</code> element\n  may be used."
                                                              }
                                                 },
+          "element not allowed:dl" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>In a <code>dl</code> element, only <code>dt</code>,\n<code>dd</code>, <code>div</code>, <code>script</code>, and\n<code>template</code> elements are allowed.\n\n</p><p>In a <code>div</code> element that is a child of a <code>dl</code>\nelement, only <code>dt</code>, <code>dd</code>, <code>script</code>,\nand <code>template</code> elements are allowed.\n\n</p><p>Any other element in the list must be placed within a\n<code>dt</code> or <code>dd</code> element.</p>",
+                                                "ja" => "<p><code>dl</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{3001} <code>dt</code>,\n<code>dd</code>, <code>div</code>, <code>script</code>,\n<code>template</code> \x{306e}\x{5404}\x{8981}\x{7d20}\x{3060}\x{3051}\x{304c}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}\n\n</p><p><code>dl</code> \x{8981}\x{7d20}\x{306e}\x{5b50}\x{4f9b}\x{306e} <code>div</code> \x{8981}\x{7d20}\x{3067}\x{306f}\x{3001}\n<code>dt</code>, <code>dd</code>, <code>script</code>,\n<code>template</code> \x{306e}\x{5404}\x{8981}\x{7d20}\x{3060}\x{3051}\x{304c}\x{4f7f}\x{3048}\x{307e}\x{3059}\x{3002}\n\n</p><p>\x{30ea}\x{30b9}\x{30c8}\x{5185}\x{306b}\x{305d}\x{306e}\x{4ed6}\x{306e}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>dt</code> \x{8981}\x{7d20}\x{304b} <code>dd</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{306b}\x{5165}\x{308c}\x{308b}\x{5fc5}\x{8981}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}\x{3002}</p>"
+                                              },
+                                      "layer" => "content-model",
+                                      "message" => {
+                                                   "en" => "There is an element not allowed in a <code>dl</code> element",
+                                                   "ja" => "<code>dl</code> \x{8981}\x{7d20}\x{5185}\x{3067}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{306a}\x{3044}\x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
+                                                 }
+                                    },
           "element not allowed:duplicate" => {
                                              "desc" => {
                                                        "en" => "\n    <p>The element can only be used once as a child element of the\n    parent.</p>\n  ",
@@ -6698,21 +6938,111 @@ $WebHACC::_Errors = {
                                                "en" => "The link type is not accepted yet"
                                              }
                                 },
-          "link:as:not preload" => {
-                                   "default_level" => "m",
-                                   "desc" => {
-                                             "en" => "<p>When the <code>as</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>preload</code>.  Otherwise the <code>as</code>\nattribute is ignored.</p>",
-                                             "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>as</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>as</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
-                                           },
-                                   "layer" => "content-model",
-                                   "message" => {
-                                                "en" => "The <code>as</code> attribute is specified to a <code>link</code>\nelement with no <code>preload</code> link type",
-                                                "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>as</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+          "link:ignored as" => {
+                               "default_level" => "m",
+                               "desc" => {
+                                         "en" => "<p>When the <code>as</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>preload</code>.  Otherwise the <code>as</code>\nattribute is ignored.</p>",
+                                         "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>as</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>as</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                       },
+                               "layer" => "content-model",
+                               "message" => {
+                                            "en" => "The <code>as</code> attribute is specified to a <code>link</code>\nelement with no <code>preload</code> link type",
+                                            "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>preload</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>as</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                          },
+                               "modules" => {
+                                            "Web::HTML::Validator" => 1
+                                          }
+                             },
+          "link:ignored color" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>When the <code>color</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>mask-icon</code>.\nOtherwise the <code>color</code> attribute is ignored.</p>",
+                                            "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>color</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>mask-icon</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>color</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                          },
+                                  "layer" => "content-model",
+                                  "message" => {
+                                               "en" => "The <code>color</code> attribute is specified to a <code>link</code>\nelement with no <code>mask-icon</code> link type",
+                                               "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>mask-icon</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>color</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             }
+                                },
+          "link:ignored integrity" => {
+                                      "default_level" => "m",
+                                      "desc" => {
+                                                "en" => "<p>When the <code>integrity</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>stylesheet</code>.\nOtherwise the <code>integrity</code> attribute is ignored.</p>",
+                                                "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>integrity</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>stylesheet</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>integrity</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
                                               },
-                                   "modules" => {
-                                                "Web::HTML::Validator" => 1
-                                              }
-                                 },
+                                      "layer" => "content-model",
+                                      "message" => {
+                                                   "en" => "The <code>integrity</code> attribute is specified to a <code>link</code>\nelement with no <code>stylesheet</code> link type",
+                                                   "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>stylesheet</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>integrity</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                 },
+                                      "modules" => {
+                                                   "Web::HTML::Validator" => 1
+                                                 }
+                                    },
+          "link:ignored scope" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>When the <code>scope</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>scope</code> attribute is ignored.</p>",
+                                            "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>scope</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>scope</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                          },
+                                  "layer" => "content-model",
+                                  "message" => {
+                                               "en" => "The <code>scope</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
+                                               "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>scope</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             }
+                                },
+          "link:ignored sizes" => {
+                                  "default_level" => "m",
+                                  "desc" => {
+                                            "en" => "<p>When the <code>sizes</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>icon</code> or <code>apple-touch-icon</code>.\nOtherwise the <code>sizes</code> attribute is ignored.</p>",
+                                            "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code> \x{304b}\n<code>apple-touch-icon</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>sizes</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                          },
+                                  "layer" => "content-model",
+                                  "message" => {
+                                               "en" => "The <code>sizes</code> attribute is specified to a <code>link</code>\nelement with no <code>icon</code> link type",
+                                               "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             }
+                                },
+          "link:ignored updateviacache" => {
+                                           "default_level" => "m",
+                                           "desc" => {
+                                                     "en" => "<p>When the <code>updateviacache</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>updateviacache</code> attribute is ignored.</p>",
+                                                     "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>updateviacache</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>updateviacache</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                                   },
+                                           "layer" => "content-model",
+                                           "message" => {
+                                                        "en" => "The <code>updateviacache</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
+                                                        "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>updateviacache</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::HTML::Validator" => 1
+                                                      }
+                                         },
+          "link:ignored workertype" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>When the <code>workertype</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>workertype</code> attribute is ignored.</p>",
+                                                 "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>workertype</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>workertype</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
+                                               },
+                                       "layer" => "content-model",
+                                       "message" => {
+                                                    "en" => "The <code>workertype</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
+                                                    "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>workertype</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Validator" => 1
+                                                  }
+                                     },
           "link:not body-ok" => {
                                 "default_level" => "m",
                                 "desc" => {
@@ -6728,21 +7058,6 @@ $WebHACC::_Errors = {
                                              "Web::HTML::Validator" => 1
                                            }
                               },
-          "link:sizes:not icon" => {
-                                   "default_level" => "m",
-                                   "desc" => {
-                                             "en" => "<p>When the <code>sizes</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>icon</code>.  Otherwise the <code>sizes</code>\nattribute is ignored.</p>",
-                                             "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>sizes</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
-                                           },
-                                   "layer" => "content-model",
-                                   "message" => {
-                                                "en" => "The <code>sizes</code> attribute is specified to a <code>link</code>\nelement with no <code>icon</code> link type",
-                                                "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>icon</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>sizes</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                              },
-                                   "modules" => {
-                                                "Web::HTML::Validator" => 1
-                                              }
-                                 },
           "litype:invalid" => {
                               "desc" => {
                                         "en" => "\n    <p>The value of the <code>type</code> attribute of the\n    <code>li</code> element must be one of following values:\n    <code>1</code>, <code>A</code>, <code>a</code>, <code>I</code>,\n    <code>i</code>, <code>circle</code>, <code>square</code>, or\n    <code>disc</code>.</p>\n  ",
@@ -8489,6 +8804,42 @@ $WebHACC::_Errors = {
                                                "en" => "No character encoding metadata is found\n  in lower\x{2010}level protocol nor is there <abbr>BOM</abbr>, while\n  character encoding <code><var>{text}</var></code>\n  is not a superset of <abbr>ASCII</abbr>."
                                              }
                                 },
+          "non external resource crossorigin" => {
+                                                 "default_level" => "w",
+                                                 "desc" => {
+                                                           "en" => "<p>The <code>crossorigin</code> attribute of the <code>link</code>\nelement is effective only when the element defines an external\nresource link (e.g. when its <code>rel</code> attribute is\n<code>stylesheet</code>.</p>",
+                                                           "ja" => "<p><code>link</code> \x{8981}\x{7d20}\x{306e} <code>crossorigin</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{5916}\x{90e8}\x{8cc7}\x{6e90}\x{30ea}\x{30f3}\x{30af}\x{306e}\x{6642}\n(<code>rel</code> \x{5c5e}\x{6027}\x{304c} <code>stylesheet</code> \x{306e}\x{6642}\x{306a}\x{3069}) \x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                                         },
+                                                 "layer" => "content-model",
+                                                 "message" => {
+                                                              "en" => "The <code>crossorigin</code> attribute has no effect",
+                                                              "ja" => "\x{3053}\x{306e} <code>crossorigin</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                            },
+                                                 "modules" => {
+                                                              "Web::HTML::Validator" => 1
+                                                            },
+                                                 "targets" => {
+                                                              "attr" => 1
+                                                            }
+                                               },
+          "non external resource nonce" => {
+                                           "default_level" => "w",
+                                           "desc" => {
+                                                     "en" => "<p>The <code>nonce</code> attribute of the <code>link</code>\nelement is effective only when the element defines an external\nresource link (e.g. when its <code>rel</code> attribute is\n<code>stylesheet</code>.</p>",
+                                                     "ja" => "<p><code>link</code> \x{8981}\x{7d20}\x{306e} <code>nonce</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{5916}\x{90e8}\x{8cc7}\x{6e90}\x{30ea}\x{30f3}\x{30af}\x{306e}\x{6642}\n(<code>rel</code> \x{5c5e}\x{6027}\x{304c} <code>stylesheet</code> \x{306e}\x{6642}\x{306a}\x{3069}) \x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                                   },
+                                           "layer" => "content-model",
+                                           "message" => {
+                                                        "en" => "The <code>nonce</code> attribute has no effect",
+                                                        "ja" => "\x{3053}\x{306e} <code>nonce</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                      },
+                                           "modules" => {
+                                                        "Web::HTML::Validator" => 1
+                                                      },
+                                           "targets" => {
+                                                        "attr" => 1
+                                                      }
+                                         },
           "non unicode" => {
                            "message" => {
                                         "en" => "Character <code><var>{text}</var></code> is not\n  a Unicode character."
@@ -8513,13 +8864,18 @@ $WebHACC::_Errors = {
                                           }
                              },
           "non-utf-8 character encoding" => {
+                                            "default_level" => "m",
                                             "desc" => {
-                                                      "en" => "\n    <p>The UTF-8 character encoding should be used unless there is a\n    strong reason to use other legacy encoding.</p>\n  ",
-                                                      "ja" => "\n    <p>UTF-8 \x{4ee5}\x{5916}\x{306e}\x{6614}\x{306a}\x{304c}\x{3089}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{65b9}\x{5f0f}\x{306f}\x{3001}\n    \x{7279}\x{306b}\x{5f37}\x{3044}\x{7406}\x{7531}\x{304c}\x{306a}\x{3044}\x{9650}\x{308a}\x{4f7f}\x{3046}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
+                                                      "en" => "<p>The character encoding of an HTML document must be UTF-8.  No other\nencoding is allowed.</p>",
+                                                      "ja" => "<p>HTML \x{6587}\x{66f8}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{306f} UTF-8 \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\n\x{305d}\x{308c}\x{4ee5}\x{5916}\x{306f}\x{8a8d}\x{3081}\x{3089}\x{308c}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
                                                     },
+                                            "layer" => "charencoding",
                                             "message" => {
-                                                         "en" => "Historical character encoding is used",
-                                                         "ja" => "\x{6b74}\x{53f2}\x{7684}\x{306a}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{304c}\x{4f7f}\x{308f}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                         "en" => "The document's character encoding is not UTF-8",
+                                                         "ja" => "\x{6587}\x{66f8}\x{306e}\x{6587}\x{5b57}\x{7b26}\x{53f7}\x{5316}\x{304c} UTF-8 \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                       },
+                                            "modules" => {
+                                                         "Web::HTML::Validator" => 1
                                                        }
                                           },
           "nonchar" => {
@@ -9325,6 +9681,36 @@ $WebHACC::_Errors = {
                                                "en" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{3088}\x{308a}\x{524d}\x{306b} <code><var>{text}</var></code>\n  \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
                                              }
                                 },
+          "ps element missing:dd" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>A <code>dt</code> element must be followed by one or more\n<code>dd</code> element.</p>",
+                                               "ja" => "<p><code>dt</code> \x{8981}\x{7d20}\x{306e}\x{5f8c}\x{306b}\x{306f}1\x{3064}\x{4ee5}\x{4e0a}\x{306e} <code>dd</code>\n\x{8981}\x{7d20}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                             },
+                                     "layer" => "content-model",
+                                     "message" => {
+                                                  "en" => "There is no <code>dd</code> element before this element",
+                                                  "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306e}\x{524d}\x{306b} <code>dd</code> \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                     "modules" => {
+                                                  "Web::HTML::Validator" => 1
+                                                }
+                                   },
+          "ps element missing:dt" => {
+                                     "default_level" => "m",
+                                     "desc" => {
+                                               "en" => "<p>There must be a <code>dt</code> element before a <code>dd</code>\nelement.</p>",
+                                               "ja" => "<p><code>dd</code> \x{8981}\x{7d20}\x{306e}\x{524d}\x{306b}\x{306f} <code>dt</code> \x{8981}\x{7d20}\x{304c}\x{5fc5}\x{8981}\x{3067}\x{3059}\x{3002}</p>"
+                                             },
+                                     "layer" => "content-model",
+                                     "message" => {
+                                                  "en" => "There is no <code>dt</code> element before this element",
+                                                  "ja" => "\x{3053}\x{306e}\x{8981}\x{7d20}\x{306e}\x{524d}\x{306b} <code>dt</code> \x{8981}\x{7d20}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                },
+                                     "modules" => {
+                                                  "Web::HTML::Validator" => 1
+                                                }
+                                   },
           "rdf vocab:not defined" => {
                                      "desc" => {
                                                "en" => "\n    <p>If a URL in an RDF triple or an RDF/XML document belongs to the\n    RDF namespace, it must be defined in the RDF Vocabulary.</p>\n  ",
@@ -9495,6 +9881,21 @@ $WebHACC::_Errors = {
                                                                     "ja" => "<code>allow-scripts</code> \x{3068}\n  <code>allow-same-origin</code> \x{3092}\x{540c}\x{6642}\x{306b}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{306e}\x{306f}\x{5371}\x{967a}\x{3067}\x{3059}"
                                                                   }
                                                      },
+          "sandbox duplicate allow-top-navigation" => {
+                                                      "default_level" => "m",
+                                                      "desc" => {
+                                                                "en" => "<p>Only one of keywords <code>allow-top-navigation</code> and\n<code>allow-top-navigation-by-user-activation</code> can be specified\nin a <code>sandbox</code> attribute.  If both keywords are specified,\n<code>allow-top-navigation-by-user-activation</code> is ignored.</p>",
+                                                                "ja" => "<p><code>sandbox</code> \x{5c5e}\x{6027}\x{306b} <code>allow-top-navigation</code> \x{3068}\n<code>allow-top-navigation-by-user-activation</code> \n\x{306e}\x{4e21}\x{65b9}\x{3092}\x{6307}\x{5b9a}\x{3057}\x{3066}\x{306f}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{4e21}\x{65b9}\x{3057}\x{3066}\x{3044}\x{3057}\x{3066}\x{3082}\x{3001}\n<code>allow-top-navigation-by-user-activation</code>\n\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}</p>"
+                                                              },
+                                                      "layer" => "content-model",
+                                                      "message" => {
+                                                                   "en" => "Both <code>allow-top-navigation</code> and\n<code>allow-top-navigation-by-user-activation</code> are specified",
+                                                                   "ja" => "<code>allow-top-navigation</code> \x{3068}\n<code>allow-top-navigation-by-user-activation</code> \n\x{306e}\x{4e21}\x{65b9}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                                                 },
+                                                      "modules" => {
+                                                                   "Web::HTML::Validator" => 1
+                                                                 }
+                                                    },
           "scolor:syntax error" => {
                                    "desc" => {
                                              "en" => "\n    <p>The value must be a hexadecimal color notation with six\n    digits.</p>\n  ",
@@ -9515,6 +9916,39 @@ $WebHACC::_Errors = {
                                                "en" => "A <code>::</code> token is not followed by\n  an identifier or a <code>DOMString</code> keyword."
                                              }
                                 },
+          "script charset" => {
+                              "default_level" => "m",
+                              "desc" => {
+                                        "en" => "<p>The <code>charset</code> attribute of the <code>script</code>\nelement should not be specified.  Both the document and the script has\nto be encoded in UTF-8, in which case the attribute has no effect.</p>",
+                                        "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>charset</code>\n\x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{6587}\x{66f8}\x{3082}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3082} UTF-8\n\x{3067}\x{7b26}\x{53f7}\x{5316}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{306e}\x{5834}\x{5408} <code>charset</code>\n\x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                      },
+                              "layer" => "content-model",
+                              "message" => {
+                                           "en" => "The <code>charset</code> attribute is specified",
+                                           "ja" => "<code>charset</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                         },
+                              "modules" => {
+                                           "Web::HTML::Validator" => 1
+                                         },
+                              "targets" => {
+                                           "attr" => 1
+                                         }
+                            },
+          "script charset utf-8" => {
+                                    "default_level" => "s",
+                                    "desc" => {
+                                              "en" => "<p>The <code>charset</code> attribute of the <code>script</code>\nelement should not be specified.  Both the document and the script has\nto be encoded in UTF-8, in which case the attribute has no effect.</p>",
+                                              "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>charset</code>\n\x{5c5e}\x{6027}\x{306f}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{6587}\x{66f8}\x{3082}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3082} UTF-8\n\x{3067}\x{7b26}\x{53f7}\x{5316}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{306a}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{306e}\x{5834}\x{5408} <code>charset</code>\n\x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                            },
+                                    "layer" => "content-model",
+                                    "message" => {
+                                                 "en" => "The <code>charset</code> attribute is specified as UTF-8",
+                                                 "ja" => "<code>charset</code> \x{5c5e}\x{6027}\x{3067} UTF-8 \x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
+                                               },
+                                    "modules" => {
+                                                 "Web::HTML::Validator" => 1
+                                               }
+                                  },
           "script language" => {
                                "default_level" => "s",
                                "desc" => {
@@ -9642,7 +10076,7 @@ $WebHACC::_Errors = {
                                                      }
                                         },
           "script:ignored async" => {
-                                    "default_level" => "w",
+                                    "default_level" => "m",
                                     "desc" => {
                                               "en" => "<p>The <code>async</code> attribute of the <code>script</code> element\nis effective only when the element defines a module script, or when\nthe element defines a classic script and has a <code>src</code>\nattribute.</p>",
                                               "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>defer</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3068}\x{3001}\n\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
@@ -9696,7 +10130,7 @@ $WebHACC::_Errors = {
                                                      }
                                         },
           "script:ignored defer" => {
-                                    "default_level" => "w",
+                                    "default_level" => "m",
                                     "desc" => {
                                               "en" => "<p>The <code>defer</code> attribute of the <code>script</code>\nelement is effective only when the element defines a classic script,\nhas a <code>src</code> attribute, and does not have any\n<code>async</code> attribute.</p>",
                                               "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>defer</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code>\n\x{5c5e}\x{6027}\x{304c}\x{3042}\x{308a}\x{3001} <code>async</code> \x{5c5e}\x{6027}\x{304c}\x{306a}\x{3044}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
@@ -9713,6 +10147,42 @@ $WebHACC::_Errors = {
                                                  "attr" => 1
                                                }
                                   },
+          "script:ignored integrity" => {
+                                        "default_level" => "m",
+                                        "desc" => {
+                                                  "en" => "<p>The <code>integrity</code> attribute of the <code>script</code> element\nis effective only when the element defines a classic script and\nhas a <code>src</code> attribute.</p>",
+                                                  "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>integrity</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\n\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3067} <code>src</code> \x{5c5e}\x{6027}\x{304c}\x{3042}\x{308b}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}</p>"
+                                                },
+                                        "layer" => "content-model",
+                                        "message" => {
+                                                     "en" => "The <code>integrity</code> attribute has no effect",
+                                                     "ja" => "\x{3053}\x{306e} <code>integrity</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                   },
+                                        "modules" => {
+                                                     "Web::HTML::Validator" => 1
+                                                   },
+                                        "targets" => {
+                                                     "attr" => 1
+                                                   }
+                                      },
+          "script:ignored nomodule" => {
+                                       "default_level" => "m",
+                                       "desc" => {
+                                                 "en" => "<p>The <code>nomodule</code> attribute of the <code>script</code>\nelement is effective only when the element defines a classic script.\nIt can't be used when the element defines a module script or a data\nblock.</p>",
+                                                 "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e} <code>nomodule</code>\n\x{5c5e}\x{6027}\x{306b}\x{52b9}\x{679c}\x{304c}\x{3042}\x{308b}\x{306e}\x{306f}\x{3001}\x{53e4}\x{5178}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{306e}\x{3068}\x{304d}\x{3060}\x{3051}\x{3067}\x{3059}\x{3002}\n\x{30e2}\x{30b8}\x{30e5}\x{30fc}\x{30eb}\x{30b9}\x{30af}\x{30ea}\x{30d7}\x{30c8}\x{3084}\x{30c7}\x{30fc}\x{30bf}\x{30d6}\x{30ed}\x{30c3}\x{30af}\x{306e} <code>script</code> \n\x{8981}\x{7d20}\x{306b}\x{306f}\x{6307}\x{5b9a}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                               },
+                                       "layer" => "content-model",
+                                       "message" => {
+                                                    "en" => "The <code>nomodule</code> attribute has no effect",
+                                                    "ja" => "\x{3053}\x{306e} <code>nomodule</code> \x{5c5e}\x{6027}\x{306b}\x{306f}\x{610f}\x{5473}\x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                                  },
+                                       "modules" => {
+                                                    "Web::HTML::Validator" => 1
+                                                  },
+                                       "targets" => {
+                                                    "attr" => 1
+                                                  }
+                                     },
           "script:ignored nonce" => {
                                     "default_level" => "m",
                                     "desc" => {
@@ -10672,6 +11142,36 @@ $WebHACC::_Errors = {
                                                            }
                                                          ]
                                        },
+          "style type" => {
+                          "default_level" => "s",
+                          "desc" => {
+                                    "en" => "<p>The <code>type</code> attribute value of the <code>style</code> element,\nif specified, must be <code>text/css</code>.  (However, it should\nbe omitted altogther.)</p>\n<p>Non-CSS style languages are not supported by Web browsers.</p>",
+                                    "ja" => "<p><code>style</code> \x{8981}\x{7d20}\x{306e} <code>type</code> \x{5c5e}\x{6027}\x{306e}\x{5024}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{308b}\x{5834}\x{5408}\x{306f}\x{3001}\n<code>text/css</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002} (\x{305f}\x{3060}\x{3057}\x{3001}\n<code>type</code> \x{5c5e}\x{6027}\x{81ea}\x{4f53}\x{3092}\x{7701}\x{7565}\x{3059}\x{308b}\x{3079}\x{304d}\x{3067}\x{3059}\x{3002})</p>\n<p>Web \x{30d6}\x{30e9}\x{30a6}\x{30b6}\x{30fc}\x{306f} CSS \x{4ee5}\x{5916}\x{306e}\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{8a00}\x{8a9e}\x{306b}\x{5bfe}\x{5fdc}\x{3057}\x{3066}\x{3044}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                  },
+                          "layer" => "microsyntax",
+                          "message" => {
+                                       "en" => "The style type is not <code>text/css</code>",
+                                       "ja" => "\x{30b9}\x{30bf}\x{30a4}\x{30eb}\x{306e}\x{7a2e}\x{5225}\x{304c} <code>text/css</code> \x{3067}\x{306f}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                     },
+                          "modules" => {
+                                       "Web::HTML::Validator" => 1
+                                     }
+                        },
+          "style:unclosed cdo" => {
+                                  "default_level" => "s",
+                                  "desc" => {
+                                            "en" => "<p>In a <code>script</code> element, any\n    substring <code>&lt;!--</code> must be closed by corresponding\n    substring <code>--&gt;</code>.</p>",
+                                            "ja" => "<p><code>script</code> \x{8981}\x{7d20}\x{306e}\x{4e2d}\x{3067}\x{306f}\x{3001}\n    <code>&lt;!--</code> \x{306b}\x{306f}\x{5bfe}\x{5fdc}\x{3059}\x{308b} <code>--&gt;</code>\n    \x{304c}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>"
+                                          },
+                                  "layer" => "microsyntax",
+                                  "message" => {
+                                               "en" => "There is no <code>--&gt;</code>",
+                                               "ja" => "<code>--&gt;</code> \x{304c}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
+                                             },
+                                  "modules" => {
+                                               "Web::HTML::Validator" => 1
+                                             }
+                                },
           "syntax error:iri3987" => {
                                     "message" => {
                                                  "en" => "The specified value is syntactically not an\n  IRI."
