@@ -1,12 +1,13 @@
 Algorithm::Diff~1.1903
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
+AnyEvent::Handle
 Canary::Stability~2012
 Capture::Tiny~0.46
 Carp~1.38
 Data::Dumper~2.161
 Digest::SHA~6.01
-Encode~2.95
+Encode~2.96
 Exporter::Lite~0.08
 Getopt::Long~2.5
 JE~0.066
