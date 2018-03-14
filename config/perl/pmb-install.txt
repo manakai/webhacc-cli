@@ -5,6 +5,7 @@ Canary::Stability~2012
 Capture::Tiny~0.46
 Carp~1.38
 Data::Dumper~2.161
+Date::Parse~2.30
 Digest::SHA~6.01
 Encode~2.97
 Exporter::Lite~0.08
@@ -12,7 +13,7 @@ Getopt::Long~2.5
 JE~0.066
 JSON~2.97001
 MIME::Base64~3.15
-Net::SSLeay~1.84
+Net::SSLeay~1.85
 Path::Class~0.37
 Path::Tiny~0.104
 Pod::Text~4.10
@@ -20,9 +21,8 @@ Pod::Usage~1.69
 Regexp::Parser~0.22
 Scalar::Util~1.50
 Term::ANSIColor~4.06
-Test::Builder~1.302133
 Test::Differences~0.64
+Test::More~1.302133
 Text::Diff~1.45
-Time::HiRes~1.9754
-Time::Zone~2.24
+Time::HiRes~1.9755
 common::sense~3.74
