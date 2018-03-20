@@ -6,6 +6,7 @@ Canary::Stability~2012
 Capture::Tiny~0.46
 Carp~1.38
 Data::Dumper~2.161
+Date::Parse~2.30
 Digest::SHA~6.01
 Encode~2.97
 Exporter::Lite~0.08
@@ -25,5 +26,4 @@ Test::Builder~1.302133
 Test::Differences~0.64
 Text::Diff~1.45
 Time::HiRes~1.9757
-Time::Zone~2.24
 common::sense~3.74
