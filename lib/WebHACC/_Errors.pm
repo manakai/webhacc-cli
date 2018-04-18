@@ -6983,21 +6983,6 @@ $WebHACC::_Errors = {
                                                    "Web::HTML::Validator" => 1
                                                  }
                                     },
-          "link:ignored scope" => {
-                                  "default_level" => "m",
-                                  "desc" => {
-                                            "en" => "<p>When the <code>scope</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>scope</code> attribute is ignored.</p>",
-                                            "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>scope</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>scope</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
-                                          },
-                                  "layer" => "content-model",
-                                  "message" => {
-                                               "en" => "The <code>scope</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
-                                               "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>scope</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                             },
-                                  "modules" => {
-                                               "Web::HTML::Validator" => 1
-                                             }
-                                },
           "link:ignored sizes" => {
                                   "default_level" => "m",
                                   "desc" => {
@@ -7013,36 +6998,6 @@ $WebHACC::_Errors = {
                                                "Web::HTML::Validator" => 1
                                              }
                                 },
-          "link:ignored updateviacache" => {
-                                           "default_level" => "m",
-                                           "desc" => {
-                                                     "en" => "<p>When the <code>updateviacache</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>updateviacache</code> attribute is ignored.</p>",
-                                                     "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>updateviacache</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>updateviacache</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
-                                                   },
-                                           "layer" => "content-model",
-                                           "message" => {
-                                                        "en" => "The <code>updateviacache</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
-                                                        "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>updateviacache</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                      },
-                                           "modules" => {
-                                                        "Web::HTML::Validator" => 1
-                                                      }
-                                         },
-          "link:ignored workertype" => {
-                                       "default_level" => "m",
-                                       "desc" => {
-                                                 "en" => "<p>When the <code>workertype</code> attribute is specified, the\n<code>link</code> element's <code>rel</code> attribute must contain a\nlink type keyword <code>serviceworker</code>.\nOtherwise the <code>workertype</code> attribute is ignored.</p>",
-                                                 "ja" => "<code>link</code> \x{8981}\x{7d20}\x{306b} <code>workertype</code> \x{3092}\x{6307}\x{5b9a}\x{3059}\x{308b}\x{6642}\x{306f}\x{3001}\n<code>rel</code> \x{5c5e}\x{6027}\x{306b}\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code>\n\x{3092}\x{6307}\x{5b9a}\x{3057}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}\x{305d}\x{3046}\x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3001} <code>workertype</code>\n\x{5c5e}\x{6027}\x{306f}\x{7121}\x{8996}\x{3055}\x{308c}\x{307e}\x{3059}\x{3002}"
-                                               },
-                                       "layer" => "content-model",
-                                       "message" => {
-                                                    "en" => "The <code>workertype</code> attribute is specified to a <code>link</code>\nelement with no <code>serviceworker</code> link type",
-                                                    "ja" => "\x{30ea}\x{30f3}\x{30af}\x{578b} <code>serviceworker</code> \x{306e}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{306a}\x{3044} <code>link</code>\n\x{8981}\x{7d20}\x{306b} <code>workertype</code> \x{5c5e}\x{6027}\x{304c}\x{6307}\x{5b9a}\x{3055}\x{308c}\x{3066}\x{3044}\x{307e}\x{3059}"
-                                                  },
-                                       "modules" => {
-                                                    "Web::HTML::Validator" => 1
-                                                  }
-                                     },
           "link:not body-ok" => {
                                 "default_level" => "m",
                                 "desc" => {
