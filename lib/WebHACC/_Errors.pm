@@ -287,21 +287,11 @@ $WebHACC::_Errors = {
                                              "en" => "Use of a private type\n  <code><var>{value}</var></code> is not encouraged."
                                            }
                               },
-          "IMT:subtype syntax error" => {
-                                        "message" => {
-                                                     "en" => "Value <code><var>{value}</var></code> is\n  syntactically not a valid subtype value of an Internet Media Type."
-                                                   }
-                                      },
           "IMT:syntax error" => {
                                 "message" => {
                                              "en" => "The specified value is not an Internet Media\n  Type."
                                            }
                               },
-          "IMT:type syntax error" => {
-                                     "message" => {
-                                                  "en" => "Value <code><var>{value}</var></code> is\n  syntactically not a valid type."
-                                                }
-                                   },
           "IMT:unknown parameter" => {
                                      "message" => {
                                                   "en" => "An unknown parameter <code><var>{value}</var></code>\n  is used.  The conformance checker cannot determine whether use of this\n  parameter is valid or not."
@@ -1343,16 +1333,6 @@ $WebHACC::_Errors = {
                                               "ja" => "\x{30a2}\x{30f3}\x{30ab}\x{30fc}\x{540d}\x{3092}\x{7a7a}\x{6587}\x{5b57}\x{5217}\x{306b}\x{306f}\x{3067}\x{304d}\x{307e}\x{305b}\x{3093}"
                                             }
                                },
-          "app:draft:bad value" => {
-                                   "desc" => {
-                                             "en" => "\n    <p>The content of an AtomPub <code>app:draft</code> element must\n    be either <code>yes</code> or <code>no</code>.</p>\n  ",
-                                             "ja" => "\n    <p>AtomPub <code>app:draft</code> \x{8981}\x{7d20}\x{306e}\x{5185}\x{5bb9}\x{306f}\n    <code>yes</code> \x{304b} <code>no</code> \x{3067}\x{306a}\x{3051}\x{308c}\x{3070}\x{3044}\x{3051}\x{307e}\x{305b}\x{3093}\x{3002}</p>\n  "
-                                           },
-                                   "message" => {
-                                                "en" => "The value is not <code>yes</code> or\n  <code>no</code>",
-                                                "ja" => "\x{5024}\x{304c} <code>yes</code> \x{3067}\x{3082} <code>no</code>\n  \x{3067}\x{3082}\x{3042}\x{308a}\x{307e}\x{305b}\x{3093}"
-                                              }
-                                 },
           "argument after variadic" => {
                                        "message" => {
                                                     "en" => "An argument is specified after an argument\n  with <code>Variadic</code> extended attribute is seen."
