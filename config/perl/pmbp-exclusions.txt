@@ -10,3 +10,5 @@
 - "../../modules/json-ps" tests
 - "../../modules/regexp" tests visualizer visualizercgi
 - "../../t_deps/modules/test-x1" tests
+
+- "../../modules/streams" build tests
